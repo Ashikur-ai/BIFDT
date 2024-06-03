@@ -41,6 +41,7 @@ import AnimatedDiv from "../../../AnimatedDiv";
 
 import CountUp from 'react-countup';
 import TabSection from "./components/TabSection";
+import Faculty from "./components/Faculty";
 
 const HomePage = () => {
     return (
@@ -290,6 +291,11 @@ const HomePage = () => {
             <div className="w-3/4 mx-auto py-20 ">
                     
                 <TabSection></TabSection>
+            </div>
+
+            {/* seventh section Faculty  */}
+            <div className="px-20 py-10 mx-auto">
+                <Faculty></Faculty>
             </div>
 
 
