@@ -40,6 +40,7 @@ import { useEffect, useState } from "react";
 import AnimatedDiv from "../../../AnimatedDiv";
 
 import CountUp from 'react-countup';
+import TabSection from "./components/TabSection";
 
 const HomePage = () => {
     return (
@@ -222,7 +223,7 @@ const HomePage = () => {
                 </AnimatedDiv>
             </div>
 
-            {/* countdown section  */}
+            {/*fith section countdown part  */}
             <div className="mx-20 py-10 my-10 bg-pink-600 grid grid-cols-1 lg:grid-cols-6 justify-items-center">
                 <div className="m-auto text-white py-5 text-center">
                     <CountUp
@@ -283,6 +284,12 @@ const HomePage = () => {
                     <p className="text-xl font-bold">Job Success Ratio</p>
                 </div>
 
+            </div>
+
+            {/* sixth section Photo Gallary  */}
+            <div className="w-3/4 mx-auto py-20 ">
+                    
+                <TabSection></TabSection>
             </div>
 
 
