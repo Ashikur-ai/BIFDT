@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const AnimatedDiv = ({ children, value }) => {
+const AnimatedDiv = ({ children, value, direction }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -25,7 +25,7 @@ const AnimatedDiv = ({ children, value }) => {
       ref={ref}
       initial={{ x: value, opacity: 0 }}
       animate={controls}
-      className="grid grid-cols-1  lg:grid-cols-2"
+      className=""
     >
       {children}
       

@@ -39,6 +39,8 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useEffect, useState } from "react";
 import AnimatedDiv from "../../../AnimatedDiv";
 
+import CountUp from 'react-countup';
+
 const HomePage = () => {
     return (
 
@@ -49,7 +51,7 @@ const HomePage = () => {
 
             {/* Video and Marquee First section  */}
             <div className="">
-                <ReactPlayer controls="true" height="460px" url='https://www.youtube.com/watch?v=84r1057ebls&t=1s' width='100%'
+                <ReactPlayer controls="true" height="360px" url='https://www.youtube.com/watch?v=84r1057ebls&t=1s' width='100%'
                 />
             </div>
             <Marquee className="bg-pink-700 py-5 text-white">
@@ -115,74 +117,121 @@ const HomePage = () => {
             </div>
 
             {/* fourth section animation part  */}
-            <div className="px-20">
-
+            <div className="w-3/5 mx-auto">
+                {/* 1 */}
                 <AnimatedDiv value={300} >
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Fashion Design</p></div>
-                    <div className=""><img src={fashion} className=" w-full h-64" alt="" /></div>
-                </AnimatedDiv>
 
+                    <div className="flex flex-col lg:flex-row">
+                        <div className="w-full lg:w-1/2 bg-rose-600   "><p className="text-white text-2xl font-bold text-center pt-20">Fashion Design</p></div>
+                        <div className="w-full lg:w-1/2"><img src={fashion} className=" w-full h-64" alt="" /></div>
+                    </div>
+                </AnimatedDiv>
+                {/* 2         */}
+                <AnimatedDiv value={-300}>
+                    <div className="flex flex-col-reverse lg:flex-row">
+                        <div className="w-full lg:w-1/2"><img src={marchen} className=" w-full h-64" alt="" /></div>
+                        <div className="w-full lg:w-1/2 bg-rose-600"><p className="text-white text-2xl font-bold  text-center pt-20">Apparel Merchandising</p></div>
+                    </div>
+                </AnimatedDiv>
+                {/* 3 */}
+                <AnimatedDiv value={300} >
+                    <div className="flex flex-col lg:flex-row">
+                        <div className="w-full lg:w-1/2 bg-rose-600   "><p className="text-white text-2xl font-bold text-center pt-20">Pattern Design & CAD</p></div>
+                        <div className="w-full lg:w-1/2"><img src={cad} className=" w-full h-64" alt="" /></div>
+                    </div>
+
+                </AnimatedDiv>
+                {/* 4        */}
                 <AnimatedDiv value={-300} >
-                    <div className=""><img src={marchen} className=" w-full h-64" alt="" /></div>
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Apparel Merchandising</p></div>
-                </AnimatedDiv>
+                    <div className="flex flex-col-reverse lg:flex-row">
+                        <div className="w-full lg:w-1/2"><img src={clo} className=" w-full h-64" alt="" /></div>
+                        <div className="w-full lg:w-1/2 bg-rose-600 "><p className="text-white text-2xl font-bold text-center pt-20">CLO  &  Browzwear</p></div>
+                    </div>
 
+                </AnimatedDiv>
+                {/* 5 */}
                 <AnimatedDiv value={300} >
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Pattern Design & CAD</p></div>
-                    <div className=""><img src={cad} className=" w-full h-64" alt="" /></div>
-                </AnimatedDiv>
+                    <div className="flex flex-col lg:flex-row">
+                        <div className="w-full lg:w-1/2 bg-rose-600   "><p className="text-white text-2xl font-bold text-center pt-20">Digital Marketing & Branding</p></div>
+                        <div className="w-full lg:w-1/2"><img src={digital} className=" w-full h-64" alt="" /></div>
+                    </div>
 
+                </AnimatedDiv>
+                {/* 6 */}
                 <AnimatedDiv value={-300} >
-                    <div className=""><img src={clo} className=" w-full h-64" alt="" /></div>
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">CLO  &  Browzwear</p></div>
-                </AnimatedDiv>
+                    <div className="flex flex-col-reverse lg:flex-row">
+                        <div className="w-full lg:w-1/2"><img src={gradesign} className=" w-full h-64" alt="" /></div>
+                        <div className="w-full lg:w-1/2 bg-rose-600 "><p className="text-white text-2xl font-bold text-center pt-20">Graphic Design
+                        </p></div>
+                    </div>
 
-                <AnimatedDiv value={300} >
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Digital Marketing & Branding</p></div>
-                    <div className=""><img src={digital} className=" w-full h-64" alt="" /></div>
                 </AnimatedDiv>
+                {/* 7 */}
+                <AnimatedDiv value={300} >
+                    <div className="flex flex-col lg:flex-row">
+                        <div className="w-full lg:w-1/2 bg-rose-600 "><p className="text-white text-2xl font-bold text-center pt-20">Web Design</p></div>
+                        <div className="w-full lg:w-1/2"><img src={web} className=" w-full h-64" alt="" /></div>
+                    </div>
 
-                <AnimatedDiv value={-300} >
-                    <div className=""><img src={gradesign} className=" w-full h-64" alt="" /></div>
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Graphic Design
-                    </p></div>
-                </AnimatedDiv>
-                <AnimatedDiv value={300} >
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Web Design</p></div>
-                    <div className=""><img src={web} className=" w-full h-64" alt="" /></div>
                 </AnimatedDiv>
             </div>
 
-            <div className="px-20">
+            <div className="w-3/5 mx-auto">
+                {/* 8 */}
                 <AnimatedDiv value={-300} >
-                    <div className=""><img src={interior} className=" w-full h-64" alt="" /></div>
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Interior Design
-                    </p></div>
-                </AnimatedDiv>
-                
-                <AnimatedDiv value={300} >
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Leather Design</p></div>
-                    <div className=""><img src={leather} className=" w-full h-64" alt="" /></div>
-                </AnimatedDiv>
+                    <div className="flex flex-col-reverse lg:flex-row">
+                        <div className="w-full lg:w-1/2"><img src={interior} className=" w-full h-64" alt="" /></div>
+                        <div className="w-full lg:w-1/2 bg-rose-600"><p className="text-white text-2xl font-bold text-center pt-20">Interior Design
+                        </p></div>
+                    </div>
 
-                <AnimatedDiv value={-300} >
-                    <div className=""><img src={admission} className=" w-full h-64" alt="" /></div>
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Online Admission
-                    </p></div>
                 </AnimatedDiv>
-
+                {/* 9 */}
                 <AnimatedDiv value={300} >
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Free Seminar</p></div>
-                    <div className=""><img src={seminar} className=" w-full h-64" alt="" /></div>
+                    <div className="flex flex-col lg:flex-row">
+                        <div className="w-full lg:w-1/2 bg-rose-600"><p className="text-white text-2xl font-bold text-center pt-20">Leather Design</p></div>
+                        <div className="w-full lg:w-1/2"><img src={leather} className=" w-full h-64" alt="" /></div>
+                    </div>
+
                 </AnimatedDiv>
-                
+                {/* 10 */}
                 <AnimatedDiv value={-300} >
-                    <div className=""><img src={career} className=" w-full h-64" alt="" /></div>
-                    <div className=" bg-red-600 w-full  "><p className="text-white text-2xl font-bold text-center pt-20">Career blogs
-                    </p></div>
+                    <div className="flex flex-col-reverse lg:flex-row">
+                        <div className="w-full lg:w-1/2"><img src={admission} className=" w-full h-64" alt="" /></div>
+                        <div className="w-full lg:w-1/2 bg-rose-600"><p className="text-white text-2xl font-bold text-center pt-20">Online Admission
+                        </p></div>
+                    </div>
+
+                </AnimatedDiv>
+                {/* 11 */}
+                <AnimatedDiv value={300} >
+                    <div className="flex flex-col lg:flex-row">
+                        <div className="w-full lg:w-1/2 bg-rose-600 "><p className="text-white text-2xl font-bold text-center pt-20">Free Seminar</p></div>
+                        <div className="w-full lg:w-1/2"><img src={seminar} className=" w-full h-64" alt="" /></div>
+                    </div>
+
+                </AnimatedDiv>
+                {/* 12 */}
+                <AnimatedDiv value={-300} >
+                    <div className="flex flex-col-reverse lg:flex-row">
+                        <div className="w-full lg:w-1/2"><img src={career} className=" w-full h-64" alt="" /></div>
+                        <div className="w-full lg:w-1/2 bg-rose-600"><p className="text-white text-2xl font-bold text-center pt-20">Career blogs
+                        </p></div>
+                    </div>
+
                 </AnimatedDiv>
             </div>
 
+            {/* countdown section  */}
+            <div className="mx-20 h-40 my-10 bg-pink-600 grid grid-cols-6 justify-items-center">
+                <div className="m-auto">
+                    <CountUp
+                        end={200}
+                        duration={3}
+                    />
+                </div>
+
+            </div>
 
 
 
