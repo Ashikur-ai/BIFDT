@@ -223,12 +223,64 @@ const HomePage = () => {
             </div>
 
             {/* countdown section  */}
-            <div className="mx-20 h-40 my-10 bg-pink-600 grid grid-cols-6 justify-items-center">
-                <div className="m-auto">
+            <div className="mx-20 py-10 my-10 bg-pink-600 grid grid-cols-1 lg:grid-cols-6 justify-items-center">
+                <div className="m-auto text-white py-5 text-center">
                     <CountUp
-                        end={200}
-                        duration={3}
+                        className="text-4xl  font-bold"
+                        end={2007}
+                        duration={9}
                     />
+                    <p className="text-xl font-bold">Since</p>
+                </div>
+
+                <div className="m-auto text-white py-5 text-center">
+                    <span className="text-4xl  font-bold">
+                        <CountUp
+                            className=""
+                            end={20000}
+                            duration={9}
+                        /> +
+                    </span>
+                    <p className="text-xl font-bold">Students</p>
+                </div>
+
+                <div className="m-auto text-white py-5 text-center">
+                    <CountUp
+                        className="text-4xl  font-bold"
+                        end={5}
+                        duration={9}
+                    />
+                    <p className="text-xl font-bold">Education ratings</p>
+                </div>
+
+                <div className="m-auto text-white py-5 text-center">
+                    <span className="text-4xl  font-bold">
+                        <CountUp
+                            className=""
+                            end={30}
+                            duration={9}
+                        /> +
+                    </span>
+                    <p className="text-xl font-bold">Numbers of Instructors</p>
+                </div>
+
+                <div className="m-auto text-white py-5 text-center">
+                    <CountUp
+                        className="text-4xl  font-bold"
+                        end={5}
+                        duration={9}
+                    />
+                    <p className="text-xl font-bold">Education Guarantee</p>
+                </div>
+                <div className="m-auto text-white py-5 text-center">
+                    <span className="text-4xl  font-bold">
+                        <CountUp
+                            className=""
+                            end={98}
+                            duration={9}
+                        /> %
+                    </span>
+                    <p className="text-xl font-bold">Job Success Ratio</p>
                 </div>
 
             </div>
