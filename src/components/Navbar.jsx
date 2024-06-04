@@ -21,7 +21,7 @@ const Navbar = () => {
                                 </ul>
                             </li> */}
 
-                            <li><Link>Home</Link></li>
+                            <li><Link className="">Home</Link></li>
                             <li><Link>About Us</Link></li>
                             <li><Link>Fashion Design</Link></li>
                             <li><Link>Graphics and Web Design</Link></li>
@@ -29,11 +29,11 @@ const Navbar = () => {
                             <li><Link>Online Admission</Link></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-2xl font-bold">BIFDT</a>
+                    
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     {/* Laptop view  */}
-                    <ul className="menu menu-horizontal px-1 text-xl">
+                    <ul className="menu menu-horizontal">
 
                         {/* <li>
                             <details>
@@ -44,16 +44,56 @@ const Navbar = () => {
                                 </ul>
                             </details>
                         </li> */}
-                        <li><Link>Home</Link></li>
-                        <li><Link>About Us</Link></li>
-                        <li><Link>Fashion Design</Link></li>
-                        <li><Link>Graphics and Web Design</Link></li>
-                        <li><Link>Free Seminar</Link></li>
-                        <li><Link>Online Admission</Link></li>
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">About Us</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">Fashion Design</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">Merchandising</Link>
+                        </li>
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">Pattern Design</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">Graphics and Web Design</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">Interior Design</Link>
+                        </li>
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">Leather Design</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">Computer Operator</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">Online Admission</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/" className="hover:underline active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">Free Seminar</Link>
+                        </li>
+                        
+
+                       
+
+                        
+                        
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    
+
                 </div>
             </div>
         </>

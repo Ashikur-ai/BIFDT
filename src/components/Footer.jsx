@@ -32,7 +32,7 @@ const Footer = () => {
                                 <p className="text-xl font-bold  text-white px-10 lg:px-0"> House # 3/GA,Shyamoli, Road # 1. Dhaka-1207.</p>
                                 <p className="text-xl font-bold text-white px-10 lg:px-0">Email: info@bifdt.com</p>
                             </div>
-                            <img src={logo} className="lg:pl-10 lg:w-full w-3/4 mx-auto" alt="" />
+                            <img src={logo} className="lg:pl-5 lg:w-full w-3/4 mx-auto" alt="" />
                         </div>
                     </div>
                     </div>
