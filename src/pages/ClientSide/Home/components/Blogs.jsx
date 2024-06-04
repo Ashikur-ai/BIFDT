@@ -18,8 +18,8 @@ import { FreeMode, Pagination } from 'swiper/modules';
 const Blogs = () => {
 
     return (
-        <>
-            <p className='text-pink-700 font-bold text-4xl text-center py-5'>Blogs</p>
+        <div className=''>
+            <p className='text-pink-700 font-bold text-4xl text-center py-5 bg-white '>Blogs</p>
 
             <Swiper
                 slidesPerView={1}
@@ -42,7 +42,7 @@ const Blogs = () => {
                     },
                 }}
                 modules={[Pagination]}
-                className="mySwiper"
+                className="mySwiper bg-white  rounded "
             >
 
 
@@ -157,7 +157,7 @@ const Blogs = () => {
 
 
             </Swiper>
-        </>
+        </div>
     )
 };
 

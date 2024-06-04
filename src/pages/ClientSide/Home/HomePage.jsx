@@ -44,6 +44,8 @@ import TabSection from "./components/TabSection";
 import Faculty from "./components/Faculty";
 import Testimonial from "./components/Testimonial";
 import Blogs from "./components/Blogs";
+import Maps from "./components/Maps";
+
 
 const HomePage = () => {
     return (
@@ -64,7 +66,7 @@ const HomePage = () => {
 
             {/* second section image and bullet point  */}
             <div className="grid md:grid-cols-2 grid-cols-1 py-5">
-                
+
                 <div className="mx-auto rotation">
                     <Swiper
 
@@ -107,7 +109,7 @@ const HomePage = () => {
             {/* third section Homepage */}
 
             <div className="px-20 py-20 bg-pink-600 my-5">
-            <p className=' text-4xl text-center py-5 text-white'>Home Page</p>
+                <p className=' text-4xl text-center py-5 text-white'>Home Page</p>
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 bg-white p-5">
                     <div>
                         <p className='text-pink-700 text-2xl py-5'>Home</p>
@@ -293,7 +295,7 @@ const HomePage = () => {
 
             {/* sixth section Photo Gallary  */}
             <div className="w-3/4 mx-auto py-20 ">
-                    
+
                 <TabSection></TabSection>
             </div>
 
@@ -307,9 +309,18 @@ const HomePage = () => {
                 <Testimonial></Testimonial>
             </div>
 
-            {/* ninth section Blogs  */}
-            <div className="px-20 py-20">
-                <Blogs></Blogs>
+            <div className="bg-pink-600">
+                {/* ninth section Blogs  */}
+                <div className="px-20 ">
+                    <Blogs></Blogs>
+                </div>
+
+                {/* tenth section Google Map  */}
+
+            </div>
+            <div className="">
+                
+                <Maps></Maps>
             </div>
 
 
