@@ -18,7 +18,7 @@ import { FreeMode, Pagination } from 'swiper/modules';
 const Faculty = () => {
     return (
         <>
-            <p className='text-pink-700 font-bold text-4xl text-center py-5'>Our Most Popular Faculty</p>
+            <p className='text-pink-700 font-bold text-4xl text-center py-5'>Our Faculty</p>
 
             <Swiper
                 slidesPerView={1}
