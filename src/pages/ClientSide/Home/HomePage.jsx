@@ -43,6 +43,7 @@ import CountUp from 'react-countup';
 import TabSection from "./components/TabSection";
 import Faculty from "./components/Faculty";
 import Testimonial from "./components/Testimonial";
+import Blogs from "./components/Blogs";
 
 const HomePage = () => {
     return (
@@ -304,6 +305,11 @@ const HomePage = () => {
             {/* eighth section Testimonial  */}
             <div>
                 <Testimonial></Testimonial>
+            </div>
+
+            {/* ninth section Blogs  */}
+            <div className="px-20 py-20">
+                <Blogs></Blogs>
             </div>
 
 

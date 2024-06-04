@@ -4,7 +4,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="navbar  bg-pink-600 text-white sticky top-0">
+            <div className="navbar  bg-pink-600 text-white sticky top-0 z-10">
                 <div className="navbar-start">
 
                     {/* Mobile view  */}
