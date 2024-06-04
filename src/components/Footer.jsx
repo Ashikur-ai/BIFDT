@@ -11,12 +11,12 @@ const Footer = () => {
     return (
         <>
             
-            <footer className="footer p-10 bg-pink-600 text-neutral-content">
+            <footer className="grid  lg:grid-cols-2 bg-pink-600 text-neutral-content py-5">
                 
                 <nav>
                     <div className="grid grid-flow-col gap-4">
                     <div>
-                        <nav className="px-10 ">
+                        <nav className="px-10">
                             <div className="flex px-20 py-5 gap-5">
                                 <Link to="https://x.com/"><BiLogoTwitter className="text-4xl" /></Link>
                                 <Link to="https://www.youtube.com/"><TbBrandYoutubeFilled className="text-4xl" />
@@ -29,18 +29,18 @@ const Footer = () => {
 
 
                             <div className="lg:px-10">
-                                <p className="text-xl font-bold text-white"> House # 3/GA,Shyamoli, Road # 1. Dhaka-1207.</p>
-                                <p className="text-xl font-bold text-white">Email: info@bifdt.com</p>
+                                <p className="text-xl font-bold  text-white px-10 lg:px-0"> House # 3/GA,Shyamoli, Road # 1. Dhaka-1207.</p>
+                                <p className="text-xl font-bold text-white px-10 lg:px-0">Email: info@bifdt.com</p>
                             </div>
-                            <img src={logo} className="lg:pl-10 w-full" alt="" />
+                            <img src={logo} className="lg:pl-10 lg:w-full w-3/4 mx-auto" alt="" />
                         </div>
                     </div>
                     </div>
                 </nav>
 
-                <aside >
-                    <div className="mx-auto w-full">
-                    <p className="text-3xl font-bold mt-5">Contact Number</p>
+                <div className="">
+                    <div className="mx-auto w-1/2">
+                    <p className="text-3xl font-bold mt-5 ">Contact Number</p>
                     <span className="flex gap-2 text-xl my-5"><FaSquarePhone /> 016-29-17-17-17,</span>
                     <span className="flex gap-2 text-xl my-5"><FaSquarePhone /> 016-29-18-18-18,</span>
                     <span className="flex gap-2 text-xl my-5"><FaSquarePhone /> 015-52-64-44-79,</span>
@@ -48,7 +48,7 @@ const Footer = () => {
                     <span className="flex gap-2 text-xl my-5"><FaSquarePhone /> 019-79-79-93-93,</span>
                     <span className="flex gap-2 text-xl my-5"><FaSquarePhone /> 019-79-79-94-94</span>
                    </div>
-                </aside>
+                </div>
             </footer>
         </>
     )
