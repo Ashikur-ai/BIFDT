@@ -19,14 +19,14 @@ const Navbar = () => {
             <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Interior Design</Link>
             <Link to="/courseDetails" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Leather Design</Link>
             <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Computer Operator</Link>
-            <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Online Admission</Link>
+            <Link to="/onlineAdmission" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Online Admission</Link>
 
             <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Free Seminar</Link>
 
         </>
     return (
         <>
-            <div className="navbar  bg-pink-600 text-white sticky top-0 z-10">
+            <div className="navbar shadow-2xl bg-pink-600 text-white sticky top-0 z-10">
                 <div className="">
                     {/* Mobile view  */}
                     <div className="dropdown text-white">

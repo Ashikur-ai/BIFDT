@@ -237,7 +237,7 @@ const CourseDetails = () => {
             <ReactPlayer
               controls="true"
 
-              url="https://www.youtube.com/watch?v=f_ZxgQQ74Lc"
+              url="https://www.youtube.com/watch?v=Z3yqBaGvACM"
               width="100%"
             />
           </div>
@@ -250,7 +250,7 @@ const CourseDetails = () => {
                 <ReactPlayer
                   controls="true"
 
-                  url="https://www.youtube.com/watch?v=gHrS5X4nKbU"
+                  url="https://www.youtube.com/watch?v=CW4zNp-HF2Q&t=1s"
                   width="100%"
                 />
               </div>
@@ -258,7 +258,7 @@ const CourseDetails = () => {
                 <ReactPlayer
                   controls="true"
 
-                  url="https://www.youtube.com/watch?v=UVH72mDzeas"
+                  url="https://www.youtube.com/watch?v=VdK0_MzwTsw&t=259s"
                   width="100%"
                 />
               </div>
@@ -266,7 +266,7 @@ const CourseDetails = () => {
                 <ReactPlayer
                   controls="true"
 
-                  url="https://www.youtube.com/watch?v=rZs_UnrCiw8"
+                  url="https://www.youtube.com/watch?v=si-mdWiQc34&t=20s"
                   width="100%"
                 />
               </div>
@@ -274,7 +274,7 @@ const CourseDetails = () => {
                 <ReactPlayer
                   controls="true"
 
-                  url="https://www.youtube.com/watch?v=MZfdtr8TTgg"
+                  url="https://www.youtube.com/watch?v=Mm5fcw8kStk"
                   width="100%"
                 />
               </div>
