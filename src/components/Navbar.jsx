@@ -5,23 +5,32 @@ const Navbar = () => {
 
     const navlinks =
         <>
-            <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Home</Link>
-            <Link to="/courseDetails" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Courses</Link>
+            <Link to="/" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Home</Link>
 
-            <Link to="/blogs" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Blogs</Link>
-
-            <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Fashion Design</Link>
-            <Link to="/courseDetails" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Merchandising</Link>
-            <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Pattern Design</Link>
-            <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Graphics & Web Design</Link>
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Courses</Link>
 
 
-            <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Interior Design</Link>
-            <Link to="/courseDetails" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Leather Design</Link>
-            <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Computer Operator</Link>
-            <Link to="/onlineAdmission" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Online Admission</Link>
 
-            <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Free Seminar</Link>
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Fashion Design</Link>
+
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Merchandising</Link>
+
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Pattern Design</Link>
+
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Graphics & Web Design</Link>
+
+
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Interior Design</Link>
+
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Leather Design</Link
+            >
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Computer Operator</Link>
+
+            <Link to="/blogs" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Blogs</Link>
+
+            <Link to="/onlineAdmission" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Online Admission</Link>
+
+            <Link to="/" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Free Seminar</Link>
 
         </>
     return (
@@ -62,7 +71,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     {/* laptop view  */}
-                    <div className="text-sm hidden lg:flex">
+                    <div className="text-sm hidden lg:flex px-10">
 
                         <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center">
 

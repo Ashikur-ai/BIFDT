@@ -58,7 +58,7 @@ const AdmissionPage = () => {
             </Helmet>
 
             {/* Banner section  */}
-            <div className='h-96'>
+            {/* <div className='h-96'>
                 <Swiper
                     spaceBetween={30}
                     centeredSlides={true}
@@ -88,13 +88,13 @@ const AdmissionPage = () => {
                         <span ref={progressContent}></span>
                     </div>
                 </Swiper>
-            </div>
+            </div> */}
 
             <div>
             </div>
             <div className='bg-pink-600 text-white'>
                 <div className='flex justify-center items-center pt-10'>
-                    <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='shadow-lg bg-white rounded-2xl p-5' alt="" />
+                    <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='shadow-lg w-20 bg-white rounded-2xl p-5' alt="" />
                 </div>
 
                 <div className=' text-white'>
