@@ -69,7 +69,8 @@ const BlogDetails = () => {
             <div className="lg:px-5 px-2 mb-20">
                 <p>Leave a comment</p>
                 <input type="text" placeholder="Your Name" className="input mb-5 input-bordered w-full max-w-xs" /> <br />
-                <input type="text" placeholder="Leave a Comment" className="input input-bordered w-full max-w-xs" />
+                <input type="text" placeholder="Leave a Comment" className="input input-bordered w-full max-w-xs" /> <br />
+                <button className='p-2 mt-2 rounded-lg text-white px-10 bg-pink-600'>Submit</button>
             </div>
         </div>
     );

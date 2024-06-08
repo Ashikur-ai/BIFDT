@@ -5,6 +5,8 @@ import CourseDetails from "../pages/ClientSide/course/CourseDetails";
 import AdmissionPage from "../pages/ClientSide/onlineAdmission/AdmissionPage";
 import BlogPage from "../pages/ClientSide/blog/BlogPage";
 import BlogDetails from "../pages/ClientSide/blog/BlogDetails";
+import Seminar from "../pages/ClientSide/seminar/Seminar";
+import SeminarForm from "../pages/ClientSide/seminar/SeminarForm";
 
 const BasicRoutes = createBrowserRouter([
     {
@@ -31,6 +33,14 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "/blogDetails",
                 element: <BlogDetails></BlogDetails>
+            },
+            {
+                path: "/freeSeminar",
+                element: <Seminar></Seminar>
+            },
+            {
+                path: "/seminarForm",
+                element: <SeminarForm></SeminarForm>
             }
         ]
     }

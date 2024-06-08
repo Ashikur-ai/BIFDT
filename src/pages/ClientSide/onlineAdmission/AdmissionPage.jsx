@@ -133,6 +133,7 @@ const AdmissionPage = () => {
                                             <label className="">Select course</label>
                                             <select name='course' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 px-2">
 
+                                                <option value="" selected>Select Course</option>
                                                 <option value={"Fashion Design"}>Fashion Design</option>
                                                 <option value={"Merchandising"}>Merchandising
                                                 </option>

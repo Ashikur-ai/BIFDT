@@ -30,7 +30,7 @@ const Navbar = () => {
 
             <Link to="/onlineAdmission" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Online Admission</Link>
 
-            <Link to="/" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Free Seminar</Link>
+            <Link to="/freeSeminar" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Free Seminar</Link>
 
         </>
     return (
