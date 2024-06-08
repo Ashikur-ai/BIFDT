@@ -359,15 +359,18 @@ const HomePage = () => {
         <Testimonial></Testimonial>
       </div>
 
-      <div className="bg-pink-600">
+      <div className="">
         {/* ninth section Blogs  */}
 
         <div className="px-20 ">
+          <p className="text-pink-700 font-bold text-4xl text-center py-5 bg-white ">
+            Blogs
+          </p>
           <Blogs></Blogs>
         </div>
 
       </div>
-        {/* tenth section Google Map  */}
+      {/* tenth section Google Map  */}
       <div className="">
         <Maps></Maps>
       </div>
