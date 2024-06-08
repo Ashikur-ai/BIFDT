@@ -6,9 +6,9 @@ const Navbar = () => {
     const navlinks =
         <>
             <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Home</Link>
-            <Link to="/courseDetails" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Our Courses</Link>
+            <Link to="/courseDetails" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Courses</Link>
 
-            <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">About Us</Link>
+            <Link to="/blogs" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Blogs</Link>
 
             <Link to="/" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Fashion Design</Link>
             <Link to="/courseDetails" className="mr-5 hover:text-gray-900  focus:text-white focus:underline">Merchandising</Link>

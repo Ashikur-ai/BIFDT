@@ -401,7 +401,7 @@ const CourseDetails = () => {
             <Blogs></Blogs>
           </div>
 
-          <div>
+          <div className="">
             <Maps></Maps>
           </div>
 

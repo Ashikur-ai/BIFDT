@@ -3,6 +3,7 @@ import MainLayout from "../Layouts/MainLayout";
 import HomePage from "../pages/ClientSide/Home/HomePage";
 import CourseDetails from "../pages/ClientSide/course/CourseDetails";
 import AdmissionPage from "../pages/ClientSide/onlineAdmission/AdmissionPage";
+import BlogPage from "../pages/ClientSide/blog/BlogPage";
 
 const BasicRoutes = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "/onlineAdmission",
                 element: <AdmissionPage></AdmissionPage>
+            },
+            {
+                path: "/blogs",
+                element: <BlogPage></BlogPage>
             }
         ]
     }
