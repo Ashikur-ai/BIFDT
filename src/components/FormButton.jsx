@@ -11,7 +11,7 @@ const FormButton = () => {
                 rel="noopener noreferrer"
             >
                 <Link to="/seminarForm">
-                    <MdWhatshot className="text-black text-6xl" /> {/* Adjust icon size and color */}
+                    <MdWhatshot className="text-blue-600 text-6xl" /> {/* Adjust icon size and color */}
                 </Link>
             </a>
         </div>
