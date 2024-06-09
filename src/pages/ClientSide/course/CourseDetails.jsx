@@ -59,11 +59,11 @@ const CourseDetails = () => {
         উঠুন একজন কর্মময় ও সফল মানুষ। ***
       </Marquee>
 
-      <div className="flex flex-col-reverse gap-5 lg:flex-row">
+      <div className="flex flex-col-reverse lg:flex-row">
 
 
         {/* first half */}
-        <div className="lg:w-1/4 hidden lg:block bg-pink-600">
+        <div className="lg:w-1/4 hidden lg:block border border-black">
 
           <p className="text-pink-700 text-center font-bold text-2xl pt-5 bg-white ">
             Facebook Page
@@ -222,7 +222,7 @@ const CourseDetails = () => {
 
 
         {/* second half */}
-        <div className="lg:w-3/4 p-5">
+        <div className="lg:w-3/4 p-5 border border-b-black">
           <div className="flex justify-between">
           <span
             className="text-white  mt-10 px-5 rounded-lg bg-pink-600">
@@ -408,14 +408,18 @@ const CourseDetails = () => {
             <Blogs></Blogs>
           </div>
 
-          <div className="">
-            <Maps></Maps>
-          </div>
+          
 
         </div>
 
+        
+
 
       </div>
+
+      <div className="">
+            <Maps></Maps>
+          </div>
     </>
   );
 };
