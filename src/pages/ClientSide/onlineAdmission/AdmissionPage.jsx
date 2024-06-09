@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react';
 
 // Import Swiper React components
@@ -92,13 +93,14 @@ const AdmissionPage = () => {
 
             <div>
             </div>
-            <div className='bg-pink-600 text-white'>
-                <div className='flex justify-center items-center pt-10'>
-                    <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='shadow-lg w-20 bg-white rounded-2xl p-5' alt="" />
+            <div className='bg-pink-600 text-white '>
+                <div className='flex justify-center items-center pt-1'>
+                    <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='shadow-lg w-16
+                    p-2 bg-white rounded-2xl ' alt="" />
                 </div>
 
                 <div className=' text-white'>
-                    <HeaderText className={'text-white font-bold text-6xl text-center p-5'} title="Online Admission Form"></HeaderText>
+                    <HeaderText className={'text-white font-bold text-3xl text-center'} title="Online Admission Form"></HeaderText>
                 </div>
 
                 {/* form section  */}
@@ -106,13 +108,13 @@ const AdmissionPage = () => {
 
                     <section className="text-gray-600 body-font relative">
                         <div className="container px-5  mx-auto">
-                            <div className="flex flex-col text-center w-full mb-12">
-                                <p className="lg:w-2/3 mx-auto text-white leading-relaxed text-xl">Unlock Your Creative Potential and Transform Your Fashion Dreams into Reality—Enroll Today!</p>
+                            <div className="flex flex-col text-center w-full ">
+                                <p className="lg:w-2/3 mx-auto text-white leading-relaxed text-sm pb-2">Unlock Your Creative Potential and Transform Your Fashion Dreams into Reality—Enroll Today!</p>
                             </div>
-                            <div className="lg:w-1/2 md:w-2/3 mx-auto bg-white px-10 py-20 rounded-xl">
+                            <div className="lg:w-1/2 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
                                 <p className='text-center text-2xl font-bold'>Fillup The Form</p>
 
-                                <div className="shadow-2xl pt-20 px-10 rounded-2xl">
+                                <div className="shadow-2xl  px-10 rounded-2xl">
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
                                         {/* name  */}
                                         <div className="p-2 w-1/2">

@@ -10,6 +10,7 @@ import TabSection from "../Home/components/TabSection";
 import Maps from "../Home/components/Maps";
 import Blogs from "../Home/components/Blogs";
 import VideoGrid from "./VideoGrid";
+import { Link } from "react-router-dom";
 
 // slider import
 
@@ -222,10 +223,16 @@ const CourseDetails = () => {
 
         {/* second half */}
         <div className="lg:w-3/4 p-5">
+          <div className="flex justify-between">
           <span
             className="text-white  mt-10 px-5 rounded-lg bg-pink-600">
             Free Seminar/Counseling
           </span>
+          <span
+            className="text-white  mt-10 px-5 rounded-lg bg-pink-600">
+            <Link to="/onlineAdmission">Enroll Now</Link>
+          </span>
+          </div>
 
           <p className="text-pink-700 font-bold text-xl py-5 bg-white ">
             Graphic Design & Web Design :: Education for Excellence ::

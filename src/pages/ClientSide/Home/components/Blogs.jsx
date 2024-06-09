@@ -40,7 +40,7 @@ const Blogs = () => {
           },
         }}
         modules={[Pagination]}
-        className="mySwiper bg-white   "
+        className="mySwiper bg-white"
       >
         <SwiperSlide>
           <div className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col h-96 mb-10">
