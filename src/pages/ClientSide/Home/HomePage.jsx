@@ -43,10 +43,13 @@ import Faculty from "./components/Faculty";
 import Testimonial from "./components/Testimonial";
 import Blogs from "./components/Blogs";
 import Maps from "./components/Maps";
+import { Link } from "react-router-dom";
+import { MdWhatsapp } from "react-icons/md";
 
 const HomePage = () => {
   return (
-    <div className="">
+    <>
+      <div className="">
       <Helmet>
         <title>BIFDT </title>
       </Helmet>
@@ -374,7 +377,11 @@ const HomePage = () => {
       <div className="">
         <Maps></Maps>
       </div>
-    </div>
+      </div>
+      
+      
+
+    </>
   );
 };
 export default HomePage;
