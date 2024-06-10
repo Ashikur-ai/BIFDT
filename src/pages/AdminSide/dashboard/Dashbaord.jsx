@@ -1,8 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Dashboard = () => {
     return (
         <>
+            <Helmet>
+                <title>Dashboard</title>
+            </Helmet>
             <div className="">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div className="bg-white rounded-md p-6 shadow-md">

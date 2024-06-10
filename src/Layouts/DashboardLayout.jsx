@@ -8,10 +8,12 @@ const DashboardLayout = () => {
         <>
             <div className="lg:flex h-screen bg-gray-100">
                 <Sidebar></Sidebar>
-                <div className='flex-1 px-8 py-8'>
+                <div className='flex-1'>
 
                     <BackendNavbar></BackendNavbar>
-                    <Outlet></Outlet>
+                    <div className='px-5'>
+                        <Outlet></Outlet>
+                    </div>
                 </div>
             </div>
         </>

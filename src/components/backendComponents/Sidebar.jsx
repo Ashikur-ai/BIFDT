@@ -8,15 +8,20 @@ import NavigationItem from './NavigationItem';
 const Sidebar = () => {
     return (
         <>
-            <div className="lg:w-64 bg-white flex flex-col justify-start py-8">
-                <div className="text-2xl text-center font-bold mb-6">BIFDT Dashboard</div>
+            <div className="lg:w-64  bg-white flex flex-col justify-start py-8  shadow-lg">
+                
+                <div className='mb-5 w-1/2 mx-auto'>
+                    <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='text-center w-20' alt="" />
+                </div>
                 <ul className="space-y-2  list-none">
 
                     <NavigationItem to="/dashboard" icon={FaHome} label="Dashboard" />
                     <NavigationItem to="/dashboard/profile" icon={FaCircleUser} label="Profile" />
                     <NavigationItem to="/dashboard/addCourse" icon={MdAddCircle} label="Add Courses" />
-                    <NavigationItem to="/dashboard/admissionRequest" icon={FaWpforms} label="Admission Requests" />
+                    <NavigationItem to="/dashboard/admissionRequest" icon={FaFileWaveform} label="Admission Requests" />
                     <NavigationItem to="/dashboard/seminar" icon={FaUsers} label="Seminar Requests" />
+                    <NavigationItem to="/dashboard/addBlog" icon={MdAddCircle} label="Add Blog" />
+
                     
 
                     
