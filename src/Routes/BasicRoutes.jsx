@@ -14,6 +14,7 @@ import AdmissionRequest from "../pages/AdminSide/admissionRequest/AdmissionReque
 import Profile from "../pages/AdminSide/profile/Profile";
 import SeminarPage from "../pages/AdminSide/seminar/SeminarPage";
 import AddBlogPage from "../pages/AdminSide/addBlog/AddBlogPage";
+import AdminLogin from "../pages/AdminSide/login/AdminLogin";
 
 const BasicRoutes = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "/seminarForm",
                 element: <SeminarForm></SeminarForm>
+            },
+            {
+                path: "adminLogin",
+                element: <AdminLogin></AdminLogin>
             }
             
         ]
@@ -80,6 +85,7 @@ const BasicRoutes = createBrowserRouter([
                 path: "addBlog",
                 element: <AddBlogPage></AddBlogPage>
             }
+            
             
         ]
     }

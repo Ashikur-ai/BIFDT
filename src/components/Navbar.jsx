@@ -73,7 +73,7 @@ const Navbar = () => {
                     {/* laptop view  */}
                     <div className="text-sm hidden lg:flex px-10">
 
-                        <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center">
+                        <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold">
 
                             {navlinks}
                         </nav>

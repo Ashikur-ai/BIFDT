@@ -11,12 +11,19 @@ import Maps from "../Home/components/Maps";
 import Blogs from "../Home/components/Blogs";
 import VideoGrid from "./VideoGrid";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import CourseDetailsTab from "./CourseDetailsTab";
 
 // slider import
 
 // Import Swiper React components
 
 const CourseDetails = () => {
+
+  const subtext = "Fashion has become an important a part of 21st-century life. Our Fashion Design Course has been Specifically created to provide you with everything you need to know in order to take those first steps to make your designs a  reality and beyond. It features a unique combination of 17modules(30 Credits) to equip you with all the knowledge, skills & requisites that any budding fashion designer requires.";
+
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <>
       <Helmet>
@@ -25,7 +32,7 @@ const CourseDetails = () => {
 
       {/* Header part  */}
 
-      <img className="h-96" src={banner} alt="" />
+      <img className="h-full" src={banner} alt="" />
       <Marquee className="bg-pink-700 py-5 text-white">
         ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে আকর্ষণীয়,
         সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন মার্চেন্ডাইজিংকে।
@@ -65,7 +72,7 @@ const CourseDetails = () => {
         {/* first half */}
         <div className="lg:w-1/4 hidden lg:block border border-black">
 
-          <p className="text-pink-700 text-center font-bold text-2xl pt-5 bg-white ">
+          <p className="text-pink-700 text-center font-bold text-2xl  bg-white ">
             Facebook Page
           </p>
           <div className="border border-t-black">
@@ -116,7 +123,7 @@ const CourseDetails = () => {
 
 
           {/* instagram  */}
-          <p className="text-pink-700 text-center font-bold text-2xl pt-20 bg-white ">
+          <p className="text-pink-700 text-center font-bold text-2xl pt-2 bg-white ">
             Instagram Page
           </p>
           <div className="border border-t-black">
@@ -166,7 +173,7 @@ const CourseDetails = () => {
           </div>
 
 
-          <p className="text-pink-700 text-center font-bold text-2xl pt-20 bg-white ">
+          <p className="text-pink-700 text-center font-bold text-2xl pt-2 bg-white ">
             Twitter Page
           </p>
           <div className="border border-t-black">
@@ -222,28 +229,33 @@ const CourseDetails = () => {
 
 
         {/* second half */}
-        <div className="lg:w-3/4 p-5 border border-b-black">
+        <div className="lg:w-3/4 border pt-2 border-b-black">
           <div className="flex justify-between">
-          <span
-            className="text-white  mt-10 px-5 rounded-lg bg-pink-600">
-            Free Seminar/Counseling
-          </span>
-          <span
-            className="text-white  mt-10 px-5 rounded-lg bg-pink-600">
-            <Link to="/onlineAdmission">Enroll Now</Link>
-          </span>
+            <span
+              className="text-white   px-5 rounded-lg bg-pink-600">
+              Free Seminar/Counseling
+            </span>
+            <span
+              className="text-white   px-5 rounded-lg bg-pink-600">
+              <Link to="/onlineAdmission">Enroll Now</Link>
+            </span>
           </div>
 
-          <p className="text-pink-700 font-bold text-xl py-5 bg-white ">
-            Graphic Design & Web Design :: Education for Excellence ::
-            Bangladesh Institute of Fashion & Design Technology (BIFDT)
+          <p className="text-pink-700 font-bold text-xl p-1 bg-white ">
+          Fashion Design :: Education for Excellence :: Bangladesh Institute of Fashion & Design Technology (BIFDT)
+          </p>
+          <hr />
+          <p className="pr-10 pl-1">
+            {showMore ? subtext : `${subtext.substring(0, 250)}....`} <br />
+            <button className="text-blue-500" onClick={() => setShowMore(!showMore)}>{showMore ? "Show less" : "Show more"}</button>
           </p>
 
           {/* main video  */}
-          <div className="h-96">
+          <div className="h-96 w-1/2 mx-auto rounded-lg p-2
+          bg-pink-600">
             <ReactPlayer
               controls="true"
-
+              playing={true}
               url="https://www.youtube.com/watch?v=Z3yqBaGvACM"
               width="100%"
             />
@@ -251,52 +263,59 @@ const CourseDetails = () => {
 
           {/* four related video  */}
 
-          <div className="hidden lg:flex">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="aspect-w-16 aspect-h-9">
-                <ReactPlayer
-                  controls="true"
+          <div className="hidden  lg:flex">
+            <Marquee pauseOnHover={true}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <div className=" ">
+                  <ReactPlayer
+                    controls="true"
 
-                  url="https://www.youtube.com/watch?v=CW4zNp-HF2Q&t=1s"
-                  width="100%"
-                />
-              </div>
-              <div className="aspect-w-16 aspect-h-9">
-                <ReactPlayer
-                  controls="true"
+                    url="https://www.youtube.com/watch?v=CW4zNp-HF2Q&t=1s"
+                    width="80%"
+                    height="70%"
+                  />
+                </div>
+                <div className=" ">
+                  <ReactPlayer
+                    controls="true"
 
-                  url="https://www.youtube.com/watch?v=VdK0_MzwTsw&t=259s"
-                  width="100%"
-                />
-              </div>
-              <div className="aspect-w-16 aspect-h-9">
-                <ReactPlayer
-                  controls="true"
+                    url="https://www.youtube.com/watch?v=VdK0_MzwTsw&t=259s"
+                    width="80%"
+                    height="70%"
+                  />
+                </div>
+                <div className=" ">
+                  <ReactPlayer
+                    controls="true"
 
-                  url="https://www.youtube.com/watch?v=si-mdWiQc34&t=20s"
-                  width="100%"
-                />
-              </div>
-              <div className="aspect-w-16 aspect-h-9">
-                <ReactPlayer
-                  controls="true"
+                    url="https://www.youtube.com/watch?v=si-mdWiQc34&t=20s"
+                    width="80%"
+                    height="70%"
+                  />
+                </div>
+                <div className=" ">
+                  <ReactPlayer
+                    controls="true"
 
-                  url="https://www.youtube.com/watch?v=Mm5fcw8kStk"
-                  width="100%"
-                />
+                    url="https://www.youtube.com/watch?v=Mm5fcw8kStk"
+                    width="80%"
+                    height="70%"
+                  />
+                </div>
               </div>
-            </div>
+            </Marquee>
+
           </div>
 
 
           {/* Admission and course detail section */}
           <div>
-            <p className="text-pink-700 text-xl pt-5 bg-white ">
+            <p className="text-pink-700 text-xl px-1 bg-white ">
               আপনি কি চাকুরি অথবা ব্যবসায় মাধ্যমে ক্যারিয়ার গড়তে চান ? খুঁজছেন একটি ভালো উপার্জনের সেইফ ক্যারিয়ার? অথবা করতে চান নিজের একটি ফ্যাশন ব্রান্ড ? তবে ফ্যাশন ডিজাইনার হোয়ে নিজেকে মেলে ধরার সময় কিন্তু এখনি .... কারণ ফ্যাশন ডিজাইন এখন লাখ টাকার পেশা! চাকুরি অথবা উদ্যোক্তা ২টি সম্ভাবনার দোয়ারই এক জন ফ্যাশন ডিজাইনারের জন্য খোলা।
             </p>
 
 
-            <p className="text-xl py-5">Admission Notice</p>
+            <p className="text-2xl font-bold py-5">Admission Notice</p>
             <Marquee className="bg-pink-700 py-5 text-white">
               ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে
               আকর্ষণীয়, সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন
@@ -336,8 +355,8 @@ const CourseDetails = () => {
 
           </div>
 
-          {/* table section  */}
-          <div>
+          {/* table section for course details */}
+          {/* <div>
             <p className="text-xl text-center py-10">
               Fashion Design Course & tuition fees
             </p>
@@ -397,6 +416,11 @@ const CourseDetails = () => {
                 </tbody>
               </table>
             </div>
+          </div> */}
+
+          <div className="pt-2">
+          <p className="text-2xl font-bold py-5">Course Details</p>
+            <CourseDetailsTab></CourseDetailsTab>
           </div>
 
           {/* student gallary section  */}
@@ -408,18 +432,18 @@ const CourseDetails = () => {
             <Blogs></Blogs>
           </div>
 
-          
+
 
         </div>
 
-        
+
 
 
       </div>
 
       <div className="">
-            <Maps></Maps>
-          </div>
+        <Maps></Maps>
+      </div>
     </>
   );
 };
