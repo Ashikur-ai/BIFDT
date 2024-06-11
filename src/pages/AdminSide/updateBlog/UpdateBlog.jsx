@@ -5,7 +5,7 @@ import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
 
-const AddBlogPage = () => {
+const UpdateBlog = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -21,7 +21,7 @@ const AddBlogPage = () => {
         const data = { url, date, title, author, meta_word, description };
         console.log(data)
     }
-    
+
     return (
         <>
             <Helmet>
@@ -36,7 +36,7 @@ const AddBlogPage = () => {
                         <div className="container px-5  mx-auto">
                             
                             <div className="lg:w-3/4 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
-                                <p className='text-center text-2xl font-bold pb-2'>Add Blog</p>
+                                <p className='text-center text-2xl font-bold pb-2'>Update Blog</p>
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
@@ -56,16 +56,8 @@ const AddBlogPage = () => {
                                             </div>
                                         </div>
 
-                                         {/* Date  */}
-                                         <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Date</label>
-                                                <input type="text"  name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
                                         {/* Meta keyword  */}
-                                        <div className="p-2 w-full">
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Meta Keyword</label>
                                                 <input type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -73,13 +65,19 @@ const AddBlogPage = () => {
                                         </div>
 
                                         {/* image url  */}
-                                        <div className="p-2 w-full">
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Blog Banner Image</label><br />
-                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                <label className="leading-7 text-sm text-gray-600">Blog Banner Image URL</label>
+                                                <input type="text"  name="url" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
-                                       
+                                        {/* Date  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Date</label>
+                                                <input type="text"  name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
 
                                         {/* description  */}
                                         <div className="p-2 w-full">
@@ -89,7 +87,7 @@ const AddBlogPage = () => {
                                             </div>
                                         </div>
                                         <div className="p-2 w-full">
-                                            <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+                                            <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Update</button>
                                         </div>
                                     </form>
 
@@ -122,4 +120,4 @@ const AddBlogPage = () => {
     );
 };
 
-export default AddBlogPage;
+export default UpdateBlog;

@@ -5,12 +5,12 @@ import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
 
-const AddBlogPage = () => {
+const ManageHomepageContent = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
-        const url = form.url.value;
-        const date = form.date.value;
+        const video_url = form.video_url.value;
+        const notice = form.notice.value;
         const title = form.title.value;
         const author = form.author.value;
         const meta_word = form.meta_word.value;
@@ -21,11 +21,12 @@ const AddBlogPage = () => {
         const data = { url, date, title, author, meta_word, description };
         console.log(data)
     }
-    
+
+
     return (
         <>
             <Helmet>
-                <title>Dashboard | Add Blog</title>
+                <title>Dashboard | Homepage content</title>
             </Helmet>
             <div className='bg-gray-100 text-black'>
                 
@@ -36,58 +37,51 @@ const AddBlogPage = () => {
                         <div className="container px-5  mx-auto">
                             
                             <div className="lg:w-3/4 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
-                                <p className='text-center text-2xl font-bold pb-2'>Add Blog</p>
+                                <p className='text-center text-2xl font-bold pb-2'>Manage Homepage Content</p>
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
                                         
-                                        {/* Title  */}
+                                        {/* Video URL  */}
                                         <div className="p-2 w-full">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Blog title</label>
-                                                <input type="text" name="title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <label className="leading-7 text-sm text-gray-600">Main video URL</label>
+                                                <input type="text" name="video_url" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
-                                        {/* author  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Author Name</label>
-                                                <input type="text" name="author" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-                                         {/* Date  */}
-                                         <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Date</label>
-                                                <input type="text"  name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-                                        {/* Meta keyword  */}
+                                       
+                                        {/* notice  */}
                                         <div className="p-2 w-full">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Meta Keyword</label>
-                                                <input type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <label className="leading-7 text-sm text-gray-600">Moving Notice</label>
+                                                <textarea name="notice" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                             </div>
                                         </div>
+                                      
 
                                         {/* image url  */}
                                         <div className="p-2 w-full">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Blog Banner Image</label><br />
+                                                <label className="leading-7 text-sm text-gray-600">Homepage section Image</label><br />
                                                 <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
                                        
 
+                                       
+
                                         {/* description  */}
                                         <div className="p-2 w-full">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Blog Description</label>
+                                                <label className="leading-7 text-sm text-gray-600">Homepage Description</label>
                                                 <textarea name="description" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                             </div>
                                         </div>
+
+                                        
+
+
+
                                         <div className="p-2 w-full">
                                             <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                                         </div>
@@ -122,4 +116,4 @@ const AddBlogPage = () => {
     );
 };
 
-export default AddBlogPage;
+export default ManageHomepageContent;

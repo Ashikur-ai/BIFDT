@@ -10,13 +10,22 @@ const AddCourse = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const course = form.course.value;
-        const gender = form.gender.value;
-        const contact = form.contact.value;
-        const address = form.address.value;
-        const website = form.website.value;
+        const title = form.title.value;
+        const main_video = form.main_video.value;
+        const sub_video_link = form.sub_video_link.value;
+        const objectives = form.objectives.value;
+        const year_1_title = form.year_1_title.value;
+        const year_1_duration = form.year_1_duration.value;
+        const year_1_fee = form.year_1_fee.value;
+
+        const diploma_year_1_title = form.diploma_year_1_title.value;
+        const diploma_year_1_duration = form.diploma_year_1_duration.value;
+        const diploma_year_1_fee = form.diploma_year_1_fee.value;
+
+        const month_6_title = form.month_6_title.value;
+        const month_6_duration = form.month_6_duration.value;
+        const month_6_fee = form.month_6_fee.value;
+
 
 
 
@@ -27,6 +36,9 @@ const AddCourse = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Dashboard | Add Course</title>
+            </Helmet>
             <div className='bg-gray-100 text-black'>
                 
                 {/* form section  */}
@@ -35,85 +47,146 @@ const AddCourse = () => {
                     <section className="text-gray-600 body-font relative">
                         <div className="container px-5  mx-auto">
                             
-                            <div className="lg:w-1/2 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
+                            <div className="lg:w-3/4 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
                                 <p className='text-center text-2xl font-bold'>Add Course</p>
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
-                                        {/* name  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Name</label>
-                                                <input type="text" id="name" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-                                        {/* email  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Email</label>
-                                                <input type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-                                        {/* course  */}
-                                        <div className='p-2 w-full'>
-                                            <label className="">Select course</label>
-                                            <select name='course' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 px-2">
-
-                                                <option value="" selected>Select Course</option>
-                                                <option value={"Fashion Design"}>Fashion Design</option>
-                                                <option value={"Merchandising"}>Merchandising
-                                                </option>
-                                                <option value={"Pattern Design"}>Pattern Design
-                                                </option>
-                                                <option value={"Interior Design"}>Interior Design</option>
-                                                <option value={"Leather Design"}>Leather Design</option>
-                                                <option value={"Computer Operator"}>Computer Operator
-                                                </option>
-
-                                            </select>
-                                        </div>
-
-                                        {/* Gender  */}
-                                        <div className="p-2 w-full">
-                                            <label className="leading-7 text-sm text-gray-600">Gender</label>
-                                            <div className="relative flex justify-start gap-5">
-                                                <br />
-                                                <input type="radio" name="gender" value={"male"} className="radio radio-secondary" /> Male
-                                                <input type="radio" name="gender" value={"female"} className="radio radio-secondary" /> Female
-                                            </div>
-
-                                        </div>
-
-                                        {/* contact number  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Contact No.</label>
-                                                <input type="text" name="contact" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-                                        {/* address  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Address</label>
-                                                <input type="text" name="address" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-                                        {/* website  */}
-                                        {/* <div className="p-2 w-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">How you know About Our Website?</label>
-                                                <input type="text"  name="website" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div> */}
-
-                                        {/* website  */}
+                                        {/* title  */}
                                         <div className="p-2 w-full">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">How you know About Our Website?</label>
-                                                <textarea name="website" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                                <label className="leading-7 text-sm text-gray-600">Course Title</label>
+                                                <input type="text" id="title" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
+
+                                        {/* Main course video  */}
+                                        <div className="p-2 w-full">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Enter main course video link</label>
+                                                <input type="text" id="main_video" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+                                         {/* Bannalr image  */}
+                                         <div className="p-2 w-full">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Upload Course Banner image</label><br />
+                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                            </div>
+                                        </div>
+                                       
+
+
+
+                                        
+                                         {/* Sub video link  */}
+                                         <div className="p-2 w-full">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Add optional video links</label>
+                                                <textarea name="sub_video_link" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                            </div>
+                                        </div>
+
+                                        {/* course objectives  */}
+                                        <div className="p-2 w-full">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course objectives</label>
+                                                <textarea name="objectives" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        
+
+                                        
+                                        <div className='w-full p-2 text-2xl font-bold '><p>1 year course information(Normal Credit System)</p></div>
+                                        {/* Course Title  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course Title</label>
+                                                <input type="text" name="year_1_title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+                                        {/* Duration  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course Duration</label>
+                                                <input type="text" name="year_1_duration" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+
+                                        {/* Course Fee  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course Fee</label>
+                                                <input type="text" name="year_1_fee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+
+                                        <div className='w-full p-2 text-2xl font-bold '><p>1 year Diploma course information(Open Credit System)</p></div>
+                                        {/* Course Title  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course Title</label>
+                                                <input type="text" name="diploma_year_1_title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+                                        {/* Duration  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course Duration</label>
+                                                <input type="text" name="diploma_year_1_duration" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+
+                                        {/* Course Fee  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course Fee</label>
+                                                <input type="text" name="diploma_year_1_fee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+
+                                        <div className='w-full p-2 text-2xl font-bold '><p>6-Month Certificate Course</p></div>
+                                        {/* Course Title  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course Title</label>
+                                                <input type="text" name="month_6_title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+                                        {/* Duration  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course Duration</label>
+                                                <input type="text" name="month_6_duration" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+
+                                        {/* Course Fee  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course Fee</label>
+                                                <input type="text" name="month_6_fee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+
+
+                                        
+
+                                       
                                         <div className="p-2 w-full">
                                             <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                                         </div>

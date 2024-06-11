@@ -50,7 +50,7 @@ const Dashboard = () => {
                         <p className="text-green-500">+5% than yesterday</p>
                     </div>
                 </div> */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 m-3">
                     <div className="bg-white rounded-md p-6 shadow-md">
                         <h3 className="text-lg font-bold mb-4">Website View</h3>
                         <div className="h-48">

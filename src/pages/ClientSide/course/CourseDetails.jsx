@@ -423,14 +423,7 @@ const CourseDetails = () => {
             <CourseDetailsTab></CourseDetailsTab>
           </div>
 
-          {/* student gallary section  */}
-          <div className="py-20">
-            <TabSection ></TabSection>
-          </div>
-
-          <div>
-            <Blogs></Blogs>
-          </div>
+         
 
 
 
@@ -441,7 +434,20 @@ const CourseDetails = () => {
 
       </div>
 
+      <div className="px-20">
+        {/* student gallary section  */}
+        <div className="py-20">
+            <TabSection ></TabSection>
+          </div>
+
+        <div>
+          <p className="text-center text-pink-600 text-4xl font-bold pb-2">Blogs</p>
+            <Blogs></Blogs>
+          </div>
+      </div>
+
       <div className="">
+         
         <Maps></Maps>
       </div>
     </>

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaWpforms, FaUsers } from 'react-icons/fa';
 import { MdAddCircle } from 'react-icons/md';
 import { FaCircleUser } from 'react-icons/fa6';
+import { SiNginxproxymanager } from 'react-icons/si';
 
 const NavigationItem = ({ to, icon: Icon, label }) => {
   const location = useLocation();

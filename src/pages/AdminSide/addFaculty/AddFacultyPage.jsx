@@ -5,27 +5,27 @@ import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
 
-const AddBlogPage = () => {
+const AddFacultyPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
-        const url = form.url.value;
-        const date = form.date.value;
-        const title = form.title.value;
-        const author = form.author.value;
-        const meta_word = form.meta_word.value;
-        const description = form.description.value;
+        const name = form.name.value;
+        const email = form.email.value;
+        const facebook = form.facebook.value;
+        const twitter = form.twitter.value;
+        const whatsapp = form.whatsapp.value;
+        const designation = form.designation.value;
 
 
 
-        const data = { url, date, title, author, meta_word, description };
+        const data = { name, email, facebook, twitter, whatsapp, designation };
         console.log(data)
     }
-    
+
     return (
         <>
             <Helmet>
-                <title>Dashboard | Add Blog</title>
+                <title>Dashboard | Add Faculty</title>
             </Helmet>
             <div className='bg-gray-100 text-black'>
                 
@@ -36,60 +36,57 @@ const AddBlogPage = () => {
                         <div className="container px-5  mx-auto">
                             
                             <div className="lg:w-3/4 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
-                                <p className='text-center text-2xl font-bold pb-2'>Add Blog</p>
+                                <p className='text-center text-2xl font-bold pb-2'>Add Faculty</p>
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
                                         
-                                        {/* Title  */}
-                                        <div className="p-2 w-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Blog title</label>
-                                                <input type="text" name="title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-                                        {/* author  */}
+                                        {/* Name  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Author Name</label>
-                                                <input type="text" name="author" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <label className="leading-7 text-sm text-gray-600">Faculty Name</label>
+                                                <input type="text" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+                                        {/* email  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Faculty Email</label>
+                                                <input type="text" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
-                                         {/* Date  */}
+                                          {/* Designation  */}
+                                          <div className="p-2 w-full">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Enter Designation</label>
+                                                <input type="text" name="designation" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+                                         {/* Social Link  */}
                                          <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Date</label>
-                                                <input type="text"  name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <label className="leading-7 text-sm text-gray-600">Social Linik</label>
+                                                <input type="text" name="facebook" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Facebook' />
+
+                                                <input type="text" name="twitter" className="w-full  bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 my-2 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Twitter'/>
+                                                
+                                                <input type="text"  name="whatsapp" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Whatsapp' />
                                             </div>
                                         </div>
 
-                                        {/* Meta keyword  */}
-                                        <div className="p-2 w-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Meta Keyword</label>
-                                                <input type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
 
                                         {/* image url  */}
                                         <div className="p-2 w-full">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Blog Banner Image</label><br />
+                                                <label className="leading-7 text-sm text-gray-600">Faculty Image</label><br />
                                                 <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
-                                       
 
-                                        {/* description  */}
                                         <div className="p-2 w-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Blog Description</label>
-                                                <textarea name="description" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-                                            </div>
-                                        </div>
-                                        <div className="p-2 w-full">
-                                            <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+                                            <button className="flex  text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                                         </div>
                                     </form>
 
@@ -122,4 +119,4 @@ const AddBlogPage = () => {
     );
 };
 
-export default AddBlogPage;
+export default AddFacultyPage;
