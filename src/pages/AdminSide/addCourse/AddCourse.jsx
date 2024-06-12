@@ -45,9 +45,9 @@ const AddCourse = () => {
                 <div className=''>
 
                     <section className="text-gray-600 body-font relative">
-                        <div className="container px-5  mx-auto">
+                        <div className="container   mx-auto">
                             
-                            <div className="lg:w-3/4 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
+                            <div className="lg:w-full md:w-2/3 mx-auto bg-white px-10 rounded-xl">
                                 <p className='text-center text-2xl font-bold'>Add Course</p>
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
