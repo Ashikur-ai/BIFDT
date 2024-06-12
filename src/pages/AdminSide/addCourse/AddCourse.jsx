@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import { Helmet } from 'react-helmet-async';
 import HeaderText from '../../../components/HeaderText';
 import { Link } from 'react-router-dom';
@@ -6,211 +9,197 @@ import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
 
 const AddCourse = () => {
+    const [formData, setFormData] = useState({
+        objectives: '',
+        notice: '',
+        bangla: '',
+        subtext: ''
+    });
+
+
+
+    const handleObjectivesChange = (value) => {
+        setFormData({ ...formData, objectives: value });
+    };
+
+    const handleNoticeChange = (value) => {
+        setFormData({ ...formData, notice: value });
+    };
+
+
+
+    const handleSubtextChange = (value) => {
+        setFormData({ ...formData, subtext: value });
+    };
+
+
+    const handleBanglaChange = (value) => {
+        setFormData({ ...formData, bangla: value });
+    };
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
         const title = form.title.value;
-        const main_video = form.main_video.value;
-        const sub_video_link = form.sub_video_link.value;
-        const objectives = form.objectives.value;
-        const year_1_title = form.year_1_title.value;
-        const year_1_duration = form.year_1_duration.value;
-        const year_1_fee = form.year_1_fee.value;
+        const notice = formData.notice;
 
-        const diploma_year_1_title = form.diploma_year_1_title.value;
-        const diploma_year_1_duration = form.diploma_year_1_duration.value;
-        const diploma_year_1_fee = form.diploma_year_1_fee.value;
-
-        const month_6_title = form.month_6_title.value;
-        const month_6_duration = form.month_6_duration.value;
-        const month_6_fee = form.month_6_fee.value;
+        const objectives = formData.objectives;
+        const banglatext = formData.bangla;
+        const Subtext = formData.subtext;
 
 
 
-
-        const data = { name, email, course, gender, contact, address, website };
-        console.log(data)
+        console.log(objectives, notice, banglatext, Subtext);
     }
 
+
+
+    const modules = {
+        toolbar: [
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+            [{ size: [] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+            ['link', 'image', 'video'],
+            ['clean']
+        ],
+    };
+
+    const formats = [
+        'header', 'font', 'size',
+        'bold', 'italic', 'underline', 'strike', 'blockquote',
+        'list', 'bullet', 'indent',
+        'link', 'image', 'video'
+    ];
+
+
+
+    const [isFormVisible, setIsFormVisible] = useState(false);
+    const [isSemesterVisible, setIsSemesterVisible] = useState(false);
+
+    const toggleFormVisibility = () => {
+        setIsFormVisible(!isFormVisible);
+    };
+
+    const toggleSemesterVisibility = () => {
+        setIsSemesterVisible(!isSemesterVisible);
+    };
 
     return (
         <>
             <Helmet>
                 <title>Dashboard | Add Course</title>
             </Helmet>
-            <div className='bg-gray-100 text-black'>
-                
-                {/* form section  */}
+            <div className=''>
                 <div className=''>
-
                     <section className="text-gray-600 body-font relative">
-                        <div className="container   mx-auto">
-                            
-                            <div className="lg:w-full md:w-2/3 mx-auto bg-white px-10 rounded-xl">
-                                <p className='text-center text-2xl font-bold'>Add Course</p>
+                        <div className="container mx-auto">
+                            <div className="lg:w-full md:w-2/3 mx-auto bg-white ml-2 mt-2 rounded-xl">
+                                <div className="shadow-2xl  px-10 rounded-2xl pt-4">
+                                    <p className='text-center text-2xl font-bold pb-5'>Add Course</p>
+                                    <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2 pb-4'>
 
-                                <div className="shadow-2xl  px-10 rounded-2xl">
-                                    <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
-                                        {/* title  */}
-                                        <div className="p-2 w-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course Title</label>
-                                                <input type="text" id="title" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
 
-                                        {/* Main course video  */}
-                                        <div className="p-2 w-full">
+                                        {/* Banner image */}
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Enter main course video link</label>
-                                                <input type="text" id="main_video" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-                                         {/* Bannalr image  */}
-                                         <div className="p-2 w-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Upload Course Banner image</label><br />
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Upload Course Banner image</label><br />
                                                 <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
-                                       
 
-
-
-                                        
-                                         {/* Sub video link  */}
-                                         <div className="p-2 w-full">
+                                        {/* title */}
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Add optional video links</label>
-                                                <textarea name="sub_video_link" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-                                            </div>
-                                        </div>
-
-                                        {/* course objectives  */}
-                                        <div className="p-2 w-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course objectives</label>
-                                                <textarea name="objectives" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Course Title</label>
+                                                <input type="text" id="title" name="title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
 
-
-
-                                        
-
-                                        
-                                        <div className='w-full p-2 text-2xl font-bold '><p>1 year course information(Normal Credit System)</p></div>
-                                        {/* Course Title  */}
-                                        <div className="p-2 w-1/2">
+                                        {/* Main course video */}
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course Title</label>
-                                                <input type="text" name="year_1_title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-                                        {/* Duration  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course Duration</label>
-                                                <input type="text" name="year_1_duration" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-
-                                        {/* Course Fee  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course Fee</label>
-                                                <input type="text" name="year_1_fee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-
-                                        <div className='w-full p-2 text-2xl font-bold '><p>1 year Diploma course information(Open Credit System)</p></div>
-                                        {/* Course Title  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course Title</label>
-                                                <input type="text" name="diploma_year_1_title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-                                        {/* Duration  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course Duration</label>
-                                                <input type="text" name="diploma_year_1_duration" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-
-                                        {/* Course Fee  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course Fee</label>
-                                                <input type="text" name="diploma_year_1_fee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-
-                                        <div className='w-full p-2 text-2xl font-bold '><p>6-Month Certificate Course</p></div>
-                                        {/* Course Title  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course Title</label>
-                                                <input type="text" name="month_6_title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-                                        {/* Duration  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course Duration</label>
-                                                <input type="text" name="month_6_duration" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-
-
-                                        {/* Course Fee  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Course Fee</label>
-                                                <input type="text" name="month_6_fee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Upload Course Main Video</label><br />
+                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
 
 
 
-                                        
+                                        <div className='flex pb-20'>
 
-                                       
+                                            {/* Notice */}
+                                            <div className="p-2 w-1/2">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm font-bold text-gray-600">Course Notice</label>
+                                                    <ReactQuill value={formData.notice} onChange={handleNoticeChange} theme="snow"
+                                                        modules={modules}
+                                                        formats={formats}
+                                                        placeholder="Enter course admission notice..."
+                                                        readOnly={false}
+                                                        bounds={'.app'}
+                                                        scrollingContainer={'.app'} className="h-40" />
+                                                </div>
+                                            </div>
+
+
+                                            {/* Subtext */}
+                                            <div className="p-2 w-1/2">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm font-bold text-gray-600">Course Subtext</label>
+                                                    <ReactQuill value={formData.subtext} onChange={handleSubtextChange} theme="snow"
+                                                        modules={modules}
+                                                        formats={formats}
+                                                        placeholder="Enter course subtext here..."
+                                                        readOnly={false}
+                                                        bounds={'.app'}
+                                                        scrollingContainer={'.app'} className="h-40" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div className='flex pb-20'>
+                                            {/* Bangla text */}
+                                            <div className="p-2 w-1/2">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Bangla Text</label>
+                                                    <ReactQuill value={formData.bangla} onChange={handleBanglaChange} theme="snow"
+                                                        modules={modules}
+                                                        formats={formats}
+                                                        placeholder="Enter Bangla Text..."
+                                                        readOnly={false}
+                                                        bounds={'.app'}
+                                                        scrollingContainer={'.app'} className="h-40" />
+                                                </div>
+                                            </div>
+
+                                            {/* Course objectives */}
+                                            <div className="p-2 w-1/2">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm font-bold text-gray-600">Course objectives</label>
+                                                    <ReactQuill value={formData.objectives} onChange={handleObjectivesChange} theme="snow"
+                                                        modules={modules}
+                                                        formats={formats}
+                                                        placeholder="Enter course objectives..."
+                                                        readOnly={false}
+                                                        bounds={'.app'}
+                                                        scrollingContainer={'.app'} className="h-40" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+
                                         <div className="p-2 w-full">
                                             <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                                         </div>
                                     </form>
 
-
-                                    <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                                        <a className="text-indigo-500">info@bifdt.com</a>
-                                        <p className="leading-normal my-5">House # 3/GA,
-                                            <br />Shyamoli, Road # 1. Dhaka-1207.
-                                        </p>
-                                        <span className="inline-flex">
-                                            <a className="text-gray-500">
-                                                <Link to="https://x.com/"><BiLogoTwitter className="text-2xl" /></Link>
-                                            </a>
-                                            <a className="ml-4 text-gray-500">
-                                                <Link to="https://www.youtube.com/"><TbBrandYoutubeFilled className="text-2xl" /></Link>
-                                            </a>
-                                            <a className="ml-4 text-gray-500">
-                                                <Link to="https://www.facebook.com/"><FaFacebook className="text-xl" /></Link>
-                                            </a>
-
-                                        </span>
-                                    </div>
+                                   
+                                    
                                 </div>
                             </div>
                         </div>

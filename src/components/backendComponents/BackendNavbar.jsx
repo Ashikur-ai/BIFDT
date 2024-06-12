@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const BackendNavbar = () => {
     return (
         <>
-            <div className="flex items-center bg-white justify-between mb-6 p-5 ">
+            <div className="flex items-center bg-white justify-between  p-5 ">
                 <h2 className="text-2xl font-bold">Bangladesh Institute of Fashion & Design Technology</h2>
                 <div className="flex items-center">
                     <input type="text" className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search" />

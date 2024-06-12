@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { MdDelete, MdUpdate } from "react-icons/md";
+import { MdDelete, MdEditSquare, MdUpdate } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 
@@ -28,7 +28,7 @@ const ManageBlog = () => {
                             <th>Description</th>
                             <th>Author Name</th>
                             <th>Meta keyword</th>
-                            <th>Update</th>
+                            <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -46,7 +46,7 @@ const ManageBlog = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        
+
                                         <div className="text-sm opacity-50">14 March, 2024</div>
                                     </div>
                                 </div>
@@ -63,11 +63,12 @@ const ManageBlog = () => {
                             <td>
                                 #FashionDesign, #Garments, #Economic
                             </td>
-                            <td>
-                                <Link to="/dashboard/updateBlog"><MdUpdate className="text-2xl text-green-600" /></Link>
+                            <td className='text-2xl text-green-500'>
+                                <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
                             </td>
+
                             <td>
-                            <MdDelete className="text-2xl text-red-600" />
+                                <MdDelete className="text-2xl text-red-600" />
                             </td>
                         </tr>
 
@@ -83,7 +84,7 @@ const ManageBlog = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        
+
                                         <div className="text-sm opacity-50">14 March, 2024</div>
                                     </div>
                                 </div>
@@ -100,11 +101,12 @@ const ManageBlog = () => {
                             <td>
                                 #FashionDesign, #Garments, #Economic
                             </td>
-                            <td>
-                            <MdUpdate className="text-2xl text-green-600" />
+                            <td className='text-2xl text-green-500'>
+                                <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
                             </td>
+
                             <td>
-                            <MdDelete className="text-2xl text-red-600" />
+                                <MdDelete className="text-2xl text-red-600" />
                             </td>
                         </tr>
 
@@ -121,7 +123,7 @@ const ManageBlog = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        
+
                                         <div className="text-sm opacity-50">14 March, 2024</div>
                                     </div>
                                 </div>
@@ -138,11 +140,12 @@ const ManageBlog = () => {
                             <td>
                                 #FashionDesign, #Garments, #Economic
                             </td>
-                            <td>
-                            <MdUpdate className="text-2xl text-green-600" />
+                            <td className='text-2xl text-green-500'>
+                                <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
                             </td>
+
                             <td>
-                            <MdDelete className="text-2xl text-red-600" />
+                                <MdDelete className="text-2xl text-red-600" />
                             </td>
                         </tr>
 
@@ -158,7 +161,7 @@ const ManageBlog = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        
+
                                         <div className="text-sm opacity-50">14 March, 2024</div>
                                     </div>
                                 </div>
@@ -175,14 +178,15 @@ const ManageBlog = () => {
                             <td>
                                 #FashionDesign, #Garments, #Economic
                             </td>
-                            <td>
-                            <MdUpdate className="text-2xl text-green-600" />
+                            <td className='text-2xl text-green-500'>
+                                <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
                             </td>
+
                             <td>
-                            <MdDelete className="text-2xl text-red-600" />
+                                <MdDelete className="text-2xl text-red-600" />
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <td>
                                 5
@@ -195,7 +199,7 @@ const ManageBlog = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        
+
                                         <div className="text-sm opacity-50">14 March, 2024</div>
                                     </div>
                                 </div>
@@ -212,15 +216,16 @@ const ManageBlog = () => {
                             <td>
                                 #FashionDesign, #Garments, #Economic
                             </td>
-                            <td>
-                            <MdUpdate className="text-2xl text-green-600" />
+                            <td className='text-2xl text-green-500'>
+                                <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
                             </td>
+
                             <td>
-                            <MdDelete className="text-2xl text-red-600" />
+                                <MdDelete className="text-2xl text-red-600" />
                             </td>
                         </tr>
                     </tbody>
-                    
+
 
                 </table>
             </div>

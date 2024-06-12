@@ -1,11 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { GiConfirmed } from 'react-icons/gi';
-import { MdDelete, MdUpdate } from 'react-icons/md';
+import { MdDelete, MdEditSquare, MdUpdate } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 const ManageCoursePage = () => {
-    const objectives = "ashion designers are concerned with conception to complete within the development and production of vesture lines. whereas some designers are ready to work their far within the business through on the task expertise, of late an academic degree is often the minimum demand for this position. Designers should have in-depth data of fashion style ideas, sewing, attire style, and garment construction, and be aware of the various kinds of textiles and business trends. Most designers are specialists.";
+    const objectives = "6000tk";
 
     return (
         <>
@@ -23,10 +23,10 @@ const ManageCoursePage = () => {
                                 <th>Course Name</th>
 
                                 <th>Course Image</th>
-                                <th>Course Objectives</th>
+                                <th>Course Fee</th>
 
 
-                                <th>Update</th>
+                                <th>Edit</th>
                                 <th>Delete</th>
 
                             </tr>
@@ -53,9 +53,10 @@ const ManageCoursePage = () => {
                                     <p>{objectives.substring(0, 150)}</p>
                                 </td>
 
-                                <td>
-                                    <Link to="/dashboard/updateCourse"><MdUpdate className="text-2xl text-green-600" /></Link>
+                                <td className='text-2xl text-green-500'>
+                                    <Link to="/dashboard/updateCourse"><MdEditSquare /></Link>
                                 </td>
+
 
 
                                 <td className='text-2xl text-red-500'><MdDelete /></td>
@@ -81,8 +82,8 @@ const ManageCoursePage = () => {
                                     <p>{objectives.substring(0, 150)}</p>
                                 </td>
 
-                                <td>
-                                    <Link to="/dashboard/updateCourse"><MdUpdate className="text-2xl text-green-600" /></Link>
+                                <td className='text-2xl text-green-500'>
+                                    <Link to="/dashboard/updateCourse"><MdEditSquare /></Link>
                                 </td>
 
 
@@ -110,9 +111,10 @@ const ManageCoursePage = () => {
                                     <p>{objectives.substring(0, 150)}</p>
                                 </td>
 
-                                <td>
-                                    <Link to="/dashboard/updateCourse"><MdUpdate className="text-2xl text-green-600" /></Link>
+                                <td className='text-2xl text-green-500'>
+                                    <Link to="/dashboard/updateCourse"><MdEditSquare /></Link>
                                 </td>
+
 
 
                                 <td className='text-2xl text-red-500'><MdDelete /></td>

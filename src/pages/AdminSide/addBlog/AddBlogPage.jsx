@@ -4,8 +4,42 @@ import { Link } from 'react-router-dom';
 import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
+import ReactQuill from 'react-quill';
+import { useState } from 'react';
 
 const AddBlogPage = () => {
+
+
+    const [formData, setFormData] = useState({
+        description: '',
+
+    });
+
+
+    const handleDescriptionChange = (value) => {
+        setFormData({ ...formData, description: value });
+    };
+
+    const modules = {
+        toolbar: [
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+            [{ size: [] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+            ['link', 'image', 'video'],
+            ['clean']
+        ],
+    };
+
+    const formats = [
+        'header', 'font', 'size',
+        'bold', 'italic', 'underline', 'strike', 'blockquote',
+        'list', 'bullet', 'indent',
+        'link', 'image', 'video'
+    ];
+
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -21,26 +55,30 @@ const AddBlogPage = () => {
         const data = { url, date, title, author, meta_word, description };
         console.log(data)
     }
-    
+
+
+
+
     return (
         <>
             <Helmet>
                 <title>Dashboard | Add Blog</title>
             </Helmet>
             <div className='bg-gray-100 text-black'>
-                
+
                 {/* form section  */}
                 <div className=''>
 
                     <section className="text-gray-600 body-font relative">
-                        <div className="container px-5  mx-auto">
-                            
-                            <div className="lg:w-3/4 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
-                                <p className='text-center text-2xl font-bold pb-2'>Add Blog</p>
+                        <div className="container ml-2  mx-auto">
+
+                            <div className="lg:w-full md:w-2/3 mx-auto bg-white  mt-2 rounded-xl">
+
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
+                                    <p className='text-center text-2xl font-bold py-2'>Add Blog</p>
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
-                                        
+
                                         {/* Title  */}
                                         <div className="p-2 w-full">
                                             <div className="relative">
@@ -49,23 +87,23 @@ const AddBlogPage = () => {
                                             </div>
                                         </div>
                                         {/* author  */}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Author Name</label>
                                                 <input type="text" name="author" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
-                                         {/* Date  */}
-                                         <div className="p-2 w-1/2">
+                                        {/* Date  */}
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Date</label>
-                                                <input type="text"  name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="text" name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
                                         {/* Meta keyword  */}
-                                        <div className="p-2 w-full">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Meta Keyword</label>
                                                 <input type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -73,21 +111,28 @@ const AddBlogPage = () => {
                                         </div>
 
                                         {/* image url  */}
-                                        <div className="p-2 w-full">
+                                        <div className="p-2 w-1/4">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Blog Banner Image</label><br />
                                                 <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
-                                       
 
-                                        {/* description  */}
-                                        <div className="p-2 w-full">
+
+                                        {/* Description */}
+                                        <div className="p-2 w-full mb-10">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Blog Description</label>
-                                                <textarea name="description" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                                <label className="leading-7 text-sm font-bold text-gray-600">Blog Description</label>
+                                                <ReactQuill value={formData.description} onChange={handleDescriptionChange} theme="snow"
+                                                    modules={modules}
+                                                    formats={formats}
+                                                    placeholder="Enter course admission notice..."
+                                                    readOnly={false}
+                                                    bounds={'.app'}
+                                                    scrollingContainer={'.app'} className="h-64" />
                                             </div>
                                         </div>
+
                                         <div className="p-2 w-full">
                                             <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                                         </div>
