@@ -5,12 +5,18 @@ import WhatsAppButton from "../components/WhatsAppButton";
 import FormButton from "../components/FormButton";
 import AllSocialLinks from "../components/AllSocialLinks";
 import MobileViewButton from "../components/MobileViewButton";
+import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
     return (
         <>
             <Navbar></Navbar>
+            <Toaster
+            position="top-right"
+            reverseOrder={false}
+            />
             <Outlet>
+            
             </Outlet>
             <Footer></Footer>
             <WhatsAppButton></WhatsAppButton>

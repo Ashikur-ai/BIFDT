@@ -84,7 +84,8 @@ const BasicRoutes = createBrowserRouter([
             },
             {
                 path: "admissionRequest",
-                element: <AdmissionRequest></AdmissionRequest>
+                element: <AdmissionRequest></AdmissionRequest>,
+                
             },
             {
                 path: "profile",

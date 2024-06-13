@@ -1,10 +1,24 @@
 import { Helmet } from "react-helmet-async";
 import { MdDelete, MdEditSquare, MdUpdate } from "react-icons/md";
 import { Link } from "react-router-dom";
-
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import HTMLContent from "../../../components/backendComponents/HTMLContent";
+import DOMPurify from 'dompurify';
 
 const ManageBlog = () => {
-    const subtext = "Fashion has become an important a part of 21st-century life. Our Fashion Design Course has been Specifically created to provide you with everything you need to know in order to take those first steps to make your designs a  reality and beyond. It features a unique combination of 17modules(30 Credits) to equip you with all the knowledge, skills & requisites that any budding fashion designer requires.";
+
+
+    const axiosPublic = useAxiosPublic();
+    const { data: blogs = [], refetch } = useQuery({
+        queryKey: ['blogs'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/blog');
+            return res.data;
+        }
+    })
+
+    console.log(blogs);
 
 
 
@@ -34,196 +48,56 @@ const ManageBlog = () => {
                     </thead>
                     <tbody>
                         {/* row 1 */}
-                        <tr>
-                            <td>
-                                2
-                            </td>
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src="https://static-cse.canva.com/blob/567558/50stunninglybeautifulgeometricpatternsingraphicdesign.jpg" />
+
+                        {
+                            blogs?.map((blog, index) =>
+                                <tr key={blog._id}>
+                                    <td>
+                                        {index + 1}
+                                    </td>
+                                    <td>
+                                        <div className="flex items-center gap-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src="https://static-cse.canva.com/blob/567558/50stunninglybeautifulgeometricpatternsingraphicdesign.jpg" />
+                                                </div>
+                                            </div>
+                                            <div>
+
+                                                <div className="text-sm opacity-50">{blog.date}</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-
-                                        <div className="text-sm opacity-50">14 March, 2024</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p className="font-bold">Pattern Design Course</p>
-                            </td>
-                            <td>
-                                <div className="">
-                                    {subtext.substring(0, 50)}...
-                                </div>
-                            </td>
-                            <td>Mr. Karim</td>
-                            <td>
-                                #FashionDesign, #Garments, #Economic
-                            </td>
-                            <td className='text-2xl text-green-500'>
-                                <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
-                            </td>
-
-                            <td>
-                                <MdDelete className="text-2xl text-red-600" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                3
-                            </td>
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src="https://static-cse.canva.com/blob/567558/50stunninglybeautifulgeometricpatternsingraphicdesign.jpg" />
+                                    </td>
+                                    <td>
+                                        <p className="font-bold">{blog.title}</p>
+                                    </td>
+                                    <td>
+                                        <div className="">
+                                            {/* {subtext.substring(0, 50)}... */}
+                                            {/* <HTMLContent content={blog.description} /> */}
+                                            <div
+                                                className="blog-content"
+                                                dangerouslySetInnerHTML={{ __html: blog.description }}
+                                            ></div>
                                         </div>
-                                    </div>
-                                    <div>
+                                    </td>
+                                    <td>{blog.author}</td>
+                                    <td>
+                                        {blog.meta_word}
+                                    </td>
+                                    <td className='text-2xl text-green-500'>
+                                        <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
+                                    </td>
 
-                                        <div className="text-sm opacity-50">14 March, 2024</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p className="font-bold">Pattern Design Course</p>
-                            </td>
-                            <td>
-                                <div className="">
-                                    {subtext.substring(0, 50)}...
-                                </div>
-                            </td>
-                            <td>Mr. Karim</td>
-                            <td>
-                                #FashionDesign, #Garments, #Economic
-                            </td>
-                            <td className='text-2xl text-green-500'>
-                                <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
-                            </td>
-
-                            <td>
-                                <MdDelete className="text-2xl text-red-600" />
-                            </td>
-                        </tr>
+                                    <td>
+                                        <MdDelete className="text-2xl text-red-600" />
+                                    </td>
+                                </tr>
+                            )
+                        }
 
 
-                        <tr>
-                            <td>
-                                4
-                            </td>
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src="https://static-cse.canva.com/blob/567558/50stunninglybeautifulgeometricpatternsingraphicdesign.jpg" />
-                                        </div>
-                                    </div>
-                                    <div>
 
-                                        <div className="text-sm opacity-50">14 March, 2024</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p className="font-bold">Pattern Design Course</p>
-                            </td>
-                            <td>
-                                <div className="">
-                                    {subtext.substring(0, 50)}...
-                                </div>
-                            </td>
-                            <td>Mr. Karim</td>
-                            <td>
-                                #FashionDesign, #Garments, #Economic
-                            </td>
-                            <td className='text-2xl text-green-500'>
-                                <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
-                            </td>
-
-                            <td>
-                                <MdDelete className="text-2xl text-red-600" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                5
-                            </td>
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src="https://hips.hearstapps.com/hmg-prod/images/01-fendi-women-fw-22-23-jpg-1645720448.jpg?crop=1xw:0.33336951801997394xh;center,top&resize=640:*" />
-                                        </div>
-                                    </div>
-                                    <div>
-
-                                        <div className="text-sm opacity-50">14 March, 2024</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p className="font-bold">Pattern Design Course</p>
-                            </td>
-                            <td>
-                                <div className="">
-                                    {subtext.substring(0, 50)}...
-                                </div>
-                            </td>
-                            <td>Mr. Karim</td>
-                            <td>
-                                #FashionDesign, #Garments, #Economic
-                            </td>
-                            <td className='text-2xl text-green-500'>
-                                <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
-                            </td>
-
-                            <td>
-                                <MdDelete className="text-2xl text-red-600" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                5
-                            </td>
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src="https://hips.hearstapps.com/hmg-prod/images/01-fendi-women-fw-22-23-jpg-1645720448.jpg?crop=1xw:0.33336951801997394xh;center,top&resize=640:*" />
-                                        </div>
-                                    </div>
-                                    <div>
-
-                                        <div className="text-sm opacity-50">14 March, 2024</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p className="font-bold">Pattern Design Course</p>
-                            </td>
-                            <td>
-                                <div className="">
-                                    {subtext.substring(0, 50)}...
-                                </div>
-                            </td>
-                            <td>Mr. Karim</td>
-                            <td>
-                                #FashionDesign, #Garments, #Economic
-                            </td>
-                            <td className='text-2xl text-green-500'>
-                                <Link to="/dashboard/updateBlog"><MdEditSquare /></Link>
-                            </td>
-
-                            <td>
-                                <MdDelete className="text-2xl text-red-600" />
-                            </td>
-                        </tr>
                     </tbody>
 
 

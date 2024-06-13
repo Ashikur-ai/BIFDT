@@ -6,9 +6,13 @@ import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
 import ReactQuill from 'react-quill';
 import { useState } from 'react';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const AddBlogPage = () => {
 
+    const axiosPublic = useAxiosPublic();
 
     const [formData, setFormData] = useState({
         description: '',
@@ -43,17 +47,34 @@ const AddBlogPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
-        const url = form.url.value;
-        const date = form.date.value;
         const title = form.title.value;
-        const author = form.author.value;
+        const date = form.date.value;
         const meta_word = form.meta_word.value;
-        const description = form.description.value;
+        const author = form.author.value;
+        const description = formData.description;
 
 
 
-        const data = { url, date, title, author, meta_word, description };
+        const data = { title, date, meta_word, author, description };
         console.log(data)
+
+        axiosPublic.post('/blog', data)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.insertedId) {
+                    console.log('data added')                   
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                }
+            })
+            .catch()
+        form.reset();
     }
 
 
@@ -80,14 +101,14 @@ const AddBlogPage = () => {
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
 
                                         {/* Title  */}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Blog title</label>
                                                 <input type="text" name="title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* author  */}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Author Name</label>
                                                 <input type="text" name="author" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -95,10 +116,17 @@ const AddBlogPage = () => {
                                         </div>
 
                                         {/* Date  */}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Date</label>
                                                 <input type="text" name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+                                        {/* image url  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Blog Banner Image</label><br />
+                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
 
@@ -110,13 +138,7 @@ const AddBlogPage = () => {
                                             </div>
                                         </div>
 
-                                        {/* image url  */}
-                                        <div className="p-2 w-1/4">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600 font-bold">Blog Banner Image</label><br />
-                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
-                                            </div>
-                                        </div>
+                                        
 
 
                                         {/* Description */}
