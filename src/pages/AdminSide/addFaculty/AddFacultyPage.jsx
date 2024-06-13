@@ -44,14 +44,14 @@ const AddFacultyPage = () => {
                                         {/* Name  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Faculty Name</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Faculty Name</label>
                                                 <input type="text" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* email  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Faculty Email</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Faculty Email</label>
                                                 <input type="text" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
@@ -59,7 +59,7 @@ const AddFacultyPage = () => {
                                           {/* Designation  */}
                                           <div className="p-2 w-full">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Enter Designation</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Enter Designation</label>
                                                 <input type="text" name="designation" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
@@ -67,7 +67,7 @@ const AddFacultyPage = () => {
                                          {/* Social Link  */}
                                          <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Social Linik</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Social Linik</label>
                                                 <input type="text" name="facebook" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Facebook' />
 
                                                 <input type="text" name="twitter" className="w-full  bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 my-2 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Twitter'/>
@@ -80,7 +80,7 @@ const AddFacultyPage = () => {
                                         {/* image url  */}
                                         <div className="p-2 w-full">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Faculty Image</label><br />
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Faculty Image</label><br />
                                                 <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>

@@ -35,58 +35,58 @@ const ManageCountDown = () => {
                 <div className=''>
 
                     <section className="text-gray-600 body-font relative">
-                        <div className="container px-5  mx-auto">
+                        <div className="container ml-2 mt-2  mx-auto">
                             
-                            <div className="lg:w-3/4 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
-                                <p className='text-center text-2xl font-bold pb-2'>Manage CountDown</p>
+                            <div className="lg:w-full md:w-2/3 mx-auto bg-white   rounded-xl">
+                                <p className='text-center text-2xl font-bold pt-3'>Manage CountDown</p>
 
-                                <div className="shadow-2xl  px-10 rounded-2xl">
+                                <div className="shadow-2xl my-10 px-5 rounded-2xl">
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
                                         
                                         {/* Since  */}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Since when</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Since when</label>
                                                 <input type="text" name="since" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* Students  */}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">No. of Students</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">No. of Students</label>
                                                 <input type="text" name="student" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
                                          {/* Ratings  */}
-                                         <div className="p-2 w-1/2">
+                                         <div className="p-2 w-1/3">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Ratings</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Ratings</label>
                                                 <input type="text"  name="rating" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
                                         {/*Instructor No.*/}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">No. of Instructor</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">No. of Instructor</label>
                                                 <input type="text" name="instructor" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
                                         {/*Ed. guarantee*/}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Education guarantee</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Education guarantee</label>
                                                 <input type="text" name="guarantee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
 
                                         {/*Success ratio*/}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Job success ratio</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Job success ratio</label>
                                                 <input type="text" name="ratio" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>

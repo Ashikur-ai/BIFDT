@@ -80,32 +80,32 @@ const AddBlogPage = () => {
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
 
                                         {/* Title  */}
-                                        <div className="p-2 w-full">
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Blog title</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Blog title</label>
                                                 <input type="text" name="title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* author  */}
-                                        <div className="p-2 w-1/3">
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Author Name</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Author Name</label>
                                                 <input type="text" name="author" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
                                         {/* Date  */}
-                                        <div className="p-2 w-1/3">
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Date</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Date</label>
                                                 <input type="text" name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
                                         {/* Meta keyword  */}
-                                        <div className="p-2 w-1/3">
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Meta Keyword</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Meta Keyword</label>
                                                 <input type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
@@ -113,7 +113,7 @@ const AddBlogPage = () => {
                                         {/* image url  */}
                                         <div className="p-2 w-1/4">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Blog Banner Image</label><br />
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Blog Banner Image</label><br />
                                                 <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>

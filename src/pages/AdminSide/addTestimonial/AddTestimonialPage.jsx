@@ -4,8 +4,43 @@ import { Link } from 'react-router-dom';
 import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
+import ReactQuill from 'react-quill';
+import { useState } from 'react';
 
 const AddTestimonialPage = () => {
+
+
+
+    const [formData, setFormData] = useState({
+        description: '',
+
+    });
+
+
+    const handleDescriptionChange = (value) => {
+        setFormData({ ...formData, description: value });
+    };
+
+    const modules = {
+        toolbar: [
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+            [{ size: [] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+            ['link', 'image', 'video'],
+            ['clean']
+        ],
+    };
+
+    const formats = [
+        'header', 'font', 'size',
+        'bold', 'italic', 'underline', 'strike', 'blockquote',
+        'list', 'bullet', 'indent',
+        'link', 'image', 'video'
+    ];
+
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -43,7 +78,7 @@ const AddTestimonialPage = () => {
                                         {/* Name  */}
                                         <div className="p-2 w-full">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Name</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Name</label>
                                                 <input type="text" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
@@ -51,7 +86,7 @@ const AddTestimonialPage = () => {
                                         {/* image url  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Image</label><br />
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Image</label><br />
                                                 <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
@@ -60,16 +95,22 @@ const AddTestimonialPage = () => {
                                         {/* Designation  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Designation</label>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Designation</label>
                                                 <input type="text" name="designation" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
-                                        {/* Opinion  */}
-                                        <div className="p-2 w-full">
+                                        {/* Description */}
+                                        <div className="p-2 w-full mb-20">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Opinion</label>
-                                                <textarea name="opinion" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                                <label className="leading-7 text-sm font-bold text-gray-600">Description</label>
+                                                <ReactQuill value={formData.description} onChange={handleDescriptionChange} theme="snow"
+                                                    modules={modules}
+                                                    formats={formats}
+                                                    placeholder="Enter your opinion..."
+                                                    readOnly={false}
+                                                    bounds={'.app'}
+                                                    scrollingContainer={'.app'} className="h-64" />
                                             </div>
                                         </div>
 

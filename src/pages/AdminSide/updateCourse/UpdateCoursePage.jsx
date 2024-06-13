@@ -203,6 +203,7 @@ const UpdateCoursePage = () => {
                                         </div>
                                     </div>
 
+                                    {/* Optional video  */}
                                     <form className=' pl-4 pb-4 my-10 justify-center items-center'>
                                     <p className=' text-2xl font-bold '>Add Optional Video</p>
 

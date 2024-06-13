@@ -76,14 +76,14 @@ const UpdateBlog = () => {
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
 
                                         {/* Title  */}
-                                        <div className="p-2 w-full">
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Blog title</label>
                                                 <input type="text" name="title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* author  */}
-                                        <div className="p-2 w-1/3">
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Author Name</label>
                                                 <input type="text" name="author" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -91,7 +91,7 @@ const UpdateBlog = () => {
                                         </div>
 
                                         {/* Date  */}
-                                        <div className="p-2 w-1/3">
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Date</label>
                                                 <input type="text" name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -99,7 +99,7 @@ const UpdateBlog = () => {
                                         </div>
 
                                         {/* Meta keyword  */}
-                                        <div className="p-2 w-1/3">
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Meta Keyword</label>
                                                 <input type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { GiConfirmed } from 'react-icons/gi';
-import { MdDelete, MdUpdate } from 'react-icons/md';
+import { MdDelete, MdEditSquare, MdUpdate } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 const ManageFacultyPage = () => {
@@ -25,7 +25,7 @@ const ManageFacultyPage = () => {
                                 <th>Contact No</th>
                                 <th>Designation</th>
                                 
-                                <th>Update</th>
+                                <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -55,7 +55,9 @@ const ManageFacultyPage = () => {
                                 <td>+1234567890</td>
                                 <td>Lecturer</td>
                                 
-                                <td><Link to="/dashboard/updateFaculty"><MdUpdate className="text-2xl text-green-600" /></Link></td>
+                                <td className='text-2xl text-green-500'>
+                                <Link to="/dashboard/updateFaculty"><MdEditSquare /></Link>
+                            </td>
                                 <td className='text-2xl text-red-500'><MdDelete /></td>
                             </tr>
 
@@ -84,7 +86,9 @@ const ManageFacultyPage = () => {
                                 <td>+1234567890</td>
                                 <td>Lecturer</td>
                                 
-                                <td><Link to="/dashboard/updateFaculty"><MdUpdate className="text-2xl text-green-600" /></Link></td>
+                                <td className='text-2xl text-green-500'>
+                                <Link to="/dashboard/updateFaculty"><MdEditSquare /></Link>
+                            </td>
                                 <td className='text-2xl text-red-500'><MdDelete /></td>
                             </tr>
 
@@ -114,7 +118,9 @@ const ManageFacultyPage = () => {
                                 <td>+1234567890</td>
                                 <td>Lecturer</td>
                                 
-                                <td><Link to="/dashboard/updateFaculty"><MdUpdate className="text-2xl text-green-600" /></Link></td>
+                                <td className='text-2xl text-green-500'>
+                                <Link to="/dashboard/updateFaculty"><MdEditSquare /></Link>
+                            </td>
                                 <td className='text-2xl text-red-500'><MdDelete /></td>
                             </tr>
                             

@@ -25,7 +25,7 @@ const ManageStudentGallary = () => {
     return (
         <>
             <Helmet>
-                <title>Dashboard | Add Student Gallary</title>
+                <title>Dashboard | Manage Student Gallary</title>
             </Helmet>
             <div className='bg-gray-100 text-black'>
 
@@ -42,8 +42,8 @@ const ManageStudentGallary = () => {
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
 
                                         {/* Category  */}
-                                        <div className='p-2 w-full'>
-                                            <label className="">Select Category</label>
+                                        <div className='p-2 w-3/4'>
+                                            <label className="font-bold text-sm">Select Category</label>
                                             <select name='category' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 px-2">
 
                                                 <option value="" selected>Select Category</option>
@@ -62,15 +62,18 @@ const ManageStudentGallary = () => {
 
 
 
+                                        <form className=' pl-4 pb-4 my-10 justify-center items-center'>
+                                            <p className=' text-sm font-bold '>Add Picture URL</p>
 
-
-                                        {/* Image urls  */}
-                                        <div className="p-2 w-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Provide Image URLs</label>
-                                                <textarea name="website" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                            <input type="text" placeholder="provide picture link" className="input input-bordered input-accent w-full max-w-xs" />
+                                            <div className="p-2 w-full">
+                                                <button className=" text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Add</button>
                                             </div>
-                                        </div>
+                                        </form>
+
+
+
+
                                         <div className="p-2 w-full">
                                             <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                                         </div>

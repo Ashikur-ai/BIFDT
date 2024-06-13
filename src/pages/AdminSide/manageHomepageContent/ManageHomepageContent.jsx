@@ -4,8 +4,43 @@ import { Link } from 'react-router-dom';
 import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
+import ReactQuill from 'react-quill';
+import { useState } from 'react';
 
 const ManageHomepageContent = () => {
+
+
+    
+    const [formData, setFormData] = useState({
+        notice: '',
+
+    });
+
+
+    const handleNoticeChange = (value) => {
+        setFormData({ ...formData, notice: value });
+    };
+
+    const modules = {
+        toolbar: [
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+            [{ size: [] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+            ['link', 'image', 'video'],
+            ['clean']
+        ],
+    };
+
+    const formats = [
+        'header', 'font', 'size',
+        'bold', 'italic', 'underline', 'strike', 'blockquote',
+        'list', 'bullet', 'indent',
+        'link', 'image', 'video'
+    ];
+
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -34,49 +69,73 @@ const ManageHomepageContent = () => {
                 <div className=''>
 
                     <section className="text-gray-600 body-font relative">
-                        <div className="container px-5  mx-auto">
+                        <div className="container ml-2 mt-2 mx-auto">
                             
-                            <div className="lg:w-3/4 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
+                            <div className="lg:w-full md:w-2/3 mx-auto bg-white  py-5 rounded-xl">
                                 <p className='text-center text-2xl font-bold pb-2'>Manage Homepage Content</p>
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
                                         
-                                        {/* Video URL  */}
-                                        <div className="p-2 w-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Main video URL</label>
-                                                <input type="text" name="video_url" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
-                                       
-                                        {/* notice  */}
-                                        <div className="p-2 w-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Moving Notice</label>
-                                                <textarea name="notice" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-                                            </div>
-                                        </div>
                                       
-
-                                        {/* image url  */}
-                                        <div className="p-2 w-full">
+                                        
+                                         {/* video upload  */}
+                                         <div className="p-2 w-1/2">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Homepage section Image</label><br />
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section video</label><br />
+                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                            </div>
+                                        </div>
+
+                                           {/* image upload  */}
+                                           <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section Image</label><br />
                                                 <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
                                        
 
-                                       
 
-                                        {/* description  */}
-                                        <div className="p-2 w-full">
+                                        
+                                        {/* Notice */}
+                                        <div className="p-2 w-1/2 mb-10">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Homepage Description</label>
-                                                <textarea name="description" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                                <label className="leading-7 text-sm font-bold text-gray-600">Add Notice</label>
+                                                <ReactQuill value={formData.notice} onChange={handleNoticeChange} theme="snow"
+                                                    modules={modules}
+                                                    formats={formats}
+                                                    placeholder="Enter course admission notice..."
+                                                    readOnly={false}
+                                                    bounds={'.app'}
+                                                    scrollingContainer={'.app'} className="h-64" />
                                             </div>
                                         </div>
+                                       
+                                        
+
+                                              
+                                        {/* Description */}
+                                        <div className="p-2 w-1/2 mb-20">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm font-bold text-gray-600">Homepage Description</label>
+                                                <ReactQuill value={formData.notice} onChange={handleNoticeChange} theme="snow"
+                                                    modules={modules}
+                                                    formats={formats}
+                                                    placeholder="Enter homepage description..."
+                                                    readOnly={false}
+                                                    bounds={'.app'}
+                                                    scrollingContainer={'.app'} className="h-64" />
+                                            </div>
+                                        </div>
+                                       
+                                       
+                                      
+
+                                       
+
+                                       
+
 
                                         
 

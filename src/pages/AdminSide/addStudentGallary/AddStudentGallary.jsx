@@ -43,35 +43,23 @@ const AddStudentGallary = () => {
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
 
                                         {/* Category  */}
-                                        <div className='p-2 w-full'>
-                                            <label className="">Select Category</label>
-                                            <select name='category' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 px-2">
+                                        <div className='p-2 w-1/2'>
+                                            <label className="font-bold">Add Category</label>
+                                            <input type="text" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
 
-                                                <option value="" selected>Select Category</option>
-                                                <option value={"Fashion Design"}>Fashion Design</option>
-                                                <option value={"Merchandising"}>Merchandising
-                                                </option>
-                                                <option value={"Pattern Design"}>Pattern Design
-                                                </option>
-                                                <option value={"Interior Design"}>Interior Design</option>
-                                                <option value={"Leather Design"}>Leather Design</option>
-                                                <option value={"Computer Operator"}>Computer Operator
-                                                </option>
-
-                                            </select>
                                         </div>
 
-
-
-
-
-                                        {/* Image urls  */}
+                                        {/* image url  */}
                                         <div className="p-2 w-full">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Provide Image URLs</label>
-                                                <textarea name="website" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Upload Image</label><br />
+                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
+
+
+
+                                        
                                         <div className="p-2 w-full">
                                             <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                                         </div>
