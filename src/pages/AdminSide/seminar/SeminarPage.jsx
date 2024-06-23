@@ -11,7 +11,7 @@ const SeminarPage = () => {
     const { data: seminarRequests = [], refetch } = useQuery({
         queryKey: ['seminarRequests'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/seminar');
+            const res = await axiosPublic.get('/seminarRequest');
             return res.data;
         }
     })
@@ -27,7 +27,7 @@ const SeminarPage = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPublic.delete(`/seminar/${request._id}`)
+                axiosPublic.delete(`/seminarRequest/${request._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
@@ -42,6 +42,41 @@ const SeminarPage = () => {
         })
     }
 
+
+    const handleRequest = (request) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, confirm it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosPublic.patch(`/seminarRequest/${request._id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.modifiedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: `Seminar request is confirmed`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
+
+
+            }
+        });
+
+
+    }
 
     return (
         <>
@@ -59,7 +94,7 @@ const SeminarPage = () => {
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Course</th>
+                                <th>Seminar Topic</th>
                                 
                                 <th>WhatsApp No</th>
                                 <th>Segment</th>
@@ -79,7 +114,8 @@ const SeminarPage = () => {
                                         <td>{ seminar.whatsapp }</td>
                                         <td>{ seminar.segment }</td>
 
-                                        <td className='text-2xl text-green-600'><GiConfirmed /></td>
+                                        <td className='text-2xl text-green-600'><button onClick={() => handleRequest(seminar)}>
+                                            { seminar?.status ? <p className='text-sm'>confirmed</p> : <GiConfirmed /> }</button></td>
                                         <td className='text-2xl text-red-500'><button onClick={()=>handleDelete(seminar)}><MdDelete /></button></td>
                                     </tr>
                                 )

@@ -1,14 +1,28 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
 const Seminar = () => {
+    const axiosPublic = useAxiosPublic();
+    const { data: seminars = [] } = useQuery({
+        queryKey: ['seminars'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/seminar');
+            return res.data;
+        }
+    })
+
+
     return (
         <div className='flex flex-col justify-center'>
+            <Helmet>
+                <title>BFIDT | Seminar</title>
+            </Helmet>
             <div className='w-full'>
                 <p className='text-4xl text-center p-5 font-bold shadow-xl'>Seminar</p>
-                <p className="text-2xl py-5 text-center ">
-                    Online Seminar
-                </p>
+
             </div>
 
             <div className='mx-auto'>
@@ -32,23 +46,27 @@ const Seminar = () => {
                         </thead>
                         <tbody>
 
-                            <tr>
-                                <td className="px-4 py-2 border border-gray-400">
-                                    Merchandising
+                            {
+                                seminars?.map(seminar =>
+                                    <tr key={seminar._id}>
+                                        <td className="px-4 py-2 border border-gray-400">
+                                            {seminar.topic}
 
-                                </td>
-                                <td className="px-4 py-2 border border-gray-400">
-                                    15 june, 2024
-                                </td>
-                                <td className="px-4 py-2 border border-gray-400">
-                                    10:00 pm at Night sharp
-                                </td>
+                                        </td>
+                                        <td className="px-4 py-2 border border-gray-400">
+                                            {seminar.date}
+                                        </td>
+                                        <td className="px-4 py-2 border border-gray-400">
+                                            {seminar.time}
+                                        </td>
 
-                                <td className="px-4 py-2 border text-blue-500 border-gray-400">
-                                    <Link to="/seminarForm">Apply Now</Link>
-                                </td>
+                                        <td className="px-4 py-2 border text-blue-500 border-gray-400">
+                                            <Link to={`/seminarForm/${seminar._id}`}>Apply Now</Link>
+                                        </td>
 
-                            </tr>
+                                    </tr>
+                                )
+                            }
                         </tbody>
                     </table>
                 </div>

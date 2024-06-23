@@ -3,10 +3,13 @@ import HeaderText from '../../../components/HeaderText';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
+import { useLoaderData } from 'react-router-dom';
 
 const SeminarForm = () => {
 
     const axiosPublic = useAxiosPublic();
+    const seminar = useLoaderData();
+    console.log(seminar);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -24,7 +27,7 @@ const SeminarForm = () => {
         console.log(data)
 
         
-        axiosPublic.post('/seminar', data)
+        axiosPublic.post('/seminarRequest', data)
             .then(res => {
                 console.log(res.data)
                 if (res.data.insertedId) {
@@ -37,7 +40,7 @@ const SeminarForm = () => {
     return (
         <div>
             <Helmet>
-                <title>BIFDT | Seminar</title>
+                <title>BIFDT | Seminar Registration</title>
             </Helmet>
 
             <div className=' text-white'>
@@ -63,37 +66,39 @@ const SeminarForm = () => {
                                 <div className=" rounded-2xl">
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
                                         {/* name  */}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Name</label>
                                                 <input type="text" id="name" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* email  */}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Email</label>
                                                 <input type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
-                                        {/* course  */}
-                                        <div className='p-2 w-1/2'>
-                                            <label className="">Select course</label>
-                                            <select name='course' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 px-2">
 
-                                                <option value="" selected>Select Course</option>
-                                                <option value={"Fashion Design"}>Fashion Design</option>
-                                                <option value={"Merchandising"}>Merchandising
-                                                </option>
-                                                <option value={"Pattern Design"}>Pattern Design
-                                                </option>
-                                                <option value={"Interior Design"}>Interior Design</option>
-                                                <option value={"Leather Design"}>Leather Design</option>
-                                                <option value={"Computer Operator"}>Computer Operator
-                                                </option>
-
-                                            </select>
+                                         {/* mobile  */}
+                                         <div className="p-2 w-1/3">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Whatsapp/Mobile Number</label>
+                                                <input type="text" id="" name="whatsapp" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
                                         </div>
+
+                                        {/* course  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Course</label>
+                                                <input type="text" id="" name="course" value={seminar?.topic} readOnly className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+
+
+                                        
 
                                         {/* segment  */}
                                         <div className='p-2 w-1/2'>
@@ -108,13 +113,7 @@ const SeminarForm = () => {
                                             </select>
                                         </div>
 
-                                        {/* mobile  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Whatsapp/Mobile Number</label>
-                                                <input type="text" id="" name="whatsapp" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
+                                       
 
                                         
 

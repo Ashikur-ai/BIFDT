@@ -28,6 +28,8 @@ import AddStudentGallary from "../pages/AdminSide/addStudentGallary/AddStudentGa
 import ManageStudentGallary from "../pages/AdminSide/manageStudentGallary/ManageStudentGallary";
 import ManageCoursePage from "../pages/AdminSide/manageCourse/ManageCoursePage";
 import UpdateCoursePage from "../pages/AdminSide/updateCourse/UpdateCoursePage";
+import CreateSeminar from "../pages/AdminSide/seminar/CreateSeminar";
+import ManageSeminar from "../pages/AdminSide/seminar/ManageSeminar";
 
 const BasicRoutes = createBrowserRouter([
     {
@@ -60,8 +62,9 @@ const BasicRoutes = createBrowserRouter([
                 element: <Seminar></Seminar>
             },
             {
-                path: "/seminarForm",
-                element: <SeminarForm></SeminarForm>
+                path: "/seminarForm/:id",
+                element: <SeminarForm></SeminarForm>,
+                loader: ({ params }) => fetch(`http://localhost:5000/seminar/${params.id}`)
             },
             {
                 path: "adminLogin",
@@ -91,8 +94,19 @@ const BasicRoutes = createBrowserRouter([
                 path: "profile",
                 element: <Profile></Profile>
             },
+
             {
-                path: "seminar",
+                path: "createSeminar",
+                element: <CreateSeminar></CreateSeminar>
+            },
+            {
+                path: "manageSeminar",
+                element: <ManageSeminar></ManageSeminar>
+            },
+
+            {
+                // for manage seminar reqeust from student 
+                path: "seminar", 
                 element: <SeminarPage></SeminarPage>
             },
             {

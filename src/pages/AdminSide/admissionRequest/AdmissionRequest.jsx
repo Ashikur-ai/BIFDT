@@ -18,7 +18,40 @@ const AdmissionRequest = () => {
         }
     })
 
-    
+    const handleRequest = (request) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, confirm it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosPublic.patch(`/admission/${request._id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.modifiedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: `Admission request is accepted`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
+
+
+            }
+        });
+
+
+    }
 
 
     const handleDelete = (request) => {
@@ -87,8 +120,12 @@ const AdmissionRequest = () => {
                                         <td>{request.contact}</td>
                                         <td>{request.address}</td>
                                         <td>{request.website}</td>
-                                        <td className='text-2xl text-green-600'><GiConfirmed /></td>
-                                        <td className='text-2xl text-red-500'><button onClick={() => handleDelete(request)}><MdDelete /></button></td>
+                                        <td onClick={() => handleRequest(request)} className='text-xl text-green-600'>
+                                            {request?.status ? <p className='text-sm text-green-600'>Confirmed</p> : <GiConfirmed />}
+                                        </td>
+                                        <td className='text-2xl text-red-500'>
+                                            <button onClick={() => handleDelete(request)}><MdDelete /></button>
+                                        </td>
                                     </tr>
 
                                 )

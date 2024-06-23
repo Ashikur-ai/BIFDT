@@ -50,6 +50,12 @@ const Sidebar = () => {
             <NavigationItem to="/dashboard/admissionRequest" icon={FaFileWaveform} label="Admission Requests" />
             <NavigationItem to="/dashboard/seminar" icon={FaUsers} label="Seminar Requests" />
         </>
+    
+    const seminarUrls =
+    <>
+        <NavigationItem to="/dashboard/createSeminar" icon={MdAddCircle} label="Create Seminar" />
+        <NavigationItem to="/dashboard/manageSeminar" icon={SiNginxproxymanager} label="Manage Seminar" />
+    </>
 
     return (
         <>
@@ -114,9 +120,15 @@ const Sidebar = () => {
                         </li>
 
                         <li className="mb-4">
+                            <Dropdown buttonText="Seminar" urls={seminarUrls} />
+                        </li>
+
+
+                        <li className="mb-4">
                             <Dropdown buttonText="All Requests" urls={requestUrls} />
                         </li>
 
+                       
                         <li className="mb-4">
                             <Dropdown buttonText="Blogs" urls={blogUrls} />
                         </li>
