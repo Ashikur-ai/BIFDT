@@ -6,54 +6,33 @@ import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
 import ReactQuill from 'react-quill';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import axios from 'axios';
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddTestimonialPage = () => {
 
+    const axiosPublic = useAxiosPublic();
+    const { register, handleSubmit, reset } = useForm();
 
+    const onSubmit = async (data) => {
+        console.log(data);
+        // image upload to imgbb 
+        const imageFile = { image: data.image[0] }
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
 
-    const [formData, setFormData] = useState({
-        description: '',
-
-    });
-
-
-    const handleDescriptionChange = (value) => {
-        setFormData({ ...formData, description: value });
-    };
-
-    const modules = {
-        toolbar: [
-            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-            [{ size: [] }],
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-            ['link', 'image', 'video'],
-            ['clean']
-        ],
-    };
-
-    const formats = [
-        'header', 'font', 'size',
-        'bold', 'italic', 'underline', 'strike', 'blockquote',
-        'list', 'bullet', 'indent',
-        'link', 'image', 'video'
-    ];
-
-
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const designation = form.designation.value;
-        const opinion = form.opinion.value;
-
-
-
-
-        const data = { name, email, facebook, twitter, whatsapp, designation };
-        console.log(data)
+        if (res.data.success) {
+            // now send all into the server 
+        }
     }
+
 
 
     return (
@@ -67,50 +46,44 @@ const AddTestimonialPage = () => {
                 <div className=''>
 
                     <section className="text-gray-600 body-font relative">
-                        <div className="container px-5  mx-auto">
+                        <div className="container p-5  mx-auto">
 
-                            <div className="lg:w-3/4 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
+                            <div className="lg:w-full md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
                                 <p className='text-center text-2xl font-bold pb-2'>Add Testimonial</p>
 
-                                <div className="shadow-2xl  px-10 rounded-2xl">
-                                    <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
+                                <div className="   rounded-2xl">
+                                    <form action="" onSubmit={handleSubmit(onSubmit)} className='flex flex-wrap -m-2'>
 
                                         {/* Name  */}
-                                        <div className="p-2 w-full">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Name</label>
-                                                <input type="text" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="text" {...register("name")} name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
                                         {/* image url  */}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Image</label><br />
-                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                <input type="file" {...register("image")} className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
 
 
                                         {/* Designation  */}
-                                        <div className="p-2 w-1/2">
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Designation</label>
-                                                <input type="text" name="designation" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="text" {...register("designation")} name="designation" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
-                                        {/* Description */}
-                                        <div className="p-2 w-full mb-20">
+                                        {/* Opinion  */}
+                                        <div className="p-2 w-full mx-auto">
                                             <div className="relative">
-                                                <label className="leading-7 text-sm font-bold text-gray-600">Description</label>
-                                                <ReactQuill value={formData.description} onChange={handleDescriptionChange} theme="snow"
-                                                    modules={modules}
-                                                    formats={formats}
-                                                    placeholder="Enter your opinion..."
-                                                    readOnly={false}
-                                                    bounds={'.app'}
-                                                    scrollingContainer={'.app'} className="h-64" />
+                                                <label className="leading-7 text-sm text-gray-600">Your Opinion</label>
+                                                <textarea name="opinion" {...register("opinion")} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                             </div>
                                         </div>
 
