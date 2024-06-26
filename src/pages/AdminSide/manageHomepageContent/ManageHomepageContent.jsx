@@ -5,21 +5,39 @@ import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
 import ReactQuill from 'react-quill';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
 const ManageHomepageContent = () => {
-
-
-    
-    const [formData, setFormData] = useState({
+    let formData = {
         notice: '',
+        description: ''
 
-    });
-
-
+    }
+    const axiosPublic = useAxiosPublic()
+    const { data: homepageContent = [], refetch: homepageContentRefetch } = useQuery({
+        queryKey: ['homepageContent'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/homepageContent')
+            return res?.data
+        }
+    })
+    const { description, imageUrl: incomingImageUrl, notice, video_url } = homepageContent[0] || []
+    formData.notice = notice ? notice : '';
+    formData.description = description ? description : '';
+    const imgHostingKey = import.meta.env.VITE_IMG_HOSTING_KEY;
+    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const handleNoticeChange = (value) => {
-        setFormData({ ...formData, notice: value });
+        formData.notice = value
     };
+
+    const handleDescriptionChange = (value) => {
+        formData.description = value
+    };
+
 
     const modules = {
         toolbar: [
@@ -41,20 +59,53 @@ const ManageHomepageContent = () => {
 
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
+        const toastId = toast.loading("Home page content is updating...");
         event.preventDefault();
         const form = event.target;
-        const video_url = form.video_url.value;
-        const notice = form.notice.value;
-        const title = form.title.value;
-        const author = form.author.value;
-        const meta_word = form.meta_word.value;
-        const description = form.description.value;
+        const video_url = form.video_url.value || '';
+        const selectedImage = form.image.files[0] || {};
+        // const author = form.author.value || '';
+        // const meta_word = form.meta_word.value || '';
+        const notice = formData.notice || '';
+        const description = formData.description || '';
+        let imageUrl = ''
+
+        if (!selectedImage?.name) {
+            imageUrl = incomingImageUrl
+        } else {
+            const image = { image: selectedImage }
+
+            const res = await axios.post(imgHostingApi, image, {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            })
+            try {
+                imageUrl = res?.data?.data?.display_url
+            }
+            catch (err) {
+                console.log(err);
+                imageUrl = incomingImageUrl
+                toast.error(err?.message, { id: toastId });
+            }
+        }
 
 
+        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description };
+        axiosPublic.post(`/updateHomepageContent/${homepageContent[0]?._id || 'notAvailable'}`, data)
+            .then(res => {
+                toast.success("Home page Content Updated Successfully!!", { id: toastId });
+                if (res.data?.modifiedCount || res.data?.insertedId) {
+                    console.log(res.data);
+                    homepageContentRefetch()
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                toast.error(err?.message, { id: toastId });
+            })
 
-        const data = { url, date, title, author, meta_word, description };
-        console.log(data)
     }
 
 
@@ -64,40 +115,40 @@ const ManageHomepageContent = () => {
                 <title>Dashboard | Homepage content</title>
             </Helmet>
             <div className='bg-gray-100 text-black'>
-                
+
                 {/* form section  */}
                 <div className=''>
 
                     <section className="text-gray-600 body-font relative">
                         <div className="container ml-2 mt-2 mx-auto">
-                            
+
                             <div className="lg:w-full md:w-2/3 mx-auto bg-white  py-5 rounded-xl">
                                 <p className='text-center text-2xl font-bold pb-2'>Manage Homepage Content</p>
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
-                                        
-                                      
-                                        
-                                         {/* video upload  */}
-                                         <div className="p-2 w-1/2">
+
+
+
+                                        {/* video upload  */}
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section video</label><br />
-                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                <input defaultValue={video_url} name='video_url' type="text" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
                                             </div>
                                         </div>
 
-                                           {/* image upload  */}
-                                           <div className="p-2 w-1/2">
+                                        {/* image upload  */}
+                                        <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section Image</label><br />
-                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                <input name='image' type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
-                                       
 
 
-                                        
+
+
                                         {/* Notice */}
                                         <div className="p-2 w-1/2 mb-10">
                                             <div className="relative">
@@ -111,15 +162,15 @@ const ManageHomepageContent = () => {
                                                     scrollingContainer={'.app'} className="h-64" />
                                             </div>
                                         </div>
-                                       
-                                        
 
-                                              
+
+
+
                                         {/* Description */}
                                         <div className="p-2 w-1/2 mb-20">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm font-bold text-gray-600">Homepage Description</label>
-                                                <ReactQuill value={formData.notice} onChange={handleNoticeChange} theme="snow"
+                                                <ReactQuill value={formData?.description} onChange={handleDescriptionChange} theme="snow"
                                                     modules={modules}
                                                     formats={formats}
                                                     placeholder="Enter homepage description..."
@@ -128,16 +179,16 @@ const ManageHomepageContent = () => {
                                                     scrollingContainer={'.app'} className="h-64" />
                                             </div>
                                         </div>
-                                       
-                                       
-                                      
-
-                                       
-
-                                       
 
 
-                                        
+
+
+
+
+
+
+
+
 
 
 

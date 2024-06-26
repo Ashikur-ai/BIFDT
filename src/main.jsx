@@ -10,6 +10,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from '@tanstack/react-query';
+import { Toaster } from 'react-hot-toast'
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
         <RouterProvider router={BasicRoutes} />
+        <Toaster/>
       </HelmetProvider>
     </QueryClientProvider>
 
