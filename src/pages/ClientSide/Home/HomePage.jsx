@@ -45,8 +45,19 @@ import Blogs from "./components/Blogs";
 import Maps from "./components/Maps";
 import { Link } from "react-router-dom";
 import { MdWhatsapp } from "react-icons/md";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const HomePage = () => {
+  const axiosPublic = useAxiosPublic()
+    const { data: homepageContent = [], refetch: homepageContentRefetch } = useQuery({
+        queryKey: ['homepageContent'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/homepageContent')
+            return res?.data
+        }
+    })
+    const { description, imageUrl, notice, video_url } = homepageContent[0] || []
   return (
     <>
       <div className="">
@@ -59,20 +70,12 @@ const HomePage = () => {
         <ReactPlayer
           controls="true"
           height="360px"
-          url="https://www.youtube.com/watch?v=84r1057ebls&t=1s"
+          url={video_url}
           width="100%"
         />
       </div>
       <Marquee className="bg-pink-700 py-5 text-white">
-        ***Fashion Design: ফ্যাশন ডিজাইন হলো এমন একটি ক্রিয়াকলাপ যেখানে পোশাক,
-        উপাদান, রঙ, স্টাইল ইত্যাদি সমন্বয় করে নতুন ডিজাইন এবং ফ্যাশন তৈরি করা
-        হয়। এটি সৃজনশীল এবং রচনাত্মক প্রক্রিয়া, যা প্রতিটি ফ্যাশন আইটেমের সাথে
-        মিলিত হয়। ***Merchandising: মার্চান্ডাইজিং হলো একটি ব্যবসায়িক পদ্ধতি
-        যা বিভিন্ন পণ্য বা প্রোডাক্ট এর উত্পাদন, পরিচালনা, এবং বিপণন সংক্রান্ত
-        কাজে মাল্টিপল পদক্ষেপ নেয়। ***Graphics Design: গ্রাফিক্স ডিজাইন হলো কোন
-        মাধ্যম বা প্রোডাক্টের জন্য ভিজ্যুয়াল প্রতিনিধিত্ব তৈরি করা। এটি অনেক
-        ধরনের মাধ্যমে প্রযুক্তি ও কৌশলের মাধ্যমে আকৃতি, রঙ, টেক্সচার, এবং
-        টেক্সটের সমন্বয়ে ভিজ্যুয়াল কমিউনিকেশন তৈরি করে।
+       <p dangerouslySetInnerHTML={{ __html: notice }}></p>
       </Marquee>
 
       {/* second section image and bullet point  */}
@@ -123,25 +126,11 @@ const HomePage = () => {
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 bg-white p-5">
           <div>
             <p className="text-pink-700 text-2xl py-5">Home</p>
-            <p>
-              Build successful career with Fashion Design, Apparel
-              Merchandising, Pattern Making, Garments CAD Design, Graphic
-              Design, Web Design, Interior Design, Lather Design, Computer
-              Fundamentals & Operation, courses. BIFDT has been formed to excel
-              the career path of those individuals who want to explore their
-              career in R.M.G (Ready Made Garments) sector in both home and
-              international markets in the post M.F.A(Multi Fiber Agreement)era.
-              We are firmly determined to explore potentials of the students in
-              the area of creativity and imagination with the help of proper
-              care, effective teaching and modern technology. we provide Quality
-              faculty members, who are uncompromising in giving better education
-              through which you can explore yourself in the field of creative
-              world. We ensure smooth and secure professional job prospect to
-              overcome the challenges of 21st century.
+            <p dangerouslySetInnerHTML={{ __html: description }}>
             </p>
           </div>
           <div>
-            <img src={banner} alt="" />
+            <img src={imageUrl || banner} alt="" />
           </div>
         </div>
       </div>

@@ -118,7 +118,7 @@ const BasicRoutes = createBrowserRouter([
                 element: <ManageBlog></ManageBlog>
             },
             {
-                path: "updateBlog",
+                path: "/dashboard/updateBlog/:id",
                 element: <UpdateBlog></UpdateBlog>
             },
             {

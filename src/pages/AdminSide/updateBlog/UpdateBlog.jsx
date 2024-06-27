@@ -1,22 +1,45 @@
 import { Helmet } from 'react-helmet-async';
 import HeaderText from '../../../components/HeaderText';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
 import ReactQuill from 'react-quill';
 import { useState } from 'react';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const UpdateBlog = () => {
-
-    const [formData, setFormData] = useState({
+    const { id } = useParams();
+    const [descriptionErr, setDescriptionErr] = useState(false)
+    const axiosPublic = useAxiosPublic();
+    const imgHostingKey = import.meta.env.VITE_IMG_HOSTING_KEY;
+    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
+    const formData = {
         description: '',
 
-    });
+    }
+    const { data: blogData = {}, refetch: blogDataRefetch, isLoading } = useQuery({
+        queryKey: ['blogData', id],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/singleBlog/${id}`)
+            return res?.data
+        }
+    })
+    if(isLoading){
+        return ''
+    }
+    const { title: incomingTitle, blogImageUrl: incomingBlogImageUrl, date: incomingDate, meta_word: incomingMeta_word, author: incomingAuthor, description: incomingDescription } = blogData
+    formData.description = incomingDescription;
+    const showingData = new Date(incomingDate || 0);
 
-
+    // Format the date as YYYY-MM-DD
+    const formattedDate = showingData?.toISOString()?.split('T')[0];
+    console.log(formattedDate); 
     const handleDescriptionChange = (value) => {
-        setFormData({ ...formData, description: value });
+        formData.description = value
     };
 
     const modules = {
@@ -39,20 +62,61 @@ const UpdateBlog = () => {
 
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
+        setDescriptionErr(false)
         event.preventDefault();
         const form = event.target;
-        const url = form.url.value;
-        const date = form.date.value;
         const title = form.title.value;
-        const author = form.author.value;
+        const blogImage = form.blogImg.files[0];
+        const date = new Date(form.date.value).getTime();
         const meta_word = form.meta_word.value;
-        const description = form.description.value;
+        const author = form.author.value;
+        const description = formData.description;
+        console.log(description);
+        if (!description) {
+            return setDescriptionErr(true)
+        }
+        let blogImageUrl = incomingBlogImageUrl
+        if (!blogImage?.name) {
+            blogImageUrl = incomingBlogImageUrl
+        } else {
+            const image = { image: blogImage }
+
+            const res = await axios.post(imgHostingApi, image, {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            })
+            try {
+                blogImageUrl = res?.data?.data?.display_url
+            }
+            catch (err) {
+                console.log(err);
+                blogImageUrl = incomingBlogImageUrl
+            }
+        }
 
 
-
-        const data = { url, date, title, author, meta_word, description };
+        const data = { title, blogImageUrl, date, meta_word, author, description };
         console.log(data)
+
+        axiosPublic.put(`/updateBlog/${id}`, data)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount) {
+                    console.log('data updated')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Blog has been Updated",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                }
+            })
+            .catch()
+        form.reset();
     }
 
     return (
@@ -79,14 +143,14 @@ const UpdateBlog = () => {
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Blog title</label>
-                                                <input type="text" name="title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="text" name="title" defaultValue={incomingTitle} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* author  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Author Name</label>
-                                                <input type="text" name="author" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="text" defaultValue={incomingAuthor} name="author" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
@@ -94,7 +158,7 @@ const UpdateBlog = () => {
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Date</label>
-                                                <input type="text" name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="date" defaultValue={formattedDate} name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
@@ -102,7 +166,7 @@ const UpdateBlog = () => {
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Meta Keyword</label>
-                                                <input type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input defaultValue={incomingMeta_word} type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
@@ -110,7 +174,7 @@ const UpdateBlog = () => {
                                         <div className="p-2 w-1/4">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Blog Banner Image</label><br />
-                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                <input type="file" name='blogImg' className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
 

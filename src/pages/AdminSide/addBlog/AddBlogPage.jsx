@@ -9,11 +9,13 @@ import { useState } from 'react';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const AddBlogPage = () => {
-
+    const [descriptionErr, setDescriptionErr] = useState(false)
     const axiosPublic = useAxiosPublic();
-
+    const imgHostingKey = import.meta.env.VITE_IMG_HOSTING_KEY;
+    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const [formData, setFormData] = useState({
         description: '',
 
@@ -44,25 +46,49 @@ const AddBlogPage = () => {
 
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
+        setDescriptionErr(false)
         event.preventDefault();
         const form = event.target;
         const title = form.title.value;
-        const date = form.date.value;
+        const blogImage = form.blogImg.files[0];
+        const date = new Date(form.date.value).getTime();
         const meta_word = form.meta_word.value;
         const author = form.author.value;
         const description = formData.description;
+        console.log(description);
+        if (!description) {
+            return setDescriptionErr(true)
+        }
+        let blogImageUrl = ''
+        if (!blogImage?.name) {
+            blogImageUrl = ''
+        } else {
+            const image = { image: blogImage }
+
+            const res = await axios.post(imgHostingApi, image, {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            })
+            try {
+                blogImageUrl = res?.data?.data?.display_url
+            }
+            catch (err) {
+                console.log(err);
+                blogImageUrl = ''
+            }
+        }
 
 
-
-        const data = { title, date, meta_word, author, description };
+        const data = { title, blogImageUrl, date, meta_word, author, description };
         console.log(data)
 
         axiosPublic.post('/blog', data)
             .then(res => {
                 console.log(res.data)
                 if (res.data.insertedId) {
-                    console.log('data added')                   
+                    console.log('data added')
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -119,14 +145,14 @@ const AddBlogPage = () => {
                                         <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Date</label>
-                                                <input type="text" name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="date" name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* image url  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Blog Banner Image</label><br />
-                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                <input type="file" name='blogImg' className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
 
@@ -138,7 +164,7 @@ const AddBlogPage = () => {
                                             </div>
                                         </div>
 
-                                        
+
 
 
                                         {/* Description */}
@@ -153,8 +179,11 @@ const AddBlogPage = () => {
                                                     bounds={'.app'}
                                                     scrollingContainer={'.app'} className="h-64" />
                                             </div>
-                                        </div>
 
+                                        </div>
+                                        {
+                                            descriptionErr && <p className='text-red-500 pl-2'>Please write Description</p>
+                                        }
                                         <div className="p-2 w-full">
                                             <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                                         </div>
