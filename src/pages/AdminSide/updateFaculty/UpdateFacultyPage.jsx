@@ -34,6 +34,7 @@ const UpdateFacultyPage = () => {
         const facebook = form.facebook.value;
         const twitter = form.twitter.value;
         const whatsapp = form.whatsapp.value;
+        const contact = form.contact.value;
         const designation = form.designation.value;
         const selectedImage = form.image.files[0];
 
@@ -57,23 +58,23 @@ const UpdateFacultyPage = () => {
             }
         }
 
-        const data = { name, email, facebook, twitter, whatsapp, designation, image: facultyImageUrl };
+        const data = { name, email, facebook, twitter, whatsapp, contact, designation, image: facultyImageUrl };
 
         axiosPublic.put(`/updateFaculty/${_id}`, data)
-        .then(res=> {
-            if (res.data.modifiedCount) {
-                console.log('data updated')
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Faculty has been Updated",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                facultyDataRefetch()
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    console.log('data updated')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Faculty has been Updated",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    facultyDataRefetch()
 
-            }
-        })
+                }
+            })
         console.log(data)
     }
 
@@ -140,6 +141,13 @@ const UpdateFacultyPage = () => {
                                             </div>
                                         </div>
 
+                                        {/* contact  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Contact Number</label>
+                                                <input type="text" defaultValue={incomingContact} name="contact" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
 
                                         {/* image url  */}
                                         <div className="p-2 w-full">

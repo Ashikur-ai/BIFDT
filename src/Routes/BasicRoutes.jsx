@@ -31,6 +31,7 @@ import UpdateCoursePage from "../pages/AdminSide/updateCourse/UpdateCoursePage";
 import CreateSeminar from "../pages/AdminSide/seminar/CreateSeminar";
 import ManageSeminar from "../pages/AdminSide/seminar/ManageSeminar";
 import UpdateTestimonials from "../pages/updateTestimonials/UpdateTestimonials";
+import { backendURL } from "../backendURL";
 
 const BasicRoutes = createBrowserRouter([
     {
@@ -65,7 +66,7 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "/seminarForm/:id",
                 element: <SeminarForm></SeminarForm>,
-                loader: ({ params }) => fetch(`http://localhost:5000/seminar/${params.id}`)
+                loader: ({ params }) => fetch(`${backendURL}/seminar/${params.id}`)
             },
             {
                 path: "adminLogin",
