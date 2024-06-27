@@ -14,7 +14,7 @@ import axios from 'axios';
 const AddBlogPage = () => {
     const [descriptionErr, setDescriptionErr] = useState(false)
     const axiosPublic = useAxiosPublic();
-    const imgHostingKey = import.meta.env.VITE_IMG_HOSTING_KEY;
+    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const [formData, setFormData] = useState({
         description: '',

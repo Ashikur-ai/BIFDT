@@ -28,7 +28,7 @@ const ManageHomepageContent = () => {
     const { description, imageUrl: incomingImageUrl, notice, video_url } = homepageContent[0] || []
     formData.notice = notice ? notice : '';
     formData.description = description ? description : '';
-    const imgHostingKey = import.meta.env.VITE_IMG_HOSTING_KEY;
+    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const handleNoticeChange = (value) => {
         formData.notice = value
