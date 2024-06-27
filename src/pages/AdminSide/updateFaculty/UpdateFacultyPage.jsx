@@ -1,12 +1,27 @@
 import { Helmet } from 'react-helmet-async';
 import HeaderText from '../../../components/HeaderText';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
 const UpdateFacultyPage = () => {
-
+    const { id } = useParams();
+    // const axiosPublic = useAxiosPublic();
+    // const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    // const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
+    // const { data: facultyData = {}, refetch: facultyDataRefetch, isLoading } = useQuery({
+    //     queryKey: ['facultyData', id],
+    //     queryFn: async () => {
+    //         const res = await axiosPublic.get(`/singleBlog/${id}`)
+    //         return res?.data
+    //     }
+    // })
+    // if(isLoading){
+    //     return ''
+    // }
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;

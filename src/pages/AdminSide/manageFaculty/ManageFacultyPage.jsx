@@ -68,8 +68,7 @@ const ManageFacultyPage = () => {
                                 <th>Social Links</th>
                                 <th>Contact No</th>
                                 <th>Designation</th>
-
-                               
+                                <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -101,8 +100,10 @@ const ManageFacultyPage = () => {
                                         <td>{faculty.contact}</td>
                                         <td>{faculty.designation}</td>
 
-                                        
-                                        <td onClick={()=>handleDelete(faculty)} className='text-2xl text-red-500'><MdDelete /></td>
+                                        <td className='text-2xl text-green-500'>
+                                            <Link to={`/dashboard/updateFaculty/${faculty?._id}`}><MdEditSquare /></Link>
+                                        </td>
+                                        <td onClick={() => handleDelete(faculty)} className='text-2xl text-red-500'><MdDelete /></td>
                                     </tr>
                                 )
                             }
