@@ -6,23 +6,27 @@ import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const UpdateFacultyPage = () => {
     const { id } = useParams();
-    // const axiosPublic = useAxiosPublic();
-    // const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    // const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
-    // const { data: facultyData = {}, refetch: facultyDataRefetch, isLoading } = useQuery({
-    //     queryKey: ['facultyData', id],
-    //     queryFn: async () => {
-    //         const res = await axiosPublic.get(`/singleBlog/${id}`)
-    //         return res?.data
-    //     }
-    // })
-    // if(isLoading){
-    //     return ''
-    // }
-    const handleSubmit = (event) => {
+    const axiosPublic = useAxiosPublic();
+    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
+    const { data: facultyData = {}, refetch: facultyDataRefetch, isLoading } = useQuery({
+        queryKey: ['facultyData', id],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/singleFaculty/${id}`)
+            return res?.data
+        }
+    })
+    if (isLoading) {
+        return ''
+    }
+    console.log(facultyData);
+    const { _id, name: incomingName, email: incomingEmail, contact: incomingContact, designation: incomingDesignation, facebook: incomingFacebook, twitter: incomingTwitter, whatsapp: incomingWhatsapp, image: incomingImage } = facultyData;
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -31,10 +35,45 @@ const UpdateFacultyPage = () => {
         const twitter = form.twitter.value;
         const whatsapp = form.whatsapp.value;
         const designation = form.designation.value;
+        const selectedImage = form.image.files[0];
 
+        let facultyImageUrl = incomingImage
+        if (!selectedImage?.name) {
+            facultyImageUrl = incomingImage
+        } else {
+            const image = { image: selectedImage }
 
+            const res = await axios.post(imgHostingApi, image, {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            })
+            try {
+                facultyImageUrl = res?.data?.data?.display_url
+            }
+            catch (err) {
+                console.log(err);
+                facultyImageUrl = incomingImage
+            }
+        }
 
-        const data = { name, email, facebook, twitter, whatsapp, designation };
+        const data = { name, email, facebook, twitter, whatsapp, designation, image: facultyImageUrl };
+
+        axiosPublic.put(`/updateFaculty/${_id}`, data)
+        .then(res=> {
+            if (res.data.modifiedCount) {
+                console.log('data updated')
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Faculty has been Updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                facultyDataRefetch()
+
+            }
+        })
         console.log(data)
     }
 
@@ -62,14 +101,17 @@ const UpdateFacultyPage = () => {
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Faculty Name</label>
-                                                <input type="text" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="text" name="name"
+                                                    defaultValue={incomingName}
+                                                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* email  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Faculty Email</label>
-                                                <input type="text" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="text" name="email"
+                                                    defaultValue={incomingEmail} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
@@ -77,7 +119,7 @@ const UpdateFacultyPage = () => {
                                         <div className="p-2 w-full">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Enter Designation</label>
-                                                <input type="text" name="designation" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="text" name="designation" defaultValue={incomingDesignation} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
@@ -85,11 +127,16 @@ const UpdateFacultyPage = () => {
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Social Linik</label>
-                                                <input type="text" name="facebook" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Facebook' />
+                                                <input type="text"
+                                                    defaultValue={incomingFacebook} name="facebook" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Facebook' />
 
-                                                <input type="text" name="twitter" className="w-full  bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 my-2 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Twitter' />
+                                                <input type="text" name="twitter"
+                                                    defaultValue={incomingTwitter}
+                                                    className="w-full  bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 my-2 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Twitter' />
 
-                                                <input type="text" name="whatsapp" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Whatsapp' />
+                                                <input type="text" name="whatsapp"
+                                                    defaultValue={incomingWhatsapp}
+                                                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Whatsapp' />
                                             </div>
                                         </div>
 
@@ -98,7 +145,7 @@ const UpdateFacultyPage = () => {
                                         <div className="p-2 w-full">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Faculty Image</label><br />
-                                                <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                <input type="file" name='image' className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                             </div>
                                         </div>
 

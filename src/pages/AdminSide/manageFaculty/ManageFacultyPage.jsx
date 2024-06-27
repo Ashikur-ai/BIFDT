@@ -103,7 +103,7 @@ const ManageFacultyPage = () => {
                                         <td className='text-2xl text-green-500'>
                                             <Link to={`/dashboard/updateFaculty/${faculty?._id}`}><MdEditSquare /></Link>
                                         </td>
-                                        <td onClick={() => handleDelete(faculty)} className='text-2xl text-red-500'><MdDelete /></td>
+                                        <td onClick={() => handleDelete(faculty)} className='text-2xl text-red-500  cursor-pointer'><MdDelete /></td>
                                     </tr>
                                 )
                             }
