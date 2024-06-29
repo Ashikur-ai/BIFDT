@@ -5,6 +5,9 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import BasicRoutes from './Routes/BasicRoutes.jsx'
 import { HelmetProvider } from 'react-helmet-async'
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 import {
   QueryClient,
   QueryClientProvider,

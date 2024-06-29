@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import HTMLContent from "../../../components/backendComponents/HTMLContent";
 import DOMPurify from 'dompurify';
 import Swal from "sweetalert2";
+import { makeVisibleTime } from "../../../makeVisibleTime";
 
 const ManageBlog = () => {
 
@@ -59,9 +60,9 @@ const ManageBlog = () => {
             <Helmet>
                 <title>Dashboard | Manage Blogs</title>
             </Helmet>
-            <div className="overflow-x-auto bg-white mx-5 rounded-lg">
+            <div className="bg-white mx-5 rounded-lg overflow-x-auto max-w-[1000px]">
                 <p className="text-2xl font-bold text-center py-2">Manage Blogs</p>
-                <table className="table table-zebra">
+                <table className="table table-zebra overflow-x-auto">
                     {/* head */}
                     <thead>
                         <tr>
@@ -95,19 +96,19 @@ const ManageBlog = () => {
                                             </div>
                                             <div>
 
-                                                <div className="text-sm opacity-50">{blog.date}</div>
+                                                <div className="text-sm opacity-50 min-w-max">{makeVisibleTime(blog?.date)}</div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td className="min-w-[200px]">
                                         <p className="font-bold">{blog.title}</p>
                                     </td>
-                                    <td>
+                                    <td className="min-w-[300px]">
                                         <div className="">
                                             {/* {subtext.substring(0, 50)}... */}
                                             {/* <HTMLContent content={blog.description} /> */}
                                             <div
-                                                className="blog-content"
+                                                className="blog-content h-[80px] overflow-hidden"
                                                 dangerouslySetInnerHTML={{ __html: blog.description }}
                                             ></div>
                                         </div>
