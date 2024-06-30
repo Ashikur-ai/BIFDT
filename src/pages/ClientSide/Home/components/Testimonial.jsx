@@ -14,8 +14,22 @@ import teacher4 from "../../../../assets/images/teacher4.jpg";
 
 // import required modules
 import { FreeMode, Pagination } from 'swiper/modules';
+import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
 const Testimonial = () => {
+    const axiosPublic = useAxiosPublic();
+    const { data: testimonials = [], refetch, isLoading } = useQuery({
+        queryKey: ['testimonials'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/testimonial');
+            return res.data;
+        }
+    })
+    if (isLoading) {
+        return ''
+    }
+    console.log(testimonials);
     return (
         <>
             <p className='text-pink-700 font-bold text-4xl text-center py-5'>Testimonials</p>
@@ -24,7 +38,7 @@ const Testimonial = () => {
             <Swiper
                 slidesPerView={2}
                 spaceBetween={100}
-               
+
                 pagination={{
                     clickable: true,
                 }}
@@ -47,49 +61,33 @@ const Testimonial = () => {
             >
 
 
-                <SwiperSlide>
-                    <section className="text-gray-600 body-font">
-                        <div className="container px-5 py-24 mx-auto">
-                            <div className="xl:w-3/4 lg:w-full w-full mx-auto text-center">
-                            <div className="avatar">
-                                    <div className="w-24 rounded-full">
-                                        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                {
+                    testimonials?.map(testimonial=> <SwiperSlide key={testimonial?._id}>
+                        <section className="text-gray-600 body-font">
+                            <div className="container px-5 py-24 mx-auto">
+                                <div className="xl:w-3/4 lg:w-full w-full mx-auto text-center">
+                                    <div className="avatar">
+                                        <div className="w-24 rounded-full">
+                                            <img src={testimonial?.image} />
+                                        </div>
                                     </div>
+    
+    
+                                    <p className="">{testimonial?.opinion}</p>
+                                    <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
+                                    <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">{testimonial?.name}</h2>
+                                    <p className="text-gray-500">{testimonial?.designation}</p>
                                 </div>
-                                
-                                
-                                <p className=" ">Edison bulb retro cloud bread echo park, helvetica stumptown taiyaki taxidermy 90's cronut +1 kinfolk. Single-origin coffee ennui shaman taiyaki vape DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware. </p>
-                                <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
-                                <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">HOLDEN CAULFIELD</h2>
-                                <p className="text-gray-500">Senior Product Designer</p>
                             </div>
-                        </div>
-                    </section>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <section className="text-gray-600 body-font">
-                        <div className="container px-5 py-24 mx-auto">
-                            <div className="xl:w-3/4 lg:w-full w-full mx-auto text-center">
-                            <div className="avatar">
-                                    <div className="w-24 rounded-full">
-                                        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                                    </div>
-                                </div>
-                                
-                                
-                                <p className=" ">Edison bulb retro cloud bread echo park, helvetica stumptown taiyaki taxidermy 90's cronut +1 kinfolk. Single-origin coffee ennui shaman taiyaki vape DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware. </p>
-                                <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
-                                <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">HOLDEN CAULFIELD</h2>
-                                <p className="text-gray-500">Senior Product Designer</p>
-                            </div>
-                        </div>
-                    </section>
-                </SwiperSlide>
+                        </section>
+                    </SwiperSlide>)
+                }
 
                 
 
-                
+
+
+
 
 
 

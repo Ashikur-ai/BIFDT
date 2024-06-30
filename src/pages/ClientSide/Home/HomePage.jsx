@@ -41,12 +41,12 @@ import CountUp from "react-countup";
 import TabSection from "./components/TabSection";
 import Faculty from "./components/Faculty";
 import Testimonial from "./components/Testimonial";
-import Blogs from "./components/Blogs";
 import Maps from "./components/Maps";
 import { Link } from "react-router-dom";
 import { MdWhatsapp } from "react-icons/md";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import Blogs from "./components/Blogs";
 
 const HomePage = () => {
   const axiosPublic = useAxiosPublic()
@@ -57,7 +57,7 @@ const HomePage = () => {
             return res?.data
         }
     })
-    const { description, imageUrl, notice, video_url } = homepageContent[0] || []
+    const { description, imageUrl, notice, video_url,since, student, rating, instructor, guarantee, ratio } = homepageContent[0] || []
   return (
     <>
       <div className="">
@@ -300,32 +300,33 @@ const HomePage = () => {
 
       {/*fith section countdown part  */}
       <div className="mx-20 py-10 my-10 bg-pink-600 grid grid-cols-1 lg:grid-cols-6 justify-items-center">
+      {/* since, student, rating, instructor, guarantee, ratio */}
         <div className="m-auto text-white py-5 text-center">
-          <CountUp className="text-4xl  font-bold" end={2007} duration={9} />
+          <CountUp className="text-4xl  font-bold" end={since} duration={9} />
           <p className="text-xl font-bold">Since</p>
         </div>
 
         <div className="m-auto text-white py-5 text-center">
           <span className="text-4xl  font-bold">
-            <CountUp className="" end={20000} duration={9} /> +
+            <CountUp className="" end={student} duration={9} /> +
           </span>
           <p className="text-xl font-bold">Students</p>
         </div>
 
         <div className="m-auto text-white py-5 text-center">
-          <CountUp className="text-4xl  font-bold" end={5} duration={9} />
+          <CountUp className="text-4xl  font-bold" end={rating} duration={9} />
           <p className="text-xl font-bold">Education ratings</p>
         </div>
 
         <div className="m-auto text-white py-5 text-center">
           <span className="text-4xl  font-bold">
-            <CountUp className="" end={30} duration={9} /> +
+            <CountUp className="" end={instructor} duration={9} /> +
           </span>
           <p className="text-xl font-bold">Numbers of Instructors</p>
         </div>
 
         <div className="m-auto text-white py-5 text-center">
-          <CountUp className="text-4xl  font-bold" end={5} duration={9} />
+          <CountUp className="text-4xl  font-bold" end={guarantee} duration={9} />
           <p className="text-xl font-bold">Education Guarantee</p>
         </div>
         <div className="m-auto text-white py-5 text-center">

@@ -4,10 +4,26 @@ import { Link } from 'react-router-dom';
 import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 const ManageCountDown = () => {
-
+    const axiosPublic = useAxiosPublic()
+    const { data: homepageContent = [], refetch: homepageContentRefetch, isLoading } = useQuery({
+        queryKey: ['homepageContent'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/homepageContent')
+            return res?.data
+        }
+    });
+    if (isLoading) {
+        return ''
+    }
+    console.log(homepageContent);
+    const { since: incomingSince, student: incomingStudent, rating: incomingRating, instructor: incomingInstructor, guarantee: incomingGuarantee, ratio: incomingRatio } = homepageContent[0];
     const handleSubmit = (event) => {
+
         event.preventDefault();
         const form = event.target;
         const since = form.since.value;
@@ -18,9 +34,20 @@ const ManageCountDown = () => {
         const ratio = form.ratio.value;
 
 
-
+        const toastId = toast.loading("Home page content is updating...");
         const data = { since, student, rating, instructor, guarantee, ratio };
-        console.log(data)
+        axiosPublic.post(`/updateHomepageContent/${homepageContent[0]?._id || 'notAvailable'}`, data)
+            .then(res => {
+                toast.success("Home page Countdown Updated Successfully!!", { id: toastId });
+                if (res.data?.modifiedCount || res.data?.insertedId) {
+                    console.log(res.data);
+                    homepageContentRefetch()
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                toast.error(err?.message, { id: toastId });
+            })
     }
 
 
@@ -30,39 +57,39 @@ const ManageCountDown = () => {
                 <title>Dashboard | CountDown</title>
             </Helmet>
             <div className='bg-gray-100 text-black'>
-                
+
                 {/* form section  */}
                 <div className=''>
 
                     <section className="text-gray-600 body-font relative">
                         <div className="container ml-2 mt-2  mx-auto">
-                            
+
                             <div className="lg:w-full md:w-2/3 mx-auto bg-white   rounded-xl">
                                 <p className='text-center text-2xl font-bold pt-3'>Manage CountDown</p>
 
                                 <div className="shadow-2xl my-10 px-5 rounded-2xl">
                                     <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
-                                        
+
                                         {/* Since  */}
                                         <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Since when</label>
-                                                <input type="text" name="since" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input defaultValue={incomingSince} type="number" name="since" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* Students  */}
                                         <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">No. of Students</label>
-                                                <input type="text" name="student" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input defaultValue={incomingStudent} type="number" name="student" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
-                                         {/* Ratings  */}
-                                         <div className="p-2 w-1/3">
+                                        {/* Ratings  */}
+                                        <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Ratings</label>
-                                                <input type="text"  name="rating" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input defaultValue={incomingRating} type="number" name="rating" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
@@ -70,7 +97,7 @@ const ManageCountDown = () => {
                                         <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">No. of Instructor</label>
-                                                <input type="text" name="instructor" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input defaultValue={incomingInstructor} type="number" name="instructor" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
@@ -78,7 +105,7 @@ const ManageCountDown = () => {
                                         <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Education guarantee</label>
-                                                <input type="text" name="guarantee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input defaultValue={incomingGuarantee} type="number" name="guarantee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
@@ -87,13 +114,13 @@ const ManageCountDown = () => {
                                         <div className="p-2 w-1/3">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Job success ratio</label>
-                                                <input type="text" name="ratio" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input defaultValue={incomingRatio} type="number" name="ratio" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
-                                      
-                                       
 
-                                        
+
+
+
                                         <div className="p-2 w-full">
                                             <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Update</button>
                                         </div>

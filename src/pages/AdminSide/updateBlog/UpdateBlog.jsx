@@ -68,7 +68,6 @@ const UpdateBlog = () => {
         const form = event.target;
         const title = form.title.value;
         const blogImage = form.blogImg.files[0];
-        const date = new Date(form.date.value).getTime();
         const meta_word = form.meta_word.value;
         const author = form.author.value;
         const description = formData.description;
@@ -97,7 +96,7 @@ const UpdateBlog = () => {
         }
 
 
-        const data = { title, blogImageUrl, date, meta_word, author, description };
+        const data = { title, blogImageUrl,  meta_word, author, description };
         console.log(data)
 
         axiosPublic.put(`/updateBlog/${id}`, data)
@@ -154,27 +153,21 @@ const UpdateBlog = () => {
                                             </div>
                                         </div>
 
-                                        {/* Date  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600">Date</label>
-                                                <input type="date" defaultValue={formattedDate} name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                            </div>
-                                        </div>
+                                        
 
                                         {/* Meta keyword  */}
                                         <div className="p-2 w-1/2">
-                                            <div className="relative">
+                                            <div className="relative ">
                                                 <label className="leading-7 text-sm text-gray-600">Meta Keyword</label>
                                                 <input defaultValue={incomingMeta_word} type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
                                         {/* image url  */}
-                                        <div className="p-2 w-1/4">
-                                            <div className="relative">
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative w-full">
                                                 <label className="leading-7 text-sm text-gray-600">Blog Banner Image</label><br />
-                                                <input type="file" name='blogImg' className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                <input type="file" name='blogImg' className="file-input file-input-bordered file-input-md w-full" />
                                             </div>
                                         </div>
 
