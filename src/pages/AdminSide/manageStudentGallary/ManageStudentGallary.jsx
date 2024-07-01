@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import { MdDelete, MdEditSquare } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import AddStudentGallary from '../addStudentGallary/AddStudentGallary';
+import AddCategory from './AddCategory';
 
 const ManageStudentGallary = () => {
     const axiosPublic = useAxiosPublic();
@@ -19,7 +20,7 @@ const ManageStudentGallary = () => {
             return res.data;
         }
     })
-    if(isLoading){
+    if (isLoading) {
         return ''
     }
 
@@ -61,7 +62,10 @@ const ManageStudentGallary = () => {
             </Helmet>
             <div className="bg-white p-5 mx-4 rounded-lg">
                 <p className='text-2xl font-bold text-center'>Manage Student Gallery</p>
-               <AddStudentGallary refetch={refetch} studentGallery={studentGallery} handleDelete={handleDelete} />
+                <div className='grid md:grid-cols-2 gap-3'>
+                    <AddStudentGallary refetch={refetch} studentGallery={studentGallery} handleDelete={handleDelete} />
+                    <AddCategory />
+                </div>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">
                         {/* head */}
@@ -78,34 +82,34 @@ const ManageStudentGallary = () => {
 
                             {
                                 studentGallery.map((gallery, idx) => <tr key={gallery._id}>
-                                <td>
-                                    {idx + 1}
-                                </td>
-                                <td className="min-w-[200px]">
-                                    <p className="font-bold">{gallery.category}</p>
-                                </td>
-                                <td>
-                                    <div className="flex items-center gap-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={gallery?.image || "https://static-cse.canva.com/blob/567558/50stunninglybeautifulgeometricpatternsingraphicdesign.jpg"} />
+                                    <td>
+                                        {idx + 1}
+                                    </td>
+                                    <td className="min-w-[200px]">
+                                        <p className="font-bold">{gallery.category}</p>
+                                    </td>
+                                    <td>
+                                        <div className="flex items-center gap-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={gallery?.image || "https://static-cse.canva.com/blob/567558/50stunninglybeautifulgeometricpatternsingraphicdesign.jpg"} />
+                                                </div>
                                             </div>
-                                        </div>
-                                       
-                                    </div>
-                                </td>
-                               
-                                
-                                <td className='text-2xl text-green-500'>
-                                    <Link to={`/dashboard/updateGallery/${gallery._id}`}><MdEditSquare /></Link>
-                                </td>
 
-                                <td>
-                                    <button 
-                                    onClick={() => handleDelete(gallery?._id)}
-                                    ><MdDelete className="text-2xl text-red-600" /></button>
-                                </td>
-                            </tr>)
+                                        </div>
+                                    </td>
+
+
+                                    <td className='text-2xl text-green-500'>
+                                        <Link to={`/dashboard/updateGallery/${gallery._id}`}><MdEditSquare /></Link>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            onClick={() => handleDelete(gallery?._id)}
+                                        ><MdDelete className="text-2xl text-red-600" /></button>
+                                    </td>
+                                </tr>)
                             }
 
 
