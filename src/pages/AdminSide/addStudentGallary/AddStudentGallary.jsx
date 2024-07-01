@@ -8,7 +8,7 @@ import { FaFacebook } from 'react-icons/fa';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const AddStudentGallary = ({ studentGallery, refetch, handleDelete }) => {
     const [category, setCategory] = useState('')
@@ -16,6 +16,12 @@ const AddStudentGallary = ({ studentGallery, refetch, handleDelete }) => {
     const axiosPublic = useAxiosPublic();
     const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
+
+    useEffect(() => {
+        const images = category === '' ? [] : studentGallery?.filter(gallery => gallery?.category === category);
+        setShowingImage(images);
+
+    }, [category, studentGallery])
     const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target;
@@ -58,11 +64,13 @@ const AddStudentGallary = ({ studentGallery, refetch, handleDelete }) => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-
+                    setCategory('')
+                    refetch()
+                    form.reset();
                 }
             })
             .catch()
-        form.reset();
+
 
 
 
@@ -71,8 +79,7 @@ const AddStudentGallary = ({ studentGallery, refetch, handleDelete }) => {
         e.preventDefault();
         const value = e.target.value;
         setCategory(value)
-        const images = value === '' ? [] : studentGallery?.filter(gallery => gallery?.category === value);
-        setShowingImage(images)
+
 
     };
     const handleDeleteImage = (id) => {
@@ -83,17 +90,17 @@ const AddStudentGallary = ({ studentGallery, refetch, handleDelete }) => {
     console.log(showingImage);
     return (
         <>
-            <section className="text-gray-600 body-font relative">
-                <div className="container px-5  mx-auto">
+            <section className="text-gray-600 body-font relative w-full">
+                <div className="container  mx-auto w-full">
 
-                    <div className="lg:w-3/4 md:w-2/3 bg-white px-10 py-5 rounded-xl">
+                    <div className="w-full bg-white  py-5 rounded-xl">
                         <p className='text-center text-2xl font-bold'>Add Student Gallery</p>
 
                         <div className="shadow-md p-10 rounded-2xl">
                             <form action="" onSubmit={handleSubmit} className='flex flex-col -m-2'>
 
                                 {/* Category  */}
-                                <div className='p-2 w-2/3'>
+                                <div className='p-2 w-full'>
                                     <label className="font-bold">Category</label>
                                     <select onChange={handleChangeCategory} required type="text" name="category" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                         <option value="">Select</option>
@@ -107,7 +114,7 @@ const AddStudentGallary = ({ studentGallery, refetch, handleDelete }) => {
                                 </div>
 
                                 {/* image url  */}
-                                <div className="p-2 w-2/3">
+                                <div className="p-2 w-full">
                                     <div className="relative">
                                         <label className="leading-7 text-sm text-gray-600 font-bold">Upload Image</label><br />
                                         <input required type="file" name='image' className="file-input file-input-bordered file-input-md w-full" />
@@ -126,7 +133,7 @@ const AddStudentGallary = ({ studentGallery, refetch, handleDelete }) => {
                                         <div className='flex flex-col gap-2'>
                                             {
                                                 showingImage?.map(image => <div key={image?._id} className='flex gap-3'>
-                                                    <img className='w-28' src={image?.image} />
+                                                    <img className='w-28 h-16 object-cover overflow-hidden rounded-md' src={image?.image} />
                                                     <p onClick={() => handleDeleteImage(image?._id)} className=' h-6 w-6 flex justify-center items-center bg-gray-100 rounded-md hover:bg-gray-200 cursor-pointer transition-all duration-300'>X</p>
                                                 </div>)
                                             }
