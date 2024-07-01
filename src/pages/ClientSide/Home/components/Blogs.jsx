@@ -63,7 +63,7 @@ const Blogs = () => {
                 <p dangerouslySetInnerHTML={{ __html: blog?.description }}></p>
               </div>
               <div className="px-3 mx-auto mb-5 flex justify-between gap-5 items-center">
-                <Link to="/blogDetails">
+                <Link to={`/blogDetails/${blog?._id}`}>
                   <button className="btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">
                     Read More
                   </button>

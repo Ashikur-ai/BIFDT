@@ -4,104 +4,113 @@ import { Link } from 'react-router-dom';
 import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
+import { MdDelete, MdEditSquare } from 'react-icons/md';
+import Swal from 'sweetalert2';
+import AddStudentGallary from '../addStudentGallary/AddStudentGallary';
 
 const ManageStudentGallary = () => {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const category = form.category.value;
-        const email = form.email.value;
-        const course = form.course.value;
-        const gender = form.gender.value;
-        const contact = form.contact.value;
-        const address = form.address.value;
-        const website = form.website.value;
+    const axiosPublic = useAxiosPublic();
+    const { data: studentGallery = [], refetch, isLoading } = useQuery({
+        queryKey: ['studentGallery'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/studentGallery');
+            return res.data;
+        }
+    })
+    if(isLoading){
+        return ''
+    }
 
+    const handleDelete = (id) => {
 
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosPublic.delete(`/studentGallery/${id}`)
+                    .then(res => {
+                        if (res?.data?.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            refetch()
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
 
-        const data = { name, email, course, gender, contact, address, website };
-        console.log(data)
+            }
+        });
+
     }
     return (
         <>
             <Helmet>
-                <title>Dashboard | Manage Student Gallary</title>
+                <title>Dashboard | Manage Student Gallery</title>
             </Helmet>
-            <div className='bg-gray-100 text-black'>
+            <div className="bg-white p-5 mx-4 rounded-lg">
+                <p className='text-2xl font-bold text-center'>Manage Student Gallery</p>
+               <AddStudentGallary refetch={refetch} studentGallery={studentGallery} handleDelete={handleDelete} />
+                <div className="overflow-x-auto">
+                    <table className="table table-zebra">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Category</th>
+                                <th>Image</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                {/* form section  */}
-                <div className=''>
-
-                    <section className="text-gray-600 body-font relative">
-                        <div className="container px-5  mx-auto">
-
-                            <div className="lg:w-3/4 md:w-2/3 mx-auto bg-white px-10 py-5 rounded-xl">
-                                <p className='text-center text-2xl font-bold'>Manage Student Gallary</p>
-
-                                <div className="shadow-2xl  p-10 rounded-2xl">
-                                    <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
-
-                                        {/* Category  */}
-                                        <div className='p-2 w-3/4'>
-                                            <label className="font-bold text-sm">Select Category</label>
-                                            <select name='category' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 px-2">
-
-                                                <option value="" selected>Select Category</option>
-                                                <option value={"Fashion Design"}>Fashion Design</option>
-                                                <option value={"Merchandising"}>Merchandising
-                                                </option>
-                                                <option value={"Pattern Design"}>Pattern Design
-                                                </option>
-                                                <option value={"Interior Design"}>Interior Design</option>
-                                                <option value={"Leather Design"}>Leather Design</option>
-                                                <option value={"Computer Operator"}>Computer Operator
-                                                </option>
-
-                                            </select>
-                                        </div>
-
-
-
-                                        <form className=' pl-4 pb-4 my-10 justify-center items-center'>
-                                            <p className=' text-sm font-bold '>Add Picture URL</p>
-
-                                            <input type="text" placeholder="provide picture link" className="input input-bordered input-accent w-full max-w-xs" />
-                                            <div className="p-2 w-full">
-                                                <button className=" text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Add</button>
+                            {
+                                studentGallery.map((gallery, idx) => <tr key={gallery._id}>
+                                <td>
+                                    {idx + 1}
+                                </td>
+                                <td className="min-w-[200px]">
+                                    <p className="font-bold">{gallery.category}</p>
+                                </td>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={gallery?.image || "https://static-cse.canva.com/blob/567558/50stunninglybeautifulgeometricpatternsingraphicdesign.jpg"} />
                                             </div>
-                                        </form>
-
-
-
-
-                                        <div className="p-2 w-full">
-                                            <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
                                         </div>
-                                    </form>
-
-
-                                    <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                                        <a className="text-indigo-500">info@bifdt.com</a>
-                                        <p className="leading-normal my-5">House # 3/GA,
-                                            <br />Shyamoli, Road # 1. Dhaka-1207.
-                                        </p>
-                                        <span className="inline-flex">
-                                            <a className="text-gray-500">
-                                                <Link to="https://x.com/"><BiLogoTwitter className="text-2xl" /></Link>
-                                            </a>
-                                            <a className="ml-4 text-gray-500">
-                                                <Link to="https://www.youtube.com/"><TbBrandYoutubeFilled className="text-2xl" /></Link>
-                                            </a>
-                                            <a className="ml-4 text-gray-500">
-                                                <Link to="https://www.facebook.com/"><FaFacebook className="text-xl" /></Link>
-                                            </a>
-
-                                        </span>
+                                       
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                                </td>
+                               
+                                
+                                <td className='text-2xl text-green-500'>
+                                    <Link to={`/dashboard/updateGallery/${gallery._id}`}><MdEditSquare /></Link>
+                                </td>
+
+                                <td>
+                                    <button 
+                                    onClick={() => handleDelete(gallery?._id)}
+                                    ><MdDelete className="text-2xl text-red-600" /></button>
+                                </td>
+                            </tr>)
+                            }
+
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </>

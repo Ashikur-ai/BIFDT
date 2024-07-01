@@ -32,6 +32,7 @@ import CreateSeminar from "../pages/AdminSide/seminar/CreateSeminar";
 import ManageSeminar from "../pages/AdminSide/seminar/ManageSeminar";
 import UpdateTestimonials from "../pages/updateTestimonials/UpdateTestimonials";
 import { backendURL } from "../backendURL";
+import UpdateGallery from "../pages/AdminSide/UpdateGallery/UpdateGallery";
 
 const BasicRoutes = createBrowserRouter([
     {
@@ -56,7 +57,7 @@ const BasicRoutes = createBrowserRouter([
                 element: <BlogPage></BlogPage>
             },
             {
-                path: "/blogDetails",
+                path: "/blogDetails/:id",
                 element: <BlogDetails></BlogDetails>
             },
             {
@@ -162,6 +163,10 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "manageStudentGallary",
                 element: <ManageStudentGallary></ManageStudentGallary>
+            },
+            {
+                path: "/dashboard/updateGallery/:id",
+                element: <UpdateGallery/>
             },
             {
                 path: "manageCourses",
