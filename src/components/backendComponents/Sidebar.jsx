@@ -41,7 +41,6 @@ const Sidebar = () => {
 
     const studentGallaryUrls =
         <>
-            <NavigationItem to="/dashboard/addStudentGallary" icon={MdAddCircle} label="Add Student Gallary" />
             <NavigationItem to="/dashboard/manageStudentGallary" icon={SiNginxproxymanager} label="Manage Student Gallary" />
         </>
 
