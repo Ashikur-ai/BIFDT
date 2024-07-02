@@ -45,7 +45,7 @@ const AddBlogPage = () => {
     ];
 
 
-
+console.log(new Date().getTime());
     const handleSubmit = async (event) => {
         setDescriptionErr(false)
         event.preventDefault();

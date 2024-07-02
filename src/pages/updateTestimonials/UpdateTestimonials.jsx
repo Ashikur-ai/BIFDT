@@ -52,7 +52,7 @@ const UpdateTestimonials = () => {
         }
 
         const allData = { name, designation, opinion, image: testimonialsImage };
-        axiosPublic.put(`/updateTestimonials/${_id}`, allData)
+        axiosPublic.put(`/updateTestimonial/${_id}`, allData)
             .then(res => {
                 if (res.data.modifiedCount) {
                     Swal.fire({

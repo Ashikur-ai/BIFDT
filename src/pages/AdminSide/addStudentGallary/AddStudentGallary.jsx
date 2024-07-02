@@ -10,7 +10,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 
-const AddStudentGallary = ({ studentGallery, refetch, handleDelete }) => {
+const AddStudentGallary = ({ studentGallery, refetch, handleDelete, allCategory }) => {
     const [category, setCategory] = useState('')
     const [showingImage, setShowingImage] = useState([])
     const axiosPublic = useAxiosPublic();
@@ -104,11 +104,9 @@ const AddStudentGallary = ({ studentGallery, refetch, handleDelete }) => {
                                     <label className="font-bold">Category</label>
                                     <select onChange={handleChangeCategory} required type="text" name="category" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                         <option value="">Select</option>
-                                        <option value="Interior Design">Interior Design</option>
-                                        <option value="Fashion Design">Fashion Design</option>
-                                        <option value="Merchandising">Merchandising</option>
-                                        <option value="Computer Operation">Computer Operation</option>
-                                        <option value="Pattern Design">Pattern Design</option>
+                                        {
+                                            allCategory?.map(category=> <option key={category?._id} value={category?.category_name}>{category?.category_name}</option>)
+                                        }
                                     </select>
 
                                 </div>
