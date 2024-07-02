@@ -36,8 +36,8 @@ const SeminarPage = () => {
                                 icon: "success"
                             });
                             refetch();
-                    }
-                })
+                        }
+                    })
             }
         })
     }
@@ -55,8 +55,8 @@ const SeminarPage = () => {
             confirmButtonText: "Yes, confirm it!"
         }).then((result) => {
             if (result.isConfirmed) {
-
-                axiosPublic.patch(`/seminarRequest/${request._id}`)
+                console.log(request._id);
+                axiosPublic.put(`/seminarRequest/${request._id}`)
                     .then(res => {
                         console.log(res.data)
                         if (res.data.modifiedCount > 0) {
@@ -95,7 +95,7 @@ const SeminarPage = () => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Seminar Topic</th>
-                                
+
                                 <th>WhatsApp No</th>
                                 <th>Segment</th>
                                 <th>Confirm</th>
@@ -106,17 +106,17 @@ const SeminarPage = () => {
                             {
                                 seminarRequests?.map((seminar, index) =>
                                     <tr key={seminar._id}>
-                                        <td>{ index + 1 }</td>
-                                        <td>{ seminar.name }</td>
-                                        <td>{ seminar.email }</td>
-                                        <td>{ seminar.course }</td>
-                                        
-                                        <td>{ seminar.whatsapp }</td>
-                                        <td>{ seminar.segment }</td>
+                                        <td>{index + 1}</td>
+                                        <td>{seminar.name}</td>
+                                        <td>{seminar.email}</td>
+                                        <td>{seminar.course}</td>
+
+                                        <td>{seminar.whatsapp}</td>
+                                        <td>{seminar.segment}</td>
 
                                         <td className='text-2xl text-green-600'><button onClick={() => handleRequest(seminar)}>
-                                            { seminar?.status ? <p className='text-sm'>confirmed</p> : <GiConfirmed /> }</button></td>
-                                        <td className='text-2xl text-red-500'><button onClick={()=>handleDelete(seminar)}><MdDelete /></button></td>
+                                            {seminar?.status ? <p className='text-sm'>confirmed</p> : <GiConfirmed />}</button></td>
+                                        <td className='text-2xl text-red-500'><button onClick={() => handleDelete(seminar)}><MdDelete /></button></td>
                                     </tr>
                                 )
                             }

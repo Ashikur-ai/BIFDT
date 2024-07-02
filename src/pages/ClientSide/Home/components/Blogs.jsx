@@ -14,6 +14,8 @@ import { Link } from "react-router-dom";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { makeVisibleTime } from "../../../../makeVisibleTime";
+import Marquee from "react-fast-marquee";
+import BlogCard from "../../blog/BlogCard";
 
 const Blogs = () => {
   const axiosPublic = useAxiosPublic();
@@ -24,60 +26,21 @@ const Blogs = () => {
       return res.data;
     }
   });
-  console.log(blogs[0]?.blogImageUrl); 
   return (
     <div className="">
 
-
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={100}
-        pagination={{
-          clickable: true,
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 50,
-          },
-        }}
-        modules={[Pagination]}
-        className="mySwiper bg-white"
+      <Marquee
+        speed={35}
+        pauseOnHover={true}
       >
-        {
-          blogs.map(blog => <SwiperSlide key={blog._id}>
-            <div className="bg-white shadow-md rounded-lg flex flex-col gap-2">
-              <div className="min-h-48 w-full overflow-hidden">
-                <img className="min-h-48 object-cover" src={blog?.blogImageUrl} />
-              </div>
-              <div className="p-4 flex-grow flex flex-col h-[150px] overflow-hidden">
-                <h2 className="text-lg font-bold mb-2">{blog?.title}</h2>
-                <p dangerouslySetInnerHTML={{ __html: blog?.description }}></p>
-              </div>
-              <div className="px-3 mx-auto mb-5 flex justify-between gap-5 items-center">
-                <Link to={`/blogDetails/${blog?._id}`}>
-                  <button className="btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">
-                    Read More
-                  </button>
-                </Link>
+        <div className='flex gap-20 px-20'>
+          {
+            blogs.map(blog => <BlogCard key={blog._id} blog={blog} />)
+          }
+        </div>
 
-                <p className="text-sm">{makeVisibleTime(blog?.date)}</p>
-                
-              </div>
+      </Marquee>
 
-            </div>
-          </SwiperSlide>)
-        }
-
-      </Swiper>
     </div>
   );
 };

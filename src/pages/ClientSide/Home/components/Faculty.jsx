@@ -20,6 +20,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitterSquare, FaWhatsapp } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa6';
+import Marquee from 'react-fast-marquee';
 
 const Faculty = () => {
     const axiosPublic = useAxiosPublic();
@@ -42,85 +43,53 @@ const Faculty = () => {
     return (
         <>
             <p className='text-pink-700 font-bold text-4xl text-center py-5'>Our Faculty</p>
-
-            <Swiper
-                slidesPerView={1}
-                spaceBetween={100}
-                pagination={{
-                    clickable: true,
-                }}
-                breakpoints={{
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 40,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 50,
-                    },
-                }}
-                modules={[Pagination]}
-                className="mySwiper"
+            <Marquee
+                speed={35}
+                pauseOnHover={true}
             >
-
-                {
-                    faculties?.map(faculty =>
-                        <SwiperSlide key={faculty._id}>
-                            <div className="card  h-96 border border-gray-500 bg-base-100 shadow-xl">
-                                <figure className="px-10 pt-10">
-                                    <img src={faculty.image} alt="Shoes" className=" rounded-xl" />
-                                </figure>
-                                <div className="card-body items-center text-center">
-                                    <h2 className="card-title font-black">{faculty.name}</h2>
-                                    <p className='font-black'>{faculty.email}</p>
-                                    <div className="card-actions">
-                                        <span className="inline-flex">
-                                            {faculty.facebook && (
-                                                <a href={addHttpIfMissing(faculty.facebook)} target="_blank" rel="noopener noreferrer">
-                                                    <FaFacebook className="text-2xl" />
-                                                </a>
-                                            )}
-
-                                            {faculty.whatsapp && (
-                                                <a href={addHttpIfMissing(faculty.whatsapp)} target="_blank" rel="noopener noreferrer">
-                                                    <FaWhatsapp className="text-2xl mx-3" />
-                                                </a>
-                                            )}
-
-                                            {faculty.twitter && (
-                                                <a href={addHttpIfMissing(faculty.twitter)} target="_blank" rel="noopener noreferrer">
-                                                    <FaTwitterSquare className="text-2xl" />
-                                                </a>
-                                            )}
-
-                                        </span>
+                <div className='flex gap-20 px-20'>
+                    {
+                        faculties?.map(faculty =>
+                            <div key={faculty._id} className='w-full'>
+                                <div className="card h-96 w-full max-w-[320px] sm:w-[320px] border border-gray-500 bg-base-100 shadow-xl">
+                                    <figure className="px-10 pt-10 h-60 w-full overflow-hidden over">
+                                        <img src={faculty.image} alt="Shoes" className=" rounded-xl w-full max-w-[320px] sm:w-[320px] object-cover" />
+                                    </figure>
+                                    <div className="card-body items-center text-center">
+                                        <h2 className="card-title font-black">{faculty.name}</h2>
+                                        <p className='font-black'>{faculty?.background_of_study ? `${faculty?.background_of_study}` : 'Not given'}</p>
+                                        <p className='font-black'> Experience: {faculty?.job_experience ? `${faculty?.job_experience}+` : 'Not given'}</p>
+                                        {/* <div className="card-actions">
+                                            <span className="inline-flex">
+                                                {faculty.facebook && (
+                                                    <a href={addHttpIfMissing(faculty.facebook)} target="_blank" rel="noopener noreferrer">
+                                                        <FaFacebook className="text-2xl" />
+                                                    </a>
+                                                )}
+    
+                                                {faculty.whatsapp && (
+                                                    <a href={addHttpIfMissing(faculty.whatsapp)} target="_blank" rel="noopener noreferrer">
+                                                        <FaWhatsapp className="text-2xl mx-3" />
+                                                    </a>
+                                                )}
+    
+                                                {faculty.twitter && (
+                                                    <a href={addHttpIfMissing(faculty.twitter)} target="_blank" rel="noopener noreferrer">
+                                                        <FaTwitterSquare className="text-2xl" />
+                                                    </a>
+                                                )}
+    
+                                            </span>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>
-                        </SwiperSlide>
-                    )
-                }
+                        )
+                    }
+                </div>
 
+            </Marquee>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </Swiper>
         </>
     )
 };

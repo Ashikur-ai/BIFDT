@@ -59,7 +59,7 @@ const SeminarForm = () => {
                     <section className="text-gray-600 body-font relative">
                         <div className="container px-5  mx-auto">
                             <div className="flex flex-col text-center w-full ">
-                                <p className="lg:w-2/3 mx-auto  leading-relaxed text-sm pb-2">Fillup the form to attend our free seminar</p>
+                                <p className="lg:w-2/3 mx-auto  leading-relaxed text-sm pb-2">Fill up the form to attend our free seminar</p>
                             </div>
                             <div className="lg:w-full md:w-2/3   mx-auto bg-white px-10 py-5 rounded-xl">
 

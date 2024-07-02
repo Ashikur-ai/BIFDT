@@ -1,19 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeaderText from '../../../components/HeaderText';
 import Blogs from '../Home/components/Blogs';
 import { Link } from 'react-router-dom';
+import BlogCard from './BlogCard';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
 const BlogPage = () => {
+    const [firstCardId, setFirstCardId] = useState(0);
+    const [cardPerSlice, setCardPerSlice] = useState(6);
+    const axiosPublic = useAxiosPublic();
+    const { data: blogs = [], refetch, isLoading } = useQuery({
+        queryKey: ['blogs'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/blog');
+            return res.data;
+        }
+    });
+
+    const extendedBlogs = [...blogs, ...blogs, ...blogs, ...blogs,...blogs, ...blogs, ...blogs, ...blogs];
+    let showingBlogs = extendedBlogs.map((data, idx) => {
+        const newData = {
+            ...data,
+            id: idx + 1
+        };
+        return newData;
+    });
+
+    const totalCard = showingBlogs.length;
+
+    const handleNext = () => {
+        const newFirstCardId = firstCardId + cardPerSlice;
+        if (newFirstCardId < totalCard) {
+            setFirstCardId(newFirstCardId);
+        }
+    };
+
+    const handlePrev = () => {
+        const newFirstCardId = firstCardId - cardPerSlice;
+        if (newFirstCardId >= 0) {
+            setFirstCardId(newFirstCardId);
+        }
+    };
+
     return (
-        <div className='px-20 mt-10  min-h-screen'>
+        <div className='px-20 my-10 min-h-screen'>
             <p className="text-4xl m-10"><span className='text-pink-600 border-b-2'>Latest</span> News</p>
 
-            <Blogs></Blogs>
-            <Blogs></Blogs>
-            <Blogs></Blogs>
-            <Blogs></Blogs>
-            <Blogs></Blogs>
-            <Blogs></Blogs>
+            <div className='flex gap-10 flex-wrap justify-center items-center'>
+                {
+                    (showingBlogs.slice(firstCardId, firstCardId + cardPerSlice)).map((blog, idx) => <BlogCard key={idx} blog={blog} />)
+                }
+            </div>
+            <div className="mt-4 flex justify-center items-center gap-6">
+                <button
+                    onClick={handlePrev}
+                    disabled={firstCardId === 0}
+                    className={`px-7 btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max ${firstCardId === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                >
+                    Prev
+                </button>
+                <div>
+                    {firstCardId / cardPerSlice + 1} /{Math.ceil(totalCard / cardPerSlice)}
+                </div>
+                <button
+                    onClick={handleNext}
+                    disabled={firstCardId + cardPerSlice >= totalCard}
+                    className={`px-7 btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max ${firstCardId + cardPerSlice >= totalCard ? 'opacity-50 cursor-not-allowed' : ''}`}
+                >
+                    Next
+                </button>
+            </div>
         </div>
     );
 };

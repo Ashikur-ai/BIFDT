@@ -349,6 +349,7 @@ const HomePage = () => {
         {/* seventh section Faculty  */}
         <div className="px-20 py-10 mx-auto">
           <Faculty></Faculty>
+          <div className="py-5 flex justify-center items-center"> <button className="btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">See More</button></div>
         </div>
 
         {/* eighth section Testimonial  */}
@@ -360,10 +361,12 @@ const HomePage = () => {
           {/* ninth section Blogs  */}
 
           <div className="px-20 ">
-            <p className="text-pink-700 font-bold text-4xl text-center py-5 bg-white ">
+            <div className="relative text-pink-700 font-bold text-4xl text-center py-5 bg-white ">
               Blogs
-            </p>
+
+            </div>
             <Blogs></Blogs>
+            <Link to={'/blogs'}> <div className="py-5 flex justify-center items-center"> <button className="btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">See More</button></div></Link>
           </div>
 
         </div>
