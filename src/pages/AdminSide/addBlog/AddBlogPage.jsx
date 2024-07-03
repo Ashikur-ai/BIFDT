@@ -52,11 +52,11 @@ console.log(new Date().getTime());
         const form = event.target;
         const title = form.title.value;
         const blogImage = form.blogImg.files[0];
-        const date = new Date().getTime()
+        const date = form.date.value
         const meta_word = form.meta_word.value;
         const author = form.author.value;
         const description = formData.description;
-        console.log(description);
+        console.log(date);
         if (!description) {
             return setDescriptionErr(true)
         }
@@ -155,6 +155,13 @@ console.log(new Date().getTime());
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Meta Keyword</label>
                                                 <input type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+                                        {/* Date  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Date</label>
+                                                <input type="date" name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 

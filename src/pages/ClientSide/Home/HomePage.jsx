@@ -7,20 +7,6 @@ import app from "../../../assets/images/apps.webp";
 import python from "../../../assets/images/python.webp";
 import graphic from "../../../assets/images/graphic.webp";
 import banner from "../../../assets/images/banner.webp";
-
-import fashion from "../../../assets/images/fashion.webp";
-import marchen from "../../../assets/images/marchen.webp";
-import cad from "../../../assets/images/cad.webp";
-import clo from "../../../assets/images/clo.webp";
-import digital from "../../../assets/images/digital.webp";
-import gradesign from "../../../assets/images/gradesign.webp";
-import web from "../../../assets/images/web.webp";
-import interior from "../../../assets/images/interior.webp";
-import leather from "../../../assets/images/leather.webp";
-import admission from "../../../assets/images/admission.webp";
-import seminar from "../../../assets/images/seminar.webp";
-import career from "../../../assets/images/career.webp";
-
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -47,6 +33,7 @@ import { MdWhatsapp } from "react-icons/md";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Blogs from "./components/Blogs";
+import HomePageCourses from "./components/HomePageCourses";
 
 const HomePage = () => {
   const axiosPublic = useAxiosPublic()
@@ -62,6 +49,7 @@ const HomePage = () => {
     return ''
   }
   console.log(video_url);
+
   return (
     <>
       <div className="">
@@ -140,166 +128,11 @@ const HomePage = () => {
         </div>
 
         {/* fourth section animation part  */}
-        <div className="w-3/5 mx-auto">
-          {/* 1 */}
-          <AnimatedDiv value={300}>
-            <div className="flex flex-col lg:flex-row">
-              <div className="w-full lg:w-1/2 bg-rose-600   ">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  Fashion Design
-                </p>
-              </div>
-              <div className="w-full lg:w-1/2">
-                <img src={fashion} className=" w-full h-64" alt="" />
-              </div>
-            </div>
-          </AnimatedDiv>
-          {/* 2         */}
-          <AnimatedDiv value={-300}>
-            <div className="flex flex-col-reverse lg:flex-row">
-              <div className="w-full lg:w-1/2">
-                <img src={marchen} className=" w-full h-64" alt="" />
-              </div>
-              <div className="w-full lg:w-1/2 bg-rose-600">
-                <p className="text-white text-2xl font-bold  text-center pt-20">
-                  Apparel Merchandising
-                </p>
-              </div>
-            </div>
-          </AnimatedDiv>
-          {/* 3 */}
-          <AnimatedDiv value={300}>
-            <div className="flex flex-col lg:flex-row">
-              <div className="w-full lg:w-1/2 bg-rose-600   ">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  Pattern Design & CAD
-                </p>
-              </div>
-              <div className="w-full lg:w-1/2">
-                <img src={cad} className=" w-full h-64" alt="" />
-              </div>
-            </div>
-          </AnimatedDiv>
-          {/* 4        */}
-          <AnimatedDiv value={-300}>
-            <div className="flex flex-col-reverse lg:flex-row">
-              <div className="w-full lg:w-1/2">
-                <img src={clo} className=" w-full h-64" alt="" />
-              </div>
-              <div className="w-full lg:w-1/2 bg-rose-600 ">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  CLO & Browzwear
-                </p>
-              </div>
-            </div>
-          </AnimatedDiv>
-          {/* 5 */}
-          <AnimatedDiv value={300}>
-            <div className="flex flex-col lg:flex-row">
-              <div className="w-full lg:w-1/2 bg-rose-600   ">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  Digital Marketing & Branding
-                </p>
-              </div>
-              <div className="w-full lg:w-1/2">
-                <img src={digital} className=" w-full h-64" alt="" />
-              </div>
-            </div>
-          </AnimatedDiv>
-          {/* 6 */}
-          <AnimatedDiv value={-300}>
-            <div className="flex flex-col-reverse lg:flex-row">
-              <div className="w-full lg:w-1/2">
-                <img src={gradesign} className=" w-full h-64" alt="" />
-              </div>
-              <div className="w-full lg:w-1/2 bg-rose-600 ">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  Graphic Design
-                </p>
-              </div>
-            </div>
-          </AnimatedDiv>
-          {/* 7 */}
-          <AnimatedDiv value={300}>
-            <div className="flex flex-col lg:flex-row">
-              <div className="w-full lg:w-1/2 bg-rose-600 ">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  Web Design
-                </p>
-              </div>
-              <div className="w-full lg:w-1/2">
-                <img src={web} className=" w-full h-64" alt="" />
-              </div>
-            </div>
-          </AnimatedDiv>
-        </div>
+        <HomePageCourses />
 
         <div className="w-3/5 mx-auto">
           {/* 8 */}
-          <AnimatedDiv value={-300}>
-            <div className="flex flex-col-reverse lg:flex-row">
-              <div className="w-full lg:w-1/2">
-                <img src={interior} className=" w-full h-64" alt="" />
-              </div>
-              <div className="w-full lg:w-1/2 bg-rose-600">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  Interior Design
-                </p>
-              </div>
-            </div>
-          </AnimatedDiv>
-          {/* 9 */}
-          <AnimatedDiv value={300}>
-            <div className="flex flex-col lg:flex-row">
-              <div className="w-full lg:w-1/2 bg-rose-600">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  Leather Design
-                </p>
-              </div>
-              <div className="w-full lg:w-1/2">
-                <img src={leather} className=" w-full h-64" alt="" />
-              </div>
-            </div>
-          </AnimatedDiv>
-          {/* 10 */}
-          <AnimatedDiv value={-300}>
-            <div className="flex flex-col-reverse lg:flex-row">
-              <div className="w-full lg:w-1/2">
-                <img src={admission} className=" w-full h-64" alt="" />
-              </div>
-              <div className="w-full lg:w-1/2 bg-rose-600">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  Online Admission
-                </p>
-              </div>
-            </div>
-          </AnimatedDiv>
-          {/* 11 */}
-          <AnimatedDiv value={300}>
-            <div className="flex flex-col lg:flex-row">
-              <div className="w-full lg:w-1/2 bg-rose-600 ">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  Free Seminar
-                </p>
-              </div>
-              <div className="w-full lg:w-1/2">
-                <img src={seminar} className=" w-full h-64" alt="" />
-              </div>
-            </div>
-          </AnimatedDiv>
-          {/* 12 */}
-          <AnimatedDiv value={-300}>
-            <div className="flex flex-col-reverse lg:flex-row">
-              <div className="w-full lg:w-1/2">
-                <img src={career} className=" w-full h-64" alt="" />
-              </div>
-              <div className="w-full lg:w-1/2 bg-rose-600">
-                <p className="text-white text-2xl font-bold text-center pt-20">
-                  Career blogs
-                </p>
-              </div>
-            </div>
-          </AnimatedDiv>
+
         </div>
 
         {/*fith section countdown part  */}

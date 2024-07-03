@@ -1,4 +1,5 @@
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Tab, Tabs, Paragraph, Grommet } from 'grommet';
 import 'react-tabs/style/react-tabs.css';
 
 // images
@@ -27,15 +28,69 @@ const TabSection = () => {
             return res.data;
         }
     })
-    if (isLoading) {
+    const { data: allCategory = [], refetch: allCategoryRefetch, isLoading: allCategoryIsLoading } = useQuery({
+        queryKey: ['allCategory'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/allCategory');
+            return res.data;
+        }
+    })
+    if (isLoading || allCategoryIsLoading) {
         return ''
     }
+    const customTheme = {
+        tab: {
+            active: {
+                color: 'black',
+            },
+            border: {
+                side: 'bottom',
+                size: 'small',
+                color: 'border',
+                active: {
+                    color: '#db2777',
+                },
+                hover: {
+                    color: '#db2777',
+                },
+            },
+            color: 'text',
+            margin: {
+                vertical: 'xsmall',
+                horizontal: 'small',
+            },
+            pad: {
+                bottom: 'xsmall',
+            },
+            extend: ({ theme }) => `
+            color: ${theme.global.colors['accent-1']};
+            &:hover {
+              background-color: ${theme.global.colors['light-4']};
+            }
+          `,
+        },
+    };
     console.log(studentGallery);
     const showingGallery = categoryName === 'All' ? studentGallery : studentGallery.filter(gallery => gallery?.category === categoryName)
     return (
         <>
             <p className='text-pink-700 font-bold text-4xl text-center py-5'>Student Photo Gallery</p>
-            <Tabs>
+            <Grommet  Grommet theme={customTheme}>
+                <Tabs  justify="start">
+                    <Tab className='text-red-500' title='All' onClick={() => setCategoryName('All')}></Tab>
+                    {
+                        allCategory?.map(category => <Tab onClick={() => setCategoryName(category?.category_name)} key={category?._id} title={category?.category_name}></Tab>)
+                    }
+    
+                </Tabs>
+            </Grommet>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+
+                {
+                    showingGallery?.map(gallery => <img key={gallery?._id} className='w-full h-full rounded-2xl shadow-2xl' src={gallery?.image} alt="" />)
+                }
+            </div>
+            {/* <Tabs>
                 <TabList>
                     <Tab><button className="btn btn-outline btn-secondary" onClick={() => setCategoryName('All')}>All</button></Tab>
                     <Tab><button className="btn btn-outline btn-secondary" onClick={() => setCategoryName('Interior Design')}>Interior Design</button></Tab>
@@ -45,15 +100,10 @@ const TabSection = () => {
                     <Tab><button className="btn btn-outline btn-secondary" onClick={() => setCategoryName('Pattern Design')}>Pattern Design</button></Tab>
                 </TabList>
 
-                <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
-
-                    {
-                        showingGallery?.map(gallery => <img key={gallery?._id} className='w-full h-full rounded-2xl shadow-2xl' src={gallery?.image} alt="" />)
-                    }
-                </div>
+               
 
 
-            </Tabs>
+            </Tabs> */}
         </>
     )
 };

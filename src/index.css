@@ -2,12 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+
+body {
   font-family: "Arima", system-ui;
 }
 
 ul {
-  list-style-type: disc; /* Default bullet points */
+  list-style-type: disc;
+  /* Default bullet points */
   padding-left: 20px;
 }
-
