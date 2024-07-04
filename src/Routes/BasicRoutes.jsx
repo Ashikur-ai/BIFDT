@@ -33,8 +33,11 @@ import ManageSeminar from "../pages/AdminSide/seminar/ManageSeminar";
 import UpdateTestimonials from "../pages/updateTestimonials/UpdateTestimonials";
 import { backendURL } from "../backendURL";
 import UpdateGallery from "../pages/AdminSide/UpdateGallery/UpdateGallery";
-import Faculties from "../pages/ClientSide/Faculties/Faculties";
+
 import AboutUs from "../pages/ClientSide/aboutUs/AboutUs";
+
+import Faculties from "../pages/ClientSide/Faculties/Faculties";
+
 
 const BasicRoutes = createBrowserRouter([
     {
