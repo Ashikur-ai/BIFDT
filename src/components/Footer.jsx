@@ -15,7 +15,21 @@ const Footer = () => {
 
                 <nav>
                     <div className="grid grid-flow-col gap-4">
+
                         <div>
+
+                    <div>
+                        <nav className="px-10">
+                            <div className="flex px-20 py-5 gap-5 flex-wrap">
+                                <Link to="https://x.com/"><BiLogoTwitter className="text-4xl" /></Link>
+                                <Link to="https://www.youtube.com/"><TbBrandYoutubeFilled className="text-4xl" />
+                                </Link>
+                                <Link to="https://www.facebook.com/"><FaFacebook className="text-4xl" /></Link>
+                                <Link to="https://www.pinterest.com/"><BsPinterest className="text-4xl" /></Link>
+                            </div>
+                        </nav>
+                        <div className=" lg:pl-20">
+
 
                             <div className=" lg:pl-20">
 

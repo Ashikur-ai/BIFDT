@@ -27,8 +27,11 @@ const Blogs = () => {
     }
   });
   return (
-    <div className="">
+    <div className="px-2 sm:px-10 md:px-20">
+      <div className="relative text-pink-700 font-bold text-4xl text-center py-5 bg-white ">
+        Blogs
 
+      </div>
       <Marquee
         speed={35}
         pauseOnHover={true}
@@ -40,7 +43,7 @@ const Blogs = () => {
         </div>
 
       </Marquee>
-
+      <Link to={'/blogs'}> <div className="py-5 flex justify-center items-center"> <button className="btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">See More</button></div></Link>
     </div>
   );
 };

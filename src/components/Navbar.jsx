@@ -5,9 +5,7 @@ const Navbar = () => {
 
     const navlinks =
         <>
-            <Link to="/" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Home</Link>
-
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Courses</Link>
+            <Link to="/" className="transition-all duration-300 mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Home</Link>
 
 
 
@@ -27,6 +25,7 @@ const Navbar = () => {
             <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Computer Operator</Link>
 
             <Link to="/blogs" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Blogs</Link>
+            <Link to="/faculties" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Faculties</Link>
 
             <Link to="/onlineAdmission" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Online Admission</Link>
 
