@@ -1,7 +1,9 @@
 import Marquee from "react-fast-marquee";
 import banner from "../../../assets/images/coursePage/banner.jpg";
+import banner2 from '../../../assets/images/admission.webp'
+import banner3 from '../../../assets/images/gallary1.jpg'
 import { Helmet } from "react-helmet-async";
-
+import 'swiper/css/effect-fade';
 
 // import required modules
 import ReactPlayer from "react-player";
@@ -13,13 +15,16 @@ import VideoGrid from "./VideoGrid";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import CourseDetailsTab from "./CourseDetailsTab";
+import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
+import { SwiperSlide, Swiper } from "swiper/react";
 
 // slider import
 
 // Import Swiper React components
 
 const CourseDetails = () => {
-
+  const videoDivStyle = 'rounded-md overflow-hidden k w-[230px] h-[130px]'
+  const titleStyle = 'text-black font-medium py-1 max-w-[230px]'
   const subtext = "Fashion has become an important a part of 21st-century life. Our Fashion Design Course has been Specifically created to provide you with everything you need to know in order to take those first steps to make your designs a  reality and beyond. It features a unique combination of 17modules(30 Credits) to equip you with all the knowledge, skills & requisites that any budding fashion designer requires.";
 
   const [showMore, setShowMore] = useState(false);
@@ -32,8 +37,33 @@ const CourseDetails = () => {
 
       {/* Header part  */}
 
-      <img className="h-full" src={banner} alt="" />
-      <Marquee className="bg-pink-700 py-5 text-white">
+
+    <div className=" ">
+        <Swiper
+          spaceBetween={50}
+          speed={1000}
+          centeredSlides={true}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          effect="fade"
+          navigation={false}
+          modules={[Autoplay, Pagination, Navigation, EffectFade]}
+          className="mySwiper md:h-[calc(100vh-150px)] overflow-hidden"
+        >
+          <SwiperSlide>
+            <img className="h-[250px] sm:h-[350px] md:h-[calc(100vh-150px)] w-full object-cover" src={banner} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="h-[250px] sm:h-[350px] md:h-[calc(100vh-150px)] w-full object-cover" src={banner2} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="h-[250px] sm:h-[350px] md:h-[calc(100vh-150px)] w-full object-cover" src={banner3} alt="" />
+          </SwiperSlide>
+        </Swiper>
+    </div>
+      <Marquee className="bg-pink-700 py-1.5 text-white">
         ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে আকর্ষণীয়,
         সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন মার্চেন্ডাইজিংকে।
         মার্চেন্ডাইজিং-এর একটি ডিপ্লমা কোর্স বদলে দিতে পারে আপনার কর্মময় জীবন।
@@ -242,7 +272,7 @@ const CourseDetails = () => {
           </div>
 
           <p className="text-pink-700 font-bold text-xl p-1 bg-white ">
-          Fashion Design :: Education for Excellence :: Bangladesh Institute of Fashion & Design Technology (BIFDT)
+            Fashion Design :: Education for Excellence :: Bangladesh Institute of Fashion & Design Technology (BIFDT)
           </p>
           <hr />
           <p className="pr-10 pl-1">
@@ -251,7 +281,7 @@ const CourseDetails = () => {
           </p>
 
           {/* main video  */}
-          <div className="h-96 w-1/2 mx-auto rounded-lg p-2
+          <div className="h-96 w-[80%] mx-auto rounded-lg p-2
           bg-pink-600">
             <ReactPlayer
               controls="true"
@@ -263,44 +293,56 @@ const CourseDetails = () => {
 
           {/* four related video  */}
 
-          <div className="hidden  lg:flex">
+          <div className="hidden  lg:flex py-10">
             <Marquee pauseOnHover={true}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                <div className=" ">
-                  <ReactPlayer
-                    controls="true"
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pr-10">
+                <div className="  ">
+                  <div className={`${videoDivStyle}`}>
+                    <ReactPlayer
+                      controls="true"
 
-                    url="https://www.youtube.com/watch?v=CW4zNp-HF2Q&t=1s"
-                    width="80%"
-                    height="70%"
-                  />
+                      url="https://www.youtube.com/watch?v=CW4zNp-HF2Q&t=1s"
+                      width="100%"
+                      height='100%'
+                    />
+                  </div>
+                  <p className={`${titleStyle}`}>First Video</p>
                 </div>
-                <div className=" ">
-                  <ReactPlayer
-                    controls="true"
+                <div>
+                  <div className={`${videoDivStyle}`}>
+                    <ReactPlayer
+                      controls="true"
 
-                    url="https://www.youtube.com/watch?v=VdK0_MzwTsw&t=259s"
-                    width="80%"
-                    height="70%"
-                  />
+                      url="https://www.youtube.com/watch?v=VdK0_MzwTsw&t=259s"
+                      width="100%"
+                      height='100%'
+                    />
+                  </div>
+                  <p className={`${titleStyle}`}>Second Video</p>
                 </div>
-                <div className=" ">
-                  <ReactPlayer
-                    controls="true"
+                <div>
+                  <div className={`${videoDivStyle}`}>
+                    <ReactPlayer
+                      controls="true"
 
-                    url="https://www.youtube.com/watch?v=si-mdWiQc34&t=20s"
-                    width="80%"
-                    height="70%"
-                  />
+                      url="https://www.youtube.com/watch?v=si-mdWiQc34&t=20s"
+                      width="100%"
+                      height='100%'
+                    />
+                  </div>
+                  <p className={`${titleStyle}`}>Third Video</p>
                 </div>
-                <div className=" ">
-                  <ReactPlayer
-                    controls="true"
+                <div>
+                  <div className={`${videoDivStyle}`}>
+                    <ReactPlayer
+                      controls="true"
 
-                    url="https://www.youtube.com/watch?v=Mm5fcw8kStk"
-                    width="80%"
-                    height="70%"
-                  />
+                      url="https://www.youtube.com/watch?v=Mm5fcw8kStk"
+                      width="100%"
+                      height='100%'
+                    />
+                  </div>
+                  <p className={`${titleStyle}`}>Fourth Video</p>
                 </div>
               </div>
             </Marquee>
@@ -316,7 +358,7 @@ const CourseDetails = () => {
 
 
             <p className="text-2xl font-bold py-5">Admission Notice</p>
-            <Marquee className="bg-pink-700 py-5 text-white">
+            <Marquee className="bg-pink-700 py-1.5 text-white">
               ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে
               আকর্ষণীয়, সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন
               মার্চেন্ডাইজিংকে। মার্চেন্ডাইজিং-এর একটি ডিপ্লমা কোর্স বদলে দিতে
@@ -419,11 +461,11 @@ const CourseDetails = () => {
           </div> */}
 
           <div className="pt-2">
-          <p className="text-2xl font-bold py-5">Course Details</p>
+            <p className="text-2xl font-bold py-5">Course Details</p>
             <CourseDetailsTab></CourseDetailsTab>
           </div>
 
-         
+
 
 
 
@@ -437,17 +479,16 @@ const CourseDetails = () => {
       <div className="px-20">
         {/* student gallary section  */}
         <div className="py-20">
-            <TabSection ></TabSection>
-          </div>
+          <TabSection ></TabSection>
+        </div>
 
         <div>
-          <p className="text-center text-pink-600 text-4xl font-bold pb-2">Blogs</p>
-            <Blogs></Blogs>
-          </div>
+          <Blogs></Blogs>
+        </div>
       </div>
 
       <div className="">
-         
+
         <Maps></Maps>
       </div>
     </>

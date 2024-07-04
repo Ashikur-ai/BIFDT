@@ -56,22 +56,22 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
             const data = { category, image: imageUrl };
             return axiosPublic.post('/studentGallery', data);
         });
-
-        Promise.all(uploadPromises)
-            .then((results) => {
-                if (results.every(res => res.data.insertedId)) {
-                    console.log('All images added');
-                    toast.success("Uploaded Successfully!!", { id: toastId });
-                    setCategory('');
-                    refetch();
-                    form.reset();
-                    setSelectedImages([]); // Clear selected images after form reset
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                toast.error(err?.message, { id: toastId });
-            });
+        console.log(allImages);
+        // Promise.all(uploadPromises)
+        //     .then((results) => {
+        //         if (results.every(res => res.data.insertedId)) {
+        //             console.log('All images added');
+        //             toast.success("Uploaded Successfully!!", { id: toastId });
+        //             setCategory('');
+        //             refetch();
+        //             form.reset();
+        //             setSelectedImages([]); // Clear selected images after form reset
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //         toast.error(err?.message, { id: toastId });
+        //     });
     };
 
     const handleImageChange = (event) => {
