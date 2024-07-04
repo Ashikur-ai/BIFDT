@@ -33,6 +33,7 @@ import ManageSeminar from "../pages/AdminSide/seminar/ManageSeminar";
 import UpdateTestimonials from "../pages/updateTestimonials/UpdateTestimonials";
 import { backendURL } from "../backendURL";
 import UpdateGallery from "../pages/AdminSide/UpdateGallery/UpdateGallery";
+import AboutUs from "../pages/ClientSide/aboutUs/AboutUs";
 
 const BasicRoutes = createBrowserRouter([
     {
@@ -72,6 +73,10 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "adminLogin",
                 element: <AdminLogin></AdminLogin>
+            },
+            {
+                path: "aboutUs",
+                element: <AboutUs></AboutUs>
             }
             
         ]
