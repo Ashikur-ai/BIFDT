@@ -17,7 +17,7 @@ const Footer = () => {
                     <div className="grid grid-flow-col gap-4">
                     <div>
                         <nav className="px-10">
-                            <div className="flex px-20 py-5 gap-5">
+                            <div className="flex px-20 py-5 gap-5 flex-wrap">
                                 <Link to="https://x.com/"><BiLogoTwitter className="text-4xl" /></Link>
                                 <Link to="https://www.youtube.com/"><TbBrandYoutubeFilled className="text-4xl" />
                                 </Link>

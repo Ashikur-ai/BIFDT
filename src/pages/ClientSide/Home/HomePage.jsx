@@ -1,40 +1,21 @@
 import Marquee from "react-fast-marquee";
 import { Helmet } from "react-helmet-async";
 import ReactPlayer from "react-player";
-
-// image import
-import app from "../../../assets/images/apps.webp";
-import python from "../../../assets/images/python.webp";
-import graphic from "../../../assets/images/graphic.webp";
 import banner from "../../../assets/images/banner.webp";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-// import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { useEffect, useState } from "react";
-import AnimatedDiv from "../../../AnimatedDiv";
-
 import CountUp from "react-countup";
 import TabSection from "./components/TabSection";
-import Faculty from "./components/Faculty";
+import FacultySlide from "./components/FacultySlide";
 import Testimonial from "./components/Testimonial";
 import Maps from "./components/Maps";
 import { Link } from "react-router-dom";
-import { MdWhatsapp } from "react-icons/md";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Blogs from "./components/Blogs";
 import HomePageCourses from "./components/HomePageCourses";
-
+import HomePageCoursePlayer from "./components/HomePageCoursePlayer";
+import HomePageCountDown from "./components/HomePageCountDown";
+import Videos from "./components/Videos";
+import faceIllutionImg from '../../../assets/images/faceIllution.jpg'
 const HomePage = () => {
   const axiosPublic = useAxiosPublic()
   const { data: homepageContent = [], refetch: homepageContentRefetch, isLoading } = useQuery({
@@ -71,55 +52,22 @@ const HomePage = () => {
         </Marquee>
 
         {/* second section image and bullet point  */}
-        <div className="grid md:grid-cols-2 grid-cols-1 py-5">
-          <div className="mx-auto rotation">
-            <Swiper
-              spaceBetween={30}
-              centeredSlides={true}
-              autoplay={{
-                delay: 1000,
-                disableOnInteraction: false,
-              }}
-              navigation={false}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper w-64"
-            >
-              <SwiperSlide>
-                <img src={python} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={app} alt="" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={graphic} alt="" />
-              </SwiperSlide>
-            </Swiper>
-          </div>
-          <div>
-            <ul className="font-bold text-xl text-center lg:text-left">
-              <li className="py-3">Fashion Design</li>
-              <li className="py-3">Apparel Merchandising</li>
-              <li className="py-3">Pattern Design & CAD</li>
-              <li className="py-3">CLO & Browzwear</li>
-              <li className="py-3">Digital Marketing & Branding</li>
-              <li className="py-3">Graphics Design</li>
-              <li className="py-3">Web Design</li>
-              <li className="py-3">Interior Design</li>
-              <li className="py-3">Lather Design</li>
-              <li className="py-3">Career blogs</li>
-            </ul>
-          </div>
-        </div>
+        <HomePageCoursePlayer />
 
         {/* third section Homepage */}
 
-        <div className="px-20 py-20 bg-pink-600 my-5">
+        <div className="px-2 sm:px-10 md:px-20 py-20 bg-pink-600 my-5">
           <p className=" text-4xl text-center py-5 text-white">Home Page</p>
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 bg-white p-5">
-            <div>
-              <p className="text-pink-700 text-2xl py-5">Home</p>
-              <p dangerouslySetInnerHTML={{ __html: description }}>
-              </p>
+            <div className=" relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-full object-cover z-10 bg-white/80"></div>
+              <img className="absolute top-0 left-0 w-full h-full object-cover z-0" src={faceIllutionImg} alt="" />
+              <div className="z-20 relative">
+                <p className="text-pink-700 text-2xl py-5 z-10">Home</p>
+                <p dangerouslySetInnerHTML={{ __html: description }}>
+                </p>
+              </div>
+
             </div>
             <div>
               <img src={imageUrl || banner} alt="" />
@@ -130,79 +78,28 @@ const HomePage = () => {
         {/* fourth section animation part  */}
         <HomePageCourses />
 
-        <div className="w-3/5 mx-auto">
-          {/* 8 */}
-
-        </div>
-
         {/*fith section countdown part  */}
-        <div className="mx-20 py-10 my-10 bg-pink-600 grid grid-cols-1 lg:grid-cols-6 justify-items-center">
-          {/* since, student, rating, instructor, guarantee, ratio */}
-          <div className="m-auto text-white py-5 text-center">
-            <CountUp className="text-4xl  font-bold" end={since} duration={9} />
-            <p className="text-xl font-bold">Since</p>
-          </div>
-
-          <div className="m-auto text-white py-5 text-center">
-            <span className="text-4xl  font-bold">
-              <CountUp className="" end={student} duration={9} /> +
-            </span>
-            <p className="text-xl font-bold">Students</p>
-          </div>
-
-          <div className="m-auto text-white py-5 text-center">
-            <CountUp className="text-4xl  font-bold" end={rating} duration={9} />
-            <p className="text-xl font-bold">Education ratings</p>
-          </div>
-
-          <div className="m-auto text-white py-5 text-center">
-            <span className="text-4xl  font-bold">
-              <CountUp className="" end={instructor} duration={9} /> +
-            </span>
-            <p className="text-xl font-bold">Numbers of Instructors</p>
-          </div>
-
-          <div className="m-auto text-white py-5 text-center">
-            <CountUp className="text-4xl  font-bold" end={guarantee} duration={9} />
-            <p className="text-xl font-bold">Education Guarantee</p>
-          </div>
-          <div className="m-auto text-white py-5 text-center">
-            <span className="text-4xl  font-bold">
-              <CountUp className="" end={ratio} duration={9} /> %
-            </span>
-            <p className="text-xl font-bold">Job Success Ratio</p>
-          </div>
-        </div>
+        <HomePageCountDown allData={{ since, student, rating, instructor, guarantee, ratio }} />
 
         {/* sixth section Photo Gallary  */}
-        <div className="w-3/4 mx-auto py-20 ">
+        <div className="">
           <TabSection></TabSection>
         </div>
 
         {/* seventh section Faculty  */}
-        <div className="px-20 py-10 mx-auto">
-          <Faculty></Faculty>
-          <div className="py-5 flex justify-center items-center"> <button className="btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">See More</button></div>
-        </div>
+        <FacultySlide></FacultySlide>
 
         {/* eighth section Testimonial  */}
         <div>
           <Testimonial></Testimonial>
         </div>
 
-        <div className="">
-          {/* ninth section Blogs  */}
+        {/* blog section  */}
+        <Blogs></Blogs>
 
-          <div className="px-20 ">
-            <div className="relative text-pink-700 font-bold text-4xl text-center py-5 bg-white ">
-              Blogs
+        {/* videos section  */}
+        <Videos video_url={video_url} />
 
-            </div>
-            <Blogs></Blogs>
-            <Link to={'/blogs'}> <div className="py-5 flex justify-center items-center"> <button className="btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">See More</button></div></Link>
-          </div>
-
-        </div>
         {/* tenth section Google Map  */}
         <div className="">
           <Maps></Maps>

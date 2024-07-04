@@ -65,7 +65,7 @@ const TabSection = () => {
             extend: ({ theme }) => `
             color: ${theme.global.colors['accent-1']};
             &:hover {
-              background-color: ${theme.global.colors['light-4']};
+              background-color: ${theme.global.colors['']};
             }
           `,
         },
@@ -73,15 +73,15 @@ const TabSection = () => {
     console.log(studentGallery);
     const showingGallery = categoryName === 'All' ? studentGallery : studentGallery.filter(gallery => gallery?.category === categoryName)
     return (
-        <>
+        <div className='w-[90%] sm:w-3/4 mx-auto py-20 '>
             <p className='text-pink-700 font-bold text-4xl text-center py-5'>Student Photo Gallery</p>
-            <Grommet  Grommet theme={customTheme}>
-                <Tabs  justify="start">
-                    <Tab className='text-red-500' title='All' onClick={() => setCategoryName('All')}></Tab>
+            <Grommet Grommet theme={customTheme}>
+                <Tabs justify="start">
+                    <Tab className='text-red-500' title={<span className={`text-black border border-pink-700 px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === 'All' && 'font-bold'}`}>All</span>} onClick={() => setCategoryName('All')}></Tab>
                     {
-                        allCategory?.map(category => <Tab onClick={() => setCategoryName(category?.category_name)} key={category?._id} title={category?.category_name}></Tab>)
+                        allCategory?.map(category => <Tab onClick={() => setCategoryName(category?.category_name)} key={category?._id} title={<span className={`text-black border border-pink-700 px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === category?.category_name && 'font-bold'}`}>{category?.category_name}</span>}></Tab>)
                     }
-    
+
                 </Tabs>
             </Grommet>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
@@ -104,7 +104,7 @@ const TabSection = () => {
 
 
             </Tabs> */}
-        </>
+        </div>
     )
 };
 export default TabSection;
