@@ -16,6 +16,9 @@ const Footer = () => {
                 <nav>
                     <div className="grid grid-flow-col gap-4">
                         <div>
+
+                        <img src="https://i.ibb.co/YB1115L/footer-image.png" className="lg:pl-5 lg:w-3/4 w-3/4 mx-auto" alt="" />
+
                             <nav className="px-10">
                                 <div className="flex px-20 py-5 gap-5 flex-wrap">
                                     <Link to="https://x.com/"><BiLogoTwitter className="text-4xl" /></Link>
@@ -32,7 +35,6 @@ const Footer = () => {
                                     <p className="text-xl font-bold  text-white px-10 lg:px-0"> House # 3/GA,Shyamoli, Road # 1. Dhaka-1207.</p>
                                     <p className="text-xl font-bold text-white px-10 lg:px-0">Email: info@bifdt.com</p>
                                 </div>
-                                <img src={logo} className="lg:pl-5 lg:w-full w-3/4 mx-auto" alt="" />
                             </div>
                         </div>
                     </div>

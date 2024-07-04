@@ -36,6 +36,8 @@ const FacultyCard = ({ faculty }) => {
             </div>
         </div>
 
+        
+
     );
 };
 
