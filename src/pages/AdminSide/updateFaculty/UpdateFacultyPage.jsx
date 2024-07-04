@@ -25,7 +25,7 @@ const UpdateFacultyPage = () => {
         return ''
     }
     console.log(facultyData);
-    const { _id, name: incomingName, email: incomingEmail, contact: incomingContact, designation: incomingDesignation, facebook: incomingFacebook, twitter: incomingTwitter, whatsapp: incomingWhatsapp, image: incomingImage } = facultyData;
+    const { _id, name: incomingName, email: incomingEmail, contact: incomingContact, designation: incomingDesignation, facebook: incomingFacebook, twitter: incomingTwitter, whatsapp: incomingWhatsapp, image: incomingImage, background_of_study: incomingBackground_of_study, job_experience: incomingJob_experience } = facultyData;
     const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target;
@@ -33,11 +33,12 @@ const UpdateFacultyPage = () => {
         const email = form.email.value;
         const facebook = form.facebook.value;
         const twitter = form.twitter.value;
-        const whatsapp = form.whatsapp.value;
+        const whatsapp = form.whatsapp.value; 
         const contact = form.contact.value;
         const designation = form.designation.value;
         const selectedImage = form.image.files[0];
-
+        const background_of_study = form.background_of_study.value;
+        const job_experience = form.job_experience.value;
         let facultyImageUrl = incomingImage
         if (!selectedImage?.name) {
             facultyImageUrl = incomingImage
@@ -58,7 +59,7 @@ const UpdateFacultyPage = () => {
             }
         }
 
-        const data = { name, email, facebook, twitter, whatsapp, contact, designation, image: facultyImageUrl };
+        const data = { name, email, facebook, twitter, whatsapp, contact, designation, image: facultyImageUrl, background_of_study, job_experience };
 
         axiosPublic.put(`/updateFaculty/${_id}`, data)
             .then(res => {
@@ -111,8 +112,25 @@ const UpdateFacultyPage = () => {
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600">Faculty Email</label>
-                                                <input type="text" name="email"
+                                                <input type="email" name="email"
                                                     defaultValue={incomingEmail} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+
+                                        {/*background_of_study  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Background of study</label>
+                                                <input type="text" name="background_of_study"
+                                                    defaultValue={incomingBackground_of_study} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+                                        {/*job_experience  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600">Job Experience</label>
+                                                <input type="text" name="job_experience"
+                                                    defaultValue={incomingJob_experience} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 

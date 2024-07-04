@@ -11,10 +11,7 @@ const MainLayout = () => {
     return (
         <>
             <Navbar></Navbar>
-            <Toaster
-            position="top-right"
-            reverseOrder={false}
-            />
+            
             <Outlet>
             
             </Outlet>

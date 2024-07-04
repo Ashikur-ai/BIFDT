@@ -28,16 +28,16 @@ const UpdateBlog = () => {
             return res?.data
         }
     })
-    if(isLoading){
+    if (isLoading) {
         return ''
     }
-    const { title: incomingTitle, blogImageUrl: incomingBlogImageUrl, date: incomingDate, meta_word: incomingMeta_word, author: incomingAuthor, description: incomingDescription } = blogData
+    const { title: incomingTitle, blogImageUrl: incomingBlogImageUrl, date: incomingDate, meta_word: incomingMeta_word, author: incomingAuthor, description: incomingDescription, } = blogData
     formData.description = incomingDescription;
     const showingData = new Date(incomingDate || 0);
 
     // Format the date as YYYY-MM-DD
     const formattedDate = showingData?.toISOString()?.split('T')[0];
-    console.log(formattedDate); 
+    console.log(formattedDate);
     const handleDescriptionChange = (value) => {
         formData.description = value
     };
@@ -62,12 +62,13 @@ const UpdateBlog = () => {
 
 
 
-    const handleSubmit = async(event) => {
+    const handleSubmit = async (event) => {
         setDescriptionErr(false)
         event.preventDefault();
         const form = event.target;
         const title = form.title.value;
         const blogImage = form.blogImg.files[0];
+        const date = form.date.value
         const meta_word = form.meta_word.value;
         const author = form.author.value;
         const description = formData.description;
@@ -96,7 +97,7 @@ const UpdateBlog = () => {
         }
 
 
-        const data = { title, blogImageUrl,  meta_word, author, description };
+        const data = { title, blogImageUrl, meta_word, author, description, date };
         console.log(data)
 
         axiosPublic.put(`/updateBlog/${id}`, data)
@@ -153,7 +154,7 @@ const UpdateBlog = () => {
                                             </div>
                                         </div>
 
-                                        
+
 
                                         {/* Meta keyword  */}
                                         <div className="p-2 w-1/2">
@@ -162,7 +163,13 @@ const UpdateBlog = () => {
                                                 <input defaultValue={incomingMeta_word} type="text" name="meta_word" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
-
+                                        {/* Date  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Date</label>
+                                                <input defaultValue={incomingDate} type="date" name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
                                         {/* image url  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative w-full">

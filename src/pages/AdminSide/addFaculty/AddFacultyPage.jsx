@@ -17,7 +17,6 @@ const AddFacultyPage = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
-        console.log(data)
         // image upload to imgbb and then get an url 
         const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -31,6 +30,8 @@ const AddFacultyPage = () => {
             const information = {
                 name: data.name,
                 email: data.email,
+                background_of_study: data.background_of_study,
+                job_experience: data.job_experience,
                 contact: data.contact,
                 facebook: data.facebook,
                 twitter: data.twitter,
@@ -134,7 +135,20 @@ const AddFacultyPage = () => {
                                             </div>
                                         </div>
 
-
+                                        {/* background Of study  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Background Of Study</label>
+                                                <input type="text" {...register('background_of_study')}  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+                                        {/* job experience  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Job Experience</label>
+                                                <input type="text" {...register('job_experience')}  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
 
 
                                         {/* Social Link  */}
@@ -153,7 +167,7 @@ const AddFacultyPage = () => {
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Contact Number</label>
-                                                <input type="text" {...register('contact')} name="contact" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="number" {...register('contact')} name="contact" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
