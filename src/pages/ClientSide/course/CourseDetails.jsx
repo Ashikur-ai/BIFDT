@@ -35,10 +35,8 @@ const CourseDetails = () => {
         <title>BIFDT | CouseDetails</title>
       </Helmet>
 
-      {/* Header part  */}
-
-
-    <div className=" ">
+      {/* 1. Header slider part  */}
+      <div className=" ">
         <Swiper
           spaceBetween={50}
           speed={1000}
@@ -62,8 +60,9 @@ const CourseDetails = () => {
             <img className="h-[250px] sm:h-[350px] md:h-[calc(100vh-150px)] w-full object-cover" src={banner3} alt="" />
           </SwiperSlide>
         </Swiper>
-    </div>
-      <Marquee className="bg-pink-700 py-1.5 text-white">
+      </div>
+      {/*2. Marqueee section  */}
+      <Marquee className="bg-[#f6861f] py-1.5 text-white">
         ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে আকর্ষণীয়,
         সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন মার্চেন্ডাইজিংকে।
         মার্চেন্ডাইজিং-এর একটি ডিপ্লমা কোর্স বদলে দিতে পারে আপনার কর্মময় জীবন।
@@ -262,16 +261,16 @@ const CourseDetails = () => {
         <div className="lg:w-3/4 border pt-2 border-b-black">
           <div className="flex justify-between">
             <span
-              className="text-white   px-5 rounded-lg bg-pink-600">
+              className="text-white   px-5 rounded-lg bg-[#f6861f]">
               Free Seminar/Counseling
             </span>
             <span
-              className="text-white   px-5 rounded-lg bg-pink-600">
+              className="text-white   px-5 mr-14 rounded-lg bg-[#f6861f]">
               <Link to="/onlineAdmission">Enroll Now</Link>
             </span>
           </div>
 
-          <p className="text-pink-700 font-bold text-xl p-1 bg-white ">
+          <p className="text-black font-bold text-xl p-1 bg-white ">
             Fashion Design :: Education for Excellence :: Bangladesh Institute of Fashion & Design Technology (BIFDT)
           </p>
           <hr />
@@ -282,7 +281,7 @@ const CourseDetails = () => {
 
           {/* main video  */}
           <div className="h-96 w-[80%] mx-auto rounded-lg p-2
-          bg-pink-600">
+          bg-[#f6861f]">
             <ReactPlayer
               controls="true"
               playing={true}
@@ -352,13 +351,13 @@ const CourseDetails = () => {
 
           {/* Admission and course detail section */}
           <div>
-            <p className="text-pink-700 text-xl px-1 bg-white ">
+            <p className="text-pink-700 text-sm ml-3 px-1 bg-white ">
               আপনি কি চাকুরি অথবা ব্যবসায় মাধ্যমে ক্যারিয়ার গড়তে চান ? খুঁজছেন একটি ভালো উপার্জনের সেইফ ক্যারিয়ার? অথবা করতে চান নিজের একটি ফ্যাশন ব্রান্ড ? তবে ফ্যাশন ডিজাইনার হোয়ে নিজেকে মেলে ধরার সময় কিন্তু এখনি .... কারণ ফ্যাশন ডিজাইন এখন লাখ টাকার পেশা! চাকুরি অথবা উদ্যোক্তা ২টি সম্ভাবনার দোয়ারই এক জন ফ্যাশন ডিজাইনারের জন্য খোলা।
             </p>
 
 
             <p className="text-2xl font-bold py-5">Admission Notice</p>
-            <Marquee className="bg-pink-700 py-1.5 text-white">
+            <Marquee className="bg-[#f6861f] py-1.5 text-white">
               ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে
               আকর্ষণীয়, সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন
               মার্চেন্ডাইজিংকে। মার্চেন্ডাইজিং-এর একটি ডিপ্লমা কোর্স বদলে দিতে
@@ -463,18 +462,12 @@ const CourseDetails = () => {
           <div className="pt-2">
             <p className="text-2xl font-bold py-5">Course Details</p>
             <CourseDetailsTab></CourseDetailsTab>
+
           </div>
-
-
-
-
-
         </div>
-
-
-
-
       </div>
+      
+      <Link to={'/onlineAdmission'}><div className="py-5 flex justify-center"> <button className="btn bg-[#f6861f] text-white hover:text-black  active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">Enroll Now</button></div></Link>
 
       <div className="px-20">
         {/* student gallary section  */}

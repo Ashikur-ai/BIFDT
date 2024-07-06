@@ -11,10 +11,10 @@ const MobileViewButton = () => {
         <>
             <div className="fixed bottom-4 w-full right-1 bg-black p-3 ml-5 flex justify-center items-centerbg-black shadow-lg rounded-md z-50" id="mobiledevice">
                 <div className="backtop">
-                    <a href="https://www.sandipuniversity.edu.in/admission.php" className="flex items-center text-white hover:text-blue-800">
+                    <Link to="/freeSeminar" className="flex items-center text-white hover:text-blue-800">
                         <FaAngleUp className="pr-1" />
                         Enquire Now
-                    </a>
+                    </Link>
                 </div>
                 <span className="px-2 text-2xl">|||</span>
                 <div className="mobile-all-lp">

@@ -45,7 +45,7 @@ const AboutUs = () => {
             {/* Third section Faculty  */}
             <div className="px-20 py-10 mx-auto">
                 <Faculty></Faculty>
-                <div className="py-5 flex justify-center items-center"> <button className="btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">See More</button></div>
+                
             </div>
 
             {/* Fourth section Testimonial  */}

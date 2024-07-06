@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaWhatsapp, FaFacebookF, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaPinterest } from 'react-icons/fa';
+import { BsMessenger, BsTelegram, BsWechat } from 'react-icons/bs';
+import { FaWhatsapp, FaFacebookF, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaPinterest, FaViber, FaSignal } from 'react-icons/fa';
 import { MdPhone } from 'react-icons/md';
 
 const AllSocialLinks = () => {
@@ -14,7 +15,7 @@ const AllSocialLinks = () => {
 
                 <li className='bg-blue-300 p-2 hover:scale-150 transition-all duration-150'>
                     <a href="tel:+919830497111" className="text-white text-2xl">
-                        <MdPhone />
+                        <FaViber />
                     </a>
                 </li>
 
@@ -32,9 +33,16 @@ const AllSocialLinks = () => {
 
                 <li className='bg-blue-600 p-2 hover:scale-150 transition-all duration-150'>
                     <a href="https://twitter.com/gift1999" className="text-white text-2xl" target="_blank" rel="noopener noreferrer">
-                        <FaTwitter />
+                        <BsMessenger />
                     </a>
                 </li>
+
+                <li className='bg-blue-600 p-2 hover:scale-150 transition-all duration-150'>
+                    <a href="https://twitter.com/gift1999" className="text-white text-2xl" target="_blank" rel="noopener noreferrer">
+                        <BsWechat />
+                    </a>
+                </li>
+                
                 <li className='bg-blue-700 p-2 hover:scale-150 transition-all duration-150'>
                     <a href="https://www.linkedin.com/in/gift-fashion-and-interior-design-institute-kolkata-16bb4135/" className="text-white text-2xl" target="_blank" rel="noopener noreferrer">
                         <FaLinkedin />
@@ -45,9 +53,9 @@ const AllSocialLinks = () => {
                         <FaYoutube />
                     </a>
                 </li>
-                <li className='bg-red-600 p-2 hover:scale-150 transition-all duration-150'>
+                <li className='bg-blue-600 p-2 hover:scale-150 transition-all duration-150'>
                     <a href="https://in.pinterest.com/giftdesignacademy/" className="text-white text-xl" target="_blank" rel="noopener noreferrer">
-                        <FaPinterest />
+                        <BsTelegram />
                     </a>
                 </li>
             </ul>

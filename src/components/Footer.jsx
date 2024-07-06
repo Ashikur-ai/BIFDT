@@ -11,7 +11,7 @@ const Footer = () => {
     return (
         <>
 
-            <footer className="grid  lg:grid-cols-2 bg-pink-600 text-neutral-content py-5">
+            <footer className="grid  lg:grid-cols-2 bg-[#f6861f] text-neutral-content py-5">
 
                 <nav>
                     <div className="grid grid-flow-col gap-4">

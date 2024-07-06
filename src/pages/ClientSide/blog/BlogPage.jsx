@@ -56,7 +56,7 @@ const BlogPage = () => {
                 <button
                     onClick={handlePrev}
                     disabled={firstCardId === 0}
-                    className={`px-7 btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max ${firstCardId === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`px-7 btn bg-[#f6861f] text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max ${firstCardId === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                     Prev
                 </button>
@@ -66,7 +66,7 @@ const BlogPage = () => {
                 <button
                     onClick={handleNext}
                     disabled={firstCardId + cardPerSlice >= totalCard}
-                    className={`px-7 btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max ${firstCardId + cardPerSlice >= totalCard ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`px-7 btn bg-[#f6861f] text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max ${firstCardId + cardPerSlice >= totalCard ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                     Next
                 </button>

@@ -33,8 +33,8 @@ const Testimonial = () => {
     console.log(testimonials);
     return (
         <>
-            <p className='text-pink-700 font-bold text-4xl text-center py-5'>Testimonials</p>
-            <p className='text-pink-700 font-bold text-6xl text-center py-5'>Some Users Feedback</p>
+            <p className='text-black font-bold text-4xl text-center py-5'>Testimonials</p>
+            <p className='text-black font-bold text-6xl text-center py-5'>Some Users Feedback</p>
             <Marquee
                 speed={35}
                 pauseOnHover={true}

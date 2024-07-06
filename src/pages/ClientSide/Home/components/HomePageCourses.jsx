@@ -19,7 +19,7 @@ const HomePageCourses = () => {
             {/* 1 */}
             <AnimatedDiv  >
                 <div className="flex flex-col lg:flex-row">
-                    <div className="w-full lg:w-1/2 bg-rose-600   ">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f]   ">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Fashion Design
@@ -37,7 +37,7 @@ const HomePageCourses = () => {
                     <div className="w-full lg:w-1/2">
                         <img src={marchen} className=" w-full h-64" alt="" />
                     </div>
-                    <div className="w-full lg:w-1/2 bg-rose-600">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f]">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Apparel Merchandising
@@ -49,7 +49,7 @@ const HomePageCourses = () => {
             {/* 3 */}
             <AnimatedDiv  >
                 <div className="flex flex-col lg:flex-row">
-                    <div className="w-full lg:w-1/2 bg-rose-600   ">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f]   ">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Pattern Design & CAD
@@ -67,7 +67,7 @@ const HomePageCourses = () => {
                     <div className="w-full lg:w-1/2">
                         <img src={clo} className=" w-full h-64" alt="" />
                     </div>
-                    <div className="w-full lg:w-1/2 bg-rose-600 ">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f] ">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 CLO & Browzwear
@@ -79,7 +79,7 @@ const HomePageCourses = () => {
             {/* 5 */}
             <AnimatedDiv  >
                 <div className="flex flex-col lg:flex-row">
-                    <div className="w-full lg:w-1/2 bg-rose-600   ">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f]   ">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Digital Marketing & Branding
@@ -97,7 +97,7 @@ const HomePageCourses = () => {
                     <div className="w-full lg:w-1/2">
                         <img src={gradesign} className=" w-full h-64" alt="" />
                     </div>
-                    <div className="w-full lg:w-1/2 bg-rose-600 ">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f] ">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Graphic Design
@@ -109,7 +109,7 @@ const HomePageCourses = () => {
             {/* 7 */}
             <AnimatedDiv  >
                 <div className="flex flex-col lg:flex-row">
-                    <div className="w-full lg:w-1/2 bg-rose-600 ">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f] ">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Art Essentials Course
@@ -127,7 +127,7 @@ const HomePageCourses = () => {
                     <div className="w-full lg:w-1/2">
                         <img src={interior} className=" w-full h-64" alt="" />
                     </div>
-                    <div className="w-full lg:w-1/2 bg-rose-600">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f]">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Interior Design
@@ -139,7 +139,7 @@ const HomePageCourses = () => {
             {/* 9 */}
             <AnimatedDiv  >
                 <div className="flex flex-col lg:flex-row">
-                    <div className="w-full lg:w-1/2 bg-rose-600">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f]">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Leather Design
@@ -157,7 +157,7 @@ const HomePageCourses = () => {
                     <div className="w-full lg:w-1/2">
                         <img src={admission} className=" w-full h-64" alt="" />
                     </div>
-                    <div className="w-full lg:w-1/2 bg-rose-600">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f]">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Online Admission
@@ -169,7 +169,7 @@ const HomePageCourses = () => {
             {/* 11 */}
             <AnimatedDiv  >
                 <div className="flex flex-col lg:flex-row">
-                    <div className="w-full lg:w-1/2 bg-rose-600 ">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f] ">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Free Seminar
@@ -187,7 +187,7 @@ const HomePageCourses = () => {
                     <div className="w-full lg:w-1/2">
                         <img src={career} className=" w-full h-64" alt="" />
                     </div>
-                    <div className="w-full lg:w-1/2 bg-rose-600">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f]">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Career blogs

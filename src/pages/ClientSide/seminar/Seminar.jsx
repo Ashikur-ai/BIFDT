@@ -21,14 +21,14 @@ const Seminar = () => {
                 <title>BFIDT | Seminar</title>
             </Helmet>
             <div className='w-full'>
-                <p className='text-4xl text-center p-5 font-bold shadow-xl'>Seminar</p>
+                <p className='text-4xl text-center p-5 font-bold shadow-xl'>Free Seminar/counselling</p>
 
             </div>
 
             <div className='mx-auto'>
                 <div className="pb-20  overflow-x-auto">
                     <table className="table-auto   border-collapse border border-gray-400">
-                        <thead className='bg-pink-600 text-white text-xl font-bold'>
+                        <thead className='bg-[#f6861f] text-white text-xl font-bold'>
                             <tr>
                                 <th className="px-4 py-2  border border-gray-400">
                                     Topics

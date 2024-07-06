@@ -37,7 +37,7 @@ const HomePageCoursePlayer = () => {
             <div>
                 <ul className="font-bold text-xl flex flex-col gap-3">
                     {
-                        coursesName?.map((name, idx) => <Link key={idx} to={'/courseDetails'}><button className="border  border-pink-700 bg-pink-700/10 hover:bg-pink-700/15 rounded-md w-full max-w-[230px] p-0.5 px-2 transition-all duration-300"><span>*</span> {name}</button></Link>)
+                        coursesName?.map((name, idx) => <Link key={idx} to={'/courseDetails'}><button className="border  border-white bg-[#f6861f] hover:bg-pink-700/15 rounded-md w-full max-w-[230px] p-0.5 px-2 transition-all duration-300 text-white"><span></span> {name}</button></Link>)
                     }
                 </ul>
             </div>

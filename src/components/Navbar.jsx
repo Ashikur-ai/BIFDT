@@ -9,7 +9,7 @@ const Navbar = () => {
 
 
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Fashion Design</Link>
+            <Link to="/aboutUs" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">About Us</Link>
 
             <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Merchandising</Link>
 
@@ -24,8 +24,7 @@ const Navbar = () => {
             >
             <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Computer Operator</Link>
 
-            <Link to="/blogs" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Blogs</Link>
-            <Link to="/faculties" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Faculties</Link>
+            
 
             <Link to="/onlineAdmission" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Online Admission</Link>
 
@@ -34,7 +33,7 @@ const Navbar = () => {
         </>
     return (
         <>
-            <div className="navbar shadow-2xl bg-pink-600 text-white sticky top-0 z-10">
+            <div className="navbar shadow-2xl bg-[#f6861f] text-white sticky top-0 z-10">
                 <div className="">
                     {/* Mobile view  */}
                     <div className="dropdown text-white">
