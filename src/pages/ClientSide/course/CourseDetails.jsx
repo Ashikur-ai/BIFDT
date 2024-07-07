@@ -42,12 +42,11 @@ const CourseDetails = () => {
           speed={1000}
           centeredSlides={true}
           autoplay={{
-            delay: 5000,
+            delay: 3500,
             disableOnInteraction: false,
           }}
-          effect="fade"
           navigation={false}
-          modules={[Autoplay, Pagination, Navigation, EffectFade]}
+          modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper md:h-[calc(100vh-150px)] overflow-hidden"
         >
           <SwiperSlide>
@@ -101,7 +100,7 @@ const CourseDetails = () => {
         {/* first half */}
         <div className="lg:w-1/4 hidden lg:block border border-black">
 
-          <p className="text-pink-700 text-center font-bold text-2xl  bg-white ">
+          <p className="text-[#f6861f]  text-center font-bold text-2xl  bg-white ">
             Facebook Page
           </p>
           <div className="border border-t-black">
@@ -152,7 +151,7 @@ const CourseDetails = () => {
 
 
           {/* instagram  */}
-          <p className="text-pink-700 text-center font-bold text-2xl pt-2 bg-white ">
+          <p className="text-[#f6861f]  text-center font-bold text-2xl pt-2 bg-white ">
             Instagram Page
           </p>
           <div className="border border-t-black">
@@ -202,7 +201,7 @@ const CourseDetails = () => {
           </div>
 
 
-          <p className="text-pink-700 text-center font-bold text-2xl pt-2 bg-white ">
+          <p className="text-[#f6861f]  text-center font-bold text-2xl pt-2 bg-white ">
             Twitter Page
           </p>
           <div className="border border-t-black">
@@ -351,7 +350,7 @@ const CourseDetails = () => {
 
           {/* Admission and course detail section */}
           <div>
-            <p className="text-pink-700 text-sm ml-3 px-1 bg-white ">
+            <p className="text-[#f6861f]  text-sm ml-3 px-1 bg-white ">
               আপনি কি চাকুরি অথবা ব্যবসায় মাধ্যমে ক্যারিয়ার গড়তে চান ? খুঁজছেন একটি ভালো উপার্জনের সেইফ ক্যারিয়ার? অথবা করতে চান নিজের একটি ফ্যাশন ব্রান্ড ? তবে ফ্যাশন ডিজাইনার হোয়ে নিজেকে মেলে ধরার সময় কিন্তু এখনি .... কারণ ফ্যাশন ডিজাইন এখন লাখ টাকার পেশা! চাকুরি অথবা উদ্যোক্তা ২টি সম্ভাবনার দোয়ারই এক জন ফ্যাশন ডিজাইনারের জন্য খোলা।
             </p>
 

@@ -46,10 +46,10 @@ const Faculties = () => {
     };
 
     return (
-        <div className='px-20 my-10 min-h-screen'>
+        <div className='sm:px-20 my-10 min-h-screen'>
             <p className="text-4xl m-10"><span className='text-pink-600 border-b-2'>Faculties</span></p>
 
-            <div className='flex gap-10 flex-wrap justify-center items-center'>
+            <div className='flex gap-10 flex-wrap justify-center'>
                 {
                     (showingFaculties.slice(firstCardId, firstCardId + cardPerSlice)).map((faculty, idx) => <FacultyCard key={idx} faculty={faculty} />)
                 }

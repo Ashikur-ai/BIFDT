@@ -83,7 +83,7 @@ const SeminarPage = () => {
             <Helmet>
                 <title>Dashboard | Seminar</title>
             </Helmet>
-            <div className="bg-white p-5 mx-4 rounded-lg">
+            <div className="bg-white p-5 mx-4 rounded-lg max-w-screen">
                 <p className='text-2xl font-bold text-center'>Seminar Requests</p>
 
                 <div className="overflow-x-auto">

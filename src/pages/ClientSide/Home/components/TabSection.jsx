@@ -48,10 +48,10 @@ const TabSection = () => {
                 size: 'small',
                 color: 'border',
                 active: {
-                    color: '#db2777',
+                    color: '#f6861f',
                 },
                 hover: {
-                    color: '#db2777',
+                    color: '#f6861f',
                 },
             },
             color: 'text',
@@ -73,37 +73,26 @@ const TabSection = () => {
     console.log(studentGallery);
     const showingGallery = categoryName === 'All' ? studentGallery : studentGallery.filter(gallery => gallery?.category === categoryName)
     return (
-        <div className='w-[90%] sm:w-3/4 mx-auto py-20 '>
+        <div className='  mx-auto py-20 '>
             <p className='text-black font-bold text-4xl text-center py-5'>Student Photo Gallery</p>
-            <Grommet Grommet theme={customTheme}>
-                <Tabs justify="start">
-                    <Tab className='text-black' title={<span className={`text-black border border-pink-700 px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === 'All' && 'font-bold'}`}>All</span>} onClick={() => setCategoryName('All')}></Tab>
-                    {
-                        allCategory?.map(category => <Tab onClick={() => setCategoryName(category?.category_name)} key={category?._id} title={<span className={`text-black border border-pink-700 px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === category?.category_name && 'font-bold'}`}>{category?.category_name}</span>}></Tab>)
-                    }
-
-                </Tabs>
-            </Grommet>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+           <div className='pr-12'>
+                <Grommet Grommet theme={customTheme}>
+                    <Tabs justify="start">
+                        <Tab className='text-black' title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === 'All' && 'font-bold'}`}>All</span>} onClick={() => setCategoryName('All')}></Tab>
+                        {
+                            allCategory?.map(category => <Tab onClick={() => setCategoryName(category?.category_name)} key={category?._id} title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === category?.category_name && 'font-bold'}`}>{category?.category_name}</span>}></Tab>)
+                        }
+    
+                    </Tabs>
+                </Grommet>
+           </div>
+            <div className='flex justify-center items-center flex-wrap gap-5'>
 
                 {
-                    showingGallery?.map(gallery => <img key={gallery?._id} className='w-full h-full rounded-2xl shadow-2xl' src={gallery?.image} alt="" />)
+                    showingGallery?.map(gallery => <img key={gallery?._id} className='w-[46%] sm:w-[320px] sm:h-[170px] object-cover rounded-2xl shadow-2xl' src={gallery?.image} alt="" />)
                 }
             </div>
-            {/* <Tabs>
-                <TabList>
-                    <Tab><button className="btn btn-outline btn-secondary" onClick={() => setCategoryName('All')}>All</button></Tab>
-                    <Tab><button className="btn btn-outline btn-secondary" onClick={() => setCategoryName('Interior Design')}>Interior Design</button></Tab>
-                    <Tab><button className="btn btn-outline btn-secondary" onClick={() => setCategoryName('Fashion Design')}>Fashion Design</button></Tab>
-                    <Tab><button className="btn btn-outline btn-secondary" onClick={() => setCategoryName('Merchandising')}>Merchandising</button></Tab>
-                    <Tab><button className="btn btn-outline btn-secondary" onClick={() => setCategoryName('Computer Operation')}>Computer Operation</button></Tab>
-                    <Tab><button className="btn btn-outline btn-secondary" onClick={() => setCategoryName('Pattern Design')}>Pattern Design</button></Tab>
-                </TabList>
-
-               
-
-
-            </Tabs> */}
+           
         </div>
     )
 };

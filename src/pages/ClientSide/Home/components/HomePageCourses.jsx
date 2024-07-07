@@ -12,14 +12,14 @@ import admission from "../../../../assets/images/admission.webp";
 import seminar from "../../../../assets/images/seminar.webp";
 import career from "../../../../assets/images/career.webp";
 import { Link } from "react-router-dom";
-const textStyle = "text-white text-2xl font-bold text-center pt-20 hover:scale-110 hover:rotate-3 transition-all duration-700 hover:underline cursor-pointer"
+const textStyle = "text-white text-2xl font-bold text-center py-16 hover:scale-110 hover:rotate-3 transition-all duration-700 hover:underline cursor-pointer h-full flex justify-center items-center"
 const HomePageCourses = () => {
     return (
-        <div className="w-[90%] sm:w-3/5 mx-auto">
+        <div className="w-[90%] sm:w-3/5 mx-auto overflow-hidden">
             {/* 1 */}
-            <AnimatedDiv  >
+            <AnimatedDiv value={300}>
                 <div className="flex flex-col lg:flex-row">
-                    <div className="w-full lg:w-1/2 bg-[#f6861f]   ">
+                    <div className="w-full lg:w-1/2 bg-[#f6861f]">
                         <Link to={'/courseDetails'}>
                             <p className={`${textStyle}`}>
                                 Fashion Design
@@ -32,7 +32,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 2         */}
-            <AnimatedDiv   >
+            <AnimatedDiv value={-300}>
                 <div className="flex flex-col-reverse lg:flex-row">
                     <div className="w-full lg:w-1/2">
                         <img src={marchen} className=" w-full h-64" alt="" />
@@ -47,7 +47,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 3 */}
-            <AnimatedDiv  >
+            <AnimatedDiv value={300}>
                 <div className="flex flex-col lg:flex-row">
                     <div className="w-full lg:w-1/2 bg-[#f6861f]   ">
                         <Link to={'/courseDetails'}>
@@ -62,7 +62,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 4        */}
-            <AnimatedDiv   >
+            <AnimatedDiv value={-300}>
                 <div className="flex flex-col-reverse lg:flex-row">
                     <div className="w-full lg:w-1/2">
                         <img src={clo} className=" w-full h-64" alt="" />
@@ -77,7 +77,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 5 */}
-            <AnimatedDiv  >
+            <AnimatedDiv value={300}>
                 <div className="flex flex-col lg:flex-row">
                     <div className="w-full lg:w-1/2 bg-[#f6861f]   ">
                         <Link to={'/courseDetails'}>
@@ -92,7 +92,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 6 */}
-            <AnimatedDiv   >
+            <AnimatedDiv value={-300}>
                 <div className="flex flex-col-reverse lg:flex-row">
                     <div className="w-full lg:w-1/2">
                         <img src={gradesign} className=" w-full h-64" alt="" />
@@ -107,7 +107,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 7 */}
-            <AnimatedDiv  >
+            <AnimatedDiv value={300}>
                 <div className="flex flex-col lg:flex-row">
                     <div className="w-full lg:w-1/2 bg-[#f6861f] ">
                         <Link to={'/courseDetails'}>
@@ -122,7 +122,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 8 */}
-            <AnimatedDiv   >
+            <AnimatedDiv value={-300}>
                 <div className="flex flex-col-reverse lg:flex-row">
                     <div className="w-full lg:w-1/2">
                         <img src={interior} className=" w-full h-64" alt="" />
@@ -137,7 +137,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 9 */}
-            <AnimatedDiv  >
+            <AnimatedDiv value={300}>
                 <div className="flex flex-col lg:flex-row">
                     <div className="w-full lg:w-1/2 bg-[#f6861f]">
                         <Link to={'/courseDetails'}>
@@ -152,7 +152,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 10 */}
-            <AnimatedDiv   >
+            <AnimatedDiv value={-300}>
                 <div className="flex flex-col-reverse lg:flex-row">
                     <div className="w-full lg:w-1/2">
                         <img src={admission} className=" w-full h-64" alt="" />
@@ -167,7 +167,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 11 */}
-            <AnimatedDiv  >
+            <AnimatedDiv value={300}>
                 <div className="flex flex-col lg:flex-row">
                     <div className="w-full lg:w-1/2 bg-[#f6861f] ">
                         <Link to={'/courseDetails'}>
@@ -182,7 +182,7 @@ const HomePageCourses = () => {
                 </div>
             </AnimatedDiv>
             {/* 12 */}
-            <AnimatedDiv   >
+            <AnimatedDiv value={-300} >
                 <div className="flex flex-col-reverse lg:flex-row">
                     <div className="w-full lg:w-1/2">
                         <img src={career} className=" w-full h-64" alt="" />

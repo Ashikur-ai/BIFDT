@@ -32,7 +32,7 @@ const HomePage = () => {
       return res?.data
     }
   })
-  const { description, imageUrl, notice, video_url, since, student, rating, instructor, guarantee, ratio } = homepageContent[0] || []
+  const { description, imageUrl, notice, video_url, since, student, rating, instructor, guarantee, ratio,video_section_video } = homepageContent[0] || []
   if (isLoading) {
     return ''
   }
@@ -66,20 +66,20 @@ const HomePage = () => {
 
         {/* third section Homepage */}
 
-        <div className="px-2 sm:px-10 md:px-20 py-20 bg-[#f6861f] ">
+        <div className="px-2 sm:px-10 md:px-20 pb-20 bg-[#f6861f] ">
           <p className=" text-4xl text-center py-5 text-white">Home Page</p>
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 bg-white p-5">
             <div className=" relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-full object-cover z-10 bg-[#f6861f]"></div>
+              <div className="absolute top-0 left-0 w-full h-full object-cover z-10 bg-white/80"></div>
               <img className="absolute top-0 left-0 w-full h-full object-cover z-0" src={faceIllutionImg} alt="" />
               <div className="z-20 p-5 relative">
                 <p className="text-white text-2xl py-5 z-10">Home</p>
-                <p className="text-white" dangerouslySetInnerHTML={{ __html: description }}>
+                <p className="text-black" dangerouslySetInnerHTML={{ __html: description }}>
                 </p>
               </div>
 
             </div>
-            <div>
+            <div className="flex justify-center items-center">
               <img src={imageUrl || banner} alt="" />
             </div>
           </div>
@@ -110,7 +110,7 @@ const HomePage = () => {
         <Blogs></Blogs>
 
         {/* videos section  */}
-        <Videos video_url={video_url} />
+        <Videos video_url={video_section_video} />
 
         {/* tenth section Google Map  */}
         <div className="">

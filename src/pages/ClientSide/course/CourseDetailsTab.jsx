@@ -7,7 +7,7 @@ import { Grommet, Tab, Tabs } from 'grommet';
 
 
 const CourseDetailsTab = () => {
-    const [TabName, setTabName] = useState('Career objective in fashion design')
+    const [TabName, setTabName] = useState('1st')
     const customTheme = {
         tab: {
             active: {
@@ -18,10 +18,10 @@ const CourseDetailsTab = () => {
                 size: 'small',
                 color: 'border',
                 active: {
-                    color: '#db2777',
+                    color: '#f6861f',
                 },
                 hover: {
-                    color: '#db2777',
+                    color: '#f6861f',
                 },
             },
             color: 'text',
@@ -86,13 +86,13 @@ const CourseDetailsTab = () => {
         <div className='pr-10'>
             <Grommet Grommet theme={customTheme}>
                 <Tabs justify="start">
-                    <Tab className='text-red-500' title={<span className={`text-black border border-pink-700 px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${TabName === '1st' && 'font-bold'} break-words h-16 flex justify-center items-center w-[190px]`}>Career objective in <br /> fashion design</span>} onClick={() => setTabName('1st')}></Tab>
+                    <Tab className='text-red-500' title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${TabName === '1st' && 'font-bold'} break-words h-16 flex justify-center items-center w-[190px]`}>Career objective in <br /> fashion design</span>} onClick={() => setTabName('1st')}></Tab>
 
-                    <Tab className='text-red-500' title={<span className={`text-black border border-pink-700 px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${TabName === '2nd' && 'font-bold'} h-16 w-[190px] flex justify-center items-center`}>1-year Course <br /> 12-Month</span>} onClick={() => setTabName('2nd')}></Tab>
+                    <Tab className='text-red-500' title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${TabName === '2nd' && 'font-bold'} h-16 w-[190px] flex justify-center items-center`}>1-year Course <br /> 12-Month</span>} onClick={() => setTabName('2nd')}></Tab>
 
-                    <Tab className='text-red-500' title={<span className={`text-black border border-pink-700 px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${TabName === '3rd' && 'font-bold'} h-16 w-[190px] flex justify-center items-center`}>6-Month Course</span>} onClick={() => setTabName('3rd')}></Tab>
+                    <Tab className='text-red-500' title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${TabName === '3rd' && 'font-bold'} h-16 w-[190px] flex justify-center items-center`}>6-Month Course</span>} onClick={() => setTabName('3rd')}></Tab>
 
-                    <Tab className='text-red-500' title={<span className={`text-black border border-pink-700 px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${TabName === '4th' && 'font-bold'} h-16 w-[190px] flex justify-center items-center`}>Semester Details</span>} onClick={() => setTabName('4th')}></Tab>
+                    <Tab className='text-red-500' title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${TabName === '4th' && 'font-bold'} h-16 w-[190px] flex justify-center items-center`}>Semester Details</span>} onClick={() => setTabName('4th')}></Tab>
 
 
                 </Tabs>

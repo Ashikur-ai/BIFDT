@@ -169,7 +169,7 @@ console.log(new Date().getTime());
 
 
                                         {/* Description */}
-                                        <div className="p-2 w-full mb-10">
+                                        <div className="p-2 w-full mb-10 h-full">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm font-bold text-gray-600">Blog Description</label>
                                                 <ReactQuill value={formData.description} onChange={handleDescriptionChange} theme="snow"
@@ -178,7 +178,7 @@ console.log(new Date().getTime());
                                                     placeholder="Enter course admission notice..."
                                                     readOnly={false}
                                                     bounds={'.app'}
-                                                    scrollingContainer={'.app'} className="h-64" />
+                                                    scrollingContainer={'.app'} className="min-h-64 border  border-gray-300" />
                                             </div>
 
                                         </div>

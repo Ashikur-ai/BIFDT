@@ -5,7 +5,7 @@ import { MdPhone } from 'react-icons/md';
 
 const AllSocialLinks = () => {
     return (
-        <div id="ssb-container" className="fixed bottom-60 right-0  z-10">
+        <div id="ssb-container" className="fixed bottom-60 right-0 top-16  z-40">
             <ul className=" list-none">
                 <li className='bg-green-500 p-2 hover:scale-150 transition-all duration-150'>
                     <a href="https://wa.me/+919830497111?" className="text-white text-2xl" target="_blank" rel="noopener noreferrer">

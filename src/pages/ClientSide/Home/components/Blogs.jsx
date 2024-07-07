@@ -38,7 +38,7 @@ const Blogs = () => {
       >
         <div className='flex gap-20 px-20'>
           {
-            blogs.map(blog => <BlogCard key={blog._id} blog={blog} />)
+            blogs.map(blog => <BlogCard key={blog._id} blog={blog} slide={true} />)
           }
         </div>
 

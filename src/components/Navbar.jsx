@@ -5,35 +5,35 @@ const Navbar = () => {
 
     const navlinks =
         <>
-            <Link to="/" className="transition-all duration-300 mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Home</Link>
+            <Link to="/" className="transition-all duration-300 mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Home</Link>
 
 
 
-            <Link to="/aboutUs" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">About Us</Link>
+            <Link to="/aboutUs" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">About Us</Link>
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Merchandising</Link>
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Merchandising</Link>
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Pattern Design</Link>
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Pattern Design</Link>
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Graphics & Web Design</Link>
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Graphics & Web Design</Link>
 
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Interior Design</Link>
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Interior Design</Link>
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Leather Design</Link
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Leather Design</Link
             >
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Computer Operator</Link>
+            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Computer Operator</Link>
 
             
 
-            <Link to="/onlineAdmission" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Online Admission</Link>
+            <Link to="/onlineAdmission" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Online Admission</Link>
 
-            <Link to="/freeSeminar" className="mr-3 hover:text-black active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white focus:rounded-lg focus:p-2">Free Seminar</Link>
+            <Link to="/freeSeminar" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Free Seminar</Link>
 
         </>
     return (
         <>
-            <div className="navbar shadow-2xl bg-[#f6861f] text-white sticky top-0 z-10">
+            <div className="navbar shadow-2xl bg-[#f6861f] text-white sticky top-0 z-30">
                 <div className="">
                     {/* Mobile view  */}
                     <div className="dropdown text-white">
@@ -55,7 +55,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu bg-pink-700 menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box"
+                            className="menu bg-[#f6861f]  menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box"
                         >
                             {/* <li>
                                 <a>Parent</a>

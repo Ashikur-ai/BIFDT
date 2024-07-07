@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const HomePageCoursePlayer = () => {
     const coursesName = ['Fashion Design', 'Apparel Merchandising', 'Pattern Design & CAD', 'CLO & Browzwear', 'Digital Marketing & Branding', 'Graphics Design', 'Web Design', 'Interior Design', 'Lather Design', 'Career blogs']
     return (
-        <div className="grid md:grid-cols-2 grid-cols-1 py-5 overflow-hidden">
+        <div className="grid md:grid-cols-2 grid-cols-1 py-5 overflow-hidden gap-10">
             <div className="mx-auto rotation w-64 h-64">
                 <Swiper
                     spaceBetween={30}
@@ -35,9 +35,9 @@ const HomePageCoursePlayer = () => {
                 </Swiper>
             </div>
             <div>
-                <ul className="font-bold text-xl flex flex-col gap-3">
+                <ul className="font-bold text-xl flex flex-col gap-3 justify-center items-center lg:items-start">
                     {
-                        coursesName?.map((name, idx) => <Link key={idx} to={'/courseDetails'}><button className="border  border-white bg-[#f6861f] hover:bg-pink-700/15 rounded-md w-full max-w-[230px] p-0.5 px-2 transition-all duration-300 text-white"><span></span> {name}</button></Link>)
+                        coursesName?.map((name, idx) => <Link key={idx} to={'/courseDetails'}><button className="border  border-white bg-[#f6861f] hover:bg-[#f6861f] /15 rounded-md w-[230px] p-0.5 px-2 transition-all duration-300 text-white"><span></span> {name}</button></Link>)
                     }
                 </ul>
             </div>
