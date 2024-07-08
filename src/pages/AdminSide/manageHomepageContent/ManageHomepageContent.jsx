@@ -120,10 +120,10 @@ const ManageHomepageContent = () => {
                 {/* form section  */}
                 <div className=''>
 
-                    <section className="text-gray-600 body-font relative">
-                        <div className="container ml-2 mt-2 mx-auto">
+                    <section className="text-gray-600 body-font relative w-full lg:w-[73vw] mx-auto">
+                        <div className="container mt-2 mx-auto">
 
-                            <div className="lg:w-full md:w-2/3 mx-auto bg-white  py-5 rounded-xl">
+                            <div className="lg:w-full mx-auto bg-white  py-5 rounded-xl">
                                 <p className='text-center text-2xl font-bold pb-2'>Manage Homepage Content</p>
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">

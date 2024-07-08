@@ -1,26 +1,22 @@
 import { Helmet } from 'react-helmet-async';
-import HeaderText from '../../../components/HeaderText';
 import { Link, useParams } from 'react-router-dom';
 import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
-import ReactQuill from 'react-quill';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-
+import { Editor } from '@tinymce/tinymce-react';
 const UpdateBlog = () => {
+    const [tinyDescription, setTinyDescription] = useState('')
     const { id } = useParams();
     const [descriptionErr, setDescriptionErr] = useState(false)
     const axiosPublic = useAxiosPublic();
     const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
-    const formData = {
-        description: '',
 
-    }
     const { data: blogData = {}, refetch: blogDataRefetch, isLoading } = useQuery({
         queryKey: ['blogData', id],
         queryFn: async () => {
@@ -28,41 +24,29 @@ const UpdateBlog = () => {
             return res?.data
         }
     })
+    useEffect(() => {
+        if (!isLoading) {
+            setTinyDescription(blogData.description);
+        }
+        console.log(isLoading);
+    }, [blogData, isLoading]);
     if (isLoading) {
         return ''
     }
-    const { title: incomingTitle, blogImageUrl: incomingBlogImageUrl, date: incomingDate, meta_word: incomingMeta_word, author: incomingAuthor, description: incomingDescription, } = blogData
-    formData.description = incomingDescription;
+    const { title: incomingTitle, blogImageUrl: incomingBlogImageUrl, date: incomingDate, meta_word: incomingMeta_word, author: incomingAuthor, description: incomingDescription, } = blogData;
     const showingData = new Date(incomingDate || 0);
 
     // Format the date as YYYY-MM-DD
     const formattedDate = showingData?.toISOString()?.split('T')[0];
     console.log(formattedDate);
     const handleDescriptionChange = (value) => {
-        formData.description = value
+        setTinyDescription(value)
     };
-
-    const modules = {
-        toolbar: [
-            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-            [{ size: [] }],
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-            ['link', 'image', 'video'],
-            ['clean']
-        ],
-    };
-
-    const formats = [
-        'header', 'font', 'size',
-        'bold', 'italic', 'underline', 'strike', 'blockquote',
-        'list', 'bullet', 'indent',
-        'link', 'image', 'video'
-    ];
 
 
 
     const handleSubmit = async (event) => {
+        setTinyDescription(tinyDescription)
         setDescriptionErr(false)
         event.preventDefault();
         const form = event.target;
@@ -71,13 +55,14 @@ const UpdateBlog = () => {
         const date = form.date.value
         const meta_word = form.meta_word.value;
         const author = form.author.value;
-        const description = formData.description;
-        console.log(description);
+        const description = tinyDescription;
         if (!description) {
+            setTinyDescription(tinyDescription)
             return setDescriptionErr(true)
         }
         let blogImageUrl = incomingBlogImageUrl
         if (!blogImage?.name) {
+            
             blogImageUrl = incomingBlogImageUrl
         } else {
             const image = { image: blogImage }
@@ -88,9 +73,11 @@ const UpdateBlog = () => {
                 }
             })
             try {
+                setTinyDescription(tinyDescription)
                 blogImageUrl = res?.data?.data?.display_url
             }
             catch (err) {
+                setTinyDescription(tinyDescription)
                 console.log(err);
                 blogImageUrl = incomingBlogImageUrl
             }
@@ -103,6 +90,7 @@ const UpdateBlog = () => {
         axiosPublic.put(`/updateBlog/${id}`, data)
             .then(res => {
                 console.log(res.data)
+                setTinyDescription(tinyDescription)
                 if (res.data.modifiedCount) {
                     console.log('data updated')
                     Swal.fire({
@@ -115,7 +103,9 @@ const UpdateBlog = () => {
 
                 }
             })
-            .catch()
+            .catch(() => {
+                setTinyDescription(tinyDescription)
+            })
         form.reset();
     }
 
@@ -129,10 +119,10 @@ const UpdateBlog = () => {
                 {/* form section  */}
                 <div className=''>
 
-                    <section className="text-gray-600 body-font relative">
-                        <div className="container ml-2  mx-auto">
+                    <section className="text-gray-600 body-font relative  w-full lg:w-[73vw] mx-auto">
+                        <div className="container   mx-auto">
 
-                            <div className="lg:w-full md:w-2/3 mx-auto bg-white  mt-2 rounded-xl">
+                            <div className="lg:w-full mx-auto bg-white  mt-2 rounded-xl">
 
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
@@ -183,13 +173,22 @@ const UpdateBlog = () => {
                                         <div className="p-2 w-full mb-10 h-full">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm font-bold text-gray-600">Blog Description</label>
-                                                <ReactQuill value={formData.description} onChange={handleDescriptionChange} theme="snow"
-                                                    modules={modules}
-                                                    formats={formats}
-                                                    placeholder="Enter course admission notice..."
-                                                    readOnly={false}
-                                                    bounds={'.app'}
-                                                    scrollingContainer={'.app'} className="min-h-64 border  border-gray-300" />
+                                                <Editor
+                                                    apiKey='ffaw0tilo4m0ex1q5nmpaa5fblipi8p51r8bnqbq3wbyf8vi'
+                                                    init={{
+                                                        height: 500,
+                                                        max_height: "500",
+                                                        width: '100%',
+                                                        border: "0px",
+                                                        //    menubar: false,
+                                                        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                                                        tinycomments_mode: 'embedded',
+                                                        tinycomments_author: 'Author name',
+
+                                                        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+                                                    }}
+                                                    value={tinyDescription}
+                                                    onEditorChange={handleDescriptionChange} />
                                             </div>
                                         </div>
 

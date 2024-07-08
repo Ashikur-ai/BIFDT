@@ -57,21 +57,21 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
             return axiosPublic.post('/studentGallery', data);
         });
         console.log(allImages);
-        // Promise.all(uploadPromises)
-        //     .then((results) => {
-        //         if (results.every(res => res.data.insertedId)) {
-        //             console.log('All images added');
-        //             toast.success("Uploaded Successfully!!", { id: toastId });
-        //             setCategory('');
-        //             refetch();
-        //             form.reset();
-        //             setSelectedImages([]); // Clear selected images after form reset
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //         toast.error(err?.message, { id: toastId });
-        //     });
+        Promise.all(uploadPromises)
+            .then((results) => {
+                if (results.every(res => res.data.insertedId)) {
+                    console.log('All images added');
+                    toast.success("Uploaded Successfully!!", { id: toastId });
+                    setCategory('');
+                    refetch();
+                    form.reset();
+                    setSelectedImages([]); // Clear selected images after form reset
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                toast.error(err?.message, { id: toastId });
+            });
     };
 
     const handleImageChange = (event) => {
@@ -113,7 +113,8 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
                                 <div className="p-2 w-full">
                                     <div className="relative">
                                         <label className="leading-7 text-sm text-gray-600 font-bold">Upload Image</label><br />
-                                        <input multiple required type="file" name='image' className="file-input file-input-bordered file-input-md w-full" onChange={handleImageChange} />
+                                        <input multiple required type="file" name='image' className="file-input file-input-bordered file-input-md w-full" 
+                                        accept="image/*" onChange={handleImageChange} />
                                     </div>
                                 </div>
                                 <div className="p-2 w-full">

@@ -53,14 +53,14 @@ const CreateSeminar = () => {
                 <div className=''>
 
                     <section className="text-gray-600 body-font relative">
-                        <div className="container ml-2  mx-auto">
+                        <div className="container  mx-auto">
 
-                            <div className="lg:w-full md:w-2/3 mx-auto bg-white  mt-2 rounded-xl">
+                            <div className="lg:w-[75vw] w-full mx-auto bg-white mt-2 rounded-xl">
 
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
                                     <p className='text-center text-2xl font-bold py-2'>Create Seminar</p>
-                                    <form action="" onSubmit={handleSubmit} className='flex flex-wrap -m-2'>
+                                    <form action="" onSubmit={handleSubmit} className='flex flex-wrap'>
 
                                         {/* Topic  */}
                                         <div className="p-2 w-1/2">

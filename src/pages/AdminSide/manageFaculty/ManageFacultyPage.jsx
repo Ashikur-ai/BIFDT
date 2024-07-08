@@ -54,7 +54,7 @@ const ManageFacultyPage = () => {
             <Helmet>
                 <title>Dashboard | Manage Faculty</title>
             </Helmet>
-            <div className="bg-white p-5 mx-4 rounded-lg">
+            <div className="bg-white p-5 rounded-lg w-full lg:w-[73vw] mx-auto">
                 <p className='text-2xl font-bold text-center'>Manage Faculty</p>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">

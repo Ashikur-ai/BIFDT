@@ -1,34 +1,79 @@
-import { Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
+import { Fade as Hamburger } from 'hamburger-react'
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { MdArrowDropDown } from "react-icons/md";
 const Navbar = () => {
+    const [isOpen, setOpenMenu] = useState(false)
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-
-    const navlinks =
+    const handleDropdownToggle = () => {
+        setDropdownOpen(!isDropdownOpen);
+    };
+    const handleOpen = () => {
+        console.log(!isOpen);
+        setOpenMenu(!isOpen)
+    }
+    const NavLinkStyle = 'text-base hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] transition-all duration-300'
+    const navNavLinks =
         <>
-            <Link to="/" className="transition-all duration-300 mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Home</Link>
+            <NavLink to="/" className="transition-all duration-300 mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Home</NavLink>
 
 
 
-            <Link to="/aboutUs" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">About Us</Link>
+            <NavLink to="/aboutUs" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">About Us</NavLink>
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Merchandising</Link>
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Merchandising</NavLink>
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Pattern Design</Link>
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Pattern Design</NavLink>
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Graphics & Web Design</Link>
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Graphics & Web Design</NavLink>
 
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Interior Design</Link>
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Interior Design</NavLink>
 
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Leather Design</Link
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Leather Design</NavLink
             >
-            <Link to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Computer Operator</Link>
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Computer Operator</NavLink>
 
-            
 
-            <Link to="/onlineAdmission" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Online Admission</Link>
 
-            <Link to="/freeSeminar" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Free Seminar</Link>
+            <NavLink to="/onlineAdmission" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Online Admission</NavLink>
+
+            <NavLink to="/freeSeminar" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Free Seminar</NavLink>
+
+        </>
+    const navNavLinksForDrawer =
+        <>
+            <NavLink to="/" className={`${NavLinkStyle}`}>Home</NavLink>
+
+
+
+            <NavLink to="/aboutUs" className={`${NavLinkStyle}`}>About Us</NavLink>
+            <p onClick={handleDropdownToggle} className={`text-base hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] transition-all duration-300 flex justify-between items-center cursor-pointer ${isDropdownOpen && 'bg-[#414040] px-[10px]'}`}>Course
+            <span className={` transition-all duration-300 ${isDropdownOpen ? 'rotate-180' : 'rotate-0'}`}><MdArrowDropDown /></span>
+            </p>
+
+
+            <div className={` rounded-md bg-[#c67d3a] flex flex-col ml-4 transition-all origin-top duration-300 ${isDropdownOpen ? 'block scale-y-100 p-2' : 'scale-y-0 h-0'} gap-2`}>
+                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Merchandising</NavLink>
+
+                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Pattern Design</NavLink>
+
+                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Graphics & Web Design</NavLink>
+
+
+                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Interior Design</NavLink>
+
+                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Leather Design</NavLink
+                >
+                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Computer Operator</NavLink>
+            </div>
+
+
+           <NavLink to="/onlineAdmission" className={`${NavLinkStyle}`}>Online Admission</NavLink>
+
+            <NavLink to="/freeSeminar" className={`${NavLinkStyle}`}>Free Seminar</NavLink>
 
         </>
     return (
@@ -36,8 +81,8 @@ const Navbar = () => {
             <div className="navbar shadow-2xl bg-[#f6861f] text-white sticky top-0 z-30">
                 <div className="">
                     {/* Mobile view  */}
-                    <div className="dropdown text-white">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                    <div className=" text-white">
+                        {/* <div  className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5 text-white"
@@ -52,34 +97,40 @@ const Navbar = () => {
                                     d="M4 6h16M4 12h8m-8 6h16"
                                 />
                             </svg>
-                        </div>
-                        <ul
-                            tabIndex={0}
-                            className="menu bg-[#f6861f]  menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box"
-                        >
-                            {/* <li>
-                                <a>Parent</a>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li> */}
+                        </div> */}
+                        <div className="block lg:hidden drawer lg:w-max w-max z-50">
+                            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                            <div className=" drawer-content cursor-pointer">
+                                {/* Page content here */}
+                                <label htmlFor="my-drawer" className="z-50  cursor-pointer">
+                                    <Hamburger toggled={isOpen} toggle={setOpenMenu} size={23} duration={0.6} />
+                                </label>
+                            </div>
+                            <div className="drawer-side">
+                                <label onClick={() => setOpenMenu(false)} htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
+                                <motion.ul
 
-                            {navlinks}
-                        </ul>
+                                    className="menu p-4 w-56 md:w-80 min-h-full bg-[#f6861f] text-white space-y-2 rounded-lg z-40 navbarUl">
+                                    {navNavLinksForDrawer}
+
+                                </motion.ul>
+                            </div>
+                        </div>
+
                     </div>
                     {/* laptop view  */}
                     <div className="text-sm hidden lg:flex px-10">
 
                         <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold">
 
-                            {navlinks}
+                            {navNavLinks}
                         </nav>
                     </div>
                 </div>
 
 
             </div>
+
         </>
     );
 };

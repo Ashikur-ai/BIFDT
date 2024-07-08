@@ -61,39 +61,41 @@ const ManageBlog = () => {
             <Helmet>
                 <title>Dashboard | Manage Blogs</title>
             </Helmet>
-            <div className="bg-white mx-5 rounded-lg overflow-x-auto max-w-full">
-                <p className="text-2xl font-bold text-center py-2">Manage Blogs</p>
-                <table className="table table-zebra overflow-x-auto">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>
-                                #
-                            </th>
-                            <th>Blog</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Author Name</th>
-                            <th>Meta keyword</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* row 1 */}
-
-                        {
-                            blogs?.map((blog, index) =><BlogRow blog={blog} index={index} handleDelete={handleDelete} key={index} />
-                            )
-                        }
-
-
-
-                    </tbody>
-
-
-                </table>
-            </div>
+           <div className="pb-20 w-full lg:w-[73vw] overflow-x-auto">
+                <div className="bg-white rounded-lg ">
+                    <p className="text-2xl font-bold text-center py-2">Manage Blogs</p>
+                    <table className="table table-zebra overflow-x-auto">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th>Blog</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Author Name</th>
+                                <th>Meta keyword</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* row 1 */}
+    
+                            {
+                                blogs?.map((blog, index) =><BlogRow blog={blog} index={index} handleDelete={handleDelete} key={index} />
+                                )
+                            }
+    
+    
+    
+                        </tbody>
+    
+    
+                    </table>
+                </div>
+           </div>
         </>
     );
 };

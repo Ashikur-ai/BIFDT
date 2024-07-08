@@ -1,16 +1,22 @@
 import { Helmet } from 'react-helmet-async';
-import HeaderText from '../../../components/HeaderText';
 import { Link } from 'react-router-dom';
 import { BiLogoTwitter } from 'react-icons/bi';
 import { TbBrandYoutubeFilled } from 'react-icons/tb';
 import { FaFacebook } from 'react-icons/fa';
 import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // import styles
+import Quill from 'quill';
 import { useState } from 'react';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { Editor } from '@tinymce/tinymce-react';
 
+// Font registration (Move this outside the component)
+const Font = Quill.import('formats/font');
+Font.whitelist = ['arial', 'comic-sans', 'courier-new', 'georgia', 'helvetica', 'lucida'];
+Quill.register(Font, true);
 const AddBlogPage = () => {
     const [descriptionErr, setDescriptionErr] = useState(false)
     const axiosPublic = useAxiosPublic();
@@ -28,8 +34,8 @@ const AddBlogPage = () => {
 
     const modules = {
         toolbar: [
-            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-            [{ size: [] }],
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': Font.whitelist }],
+            [{ 'size': [] }],
             ['bold', 'italic', 'underline', 'strike', 'blockquote'],
             [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
             ['link', 'image', 'video'],
@@ -45,7 +51,8 @@ const AddBlogPage = () => {
     ];
 
 
-console.log(new Date().getTime());
+
+    console.log(new Date().getTime());
     const handleSubmit = async (event) => {
         setDescriptionErr(false)
         event.preventDefault();
@@ -116,10 +123,10 @@ console.log(new Date().getTime());
                 {/* form section  */}
                 <div className=''>
 
-                    <section className="text-gray-600 body-font relative">
-                        <div className="container ml-2  mx-auto">
+                    <section className="text-gray-600 body-font relative w-full lg:w-[73vw] mx-auto">
+                        <div className="container  mx-auto">
 
-                            <div className="lg:w-full md:w-2/3 mx-auto bg-white  mt-2 rounded-xl">
+                            <div className="lg:w-full mx-auto bg-white  mt-2 rounded-xl">
 
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
@@ -141,7 +148,7 @@ console.log(new Date().getTime());
                                             </div>
                                         </div>
 
-                                       
+
                                         {/* image url  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
@@ -172,13 +179,26 @@ console.log(new Date().getTime());
                                         <div className="p-2 w-full mb-10 h-full">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm font-bold text-gray-600">Blog Description</label>
-                                                <ReactQuill value={formData.description} onChange={handleDescriptionChange} theme="snow"
-                                                    modules={modules}
-                                                    formats={formats}
-                                                    placeholder="Enter course admission notice..."
-                                                    readOnly={false}
-                                                    bounds={'.app'}
-                                                    scrollingContainer={'.app'} className="min-h-64 border  border-gray-300" />
+                                                
+                                                <Editor
+                                                    apiKey='ffaw0tilo4m0ex1q5nmpaa5fblipi8p51r8bnqbq3wbyf8vi'
+                                                    init={{
+                                                        height: 500,
+                                                        max_height: "500",
+                                                        width: '100%',
+                                                        border: "0px",
+                                                        //    menubar: false,
+                                                        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                                                        tinycomments_mode: 'embedded',
+                                                        tinycomments_author: 'Author name',
+                                                        // mergetags_list: [
+                                                        //   { value: 'First.Name', title: 'First Name' },
+                                                        //   { value: 'Email', title: 'Email' },
+                                                        // ],
+                                                        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+                                                    }}
+                                                    value={formData.description}
+                                                    onEditorChange={handleDescriptionChange} />
                                             </div>
 
                                         </div>
