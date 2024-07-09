@@ -3,16 +3,16 @@
 import { Link } from "react-router-dom";
 import { makeVisibleTime } from "../../../makeVisibleTime";
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, slide=false }) => {
     return (
 
-        <div className="bg-white shadow-md rounded-lg flex flex-col gap-2 max-w-[320px]">
+        <div className={`card bg-white min-h-full overflow-hidden shadow-md rounded-lg flex flex-col gap-2 ${slide ? 'w-[50vw]' : 'w-[80%]'} sm:w-[320px]`}>
             <div className="min-h-48 w-full overflow-hidden ">
                 <img className="min-h-48 max-h-48 w-full object-cover" src={blog?.blogImageUrl} />
             </div>
-            <div className="p-4 flex-grow flex flex-col h-[150px] overflow-hidden">
-                <h2 className="text-lg font-bold mb-2">{blog?.title}</h2>
-                <p dangerouslySetInnerHTML={{ __html: blog?.description }}></p>
+            <div className="p-4 flex-grow flex flex-col   overflow-hidden">
+                <h2 className="text-lg font-bold mb-2">{blog?.title.slice(0, 70)}</h2>
+                <p className="min-h-[100px] max-h-[100px] overflow-hidden" dangerouslySetInnerHTML={{ __html: blog?.description }}></p>
             </div>
             <div className="px-3 mx-auto mb-5 flex justify-between gap-5 items-center">
                 <Link to={`/blogDetails/${blog?._id}`}>

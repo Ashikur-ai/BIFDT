@@ -89,9 +89,9 @@ const AdmissionRequest = () => {
             <Helmet>
                 <title>Dashboard | Admission</title>
             </Helmet>
-            <div className="bg-white p-5 mx-4 rounded-lg">
+            <div className="bg-white p-5 rounded-lg">
                 <p className='text-2xl font-bold text-center'>Admission Requests</p>
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto w-full lg:w-[73vw]">
                     <table className="table table-zebra">
                         {/* head */}
                         <thead>

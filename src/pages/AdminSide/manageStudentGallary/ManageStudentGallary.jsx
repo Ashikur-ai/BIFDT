@@ -71,10 +71,10 @@ const ManageStudentGallary = () => {
                 size: 'small',
                 color: 'border',
                 active: {
-                    color: '#db2777',
+                    color: '#f6861f',
                 },
                 hover: {
-                    color: '#db2777',
+                    color: '#f6861f',
                 },
             },
             color: 'text',
@@ -108,9 +108,9 @@ const ManageStudentGallary = () => {
                     <div className='w-full lg:w-[1000px] lg:max-w-[calc(100vw-400px)]'>
                         <Grommet Grommet theme={customTheme}>
                             <Tabs justify="start">
-                                <Tab className='text-red-500' title={<span className={`text-black border border-pink-700 px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === 'All' && 'font-bold'}`}>All</span>} onClick={() => setCategoryName('All')}></Tab>
+                                <Tab className='text-red-500' title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === 'All' && 'font-bold'}`}>All</span>} onClick={() => setCategoryName('All')}></Tab>
                                 {
-                                    allCategory?.map(category => <Tab onClick={() => setCategoryName(category?.category_name)} key={category?._id} title={<span className={`text-black border border-pink-700 px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === category?.category_name && 'font-bold'}`}>{category?.category_name}</span>}></Tab>)
+                                    allCategory?.map(category => <Tab onClick={() => setCategoryName(category?.category_name)} key={category?._id} title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === category?.category_name && 'font-bold'}`}>{category?.category_name}</span>}></Tab>)
                                 }
     
                             </Tabs>

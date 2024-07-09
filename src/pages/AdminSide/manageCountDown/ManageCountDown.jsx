@@ -56,13 +56,13 @@ const ManageCountDown = () => {
             <Helmet>
                 <title>Dashboard | CountDown</title>
             </Helmet>
-            <div className='bg-gray-100 text-black'>
+            <div className='bg-gray-100 text-black w-full lg:w-[73vw] mx-auto'>
 
                 {/* form section  */}
                 <div className=''>
 
                     <section className="text-gray-600 body-font relative">
-                        <div className="container ml-2 mt-2  mx-auto">
+                        <div className="container mt-2  mx-auto">
 
                             <div className="lg:w-full md:w-2/3 mx-auto bg-white   rounded-xl">
                                 <p className='text-center text-2xl font-bold pt-3'>Manage CountDown</p>

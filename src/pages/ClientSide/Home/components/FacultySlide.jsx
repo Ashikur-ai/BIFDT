@@ -52,7 +52,7 @@ const FacultySlide = () => {
             >
                 <div className='flex gap-20 px-20'>
                     {
-                        faculties?.map(faculty => <FacultyCard key={faculty._id} faculty={faculty} />)
+                        faculties?.map(faculty => <FacultyCard key={faculty._id} faculty={faculty} slide={true} />)
                     }
                 </div>
 

@@ -8,8 +8,8 @@ const BackendNavbar = () => {
     return (
         <>
             <div className="flex items-center bg-white justify-between  p-5 ">
-                <h2 className="text-2xl font-bold">Bangladesh Institute of Fashion & Design Technology</h2>
-                <div className="flex items-center">
+                <h2 className="text-2xl font-bold hidden sm:block">Bangladesh Institute of Fashion & Design Technology</h2>
+                <div className="flex items-center flex-wrap gap-2">
                     <input type="text" className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search" />
                     <FaRegCircleUser className='ml-5 text-2xl' />
                     <Link to="/dashboard/adminLogin"><button className="ml-4 px-4 py-2 rounded-md bg-black text-white hover:bg-blue-600">Login</button></Link>

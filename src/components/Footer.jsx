@@ -19,16 +19,16 @@ const Footer = () => {
 
                         <img src="https://i.ibb.co/YB1115L/footer-image.png" className="lg:pl-5 lg:w-3/4 w-3/4 mx-auto" alt="" />
 
-                            <nav className="px-10">
-                                <div className="flex px-20 py-5 gap-5 flex-wrap">
-                                    <Link to="https://x.com/"><BiLogoTwitter className="text-4xl" /></Link>
-                                    <Link to="https://www.youtube.com/"><TbBrandYoutubeFilled className="text-4xl" />
+                            <nav className="px-5 text-white flex sm:block justify-center items-center">
+                                <div className="flex px-5 sm:px-20 py-5 gap-5 flex-wrap">
+                                    <Link to="https://x.com/"><BiLogoTwitter className="text-3xl sm:text-4xl" /></Link>
+                                    <Link to="https://www.youtube.com/"><TbBrandYoutubeFilled className="text-3xl sm:text-4xl" />
                                     </Link>
-                                    <Link to="https://www.facebook.com/"><FaFacebook className="text-4xl" /></Link>
-                                    <Link to="https://www.pinterest.com/"><BsPinterest className="text-4xl" /></Link>
+                                    <Link to="https://www.facebook.com/"><FaFacebook className="text-3xl sm:text-4xl" /></Link>
+                                    <Link to="https://www.pinterest.com/"><BsPinterest className="text-3xl sm:text-4xl" /></Link>
                                 </div>
                             </nav>
-                            <div className=" lg:pl-20">
+                            <div className=" lg:pl-20 text-center sm:text-start" >
 
 
                                 <div className="lg:px-10">
@@ -40,10 +40,10 @@ const Footer = () => {
                     </div>
                 </nav>
 
-                <div className="">
-                    <div className="mx-auto w-1/2">
-                        <p className="text-3xl font-bold mt-5 ">Contact Number</p>
-                        <div className="flex">
+                <div className="text-white">
+                    <div className="mx-auto px-9">
+                        <p className="text-3xl font-bold mt-5 text-center sm:text-start">Contact Number</p>
+                        <div className="flex justify-center sm:justify-start items-center">
                             <div>
                                 <span className="flex gap-2 my-5"><FaSquarePhone /> 016-29-17-17-17,</span>
                                 <span className="flex gap-2 my-5"><FaSquarePhone /> 016-29-18-18-18,</span>

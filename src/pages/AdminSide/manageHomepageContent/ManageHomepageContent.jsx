@@ -25,9 +25,9 @@ const ManageHomepageContent = () => {
             return res?.data
         }
     })
-    const { description, imageUrl: incomingImageUrl, notice, video_url } = homepageContent[0] || []
-    formData.notice = notice ? notice : '';
-    formData.description = description ? description : '';
+    const { description: incomingDescription, imageUrl: incomingImageUrl, notice: incomingNotice, video_url: incomingVideo_url, video_section_video: incomingVideo_section_video } = homepageContent[0] || []
+    formData.notice = incomingNotice ? incomingNotice : '';
+    formData.description = incomingDescription ? incomingDescription : '';
     const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const handleNoticeChange = (value) => {
@@ -64,13 +64,14 @@ const ManageHomepageContent = () => {
         event.preventDefault();
         const form = event.target;
         const video_url = form.video_url.value || '';
+        const video_section_video = form.video_section_video.value || ''
         const selectedImage = form.image.files[0] || {};
         // const author = form.author.value || '';
         // const meta_word = form.meta_word.value || '';
         const notice = formData.notice || '';
         const description = formData.description || '';
         let imageUrl = ''
-
+        console.log({notice, description});
         if (!selectedImage?.name) {
             imageUrl = incomingImageUrl
         } else {
@@ -92,7 +93,7 @@ const ManageHomepageContent = () => {
         }
 
 
-        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description };
+        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description, video_section_video };
         axiosPublic.post(`/updateHomepageContent/${homepageContent[0]?._id || 'notAvailable'}`, data)
             .then(res => {
                 toast.success("Home page Content Updated Successfully!!", { id: toastId });
@@ -119,10 +120,10 @@ const ManageHomepageContent = () => {
                 {/* form section  */}
                 <div className=''>
 
-                    <section className="text-gray-600 body-font relative">
-                        <div className="container ml-2 mt-2 mx-auto">
+                    <section className="text-gray-600 body-font relative w-full lg:w-[73vw] mx-auto">
+                        <div className="container mt-2 mx-auto">
 
-                            <div className="lg:w-full md:w-2/3 mx-auto bg-white  py-5 rounded-xl">
+                            <div className="lg:w-full mx-auto bg-white  py-5 rounded-xl">
                                 <p className='text-center text-2xl font-bold pb-2'>Manage Homepage Content</p>
 
                                 <div className="shadow-2xl  px-10 rounded-2xl">
@@ -134,7 +135,7 @@ const ManageHomepageContent = () => {
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section video</label><br />
-                                                <input defaultValue={video_url} name='video_url' type="text" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
+                                                <input defaultValue={incomingVideo_url} name='video_url' type="text" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
                                             </div>
                                         </div>
 
@@ -146,11 +147,17 @@ const ManageHomepageContent = () => {
                                             </div>
                                         </div>
 
-
-
+                                        {/* video section video upload upload  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Video section's video</label><br />
+                                                <input defaultValue={incomingVideo_section_video || ''} name='video_section_video' type="text" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
+                                            </div>
+                                        </div>
+                                        <div className='w-1/2'></div>
 
                                         {/* Notice */}
-                                        <div className="p-2 w-1/2 mb-10">
+                                        <div className="p-2 sm:w-1/2 mb-10 h-full">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm font-bold text-gray-600">Add Notice</label>
                                                 <ReactQuill value={formData.notice} onChange={handleNoticeChange} theme="snow"
@@ -159,7 +166,7 @@ const ManageHomepageContent = () => {
                                                     placeholder="Enter course admission notice..."
                                                     readOnly={false}
                                                     bounds={'.app'}
-                                                    scrollingContainer={'.app'} className="h-64" />
+                                                    scrollingContainer={'.app'} className="min-h-64 border border-gray-300" />
                                             </div>
                                         </div>
 
@@ -167,7 +174,7 @@ const ManageHomepageContent = () => {
 
 
                                         {/* Description */}
-                                        <div className="p-2 w-1/2 mb-20">
+                                        <div className="p-2 h-full sm:w-1/2 mb-20">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm font-bold text-gray-600">Homepage Description</label>
                                                 <ReactQuill value={formData?.description} onChange={handleDescriptionChange} theme="snow"
@@ -176,7 +183,7 @@ const ManageHomepageContent = () => {
                                                     placeholder="Enter homepage description..."
                                                     readOnly={false}
                                                     bounds={'.app'}
-                                                    scrollingContainer={'.app'} className="h-64" />
+                                                    scrollingContainer={'.app'} className="min-h-64 border border-gray-300" />
                                             </div>
                                         </div>
 
@@ -221,6 +228,7 @@ const ManageHomepageContent = () => {
                         </div>
                     </section>
                 </div>
+
             </div>
         </>
     );

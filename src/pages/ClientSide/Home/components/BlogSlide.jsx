@@ -15,7 +15,7 @@ const BlogSlide = ({blog}) => {
             </div>
             <div className="px-10 mx-auto mb-5 flex justify-between gap-5 items-center">
               <Link to="/blogDetails">
-                <button className="btn bg-pink-700 text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">
+                <button className="btn bg-[#f6861f]  text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white">
                   Read More
                 </button>
               </Link>
