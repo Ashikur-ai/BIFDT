@@ -181,7 +181,7 @@ const AddBlogPage = () => {
                                                 <label className="leading-7 text-sm font-bold text-gray-600">Blog Description</label>
                                                 
                                                 <Editor
-                                                    apiKey='ffaw0tilo4m0ex1q5nmpaa5fblipi8p51r8bnqbq3wbyf8vi'
+                                                    apiKey='rcgwgkgfl2fboctr4kanu1wyo0q2768tzdj3sxx94rb4s4es'
                                                     init={{
                                                         height: 500,
                                                         max_height: "500",

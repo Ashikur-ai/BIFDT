@@ -279,13 +279,14 @@ const CourseDetails = () => {
           </p>
 
           {/* main video  */}
-          <div className="h-96 w-[80%] mx-auto rounded-lg p-2
+          <div className="w-[85vw] h-[48.9vw] sm:w-[65vw] sm:h-[37vw] lg:h-[370px] lg:w-[650px] mx-auto rounded-lg p-2
           bg-[#f6861f]">
             <ReactPlayer
               controls="true"
               playing={true}
               url="https://www.youtube.com/watch?v=Z3yqBaGvACM"
               width="100%"
+              height="100%"
             />
           </div>
 
@@ -355,7 +356,10 @@ const CourseDetails = () => {
             </p>
 
 
-            <p className="text-2xl font-bold py-5">Admission Notice</p>
+           <div className="flex justify-between items-center pr-14">
+              <p className="text-2xl font-bold py-5">Admission Notice</p>
+              <Link to={'/onlineAdmission'}><div className="py-5 flex justify-center"> <button className="btn bg-[#f6861f] text-white hover:text-black  active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">Enroll Now</button></div></Link>
+           </div>
             <Marquee className="bg-[#f6861f] py-1.5 text-white">
               ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে
               আকর্ষণীয়, সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন
@@ -466,7 +470,7 @@ const CourseDetails = () => {
         </div>
       </div>
       
-      <Link to={'/onlineAdmission'}><div className="py-5 flex justify-center"> <button className="btn bg-[#f6861f] text-white hover:text-black  active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">Enroll Now</button></div></Link>
+      
 
       <div className="px-20">
         {/* student gallary section  */}

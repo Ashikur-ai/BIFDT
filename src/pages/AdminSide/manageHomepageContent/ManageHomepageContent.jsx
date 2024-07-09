@@ -10,52 +10,40 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import { Editor } from '@tinymce/tinymce-react';
+import Swal from 'sweetalert2';
 
 const ManageHomepageContent = () => {
-    let formData = {
-        notice: '',
-        description: ''
+    const [usableDescription, setDescription] = useState('');
+    const [usableNotice, setNotice] = useState('')
 
-    }
     const axiosPublic = useAxiosPublic()
-    const { data: homepageContent = [], refetch: homepageContentRefetch } = useQuery({
+    const { data: homepageContent = [], refetch: homepageContentRefetch, isLoading } = useQuery({
         queryKey: ['homepageContent'],
         queryFn: async () => {
             const res = await axiosPublic.get('/homepageContent')
             return res?.data
         }
     })
-    const { description: incomingDescription, imageUrl: incomingImageUrl, notice: incomingNotice, video_url: incomingVideo_url, video_section_video: incomingVideo_section_video } = homepageContent[0] || []
-    formData.notice = incomingNotice ? incomingNotice : '';
-    formData.description = incomingDescription ? incomingDescription : '';
+    useEffect(() => {
+        setDescription(homepageContent[0]?.description || '');
+        setNotice(homepageContent[0]?.notice || '');
+
+    }, [homepageContent, isLoading])
+    const { description: incomingDescription, imageUrl: incomingImageUrl, notice: incomingNotice, video_url: incomingVideo_url, video_section_video: incomingVideo_section_video, courseImages: incomingCourseImages } = homepageContent[0] || []
     const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const handleNoticeChange = (value) => {
-        formData.notice = value
+        setNotice(value)
     };
 
     const handleDescriptionChange = (value) => {
-        formData.description = value
+        setDescription(value)
     };
 
+    console.log(incomingCourseImages);
 
-    const modules = {
-        toolbar: [
-            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-            [{ size: [] }],
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-            ['link', 'image', 'video'],
-            ['clean']
-        ],
-    };
 
-    const formats = [
-        'header', 'font', 'size',
-        'bold', 'italic', 'underline', 'strike', 'blockquote',
-        'list', 'bullet', 'indent',
-        'link', 'image', 'video'
-    ];
 
 
 
@@ -64,51 +52,114 @@ const ManageHomepageContent = () => {
         event.preventDefault();
         const form = event.target;
         const video_url = form.video_url.value || '';
-        const video_section_video = form.video_section_video.value || ''
+        const video_section_video = form.video_section_video.value || '';
         const selectedImage = form.image.files[0] || {};
-        // const author = form.author.value || '';
-        // const meta_word = form.meta_word.value || '';
-        const notice = formData.notice || '';
-        const description = formData.description || '';
-        let imageUrl = ''
-        console.log({notice, description});
-        if (!selectedImage?.name) {
-            imageUrl = incomingImageUrl
-        } else {
-            const image = { image: selectedImage }
+        const selectedCourseImage = form.courseImage.files[0] || {};
+        const notice = usableNotice || '';
+        const description = usableDescription || '';
+        let imageUrl = '';
+        let secondImageUrl = '';
+        let retries = 3; // Number of retries
 
-            const res = await axios.post(imgHostingApi, image, {
-                headers: {
-                    'content-type': 'multipart/form-data'
+        const uploadImage = async (image) => {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const res = await axios.post(imgHostingApi, image, {
+                        headers: {
+                            'content-type': 'multipart/form-data'
+                        }
+                    });
+                    return res?.data?.data?.display_url;
+                } catch (err) {
+                    console.log(`Attempt ${i + 1} failed:`, err);
+                    if (i === retries - 1) throw err; // Throw error if all retries fail
                 }
-            })
-            try {
-                imageUrl = res?.data?.data?.display_url
             }
-            catch (err) {
+            return null;
+        };
+
+        if (!selectedImage?.name) {
+            imageUrl = incomingImageUrl;
+        } else {
+            const image = { image: selectedImage };
+            try {
+                imageUrl = await uploadImage(image);
+            } catch (err) {
                 console.log(err);
-                imageUrl = incomingImageUrl
+                imageUrl = incomingImageUrl;
                 toast.error(err?.message, { id: toastId });
             }
         }
 
+        if (!selectedCourseImage?.name) {
+            secondImageUrl = '';
+        } else {
+            const image = { image: selectedCourseImage };
+            try {
+                secondImageUrl = await uploadImage(image);
+            } catch (err) {
+                console.log(err);
+                secondImageUrl = '';
+                toast.error(err?.message, { id: toastId });
+            }
+        }
 
-        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description, video_section_video };
+        console.log(secondImageUrl);
+        let courseImagesArray = [...incomingCourseImages];
+        if (secondImageUrl) {
+            courseImagesArray = [...incomingCourseImages, { image: secondImageUrl, id: new Date().getTime() }];
+        }
+
+        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description, video_section_video, courseImages: courseImagesArray };
+        console.log(data);
+
         axiosPublic.post(`/updateHomepageContent/${homepageContent[0]?._id || 'notAvailable'}`, data)
             .then(res => {
                 toast.success("Home page Content Updated Successfully!!", { id: toastId });
                 if (res.data?.modifiedCount || res.data?.insertedId) {
                     console.log(res.data);
-                    homepageContentRefetch()
+                    homepageContentRefetch();
                 }
             })
             .catch(err => {
                 console.log(err);
                 toast.error(err?.message, { id: toastId });
-            })
+            });
+    };
+
+    const handleDelete = (image) => {
+
+        console.log(image);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const toastId = toast.loading("Image Deleting...");
+                const afterDeleteArray = incomingCourseImages?.filter(img => img.id !== image.id);
+                const data = { courseImages: afterDeleteArray }
+                axiosPublic.post(`/updateHomepageContent/${homepageContent[0]?._id || 'notAvailable'}`, data)
+                    .then(res => {
+                        toast.success("Deleted Successfully!!", { id: toastId });
+                        if (res.data?.modifiedCount || res.data?.insertedId) {
+                            console.log(res.data);
+                            homepageContentRefetch();
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        toast.error(err?.message, { id: toastId });
+                    });
+
+            }
+        });
 
     }
-
 
     return (
         <>
@@ -131,61 +182,112 @@ const ManageHomepageContent = () => {
 
 
 
-                                        {/* video upload  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section video</label><br />
-                                                <input defaultValue={incomingVideo_url} name='video_url' type="text" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
+                                        <div className='w-full grid grid-cols-1 sm:grid-cols-2'>
+                                            {/* video upload  */}
+                                            <div className="p-2 w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section video</label><br />
+                                                    <input defaultValue={incomingVideo_url} name='video_url' type="text" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        {/* image upload  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section Image</label><br />
-                                                <input name='image' type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                            {/* image upload  */}
+                                            <div className="p- w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section Image</label><br />
+                                                    <input name='image' type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        {/* video section video upload upload  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600 font-bold">Video section's video</label><br />
-                                                <input defaultValue={incomingVideo_section_video || ''} name='video_section_video' type="text" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
+                                            {/* video section video upload upload  */}
+                                            <div className="p-2 w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Video section's video</label><br />
+                                                    <input defaultValue={incomingVideo_section_video || ''} name='video_section_video' type="text" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
+                                                </div>
+                                            </div>
+                                            {/* course Images  */}
+                                            <div className="p-2 w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Add Course Images</label><br />
+                                                    <input name='courseImage' type="file" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                </div>
+                                                <div className='border border-gray-500 rounded-md mt-5 p-2'>
+                                                    <p className=''>Already added Images</p>
+                                                    <div className='flex gap-2 flex-wrap'>
+                                                        {
+                                                            incomingCourseImages?.map((image, idx) => <div className='w-[100px] p-2 rounded-md border border-black overflow-hidden' key={idx}>
+                                                                <div className='flex justify-end pb-2'> <p onClick={() => handleDelete(image)} className=' w-7 h-7 rounded-md bg-gray-200 hover:bg-red-500 hover:text-white active:scale-90 flex justify-center items-center'>X</p></div>
+                                                                <img src={image?.image} className=' w-full h-[70px] object-cover' />
+                                                            </div>)
+                                                        }
+
+                                                    </div>
+                                                    {
+                                                        incomingCourseImages?.length < 1 && <p className='text-sm text-center pt-5'>No image Found!!</p>
+                                                    }
+                                                </div>
+
+                                            </div>
+                                            <div className="p-2 w-full  mb-10 h-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm font-bold text-gray-600">Add Notice</label>
+
+                                                    <Editor
+                                                        apiKey='rcgwgkgfl2fboctr4kanu1wyo0q2768tzdj3sxx94rb4s4es'
+                                                        init={{
+                                                            height: 500,
+                                                            max_height: "500",
+                                                            width: '100%',
+                                                            border: "0px",
+                                                            //    menubar: false,
+                                                            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                                                            tinycomments_mode: 'embedded',
+                                                            tinycomments_author: 'Author name',
+                                                            // mergetags_list: [
+                                                            //   { value: 'First.Name', title: 'First Name' },
+                                                            //   { value: 'Email', title: 'Email' },
+                                                            // ],
+                                                            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+                                                        }}
+                                                        value={usableNotice}
+                                                        onEditorChange={handleNoticeChange} />
+                                                </div>
+                                            </div>
+
+
+
+
+                                            {/* Description */}
+                                            <div className="p-2 h-full w-full  mb-20">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm font-bold text-gray-600">Homepage Description</label>
+                                                    <Editor
+                                                        apiKey='rcgwgkgfl2fboctr4kanu1wyo0q2768tzdj3sxx94rb4s4es'
+                                                        init={{
+                                                            height: 500,
+                                                            max_height: "500",
+                                                            width: '100%',
+                                                            border: "0px",
+                                                            //    menubar: false,
+                                                            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                                                            tinycomments_mode: 'embedded',
+                                                            tinycomments_author: 'Author name',
+                                                            // mergetags_list: [
+                                                            //   { value: 'First.Name', title: 'First Name' },
+                                                            //   { value: 'Email', title: 'Email' },
+                                                            // ],
+                                                            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+                                                        }}
+                                                        value={usableDescription}
+                                                        onEditorChange={handleDescriptionChange} />
+                                                </div>
+
                                             </div>
                                         </div>
-                                        <div className='w-1/2'></div>
 
                                         {/* Notice */}
-                                        <div className="p-2 sm:w-1/2 mb-10 h-full">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm font-bold text-gray-600">Add Notice</label>
-                                                <ReactQuill value={formData.notice} onChange={handleNoticeChange} theme="snow"
-                                                    modules={modules}
-                                                    formats={formats}
-                                                    placeholder="Enter course admission notice..."
-                                                    readOnly={false}
-                                                    bounds={'.app'}
-                                                    scrollingContainer={'.app'} className="min-h-64 border border-gray-300" />
-                                            </div>
-                                        </div>
 
-
-
-
-                                        {/* Description */}
-                                        <div className="p-2 h-full sm:w-1/2 mb-20">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm font-bold text-gray-600">Homepage Description</label>
-                                                <ReactQuill value={formData?.description} onChange={handleDescriptionChange} theme="snow"
-                                                    modules={modules}
-                                                    formats={formats}
-                                                    placeholder="Enter homepage description..."
-                                                    readOnly={false}
-                                                    bounds={'.app'}
-                                                    scrollingContainer={'.app'} className="min-h-64 border border-gray-300" />
-                                            </div>
-                                        </div>
 
 
 

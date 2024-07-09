@@ -47,7 +47,7 @@ const Faculties = () => {
 
     return (
         <div className='sm:px-20 my-10 min-h-screen'>
-            <p className="text-4xl m-10"><span className='text-pink-600 border-b-2'>Faculties</span></p>
+            <p className="text-4xl m-10"><span className='text-[#f6861f] border-b-2'>Faculties</span></p>
 
             <div className='flex gap-10 flex-wrap justify-center'>
                 {
