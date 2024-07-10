@@ -49,10 +49,10 @@ const TabSection = () => {
                 size: 'small',
                 color: 'border',
                 active: {
-                    color: '#f6861f',
+                    color: '#FF4e00',
                 },
                 hover: {
-                    color: '#f6861f',
+                    color: '#FF4e00',
                 },
             },
             color: 'text',
@@ -73,20 +73,21 @@ const TabSection = () => {
     };
     console.log(studentGallery);
     const showingGallery = categoryName === 'All' ? studentGallery : studentGallery.filter(gallery => gallery?.category === categoryName)
+   const btnStyle = 'border-primary hover:bg-primary px-6 py-1.5 text-white border text-base   rounded-md transition-all duration-300 hover:font-bold flex justify-center items-center tabBtn active:border-2 active:border-gray-500'
     return (
         <div className='  mx-auto py-20 '>
             <p className='text-black font-bold text-4xl text-center py-5'>Student Photo Gallery</p>
             <div className='pr-12 w-max max-w-full mx-auto'>
                 <Grommet Grommet theme={customTheme}>
                     <Tabs justify="start">
-                        <Tab className='text-black' title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === 'All' && 'font-bold'}`}>All</span>} onClick={() => setCategoryName('All')}></Tab>
+                        <Tab className='text-black' title={<div className={`${btnStyle} ${categoryName === 'All' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>All</p></div>} onClick={() => setCategoryName('All')}></Tab>
                         {
                             allCategory?.map(category => <Tab onClick={() => 
                             {
                                 setCategoryName(category?.category_name);
                                 setSeeMore(false)
                             }
-                            } key={category?._id} title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === category?.category_name && 'font-bold'}`}>{category?.category_name}</span>}></Tab>)
+                            } key={category?._id} title={<div className={`${btnStyle} ${categoryName === category?.category_name ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>{category?.category_name}</p></div>}></Tab>)
                         }
 
                     </Tabs>
@@ -99,7 +100,7 @@ const TabSection = () => {
                 }
             </div>
             {
-                showingGallery.length > 9 && <div className='flex justify-center items-center pt-10'><button onClick={() => setSeeMore(!seeMore)} className='flex flex-col justify-center items-center px-7 py-1 rounded-md bg-[#f6861f] text-white hover:font-bold transition-all duration-300 hover:bg-[#d67418]  active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-red-300 active:scale-90 focus:text-white w-max'><span>{seeMore ? 'See Less' : 'See More'}</span> <FaAngleDown className={`text-lg transition-all duration-300 ${seeMore ? 'rotate-180' : 'rotate-0'}`} /></button></div>
+                showingGallery.length > 9 && <div className='flex justify-center items-center pt-10'><button onClick={() => setSeeMore(!seeMore)} className='flex flex-col justify-center items-center px-7 py-1 rounded-md bg-primary text-white hover:font-bold transition-all duration-300 hover:bg-[#e55633]  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 active:scale-90 focus:text-white w-max'><span>{seeMore ? 'See Less' : 'See More'}</span> <FaAngleDown className={`text-lg transition-all duration-300 ${seeMore ? 'rotate-180' : 'rotate-0'}`} /></button></div>
             }
         </div>
     )

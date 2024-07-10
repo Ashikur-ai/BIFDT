@@ -37,6 +37,7 @@ import UpdateGallery from "../pages/AdminSide/UpdateGallery/UpdateGallery";
 import AboutUs from "../pages/ClientSide/aboutUs/AboutUs";
 
 import Faculties from "../pages/ClientSide/Faculties/Faculties";
+import ManageComments from "../pages/AdminSide/ManageComments/ManageComments";
 
 
 const BasicRoutes = createBrowserRouter([
@@ -51,7 +52,7 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "/courseDetails",
                 element: <CourseDetails></CourseDetails>
-                
+
             },
             {
                 path: "/onlineAdmission",
@@ -63,7 +64,7 @@ const BasicRoutes = createBrowserRouter([
             },
             {
                 path: "/faculties",
-                element: <Faculties/>
+                element: <Faculties />
             },
             {
                 path: "/blogDetails/:id",
@@ -86,7 +87,7 @@ const BasicRoutes = createBrowserRouter([
                 path: "aboutUs",
                 element: <AboutUs></AboutUs>
             }
-            
+
         ]
     },
     {
@@ -104,7 +105,7 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "admissionRequest",
                 element: <AdmissionRequest></AdmissionRequest>,
-                
+
             },
             {
                 path: "profile",
@@ -122,7 +123,7 @@ const BasicRoutes = createBrowserRouter([
 
             {
                 // for manage seminar reqeust from student 
-                path: "seminar", 
+                path: "seminar",
                 element: <SeminarPage></SeminarPage>
             },
             {
@@ -140,6 +141,10 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "manageHomepageContent",
                 element: <ManageHomepageContent></ManageHomepageContent>
+            },
+            {
+                path: "manageComments",
+                element: <ManageComments />
             },
             {
                 path: "manageCountDown",
@@ -179,7 +184,7 @@ const BasicRoutes = createBrowserRouter([
             },
             {
                 path: "/dashboard/updateGallery/:id",
-                element: <UpdateGallery/>
+                element: <UpdateGallery />
             },
             {
                 path: "manageCourses",
@@ -189,8 +194,8 @@ const BasicRoutes = createBrowserRouter([
                 path: "updateCourse",
                 element: <UpdateCoursePage></UpdateCoursePage>
             }
-            
-            
+
+
         ]
     }
 ]);

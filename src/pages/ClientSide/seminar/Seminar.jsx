@@ -16,7 +16,7 @@ const Seminar = () => {
 
 
     return (
-        <div className='flex flex-col justify-center ma-w-[100vw] overflow-hidden'>
+        <div className='flex flex-col justify-center max-w-[100vw] overflow-hidden'>
             <Helmet>
                 <title>BFIDT | Seminar</title>
             </Helmet>
@@ -28,7 +28,7 @@ const Seminar = () => {
             <div className='mx-auto pb-20'>
                 <div className="max-w-[100vw] overflow-x-auto">
                     <table className="table-auto   border-collapse border border-gray-400">
-                        <thead className='bg-[#f6861f] text-white text-xl font-bold'>
+                        <thead className='bg-primary text-white text-xl font-bold'>
                             <tr>
                                 <th className="px-4 py-2  border border-gray-400">
                                     Topics
@@ -61,7 +61,7 @@ const Seminar = () => {
                                         </td>
 
                                         <td className="px-4 py-2 border-b text-blue-500 border-gray-400 flex justify-center items-center">
-                                            <Link to={`/seminarForm/${seminar._id}`}><button className='bg-[#f6861f] text-white px-5 py-1.5 rounded-md active:scale-90 transition-all duration-300 font-medium'>Apply Now</button></Link>
+                                            <Link to={`/seminarForm/${seminar._id}`}><button className='bg-primary text-white px-5 py-1.5 rounded-md active:scale-90 transition-all duration-300 font-medium'>Apply Now</button></Link>
                                         </td>
 
                                     </tr>

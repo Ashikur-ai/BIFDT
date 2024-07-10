@@ -157,8 +157,8 @@ const AdmissionPage = () => {
                                                 <label className="leading-7 text-sm text-gray-600">Gender</label>
                                                 <div className="relative flex justify-start gap-5">
                                                     <br />
-                                                    <input type="radio" name="gender" value={"male"} className="radio radio-secondary" /> Male
-                                                    <input type="radio" name="gender" value={"female"} className="radio radio-secondary" /> Female
+                                                    <input type="radio" name="gender" value={"male"} className="radio radio-secondary border-primary" /> Male
+                                                    <input type="radio" name="gender" value={"female"} className="radio radio-secondary border-primary" /> Female
                                                 </div>
     
                                             </div>
@@ -181,7 +181,7 @@ const AdmissionPage = () => {
                                             </div>
                                         </div>
                                         <div className="p-2 w-full">
-                                            <button className="flex mx-auto text-white bg-[#f6861f] border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
+                                            <button className="flex mx-auto text-white bg-primary border-0 py-2 px-8 focus:outline-none hover:bg-orange-800 rounded text-lg">Submit</button>
                                         </div>
                                     </form>
 

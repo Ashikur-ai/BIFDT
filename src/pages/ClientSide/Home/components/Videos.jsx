@@ -12,7 +12,7 @@ const Videos = ({ video_url }) => {
             /> */}
 
             <div className="w-[85vw] h-[48.9vw] sm:w-[65vw] sm:h-[37vw] lg:w-[56vw]  lg:h-[32vw] mx-auto rounded-lg p-2
-          bg-[#f6861f]">
+          bg-primary">
                 <ReactPlayer
                     controls="true"
                     url={video_url}

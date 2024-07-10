@@ -17,30 +17,30 @@ const Navbar = () => {
     const NavLinkStyle = 'text-base hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] transition-all duration-300'
     const navNavLinks =
         <>
-            <NavLink to="/" className="transition-all duration-300 mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Home</NavLink>
+            <NavLink to="/" className="transition-all duration-300 mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Home</NavLink>
 
 
 
-            <NavLink to="/aboutUs" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">About Us</NavLink>
+            <NavLink to="/aboutUs" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">About Us</NavLink>
 
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Merchandising</NavLink>
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Merchandising</NavLink>
 
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Pattern Design</NavLink>
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Pattern Design</NavLink>
 
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Graphics & Web Design</NavLink>
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Graphics & Web Design</NavLink>
 
 
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Interior Design</NavLink>
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Interior Design</NavLink>
 
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Leather Design</NavLink
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Leather Design</NavLink
             >
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Computer Operator</NavLink>
+            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Computer Operator</NavLink>
 
 
 
-            <NavLink to="/onlineAdmission" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Online Admission</NavLink>
+            <NavLink to="/onlineAdmission" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Online Admission</NavLink>
 
-            <NavLink to="/freeSeminar" className="mr-3 hover:text-black active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Free Seminar</NavLink>
+            <NavLink to="/freeSeminar" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Free Seminar</NavLink>
 
         </>
     const navNavLinksForDrawer =
@@ -55,7 +55,7 @@ const Navbar = () => {
             </p>
 
 
-            <div className={` rounded-md bg-[#c67d3a] flex flex-col ml-4 transition-all origin-top duration-300 ${isDropdownOpen ? 'block scale-y-100 p-2' : 'scale-y-0 h-0'} gap-2`}>
+            <div className={` rounded-md bg-black/10 flex flex-col ml-4 transition-all origin-top duration-300 ${isDropdownOpen ? 'block scale-y-100 p-2' : 'scale-y-0 h-0'} gap-2`}>
                 <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Merchandising</NavLink>
 
                 <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Pattern Design</NavLink>
@@ -78,7 +78,7 @@ const Navbar = () => {
         </>
     return (
         <>
-            <div className="navbar shadow-2xl bg-[#f6861f] text-white sticky top-0 z-30">
+            <div className="navbar shadow-2xl bg-primary text-white sticky top-0 z-30">
                 <div className="">
                     {/* Mobile view  */}
                     <div className=" text-white">
@@ -110,7 +110,7 @@ const Navbar = () => {
                                 <label onClick={() => setOpenMenu(false)} htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                                 <motion.ul
 
-                                    className="menu p-4 w-56 md:w-80 min-h-full bg-[#f6861f] text-white space-y-2 rounded-lg z-40 navbarUl">
+                                    className="menu p-4 w-56 md:w-80 min-h-full bg-primary text-white space-y-2 rounded-lg z-40 navbarUl">
                                     {navNavLinksForDrawer}
 
                                 </motion.ul>

@@ -61,7 +61,7 @@ const CourseDetails = () => {
         </Swiper>
       </div>
       {/*2. Marqueee section  */}
-      <Marquee className="bg-[#f6861f] py-1.5 text-white">
+      <Marquee className="bg-primary py-1.5 text-white">
         ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে আকর্ষণীয়,
         সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন মার্চেন্ডাইজিংকে।
         মার্চেন্ডাইজিং-এর একটি ডিপ্লমা কোর্স বদলে দিতে পারে আপনার কর্মময় জীবন।
@@ -100,7 +100,7 @@ const CourseDetails = () => {
         {/* first half */}
         <div className="lg:w-1/4 hidden lg:block border border-black">
 
-          <p className="text-[#f6861f]  text-center font-bold text-2xl  bg-white ">
+          <p className="text-primary  text-center font-bold text-2xl  bg-white ">
             Facebook Page
           </p>
           <div className="border border-t-black">
@@ -151,7 +151,7 @@ const CourseDetails = () => {
 
 
           {/* instagram  */}
-          <p className="text-[#f6861f]  text-center font-bold text-2xl pt-2 bg-white ">
+          <p className="text-primary  text-center font-bold text-2xl pt-2 bg-white ">
             Instagram Page
           </p>
           <div className="border border-t-black">
@@ -201,7 +201,7 @@ const CourseDetails = () => {
           </div>
 
 
-          <p className="text-[#f6861f]  text-center font-bold text-2xl pt-2 bg-white ">
+          <p className="text-primary  text-center font-bold text-2xl pt-2 bg-white ">
             Twitter Page
           </p>
           <div className="border border-t-black">
@@ -260,11 +260,11 @@ const CourseDetails = () => {
         <div className="lg:w-3/4 border pt-2 border-b-black">
           <div className="flex justify-between">
             <span
-              className="text-white   px-5 rounded-lg bg-[#f6861f]">
+              className="text-white   px-5 rounded-lg bg-primary">
               Free Seminar/Counseling
             </span>
             <span
-              className="text-white   px-5 mr-14 rounded-lg bg-[#f6861f]">
+              className="text-white   px-5 mr-14 rounded-lg bg-primary">
               <Link to="/onlineAdmission">Enroll Now</Link>
             </span>
           </div>
@@ -280,7 +280,7 @@ const CourseDetails = () => {
 
           {/* main video  */}
           <div className="w-[85vw] h-[48.9vw] sm:w-[65vw] sm:h-[37vw] lg:h-[370px] lg:w-[650px] mx-auto rounded-lg p-2
-          bg-[#f6861f]">
+          bg-primary">
             <ReactPlayer
               controls="true"
               playing={true}
@@ -351,16 +351,16 @@ const CourseDetails = () => {
 
           {/* Admission and course detail section */}
           <div>
-            <p className="text-[#f6861f]  text-sm ml-3 px-1 bg-white ">
+            <p className="text-primary  text-sm ml-3 px-1 bg-white ">
               আপনি কি চাকুরি অথবা ব্যবসায় মাধ্যমে ক্যারিয়ার গড়তে চান ? খুঁজছেন একটি ভালো উপার্জনের সেইফ ক্যারিয়ার? অথবা করতে চান নিজের একটি ফ্যাশন ব্রান্ড ? তবে ফ্যাশন ডিজাইনার হোয়ে নিজেকে মেলে ধরার সময় কিন্তু এখনি .... কারণ ফ্যাশন ডিজাইন এখন লাখ টাকার পেশা! চাকুরি অথবা উদ্যোক্তা ২টি সম্ভাবনার দোয়ারই এক জন ফ্যাশন ডিজাইনারের জন্য খোলা।
             </p>
 
 
            <div className="flex justify-between items-center pr-14">
               <p className="text-2xl font-bold py-5">Admission Notice</p>
-              <Link to={'/onlineAdmission'}><div className="py-5 flex justify-center"> <button className="btn bg-[#f6861f] text-white hover:text-black  active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">Enroll Now</button></div></Link>
+              <Link to={'/onlineAdmission'}><div className="py-5 flex justify-center"> <button className="btn bg-primary text-white hover:text-black  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">Enroll Now</button></div></Link>
            </div>
-            <Marquee className="bg-[#f6861f] py-1.5 text-white">
+            <Marquee className="bg-primary py-1.5 text-white">
               ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে
               আকর্ষণীয়, সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন
               মার্চেন্ডাইজিংকে। মার্চেন্ডাইজিং-এর একটি ডিপ্লমা কোর্স বদলে দিতে

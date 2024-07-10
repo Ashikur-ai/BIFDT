@@ -71,10 +71,10 @@ const ManageStudentGallary = () => {
                 size: 'small',
                 color: 'border',
                 active: {
-                    color: '#f6861f',
+                    color: '#FF4e00',
                 },
                 hover: {
-                    color: '#f6861f',
+                    color: '#FF4e00',
                 },
             },
             color: 'text',
@@ -93,6 +93,7 @@ const ManageStudentGallary = () => {
           `,
         },
     };
+    const btnStyle = 'border-primary hover:bg-primary px-6 py-1.5 text-white border text-base   rounded-md transition-all duration-300 hover:font-bold flex justify-center items-center tabBtn active:border-2 active:border-gray-500'
     return (
         <>
             <Helmet>
@@ -108,9 +109,9 @@ const ManageStudentGallary = () => {
                     <div className='w-full lg:w-[1000px] lg:max-w-[calc(100vw-400px)]'>
                         <Grommet Grommet theme={customTheme}>
                             <Tabs justify="start">
-                                <Tab className='text-red-500' title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === 'All' && 'font-bold'}`}>All</span>} onClick={() => setCategoryName('All')}></Tab>
+                                <Tab className='text-red-500' title={<div className={`${btnStyle} ${categoryName === 'All' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>All</p></div>} onClick={() => setCategoryName('All')}></Tab>
                                 {
-                                    allCategory?.map(category => <Tab onClick={() => setCategoryName(category?.category_name)} key={category?._id} title={<span className={`text-black border border-[#f6861f]  px-5 rounded-md py-1 transition-all duration-300 hover:font-bold ${categoryName === category?.category_name && 'font-bold'}`}>{category?.category_name}</span>}></Tab>)
+                                    allCategory?.map(category => <Tab onClick={() => setCategoryName(category?.category_name)} key={category?._id} title={<div className={`${btnStyle} ${categoryName === category?.category_name ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>{category?.category_name}</p></div>}></Tab>)
                                 }
     
                             </Tabs>

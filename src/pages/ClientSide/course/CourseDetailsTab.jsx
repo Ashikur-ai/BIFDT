@@ -18,10 +18,10 @@ const CourseDetailsTab = () => {
                 size: 'small',
                 color: 'border',
                 active: {
-                    color: '#f6861f',
+                    color: '#FF4e00',
                 },
                 hover: {
-                    color: '#f6861f',
+                    color: '#FF4e00',
                 },
             },
             color: 'text',
@@ -81,23 +81,23 @@ const CourseDetailsTab = () => {
             }
         ]
     }
-    const btnStyle = 'border-[#f6861f] hover:bg-[#f6861f] btn text-white border text-base  px-5 rounded-md  py-1 transition-all duration-300 hover:font-bold  h-16 w-[190px] flex justify-center items-center tabBtn active:border-2 active:border-gray-500'
+    const btnStyle = 'border-primary hover:bg-primary btn text-white border text-base  px-5 rounded-md  py-1 transition-all duration-300 hover:font-bold  h-16 w-[190px] flex justify-center items-center tabBtn active:border-2 active:border-gray-500'
     return (
         <div className='pr-10'>
             <Grommet Grommet theme={customTheme}>
                 <Tabs justify="start">
 
 
-                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '2nd' ? 'font-bold bg-[#f6861f]' : 'bg-[#f6861f]/80'}`}><p className='tabBtnText transition-all duration-300'>1-year Course <br /> 12-Month</p></div>} onClick={() => setTabName('2nd')}></Tab>
+                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '2nd' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>1-year Course <br /> 12-Month</p></div>} onClick={() => setTabName('2nd')}></Tab>
 
                     <Tab className='text-red-500' title={
                         <div
-                            className={`${btnStyle} ${TabName === '3rd' ? 'font-bold bg-[#f6861f]' : 'bg-[#f6861f]/80'}`}><p className='tabBtnText transition-all duration-300'
+                            className={`${btnStyle} ${TabName === '3rd' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'
                             >6-Month Course</p></div>
                     } onClick={() => setTabName('3rd')}></Tab>
 
-                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '4th' ? 'font-bold bg-[#f6861f]' : 'bg-[#f6861f]/80'}`}><p className='tabBtnText transition-all duration-300'>Semester Details</p></div>} onClick={() => setTabName('4th')}></Tab>
-                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '1st' ? 'font-bold bg-[#f6861f]' : 'bg-[#f6861f]/80'}`}><p className='tabBtnText transition-all duration-300'>Career objective in <br /> fashion design</p></div>} onClick={() => setTabName('1st')}></Tab>
+                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '4th' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>Semester Details</p></div>} onClick={() => setTabName('4th')}></Tab>
+                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '1st' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>Career objective in <br /> fashion design</p></div>} onClick={() => setTabName('1st')}></Tab>
 
                 </Tabs>
             </Grommet>

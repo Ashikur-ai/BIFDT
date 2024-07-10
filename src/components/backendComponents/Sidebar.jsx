@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import NavigationItem from './NavigationItem';
 import { SiNginxproxymanager } from 'react-icons/si';
 import Dropdown from './Dropdown';
-
+import { FaRegComments } from "react-icons/fa";
 const Sidebar = () => {
 
     const courseUrls =
@@ -19,6 +19,10 @@ const Sidebar = () => {
         <>
             <NavigationItem to="/dashboard/addBlog" icon={MdAddCircle} label="Add Blog" />
             <NavigationItem to="/dashboard/manageBlog" icon={SiNginxproxymanager} label="Manage Blogs" />
+        </>
+    const comments =
+        <>
+            <NavigationItem to="/dashboard/manageComments" icon={FaRegComments} label="Manage Comments" />
         </>
 
     const homepageUrls =
@@ -49,12 +53,12 @@ const Sidebar = () => {
             <NavigationItem to="/dashboard/admissionRequest" icon={FaFileWaveform} label="Admission Requests" />
             <NavigationItem to="/dashboard/seminar" icon={FaUsers} label="Seminar Requests" />
         </>
-    
+
     const seminarUrls =
-    <>
-        <NavigationItem to="/dashboard/createSeminar" icon={MdAddCircle} label="Create Seminar" />
-        <NavigationItem to="/dashboard/manageSeminar" icon={SiNginxproxymanager} label="Manage Seminar" />
-    </>
+        <>
+            <NavigationItem to="/dashboard/createSeminar" icon={MdAddCircle} label="Create Seminar" />
+            <NavigationItem to="/dashboard/manageSeminar" icon={SiNginxproxymanager} label="Manage Seminar" />
+        </>
 
     return (
         <>
@@ -127,9 +131,12 @@ const Sidebar = () => {
                             <Dropdown buttonText="All Requests" urls={requestUrls} />
                         </li>
 
-                       
+
                         <li className="mb-4">
                             <Dropdown buttonText="Blogs" urls={blogUrls} />
+                        </li>
+                        <li className="mb-4">
+                            <Dropdown buttonText="Comments" urls={comments} />
                         </li>
 
                         <li className="mb-4">

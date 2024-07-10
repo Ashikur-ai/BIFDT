@@ -5,7 +5,7 @@ const HomePageCountDown = ({allData }) => {
     const {since,student,rating,instructor ,guarantee,ratio} = allData
     return (
         <div className="pt-14">
-          <div className="mx-2 sm:mx-10 md:mx-20 py-10 my-4 bg-[#f6861f] grid grid-cols-1 lg:grid-cols-6 justify-items-center">
+          <div className="mx-2 sm:mx-10 md:mx-20 py-10 my-4 bg-primary grid grid-cols-1 lg:grid-cols-6 justify-items-center">
             {/* since, student, rating, instructor, guarantee, ratio */}
             <div className="m-auto text-white py-5 text-center">
               <CountUp className="text-4xl  font-bold" end={since} duration={9} />
