@@ -10,6 +10,10 @@ import { FaFacebook } from 'react-icons/fa';
 import { Editor } from '@tinymce/tinymce-react';
 
 const AddCourse = () => {
+    const [imageInput, setImageInput] = useState('')
+    const [allImages, setAllImages] = useState([])
+    const [isFormVisible, setIsFormVisible] = useState(false);
+    const [isSemesterVisible, setIsSemesterVisible] = useState(false);
     const [formData, setFormData] = useState({
         objectives: '',
         notice: '',
@@ -60,29 +64,6 @@ const AddCourse = () => {
 
 
 
-    const modules = {
-        toolbar: [
-            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-            [{ size: [] }],
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-            ['link', 'image', 'video'],
-            ['clean']
-        ],
-    };
-
-    const formats = [
-        'header', 'font', 'size',
-        'bold', 'italic', 'underline', 'strike', 'blockquote',
-        'list', 'bullet', 'indent',
-        'link', 'image', 'video'
-    ];
-
-
-
-    const [isFormVisible, setIsFormVisible] = useState(false);
-    const [isSemesterVisible, setIsSemesterVisible] = useState(false);
-
     const toggleFormVisibility = () => {
         setIsFormVisible(!isFormVisible);
     };
@@ -90,7 +71,27 @@ const AddCourse = () => {
     const toggleSemesterVisibility = () => {
         setIsSemesterVisible(!isSemesterVisible);
     };
+    const handleImageInputField = (e) => {
+        console.log(e.target.files[0]);
+        setImageInput(e.target.files[0])
 
+    }
+    const handleStoreImages = () => {
+
+
+        if (imageInput === '') {
+            return
+        }
+        console.log([...allImages, imageInput]);
+        setAllImages([...allImages, { image: imageInput, id: new Date().getTime() }]);
+        setImageInput('');
+        document.getElementById('courseImageInputField').value = '';
+    }
+    const handleDeleteImage = (comingImage) => {
+        const newImageArray = allImages.filter(image => image.id !== comingImage.id)
+        setAllImages(newImageArray)
+    }
+    // Array.from(files)
     return (
         <>
             <Helmet>
@@ -125,25 +126,26 @@ const AddCourse = () => {
                                             {/* Banner images */}
                                             <div className='w-full md:col-span-2'>
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Upload Course Banner images</label>
-                                                <div className=' grid md:grid-cols-2'>
+                                                <div className='w-full'>
                                                     <div className="p-2 w-full">
-                                                        <div className="relative">
-                                                            <label className="leading-7 text-sm text-gray-600 font-medium">First Image</label><br />
-                                                            <input type="file" name='image1' className="file-input file-input-bordered file-input-md w-full" />
+                                                        <div className="relative space-y-2">
+                                                            <label className="leading-7 text-sm text-gray-600 font-medium">Select Image</label><br />
+                                                            <input id='courseImageInputField' onChange={handleImageInputField} type="file" name='image1' className="file-input file-input-bordered file-input-md w-full" />
+                                                            <p onClick={handleStoreImages} className='btn flex flex-col justify-center items-center px-7 py-1 rounded-md bg-primary text-white hover:font-bold transition-all duration-300 hover:bg-orange-700  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 active:scale-90 focus:text-white w-max'>Add</p>
+                                                            <p>Added Image</p>
+                                                            {allImages?.length < 1 && <p>No Image Added!!</p>}
+
+                                                            <div className="flex flex-wrap gap-4 pb-5">
+                                                                {allImages.map((image, index) => (
+                                                                    <div key={index} className="w-28 h-24 relative border border-gray-500 rounded-lg p-1">
+                                                                        <p onClick={() => handleDeleteImage(image)} className='text-center bg-gray-200 w-6  h-6 rounded-md ml-auto mb-2 cursor-pointer'>X</p>
+                                                                        <img src={URL.createObjectURL(image.image)} alt="preview" className=" h-16 object-cover rounded-md mx-auto pb-2" />
+                                                                    </div>
+                                                                ))}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div className="p-2 w-full">
-                                                        <div className="relative">
-                                                            <label className="leading-7 text-sm text-gray-600 font-medium">Second Image</label><br />
-                                                            <input name='image2' type="file" className="file-input file-input-bordered file-input-md w-full" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="p-2 w-full">
-                                                        <div className="relative">
-                                                            <label className="leading-7 text-sm text-gray-600 font-medium">Third Image</label><br />
-                                                            <input name='image3' type="file" className="file-input file-input-bordered file-input-md w-full" />
-                                                        </div>
-                                                    </div>
+
                                                 </div>
                                             </div>
 
@@ -211,7 +213,7 @@ const AddCourse = () => {
                                             <div className="p-2 w-1/2">
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm font-bold text-gray-600">Admission Notice</label>
-                                                    
+
                                                     <Editor
                                                         apiKey='rcgwgkgfl2fboctr4kanu1wyo0q2768tzdj3sxx94rb4s4es'
                                                         init={{
@@ -267,7 +269,7 @@ const AddCourse = () => {
                                             <div className="p-2 w-1/2">
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm font-bold text-gray-600">Course Objective</label>
-                                                    
+
                                                     <Editor
                                                         apiKey='rcgwgkgfl2fboctr4kanu1wyo0q2768tzdj3sxx94rb4s4es'
                                                         init={{
