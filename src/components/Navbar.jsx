@@ -14,33 +14,30 @@ const Navbar = () => {
         console.log(!isOpen);
         setOpenMenu(!isOpen)
     }
-    const NavLinkStyle = 'text-base hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] transition-all duration-300'
+    const NavLinkStyle = 'text-sm hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] transition-all duration-300'
     const navNavLinks =
         <>
-            <NavLink to="/" className="transition-all duration-300 mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Home</NavLink>
+            <NavLink to="/" className={`${NavLinkStyle}`}>Home</NavLink>
+            <NavLink to="/aboutUs" className={`${NavLinkStyle}`}>About Us</NavLink>
+
+            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Merchandising</NavLink>
+
+            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Pattern Design</NavLink>
+
+            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Graphics & Web Design</NavLink>
 
 
+            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Interior Design</NavLink>
 
-            <NavLink to="/aboutUs" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">About Us</NavLink>
-
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Merchandising</NavLink>
-
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Pattern Design</NavLink>
-
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Graphics & Web Design</NavLink>
-
-
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Interior Design</NavLink>
-
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Leather Design</NavLink
+            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Leather Design</NavLink
             >
-            <NavLink to="/courseDetails" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Computer Operator</NavLink>
+            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Computer Operator</NavLink>
 
 
 
-            <NavLink to="/onlineAdmission" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Online Admission</NavLink>
+            <NavLink to="/onlineAdmission" className={`${NavLinkStyle}`}>Online Admission</NavLink>
 
-            <NavLink to="/freeSeminar" className="mr-3 hover:text-black active:bg-primary focus:outline-none focus:ring focus:ring-white/70 focus:text-white focus:rounded-lg focus:p-2">Free Seminar</NavLink>
+            <NavLink to="/freeSeminar" className={`${NavLinkStyle}`}>Free Seminar</NavLink>
 
         </>
     const navNavLinksForDrawer =
@@ -51,7 +48,7 @@ const Navbar = () => {
 
             <NavLink to="/aboutUs" className={`${NavLinkStyle}`}>About Us</NavLink>
             <p onClick={handleDropdownToggle} className={`text-base hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] transition-all duration-300 flex justify-between items-center cursor-pointer ${isDropdownOpen && 'bg-[#414040] px-[10px]'}`}>Course
-            <span className={` transition-all duration-300 ${isDropdownOpen ? 'rotate-180' : 'rotate-0'}`}><MdArrowDropDown /></span>
+                <span className={` transition-all duration-300 ${isDropdownOpen ? 'rotate-180' : 'rotate-0'}`}><MdArrowDropDown /></span>
             </p>
 
 
@@ -71,7 +68,7 @@ const Navbar = () => {
             </div>
 
 
-           <NavLink to="/onlineAdmission" className={`${NavLinkStyle}`}>Online Admission</NavLink>
+            <NavLink to="/onlineAdmission" className={`${NavLinkStyle}`}>Online Admission</NavLink>
 
             <NavLink to="/freeSeminar" className={`${NavLinkStyle}`}>Free Seminar</NavLink>
 
@@ -121,8 +118,7 @@ const Navbar = () => {
                     {/* laptop view  */}
                     <div className="text-sm hidden lg:flex px-10">
 
-                        <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold">
-
+                        <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold navbarUl gap-x-4 gap-y-1">
                             {navNavLinks}
                         </nav>
                     </div>
