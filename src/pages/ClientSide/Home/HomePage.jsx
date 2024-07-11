@@ -21,7 +21,7 @@ import parallax2 from '../../../assets/images/parallax/parallax2.jpg'
 import parallax3 from '../../../assets/images/parallax/parallax3.jpg'
 import parallax4 from '../../../assets/images/parallax/parallax4.png'
 import { Parallax } from 'react-parallax'
-
+import '../../../App.css'; 
 
 const HomePage = () => {
   const axiosPublic = useAxiosPublic()
@@ -45,10 +45,10 @@ const HomePage = () => {
         </Helmet>
 
         {/* Video and Marquee First section  */}
-        <div className="">
+        <div className="video-container">
           <ReactPlayer
             controls="true"
-            height="400px"
+            height="100%"
             url={video_url}
             width="100%"
           />
@@ -63,21 +63,21 @@ const HomePage = () => {
 
         {/* third section Homepage */}
 
-        <div className="px-2 sm:px-10 md:px-20 pb-20 bg-primary ">
-          <p className=" text-4xl text-center py-5 text-white">Home Page</p>
+        <div className="px-2 sm:px-10 md:px-20 lg:pb-20 pb-4 bg-primary ">
+          <p className="text-xl lg:text-4xl text-center py-2 lg:py-5 font-bold text-white">Home Page</p>
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 bg-white p-5">
             <div className=" relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-full object-cover z-10 bg-white/80"></div>
               <img className="absolute top-0 left-0 w-full h-full object-cover z-0" src={faceIllutionImg} alt="" />
-              <div className="z-20 p-5 relative">
-                <p className="text-white text-2xl py-5 z-10">Home</p>
-                <p className="text-black" dangerouslySetInnerHTML={{ __html: description }}>
+              <div className="z-20 lg:py-5 relative">
+                <p className="lg:text-4xl lg:pb-4  z-10">Home</p>
+                <p className="text-black text-[8px] lg:text-xl" dangerouslySetInnerHTML={{ __html: description }}>
                 </p>
               </div>
 
             </div>
             <div className="flex justify-center items-center">
-              <img src={imageUrl || banner} alt="" />
+              <img className="w-2/3 lg:w-full" src={imageUrl || banner} alt="" />
             </div>
           </div>
         </div>

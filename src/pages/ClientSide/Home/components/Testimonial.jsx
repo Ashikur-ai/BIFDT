@@ -33,8 +33,8 @@ const Testimonial = () => {
     console.log(testimonials);
     return (
         <>
-            <p className='text-black font-bold text-4xl text-center py-5'>Testimonials</p>
-            <p className='text-black font-bold text-6xl text-center py-5'>Some Users Feedback</p>
+            <p className='text-black font-bold lg:text-4xl text-center lg:py-5'>Testimonials</p>
+            <p className='text-black font-bold text-xl lg:text-6xl text-center lg:py-5'>Some Users Feedback</p>
             <Marquee
                 speed={35}
                 pauseOnHover={true}
@@ -45,7 +45,7 @@ const Testimonial = () => {
                     {
                         testimonials?.map(testimonial => <div key={testimonial?._id}>
                             <section className="text-gray-600 body-font w-[280px] sm:w-[400px]">
-                                <div className="container px-5 py-24 mx-auto">
+                                <div className="container px-5 pb-3 lg:pb-20 mx-auto">
                                     <div className="xl:w-3/4 lg:w-full w-full mx-auto text-center">
                                         <div className="avatar">
                                             <div className="w-28 rounded-full">

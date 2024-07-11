@@ -47,3 +47,16 @@
   .box p {
     margin-top: 10px;
   }
+
+
+  /* Default height for mobile */
+.video-container {
+  height: 170px;
+}
+
+/* Height for larger screens */
+@media (min-width: 1024px) {
+  .video-container {
+    height: 400px;
+  }
+}

@@ -22,6 +22,7 @@ import { FaFacebook, FaTwitterSquare, FaWhatsapp } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa6';
 import Marquee from 'react-fast-marquee';
 import FacultyCard from '../../Faculties/FacultyCard';
+import ResponsiveButton from '../../../../components/ResponsiveButton';
 
 const FacultySlide = () => {
     const axiosPublic = useAxiosPublic();
@@ -42,10 +43,14 @@ const FacultySlide = () => {
     };
 
     return (
-        <div className="px-2 sm:px-10 md:px-20 py-10 mx-auto">
-             
-            <p className='text-black font-bold text-4xl text-center py-5'>Our Faculty</p>
-            <Link to={'/faculties'}><div className="py-5 flex justify-end"> <button className="btn bg-primary text-white hover:text-black  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">See More</button></div></Link>
+        <div className="px-2 sm:px-10 md:px-20 pb-5 lg:py-10 mx-auto">
+            <div className="relative pt-5 text-black font-bold text-xl lg:text-4xl text-center bg-white ">
+                Our Faculties
+                <Link to={'/faculties'}>
+                    <ResponsiveButton title={"See More"} />
+                </Link>
+            </div>
+
             <Marquee
                 speed={35}
                 pauseOnHover={true}
@@ -57,7 +62,7 @@ const FacultySlide = () => {
                 </div>
 
             </Marquee>
-           
+
         </div>
     )
 };

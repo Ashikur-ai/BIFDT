@@ -13,7 +13,7 @@ import seminar from "../../../../assets/images/seminar.webp";
 import career from "../../../../assets/images/career.webp";
 import { Link } from "react-router-dom";
 import { Parallax } from "react-parallax";
-const textStyle = "text-white text-2xl font-bold text-center py-16 hover:scale-110 hover:rotate-3 transition-all duration-700 hover:underline cursor-pointer h-full flex justify-center items-center"
+const textStyle = "text-white lg:text-2xl font-bold text-center lg:py-16 py-5 hover:scale-110 hover:rotate-3 transition-all duration-700 hover:underline cursor-pointer h-full flex justify-center items-center"
 import parallax4 from '../../../../assets/images/parallax/parallax4.png'
 const HomePageCourses = () => {
     return (
@@ -29,7 +29,7 @@ const HomePageCourses = () => {
                             </Link>
                         </div>
                         <div className="w-full lg:w-1/2">
-                            <img src={fashion} className=" w-full h-64" alt="" />
+                            <img src={fashion} className=" w-full h-40" alt="" />
                         </div>
                     </div>
                 </AnimatedDiv>
@@ -37,7 +37,7 @@ const HomePageCourses = () => {
                 <AnimatedDiv value={-300}>
                     <div className="flex flex-col-reverse lg:flex-row">
                         <div className="w-full lg:w-1/2">
-                            <img src={marchen} className=" w-full h-64" alt="" />
+                            <img src={marchen} className=" w-full h-40" alt="" />
                         </div>
                         <div className="w-full lg:w-1/2 bg-primary">
                             <Link to={'/courseDetails'}>
@@ -59,7 +59,7 @@ const HomePageCourses = () => {
                             </Link>
                         </div>
                         <div className="w-full lg:w-1/2">
-                            <img src={cad} className=" w-full h-64" alt="" />
+                            <img src={cad} className=" w-full h-40" alt="" />
                         </div>
                     </div>
                 </AnimatedDiv>
@@ -67,7 +67,7 @@ const HomePageCourses = () => {
                 <AnimatedDiv value={-300}>
                     <div className="flex flex-col-reverse lg:flex-row">
                         <div className="w-full lg:w-1/2">
-                            <img src={clo} className=" w-full h-64" alt="" />
+                            <img src={clo} className=" w-full h-40" alt="" />
                         </div>
                         <div className="w-full lg:w-1/2 bg-primary ">
                             <Link to={'/courseDetails'}>
@@ -89,7 +89,7 @@ const HomePageCourses = () => {
                             </Link>
                         </div>
                         <div className="w-full lg:w-1/2">
-                            <img src={digital} className=" w-full h-64" alt="" />
+                            <img src={digital} className=" w-full h-40" alt="" />
                         </div>
                     </div>
                 </AnimatedDiv>
@@ -97,7 +97,7 @@ const HomePageCourses = () => {
                 <AnimatedDiv value={-300}>
                     <div className="flex flex-col-reverse lg:flex-row">
                         <div className="w-full lg:w-1/2">
-                            <img src={gradesign} className=" w-full h-64" alt="" />
+                            <img src={gradesign} className=" w-full h-40" alt="" />
                         </div>
                         <div className="w-full lg:w-1/2 bg-primary ">
                             <Link to={'/courseDetails'}>
@@ -119,7 +119,7 @@ const HomePageCourses = () => {
                             </Link>
                         </div>
                         <div className="w-full lg:w-1/2">
-                            <img src={art} className=" w-full h-64" alt="" />
+                            <img src={art} className=" w-full h-40" alt="" />
                         </div>
                     </div>
                 </AnimatedDiv>
@@ -127,7 +127,7 @@ const HomePageCourses = () => {
                 <AnimatedDiv value={-300}>
                     <div className="flex flex-col-reverse lg:flex-row">
                         <div className="w-full lg:w-1/2">
-                            <img src={interior} className=" w-full h-64" alt="" />
+                            <img src={interior} className=" w-full h-40" alt="" />
                         </div>
                         <div className="w-full lg:w-1/2 bg-primary">
                             <Link to={'/courseDetails'}>
@@ -149,7 +149,7 @@ const HomePageCourses = () => {
                             </Link>
                         </div>
                         <div className="w-full lg:w-1/2">
-                            <img src={leather} className=" w-full h-64" alt="" />
+                            <img src={leather} className=" w-full h-40" alt="" />
                         </div>
                     </div>
                 </AnimatedDiv>
@@ -157,7 +157,7 @@ const HomePageCourses = () => {
                 <AnimatedDiv value={-300}>
                     <div className="flex flex-col-reverse lg:flex-row">
                         <div className="w-full lg:w-1/2">
-                            <img src={admission} className=" w-full h-64" alt="" />
+                            <img src={admission} className=" w-full h-40" alt="" />
                         </div>
                         <div className="w-full lg:w-1/2 bg-primary">
                             <Link to={'/courseDetails'}>
@@ -179,7 +179,7 @@ const HomePageCourses = () => {
                             </Link>
                         </div>
                         <div className="w-full lg:w-1/2">
-                            <img src={seminar} className=" w-full h-64" alt="" />
+                            <img src={seminar} className=" w-full h-40" alt="" />
                         </div>
                     </div>
                 </AnimatedDiv>
@@ -187,7 +187,7 @@ const HomePageCourses = () => {
                 <AnimatedDiv value={-300} >
                     <div className="flex flex-col-reverse lg:flex-row">
                         <div className="w-full lg:w-1/2">
-                            <img src={career} className=" w-full h-64" alt="" />
+                            <img src={career} className=" w-full h-40" alt="" />
                         </div>
                         <div className="w-full lg:w-1/2 bg-primary">
                             <Link to={'/courseDetails'}>

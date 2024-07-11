@@ -16,6 +16,7 @@ import { useQuery } from "@tanstack/react-query";
 import { makeVisibleTime } from "../../../../makeVisibleTime";
 import Marquee from "react-fast-marquee";
 import BlogCard from "../../blog/BlogCard";
+import ResponsiveButton from "../../../../components/ResponsiveButton";
 
 const Blogs = () => {
   const axiosPublic = useAxiosPublic();
@@ -28,9 +29,11 @@ const Blogs = () => {
   });
   return (
     <div className="px-2 sm:px-10 md:px-20">
-      <div className="relative text-black font-bold text-4xl text-center py-5 bg-white ">
+      <div className="relative text-black font-bold text-xl lg:text-4xl text-center bg-white ">
         Blogs
-        <Link to={'/blogs'}> <div className="py-5 flex justify-end items-center"> <button className="btn bg-primary text-white hover:text-black  active:bg-white-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">See More</button></div></Link>
+        <Link to={'/blogs'}>
+          <ResponsiveButton title={"See More"} />
+        </Link>
       </div>
       <Marquee
         speed={35}
@@ -43,7 +46,7 @@ const Blogs = () => {
         </div>
 
       </Marquee>
-      
+
     </div>
   );
 };
