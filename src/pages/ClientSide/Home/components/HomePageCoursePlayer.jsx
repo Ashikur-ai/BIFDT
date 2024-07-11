@@ -35,7 +35,12 @@ const HomePageCoursePlayer = ({ courseImages }) => {
             <div>
                 <ul className="font-bold text-xl flex flex-col gap-3 justify-center items-center lg:items-start">
                     {
-                        coursesName?.map((name, idx) => <Link key={idx} to={'/courseDetails'}><div className="font-medium border  border-white bg-primary hover:bg-primary /15 rounded-md hover:rounded-sm w-[230px] p-0.5 px-2 transition-all duration-300 text-white text-center"><p className="hover:scale-110 transition-all duration-300">{name}</p> </div></Link>)
+                        coursesName?.map((name, idx) =>
+                            <Link key={idx} to={'/courseDetails'}>
+                                <div className="text-[12px] lg:text-xl font-medium border-white bg-primary hover:bg-primary /15 rounded-md hover:rounded-sm w-[230px] p-0.5 px-2 transition-all duration-300 text-white text-center">
+                                    <p className="hover:scale-110 transition-all duration-300">{name}</p>
+                                </div>
+                            </Link>)
                     }
                 </ul>
             </div>
