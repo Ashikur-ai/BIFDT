@@ -4,7 +4,7 @@ import { makeVisibleTime } from '../../../makeVisibleTime';
 import { MdDelete, MdEditSquare } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { GiConfirmed } from 'react-icons/gi';
-import { FaAnglesDown } from "react-icons/fa6";
+import { RxCross1 } from "react-icons/rx";
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 const CommentRow = ({ comment, index, handleDelete, blogs, refetch }) => {
@@ -71,7 +71,7 @@ const CommentRow = ({ comment, index, handleDelete, blogs, refetch }) => {
 
             <td>
                 {
-                    comment?.isShow ? <button onClick={downStatus}><FaAnglesDown className="text-2xl text-yellow-600 border-2 rounded-full p-0.5 border-yellow-600" /></button> : <button onClick={updateStatus}><GiConfirmed className="text-2xl text-green-600" /></button>
+                    comment?.isShow ? <button onClick={downStatus}><RxCross1 className="text-2xl text-yellow-600 border-2 rounded-full p-0.5 border-yellow-600" /></button> : <button onClick={updateStatus}><GiConfirmed className="text-2xl text-green-600" /></button>
                 }
 
 
