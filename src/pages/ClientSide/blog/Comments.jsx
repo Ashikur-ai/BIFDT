@@ -66,7 +66,7 @@ const Comments = ({ blogId }) => {
 
                     {
                         blogComments?.map(commentData => <div key={commentData?._id} className='w-full  max-w-[400px] mx-auto flex gap-3 border border-gray-500 rounded-lg p-2'>
-                            <img src={user} className='w-12 h-12 object-cover rounded-full' alt="" />
+                            <img src={user} className='w-12 h-12 object-cover rounded-full p-1 bg-white/80' alt="" />
                             <div className='text-sm'>
                                 <h4 className='font-semibold'>{commentData?.name}</h4>
 

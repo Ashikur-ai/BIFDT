@@ -33,7 +33,7 @@ const BlogRow = ({ index, blog, handleDelete }) => {
                     {/* {subtext.substring(0, 50)}... */}
                     {/* <HTMLContent content={blog.description} /> */}
                     <div
-                        className={`blog-content  overflow-hidden ${seeMore ? 'h-full' : 'max-h-[80px]'}`}
+                        className={`blog-content  overflow-hidden ${seeMore ? 'h-full' : 'max-h-[22px]'}`}
                         dangerouslySetInnerHTML={{ __html: blog.description }}
                     ></div>
                     <p onClick={()=> setSeeMore(!seeMore)} className="font-medium hover:underline cursor-pointer">{seeMore ? 'See less' : 'See more'}</p>

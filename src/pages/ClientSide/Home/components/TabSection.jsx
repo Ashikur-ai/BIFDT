@@ -3,14 +3,7 @@ import { Tab, Tabs, Paragraph, Grommet } from 'grommet';
 import 'react-tabs/style/react-tabs.css';
 import { FaAngleDown } from "react-icons/fa";
 // images
-import gallary1 from "../../../../assets/images/gallary1.jpg";
-import gallary2 from "../../../../assets/images/gallary2.jpg";
-import gallary3 from "../../../../assets/images/gallary3.jpg";
-import gallary4 from "../../../../assets/images/gallary4.jpg";
-import gallary5 from "../../../../assets/images/gallary5.jpg";
-import gallary6 from "../../../../assets/images/gallary6.jpg";
-import gallary7 from "../../../../assets/images/gallary7.jpg";
-import gallary8 from "../../../../assets/images/gallary8.jpg";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
@@ -41,6 +34,7 @@ const TabSection = () => {
     }
     const customTheme = {
         tab: {
+
             active: {
                 color: 'black',
             },
@@ -57,11 +51,11 @@ const TabSection = () => {
             },
             color: 'text',
             margin: {
-                vertical: 'xsmall',
-                horizontal: 'small',
+                vertical: 'small',
+                horizontal: 'medium',
             },
             pad: {
-                bottom: 'xsmall',
+                bottom: 'small',
             },
             extend: ({ theme }) => `
             color: ${theme.global.colors['accent-1']};
@@ -95,7 +89,7 @@ const TabSection = () => {
             <div className='flex justify-center  items-center flex-wrap gap-5 md:gap-10 max-w-[1200px] mx-auto'>
 
                 {
-                    (showingGallery?.slice(0, seeMore ? showingGallery?.length : 9))?.map(gallery => <img key={gallery?._id} className='w-[46%] sm:w-[320px] sm:h-[170px] object-cover rounded-2xl shadow-2xl' src={gallery?.image} alt="" />)
+                    (showingGallery?.slice(0, seeMore ? showingGallery?.length : 9))?.map(gallery => <PhotoProvider key={gallery?._id}><PhotoView src={gallery?.image}><img key={gallery?._id} className='w-[46%] sm:w-[320px] sm:h-[170px] object-cover rounded-2xl shadow-2xl cursor-pointer' src={gallery?.image} alt="" /></PhotoView></PhotoProvider>)
                 }
             </div>
             {
