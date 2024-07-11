@@ -61,8 +61,8 @@ const ManageBlog = () => {
             <Helmet>
                 <title>Dashboard | Manage Blogs</title>
             </Helmet>
-           <div className="pb-20 w-full lg:w-[73vw] overflow-x-auto">
-                <div className="bg-white rounded-lg ">
+           <div className="pb-20">
+                <div className="bg-white rounded-lg  w-full lg:w-[calc(100vw-300px)] overflow-x-auto mx-auto max-h-[80vh] overflow-y-auto">
                     <p className="text-2xl font-bold text-center py-2">Manage Blogs</p>
                     <table className="table table-zebra overflow-x-auto">
                         {/* head */}

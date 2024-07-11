@@ -47,7 +47,7 @@ const Faculties = () => {
 
     return (
         <div className='sm:px-20 my-10 min-h-screen'>
-            <p className="text-4xl m-10"><span className='text-pink-600 border-b-2'>Faculties</span></p>
+            <p className="text-4xl m-10"><span className='text-primary border-b-2'>Faculties</span></p>
 
             <div className='flex gap-10 flex-wrap justify-center'>
                 {
@@ -58,7 +58,7 @@ const Faculties = () => {
                 <button
                     onClick={handlePrev}
                     disabled={firstCardId === 0}
-                    className={`px-7 btn bg-[#f6861f] text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max ${firstCardId === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`px-7 btn bg-primary text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max ${firstCardId === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                     Prev
                 </button>
@@ -68,7 +68,7 @@ const Faculties = () => {
                 <button
                     onClick={handleNext}
                     disabled={firstCardId + cardPerSlice >= totalCard}
-                    className={`px-7 btn bg-[#f6861f] text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max ${firstCardId + cardPerSlice >= totalCard ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`px-7 btn bg-primary text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max ${firstCardId + cardPerSlice >= totalCard ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                     Next
                 </button>

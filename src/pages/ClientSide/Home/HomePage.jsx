@@ -32,11 +32,10 @@ const HomePage = () => {
       return res?.data
     }
   })
-  const { description, imageUrl, notice, video_url, since, student, rating, instructor, guarantee, ratio,video_section_video } = homepageContent[0] || []
+  const { description, imageUrl, notice, video_url, since, student, rating, instructor, guarantee, ratio, video_section_video, courseImages } = homepageContent[0] || []
   if (isLoading) {
     return ''
   }
-  console.log(video_url);
 
   return (
     <>
@@ -49,24 +48,22 @@ const HomePage = () => {
         <div className="">
           <ReactPlayer
             controls="true"
-            height="360px"
+            height="400px"
             url={video_url}
             width="100%"
           />
         </div>
-        <Marquee className="bg-[#f6861f] py-1.5 text-white">
+        <Marquee className="bg-primary py-3 text-white">
           <p dangerouslySetInnerHTML={{ __html: notice }}></p>
         </Marquee>
 
         {/* second section image and bullet point  */}
-        <Parallax strength={600} bgImage={parallax2}>
-          <HomePageCoursePlayer />
+        <div > <HomePageCoursePlayer courseImages={courseImages} /></div>
 
-        </Parallax>
 
         {/* third section Homepage */}
 
-        <div className="px-2 sm:px-10 md:px-20 pb-20 bg-[#f6861f] ">
+        <div className="px-2 sm:px-10 md:px-20 pb-20 bg-primary ">
           <p className=" text-4xl text-center py-5 text-white">Home Page</p>
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-5 bg-white p-5">
             <div className=" relative overflow-hidden">
@@ -86,11 +83,13 @@ const HomePage = () => {
         </div>
 
         {/* fourth section animation part  */}
-        <Parallax strength={600} bgImage={parallax4}>
-          <HomePageCourses />
-        </Parallax>
 
-        {/*fith section countdown part  */}
+        <div className="" style={{ backgroundImage: `url(${parallax4})`, backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
+          <HomePageCourses />
+        </div>
+
+
+        {/*fifth section countdown part  */}
         <HomePageCountDown allData={{ since, student, rating, instructor, guarantee, ratio }} />
 
         {/* sixth section Photo Gallary  */}

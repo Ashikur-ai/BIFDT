@@ -16,7 +16,7 @@ const BlogCard = ({ blog, slide=false }) => {
             </div>
             <div className="px-3 mx-auto mb-5 flex justify-between gap-5 items-center">
                 <Link to={`/blogDetails/${blog?._id}`}>
-                    <button className="btn bg-[#f6861f] text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">
+                    <button className="btn bg-primary text-white hover:text-black  active:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">
                         Read More
                     </button>
                 </Link>

@@ -41,23 +41,23 @@ const Testimonial = () => {
                 direction='right'
             >
 
-                <div className='flex gap-60 px-60'>
+                <div className='flex'>
                     {
                         testimonials?.map(testimonial => <div key={testimonial?._id}>
-                            <section className="text-gray-600 body-font">
+                            <section className="text-gray-600 body-font w-[280px] sm:w-[400px]">
                                 <div className="container px-5 py-24 mx-auto">
                                     <div className="xl:w-3/4 lg:w-full w-full mx-auto text-center">
                                         <div className="avatar">
-                                            <div className="w-24 rounded-full">
+                                            <div className="w-28 rounded-full">
                                                 <img src={testimonial?.image} />
                                             </div>
                                         </div>
 
 
-                                        <p className="">{testimonial?.opinion}</p>
+                                        <p className="text-lg">{testimonial?.opinion}</p>
                                         <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
-                                        <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">{testimonial?.name}</h2>
-                                        <p className="text-gray-500">{testimonial?.designation}</p>
+                                        <h2 className="text-gray-900 font-medium title-font tracking-wider">{testimonial?.name}</h2>
+                                        <p className="text-gray-500 text-lg">{testimonial?.designation}</p>
                                     </div>
                                 </div>
                             </section>

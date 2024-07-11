@@ -1,12 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap'); /* Arial */
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap'); /* Comic Neue */
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap'); /* Courier Prime */
-@import url('https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&display=swap'); /* Georgia */
-@import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap'); /* Helvetica */
-@import url('https://fonts.googleapis.com/css2?family=Lucida+Sans:wght@400;700&display=swap'); /* Lucida Sans */
+
 
 body {
   font-family: "Poppins", sans-serif;
@@ -24,31 +19,8 @@ ul {
   border-radius: 5px; 
 }
 
-/* Add custom font classes for the Quill editor */
-.ql-editor.ql-blank::before {
-  font-family: 'Arial', sans-serif;
+.tabBtn:hover .tabBtnText {
+  scale: 1.1;
 }
 
-.ql-font-arial {
-  font-family: 'Arial', sans-serif;
-}
 
-.ql-font-comic-neue {
-  font-family: 'Comic Neue', cursive;
-}
-
-.ql-font-courier-prime {
-  font-family: 'Courier Prime', monospace;
-}
-
-.ql-font-georgia {
-  font-family: 'Georgia', serif;
-}
-
-.ql-font-helvetica {
-  font-family: 'Helvetica', sans-serif;
-}
-
-.ql-font-lucida-sans {
-  font-family: 'Lucida Sans', sans-serif;
-}

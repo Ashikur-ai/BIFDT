@@ -45,7 +45,7 @@ const FacultySlide = () => {
         <div className="px-2 sm:px-10 md:px-20 py-10 mx-auto">
              
             <p className='text-black font-bold text-4xl text-center py-5'>Our Faculty</p>
-            <Link to={'/faculties'}><div className="py-5 flex justify-end"> <button className="btn bg-[#f6861f] text-white hover:text-black  active:bg-[#f6861f] focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">See More</button></div></Link>
+            <Link to={'/faculties'}><div className="py-5 flex justify-end"> <button className="btn bg-primary text-white hover:text-black  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">See More</button></div></Link>
             <Marquee
                 speed={35}
                 pauseOnHover={true}

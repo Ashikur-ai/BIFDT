@@ -24,7 +24,8 @@ const AnimatedDiv = ({ children, value, direction }) => {
     <motion.div
       ref={ref}
       initial={{ x: value, opacity: 0 }}
-      animate={controls}
+      whileInView={{ x: 0, opacity:1 }}
+      transition={{ duration: 0.7 }}
       className=""
     >
       {children}
