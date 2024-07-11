@@ -88,8 +88,10 @@ const ManageComments = () => {
                                     <th>Name</th>
                                     <th>Comments</th>
                                     <th>Blog Title</th>
+                                    <th>Status</th>
                                     <th>Contact Number</th>
                                     <th>Time</th>
+                                    <th>Edit Status</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
@@ -97,7 +99,7 @@ const ManageComments = () => {
                                 {/* row 1 */}
 
                                 {
-                                    showingComment?.map((comment, index) => <CommentRow comment={comment} index={index} handleDelete={handleDelete} blogs={blogs} key={index} />
+                                    showingComment?.map((comment, index) => <CommentRow refetch={refetch} comment={comment} index={index} handleDelete={handleDelete} blogs={blogs} key={index} />
                                     )
                                 }
 

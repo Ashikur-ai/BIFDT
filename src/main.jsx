@@ -8,6 +8,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import 'react-photo-view/dist/react-photo-view.css';
 import {
   QueryClient,
   QueryClientProvider,

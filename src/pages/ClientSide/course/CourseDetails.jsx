@@ -13,7 +13,7 @@ import Maps from "../Home/components/Maps";
 import Blogs from "../Home/components/Blogs";
 import VideoGrid from "./VideoGrid";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CourseDetailsTab from "./CourseDetailsTab";
 import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react";
@@ -28,7 +28,13 @@ const CourseDetails = () => {
   const subtext = "Fashion has become an important a part of 21st-century life. Our Fashion Design Course has been Specifically created to provide you with everything you need to know in order to take those first steps to make your designs a  reality and beyond. It features a unique combination of 17modules(30 Credits) to equip you with all the knowledge, skills & requisites that any budding fashion designer requires.";
 
   const [showMore, setShowMore] = useState(false);
-
+  useEffect(() => {
+    const firstSection = document.getElementById('blogDetailsFirstSection');
+    console.log(firstSection);
+    if (firstSection) {
+      firstSection.scrollIntoView();
+    }
+  }, []);
   return (
     <>
       <Helmet>
@@ -36,7 +42,7 @@ const CourseDetails = () => {
       </Helmet>
 
       {/* 1. Header slider part  */}
-      <div className=" ">
+      <div id="blogDetailsFirstSection" className=" ">
         <Swiper
           spaceBetween={50}
           speed={1000}
@@ -356,10 +362,10 @@ const CourseDetails = () => {
             </p>
 
 
-           <div className="flex justify-between items-center pr-14">
+            <div className="flex justify-between items-center pr-14">
               <p className="text-2xl font-bold py-5">Admission Notice</p>
               <Link to={'/onlineAdmission'}><div className="py-5 flex justify-center"> <button className="btn bg-primary text-white hover:text-black  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">Enroll Now</button></div></Link>
-           </div>
+            </div>
             <Marquee className="bg-primary py-1.5 text-white">
               ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে
               আকর্ষণীয়, সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন
@@ -469,8 +475,8 @@ const CourseDetails = () => {
           </div>
         </div>
       </div>
-      
-      
+
+
 
       <div className="px-20">
         {/* student gallary section  */}
