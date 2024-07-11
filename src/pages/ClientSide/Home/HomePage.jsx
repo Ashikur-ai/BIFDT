@@ -68,6 +68,7 @@ const HomePage = () => {
             width="100%"
           />
         </div>
+        <button></button>
         <Marquee className="bg-primary py-3 text-white">
           <p dangerouslySetInnerHTML={{ __html: notice }}></p>
         </Marquee>
