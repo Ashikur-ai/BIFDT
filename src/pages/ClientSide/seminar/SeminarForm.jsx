@@ -43,7 +43,7 @@ const SeminarForm = () => {
                 <title>BIFDT | Seminar Registration</title>
             </Helmet>
 
-            <div className=' text-white'>
+            <div className=' text-white px-10'>
                 <div className='flex justify-center items-center pt-2'>
                     <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='shadow-lg w-16
                     p-2 bg-white rounded-2xl ' alt="" />
@@ -69,14 +69,14 @@ const SeminarForm = () => {
                                             {/* name  */}
                                             <div className="p-2 w-full  ">
                                                 <div className="relative">
-                                                    <label className="leading-7 text-sm text-gray-600">Name</label>
+                                                    <label className="leading-7 text-[12px] lg:text-sm text-gray-600">Name</label>
                                                     <input type="text" id="name" name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
                                             {/* email  */}
                                             <div className="p-2 w-full  ">
                                                 <div className="relative">
-                                                    <label className="leading-7 text-sm text-gray-600">Email</label>
+                                                    <label className="leading-7 text-[12px] lg:text-sm text-gray-600">Email</label>
                                                     <input type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
@@ -84,15 +84,15 @@ const SeminarForm = () => {
                                             {/* mobile  */}
                                             <div className="p-2 w-full  ">
                                                 <div className="relative">
-                                                    <label className="leading-7 text-sm text-gray-600">Whatsapp/Mobile Number</label>
+                                                    <label className="leading-7 text-[12px] lg:text-sm text-gray-600">Whatsapp/Mobile Number</label>
                                                     <input type="text" id="" name="whatsapp" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
                                             {/* course  */}
                                             <div className="p-2 w-full  ">
                                                 <div className="relative">
-                                                    <label className="leading-7 text-sm text-gray-600">Course</label>
-                                                    <input type="text" id="" name="course" value={seminar?.topic} readOnly className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                    <label className="leading-7 text-[12px] lg:text-sm text-gray-600">Course</label>
+                                                    <input type="text" id="" name="course" value={seminar?.topic} readOnly className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-[12px] lg:text-sm outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
 
@@ -102,8 +102,8 @@ const SeminarForm = () => {
 
                                             {/* segment  */}
                                             <div className='p-2 w-full  '>
-                                                <label className="">Select Segment Type</label>
-                                                <select name='segment' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 px-2">
+                                                <label className="text-[12px] lg:text-sm">Select Segment Type</label>
+                                                <select name='segment' className="bg-gray-50 border border-gray-300 text-gray-900 text-[12px] lg:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 px-2">
 
                                                     <option value="" selected>Select Segment</option>
                                                     <option value={"Online Segment"}>Online Segment</option>
@@ -123,7 +123,7 @@ const SeminarForm = () => {
 
 
                                         <div className="p-2 w-full">
-                                            <button className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+                                            <button className="flex mx-auto text-white bg-primary border-0 py-1 lg:py-2 px-1 lg:px-8 focus:outline-none hover:bg-indigo-600 rounded text-sm lg:text-lg">Submit</button>
                                         </div>
 
 

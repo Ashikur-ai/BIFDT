@@ -21,14 +21,14 @@ const Seminar = () => {
                 <title>BFIDT | Seminar</title>
             </Helmet>
             <div className='w-full'>
-                <p className='text-4xl text-center p-5 font-bold shadow-xl'>Free Seminar/counselling</p>
+                <p className='text-xl lg:text-4xl text-center p-5 font-bold shadow-xl'>Free Seminar/counselling</p>
 
             </div>
 
-            <div className='mx-auto pb-20'>
+            <div className='lg:mx-auto pb-20 '>
                 <div className="max-w-[100vw] overflow-x-auto">
-                    <table className="table-auto   border-collapse border border-gray-400">
-                        <thead className='bg-primary text-white text-xl font-bold'>
+                    <table className="table-auto ml-4 lg:ml-0 mr-12 lg:mr-0  border-collapse border border-gray-400">
+                        <thead className='bg-primary text-white text-[12px] lg:text-xl lg:font-bold'>
                             <tr>
                                 <th className="px-2 sm:px-4 py-2  border border-gray-400">
                                     Topics
@@ -40,7 +40,7 @@ const Seminar = () => {
                                     Time
                                 </th>
                                 <th className="px-2 sm:px-4 py-2  border border-gray-400">
-                                    Link or <span className='flex'>Reg<span className='hidden sm:block'>istrations</span></span>
+                                    Link
                                 </th>
                             </tr>
                         </thead>
@@ -49,19 +49,19 @@ const Seminar = () => {
                             {
                                 seminars?.map(seminar =>
                                     <tr key={seminar._id}>
-                                        <td className="px-2 sm:px-4 py-2 border border-gray-400 text-sm sm:text-base">
+                                        <td className="px-2 sm:px-4 py-2 border border-gray-400 text-[9px] lg:text-sm sm:text-base">
                                             {seminar.topic}
 
                                         </td>
-                                        <td className="px-2 sm:px-4 py-2 border border-gray-400 text-sm sm:text-base">
+                                        <td className="px-2 sm:px-4 py-2 border border-gray-400 text-[9px] lg:text-sm sm:text-base">
                                             {seminar.date}
                                         </td>
-                                        <td className="px-2 sm:px-4 py-2 border border-gray-400 text-sm sm:text-base">
+                                        <td className="px-2 sm:px-4 py-2 border border-gray-400 text-[9px] lg:text-sm sm:text-base">
                                             {seminar.time}
                                         </td>
 
                                         <td className="px-2 sm:px-4 py-2 border-b text-blue-500 border-gray-400">
-                                            <Link to={`/seminarForm/${seminar._id}`}><button className='bg-primary text-white px-5 py-1.5 rounded-md active:scale-90 transition-all duration-300 font-medium mx-auto'>Apply Now</button></Link>
+                                            <Link to={`/seminarForm/${seminar._id}`}><button className='bg-primary text-white lg:px-5 lg:py-1.5 rounded-md active:scale-90 transition-all duration-300 font-medium mx-auto hover:bg-gray-500 text-[10px] lg:text-xl'>Apply Now</button></Link>
                                         </td>
 
                                     </tr>
