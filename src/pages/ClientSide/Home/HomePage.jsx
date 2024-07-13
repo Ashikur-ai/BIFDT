@@ -69,7 +69,7 @@ const HomePage = () => {
           />
         </div>
         <button></button>
-        <Marquee className="bg-primary py-3 text-white">
+        <Marquee className="bg-primary py-3 -mt-7 text-white">
           <p dangerouslySetInnerHTML={{ __html: notice }}></p>
         </Marquee>
 
