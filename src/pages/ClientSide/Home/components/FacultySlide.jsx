@@ -44,18 +44,18 @@ const FacultySlide = () => {
 
     return (
         <div className="px-2 sm:px-10 md:px-20 pb-5 lg:py-10 mx-auto">
-            <div className="relative pt-5 text-black font-bold text-xl lg:text-4xl text-center bg-white ">
+            <div className="relative pt-5 text-black font-bold text-xl lg:text-4xl text-center  ">
                 Our Faculties
-                <Link to={'/faculties'}>
-                    <ResponsiveButton title={"See More"} />
-                </Link>
+                
+                    <ResponsiveButton  title={"See More"} link={"/faculties"} />
+                
             </div>
 
             <Marquee
                 speed={35}
                 pauseOnHover={true}
             >
-                <div className='flex gap-20 px-20'>
+                <div className='flex bg-white gap-10 px-20'>
                     {
                         faculties?.map(faculty => <FacultyCard key={faculty._id} faculty={faculty} slide={true} />)
                     }
