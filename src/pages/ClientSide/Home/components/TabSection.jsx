@@ -74,13 +74,13 @@ const TabSection = () => {
             <div className='pr-12 w-max max-w-full mx-auto'>
                 <Grommet Grommet theme={customTheme}>
                     <Tabs justify="start">
-                        <Tab className='text-black' title={<div className={`${btnStyle} ${categoryName === 'All' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>All</p></div>} onClick={() => setCategoryName('All')}></Tab>
+                        <Tab className='text-black' title={<div className={`${btnStyle} ${categoryName === 'All' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300 text-[10px] lg:text-sm'>All</p></div>} onClick={() => setCategoryName('All')}></Tab>
                         {
                             allCategory?.map(category => <Tab onClick={() => {
                                 setCategoryName(category?.category_name);
                                 setSeeMore(false)
                             }
-                            } key={category?._id} title={<div className={`${btnStyle} ${categoryName === category?.category_name ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>{category?.category_name}</p></div>}></Tab>)
+                            } key={category?._id} title={<div className={`${btnStyle} ${categoryName === category?.category_name ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300 text-[10px] lg:text-sm'>{category?.category_name}</p></div>}></Tab>)
                         }
 
                     </Tabs>

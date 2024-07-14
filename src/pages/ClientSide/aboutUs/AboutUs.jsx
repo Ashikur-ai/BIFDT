@@ -21,7 +21,7 @@ const AboutUs = () => {
     useEffect(() => {
         if (!isLoading && homepageContent.length > 0) {
             const firstSection = document.getElementById('aboutUsFirstSection');
-            console.log(firstSection); 
+            console.log(firstSection);
             if (firstSection) {
                 firstSection.scrollIntoView();
             }
@@ -40,22 +40,23 @@ const AboutUs = () => {
                 <title>BIFDT | About Us</title>
             </Helmet>
             {/* First Video and Marquee Section */}
-            <div id='aboutUsFirstSection'>
+            <div id="homePageFirstSection" className="video-container">
+
                 <ReactPlayer
-                    controls={true}
-                    height="360px"
+                    controls="true"
+                    height="100%"
                     url={video_url}
                     width="100%"
                 />
             </div>
 
             {/* Second section Photo Gallery */}
-            <div className="w-3/4 mx-auto py-20">
+            <div className="">
                 <TabSection />
             </div>
 
             {/* Third section Faculty */}
-            <div className="px-20 py-10 mx-auto">
+            <div className="">
                 <Faculty />
             </div>
 
@@ -65,10 +66,11 @@ const AboutUs = () => {
             </div>
 
             {/* Fifth Video and Marquee Section */}
-            <div>
+            <div id="homePageFirstSection" className="video-container mt-5">
+
                 <ReactPlayer
-                    controls={true}
-                    height="360px"
+                    controls="true"
+                    height="100%"
                     url={video_url}
                     width="100%"
                 />

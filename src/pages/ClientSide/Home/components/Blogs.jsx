@@ -31,15 +31,15 @@ const Blogs = () => {
     <div className="px-2 sm:px-10 md:px-20">
       <div className="relative text-black font-bold text-xl lg:text-4xl text-center bg-white ">
         Blogs
-        <Link to={'/blogs'}>
-          <ResponsiveButton title={"See More"} />
-        </Link>
+       
+          <ResponsiveButton title={"See More"} link={"/blogs"} />
+        
       </div>
       <Marquee
         speed={35}
         pauseOnHover={true}
       >
-        <div className='flex gap-20 px-20'>
+        <div className='flex gap-5 lg:gap-10'>
           {
             blogs.map(blog => <BlogCard key={blog._id} blog={blog} slide={true} />)
           }
