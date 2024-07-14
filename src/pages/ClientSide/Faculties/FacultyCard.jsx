@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 const FacultyCard = ({ faculty, slide }) => {
-    console.log(slide);
     return (
 
         // version - 1

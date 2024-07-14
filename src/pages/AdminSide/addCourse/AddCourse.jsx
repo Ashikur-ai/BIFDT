@@ -1,41 +1,37 @@
-import React, { useState } from 'react';
-import ReactQuill from 'react-quill';
+import { useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
 import { Helmet } from 'react-helmet-async';
-import HeaderText from '../../../components/HeaderText';
-import { Link } from 'react-router-dom';
-import { BiLogoTwitter } from 'react-icons/bi';
-import { TbBrandYoutubeFilled } from 'react-icons/tb';
-import { FaFacebook } from 'react-icons/fa';
 import { Editor } from '@tinymce/tinymce-react';
+import ReactPlayer from 'react-player';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const AddCourse = () => {
+    const axiosPublic = useAxiosPublic()
+    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const [imageInput, setImageInput] = useState('')
+    const [imageInputErr, setImageInputErr] = useState('')
     const [allImages, setAllImages] = useState([])
-    const [isFormVisible, setIsFormVisible] = useState(false);
-    const [isSemesterVisible, setIsSemesterVisible] = useState(false);
+    const [subVideosArray, setSubVideos] = useState([]);
+    const [subVideoTitle, setSubVideoTitle] = useState('');
+    const [subVideoUrl, setSubVideoUrl] = useState('')
+    const [subVideoErr, setSubVideoErr] = useState('')
     const [formData, setFormData] = useState({
-        objectives: '',
         notice: '',
         bangla: '',
-        subtext: '',
+        admissionNotice: ''
+    });
+    const [formDataErr, setFormDataErr] = useState({
+        notice: '',
+        bangla: '',
         admissionNotice: ''
     });
 
 
-
-    const handleObjectivesChange = (value) => {
-        setFormData({ ...formData, objectives: value });
-    };
-
     const handleNoticeChange = (value) => {
         setFormData({ ...formData, notice: value });
-    };
-
-
-
-    const handleSubtextChange = (value) => {
-        setFormData({ ...formData, subtext: value });
     };
 
 
@@ -47,38 +43,14 @@ const AddCourse = () => {
     };
 
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const title = form.title.value;
-        const notice = formData.notice;
-
-        const objectives = formData.objectives;
-        const banglatext = formData.bangla;
-        const Subtext = formData.subtext;
 
 
-
-        console.log(objectives, notice, banglatext, Subtext);
-    }
-
-
-
-    const toggleFormVisibility = () => {
-        setIsFormVisible(!isFormVisible);
-    };
-
-    const toggleSemesterVisibility = () => {
-        setIsSemesterVisible(!isSemesterVisible);
-    };
     const handleImageInputField = (e) => {
         console.log(e.target.files[0]);
-        setImageInput(e.target.files[0])
+        setImageInput(e.target.files[0] || '')
 
     }
     const handleStoreImages = () => {
-
-
         if (imageInput === '') {
             return
         }
@@ -91,7 +63,105 @@ const AddCourse = () => {
         const newImageArray = allImages.filter(image => image.id !== comingImage.id)
         setAllImages(newImageArray)
     }
-    // Array.from(files)
+    const handleAddSubVideo = () => {
+        setSubVideos([...subVideosArray, { id: new Date().getTime(), title: subVideoTitle, url: subVideoUrl }])
+        setSubVideoTitle('')
+        setSubVideoUrl('')
+    }
+    const videoDivStyle = 'rounded-md overflow-hidden k w-[230px] h-[130px]'
+    const titleStyle = 'text-black font-medium py-1 max-w-[230px]'
+
+
+    const handleSubmit = async (event) => {g
+        event.preventDefault();
+        const form = event.target;
+        const title = form.courseTitle.value;
+        const subtitle = form.subtitle.value;
+        const videoUrl = form.videoUrl.value;
+
+        let isValid = true;
+        const newFormDataErr = {
+            notice: '',
+            bangla: '',
+            admissionNotice: ''
+        };
+        setFormDataErr(newFormDataErr)
+        setImageInputErr('');
+        setSubVideoErr('')
+        if (formData.notice === '') {
+            newFormDataErr.notice = 'Notice cannot be empty';
+            isValid = false;
+        }
+        if (formData.bangla === '') {
+            newFormDataErr.bangla = 'Bangla cannot be empty';
+            isValid = false;
+        }
+        if (formData.admissionNotice === '') {
+            newFormDataErr.admissionNotice = 'Admission notice cannot be empty';
+            isValid = false;
+        }
+
+        setFormDataErr(newFormDataErr);
+
+        if (allImages.length < 1) {
+            setImageInputErr('Please Select minimum one image!!');
+            isValid = false;
+        }
+
+        if (subVideosArray.length < 1) {
+            setSubVideoErr('Please add minimum 1 sub Video');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            return
+        }
+
+        
+        let allImagesArray = [];
+        const toastId = toast.loading("Course is adding...");
+        for (let i = 0; i < allImages.length; i++) {
+            let galleryImgURL = '';
+            if (!allImages[i].image.name) {
+                galleryImgURL = '';
+            } else {
+                const image = new FormData();
+                image.append('image', allImages[i].image);
+
+                try {
+                    const res = await axios.post(imgHostingApi, image);
+                    galleryImgURL = res?.data?.data?.display_url;
+                    allImagesArray.push(galleryImgURL);
+                } catch (err) {
+                    console.log(err);
+                    allImagesArray.push(galleryImgURL);
+                    toast.error(err?.message, { id: toastId });
+                }
+            }
+        }
+
+        // const uploadPromises = allImages.map((imageUrl) => {
+        //     const data = { category, image: imageUrl };
+        //     return axiosPublic.post('/studentGallery', data);
+        // });
+        const data = { title, subtitle, videoUrl, bannerImages: allImagesArray, subVideos: subVideosArray, notice: formData.notice, bangla: formData.bangla, admissionNotice: formData.admissionNotice };
+        console.log(data);
+       
+        axiosPublic.post(`/course`, data)
+        .then(res=> {
+            if(res.data.insertedId){
+                toast.success("Course has added Successfully!!", { id: toastId });
+                form.reset()
+                setFormData({...formData, objectives:''})
+                setFormData({...formData, notice:''})
+                setFormData({...formData, bangla:''})
+                setFormData({...formData, admissionNotice:''})
+                setAllImages([]);
+                setSubVideos([])
+            }
+            
+        })
+    };
     return (
         <>
             <Helmet>
@@ -113,14 +183,14 @@ const AddCourse = () => {
                                             <div className="p-2 w-full">
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm text-gray-600 font-bold">Course Title</label>
-                                                    <input type="text" id="title" name="title" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                    <input required type="text" name="courseTitle" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
                                             {/* subtitle */}
                                             <div className="p-2 w-full">
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm text-gray-600 font-bold">Course Subtitle</label>
-                                                    <input type="text" id="title" name="subtitle" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                    <input required type="text" id="title" name="subtitle" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
                                             {/* Banner images */}
@@ -131,6 +201,7 @@ const AddCourse = () => {
                                                         <div className="relative space-y-2">
                                                             <label className="leading-7 text-sm text-gray-600 font-medium">Select Image</label><br />
                                                             <input id='courseImageInputField' onChange={handleImageInputField} type="file" name='image1' className="file-input file-input-bordered file-input-md w-full" />
+                                                            <p className='text-red-600'>{imageInputErr}</p>
                                                             <p onClick={handleStoreImages} className='btn flex flex-col justify-center items-center px-7 py-1 rounded-md bg-primary text-white hover:font-bold transition-all duration-300 hover:bg-orange-700  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 active:scale-90 focus:text-white w-max'>Add</p>
                                                             <p>Added Image</p>
                                                             {allImages?.length < 1 && <p>No Image Added!!</p>}
@@ -147,34 +218,54 @@ const AddCourse = () => {
                                                     </div>
 
                                                 </div>
+
                                             </div>
 
                                             {/* Main course video */}
                                             <div className="p-2 w-full">
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm text-gray-600 font-bold">Upload Course Main Video</label><br />
-                                                    <input type="text" name='videoUrl' className="file-input file-input-bordered file-input-md w-full" />
+                                                    <input required type="text" name='videoUrl' className="file-input file-input-bordered file-input-md w-full" />
                                                 </div>
                                             </div>
-                                            {/* Banner images */}
-                                            <div className='w-full'>
+                                            {/* Sub Video */}
+                                            <div className='w-full md:col-span-2 p-2  space-y-2'>
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Sub Videos</label>
-                                                <div className='md:col-span-2 grid md:grid-cols-2'>
-                                                    <div className="p-2 w-full">
+                                                <div className=' grid md:grid-cols-2 gap-2'>
+                                                    <div className="w-full">
                                                         <div className="relative">
                                                             <label className="leading-7 text-sm text-gray-600 font-medium">Video title</label><br />
-                                                            <input type="text" name='subVideoTitle' className="file-input file-input-bordered file-input-md w-full" />
+                                                            <input onChange={(e) => setSubVideoTitle(e.target.value)} value={subVideoTitle} type="text" name='subVideoTitle' className="file-input file-input-bordered file-input-md w-full" />
                                                         </div>
+
                                                     </div>
-                                                    <div className="p-2 w-full">
+                                                    <div className="w-full">
                                                         <div className="relative">
                                                             <label className="leading-7 text-sm text-gray-600 font-medium">Video Url</label><br />
-                                                            <input type="text" name='subVideoUrl' className="file-input file-input-bordered file-input-md w-full" />
+                                                            <input onChange={(e) => setSubVideoUrl(e.target.value)} value={subVideoUrl} type="text" name='subVideoUrl' className="file-input file-input-bordered file-input-md w-full" />
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <p className='text-red-600'>{subVideoErr}</p>
+                                                <p onClick={handleAddSubVideo} className='btn flex flex-col justify-center items-center px-7 py-1 rounded-md bg-primary text-white hover:font-bold transition-all duration-300 hover:bg-orange-700  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 active:scale-90 focus:text-white w-max'>Add</p>
 
-                                                <button className='btn flex flex-col justify-center items-center px-7 py-1 rounded-md bg-primary text-white hover:font-bold transition-all duration-300 hover:bg-orange-700  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 active:scale-90 focus:text-white w-max'>Add</button>
+                                                <div className='p-2 flex gap-5 flex-wrap'>
+
+                                                    {
+                                                        subVideosArray.map(item => <div key={item.id} className=" ">
+                                                            <div className={`${videoDivStyle}`}>
+                                                                <ReactPlayer
+                                                                    controls="true"
+
+                                                                    url={item.url}
+                                                                    width="100%"
+                                                                    height='100%'
+                                                                />
+                                                            </div>
+                                                            <p className={`${titleStyle}`}>{item.title}</p>
+                                                        </div>)
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
 
@@ -206,6 +297,7 @@ const AddCourse = () => {
                                                         value={formData.notice}
                                                         onEditorChange={handleNoticeChange} />
                                                 </div>
+                                                <p className='text-red-600'>{formDataErr.notice}</p>
                                             </div>
 
 
@@ -233,7 +325,9 @@ const AddCourse = () => {
                                                         }}
                                                         value={formData.admissionNotice}
                                                         onEditorChange={handleAdmissionNotice} />
+
                                                 </div>
+                                                <p className='text-red-600'>{formDataErr.admissionNotice}</p>
                                             </div>
                                         </div>
                                         <div className='flex pb-20'>
@@ -261,36 +355,13 @@ const AddCourse = () => {
                                                         }}
                                                         value={formData.bangla}
                                                         onEditorChange={handleBanglaChange} />
+
                                                 </div>
+                                                <p className='text-red-600'>{formDataErr.bangla}</p>
                                             </div>
 
 
-                                            {/* Course Objective */}
-                                            <div className="p-2 w-1/2">
-                                                <div className="relative">
-                                                    <label className="leading-7 text-sm font-bold text-gray-600">Course Objective</label>
-
-                                                    <Editor
-                                                        apiKey='rcgwgkgfl2fboctr4kanu1wyo0q2768tzdj3sxx94rb4s4es'
-                                                        init={{
-                                                            height: 400,
-                                                            max_height: "300",
-                                                            width: '100%',
-                                                            border: "0px",
-                                                            //    menubar: false,
-                                                            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-                                                            tinycomments_mode: 'embedded',
-                                                            tinycomments_author: 'Author name',
-                                                            // mergetags_list: [
-                                                            //   { value: 'First.Name', title: 'First Name' },
-                                                            //   { value: 'Email', title: 'Email' },
-                                                            // ],
-                                                            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
-                                                        }}
-                                                        value={formData.objectives}
-                                                        onEditorChange={handleObjectivesChange} />
-                                                </div>
-                                            </div>
+                                           
                                         </div>
 
 
