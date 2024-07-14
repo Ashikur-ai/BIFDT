@@ -88,7 +88,10 @@ const CourseDetailsTab = () => {
                 <Tabs justify="start">
 
 
-                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '2nd' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>1-year Course <br /> 12-Month</p></div>} onClick={() => setTabName('2nd')}></Tab>
+                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '2nd' ? 'font-bold bg-primary' : 'bg-primary/80'}`}>
+                        <p className='transition-all duration-300 '>1-year Course <br /> 12-Month</p>
+                    </div>} onClick={() => setTabName('2nd')}>
+                    </Tab>
 
                     <Tab className='text-red-500' title={
                         <div
