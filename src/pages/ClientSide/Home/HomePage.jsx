@@ -85,8 +85,8 @@ const HomePage = () => {
             <div className=" relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-full object-cover z-10 bg-white/80"></div>
               <img className="absolute top-0 left-0 w-full h-full object-cover z-0" src={faceIllutionImg} alt="" />
-              <div className="z-20 lg:py-5 relative">
-                <p className="lg:text-4xl lg:pb-4  z-10">Home</p>
+              <div className="z-10 lg:py-5 relative">
+                <p className="lg:text-4xl lg:pb-4">Home</p>
                 <p className="text-black text-[8px] lg:text-xl" dangerouslySetInnerHTML={{ __html: description }}>
                 </p>
               </div>
