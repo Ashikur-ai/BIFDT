@@ -74,8 +74,18 @@ const Navbar = () => {
 
         </>
     return (
-        <>
-            <div className="navbar shadow-2xl bg-primary text-white sticky top-0 z-30">
+        <div className="sticky top-0 z-30 shadow-lg">
+            <div className=" bg-primary">
+
+                <div className='flex justify-center items-center pt-1'>
+                    <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='w-12 lg:w-16
+                    p-2 bg-white rounded-2xl' alt="" />
+                </div>
+            </div>
+
+            <div className="navbar  bg-primary text-white ">
+
+
                 <div className="">
                     {/* Mobile view  */}
                     <div className=" text-white">
@@ -117,7 +127,6 @@ const Navbar = () => {
                     </div>
                     {/* laptop view  */}
                     <div className="text-sm hidden lg:flex px-10">
-
                         <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold navbarUl gap-x-4 gap-y-1">
                             {navNavLinks}
                         </nav>
@@ -127,7 +136,7 @@ const Navbar = () => {
 
             </div>
 
-        </>
+        </div>
     );
 };
 export default Navbar;
