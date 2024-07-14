@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import CourseDetailsTab from "./CourseDetailsTab";
 import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react";
+import ResponsiveButton from "../../../components/ResponsiveButton";
 
 // slider import
 
@@ -263,29 +264,29 @@ const CourseDetails = () => {
 
 
         {/* second half */}
-        <div className="lg:w-3/4 border pt-2 border-b-black">
+        <div className="lg:w-3/4 border pt-2 border-b-black px-3 lg:px-0">
           <div className="flex justify-between">
             <span
-              className="text-white   px-5 rounded-lg bg-primary">
+              className="text-white   text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary">
               Free Seminar/Counseling
             </span>
             <span
-              className="text-white   px-5 mr-14 rounded-lg bg-primary">
+              className="text-white  text-sm lg:text-xl px-1  lg:px-5 mr-14 rounded-lg bg-primary">
               <Link to="/onlineAdmission">Enroll Now</Link>
             </span>
           </div>
 
-          <p className="text-black font-bold text-xl p-1 bg-white ">
+          <p className="text-black font-bold text-sm lg:text-xl p-1 bg-white ">
             Fashion Design :: Education for Excellence :: Bangladesh Institute of Fashion & Design Technology (BIFDT)
           </p>
           <hr />
-          <p className="pr-10 pl-1">
+          <p className="pr-10 pl-1 text-sm lg:text-xl">
             {showMore ? subtext : `${subtext.substring(0, 250)}....`} <br />
             <button className="text-blue-500" onClick={() => setShowMore(!showMore)}>{showMore ? "Show less" : "Show more"}</button>
           </p>
 
           {/* main video  */}
-          <div className="w-[85vw] h-[48.9vw] sm:w-[65vw] sm:h-[37vw] lg:h-[370px] lg:w-[650px] mx-auto rounded-lg p-2
+          <div className="w-[85vw] h-[48.9vw] sm:w-[65vw] sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
           bg-primary">
             <ReactPlayer
               controls="true"
@@ -357,14 +358,15 @@ const CourseDetails = () => {
 
           {/* Admission and course detail section */}
           <div>
-            <p className="text-primary  text-sm ml-3 px-1 bg-white ">
+            <p className="text-primary  text-sm mr-4 lg:ml-3 lg:px-1 bg-white">
               আপনি কি চাকুরি অথবা ব্যবসায় মাধ্যমে ক্যারিয়ার গড়তে চান ? খুঁজছেন একটি ভালো উপার্জনের সেইফ ক্যারিয়ার? অথবা করতে চান নিজের একটি ফ্যাশন ব্রান্ড ? তবে ফ্যাশন ডিজাইনার হোয়ে নিজেকে মেলে ধরার সময় কিন্তু এখনি .... কারণ ফ্যাশন ডিজাইন এখন লাখ টাকার পেশা! চাকুরি অথবা উদ্যোক্তা ২টি সম্ভাবনার দোয়ারই এক জন ফ্যাশন ডিজাইনারের জন্য খোলা।
             </p>
 
 
-            <div className="flex justify-between items-center pr-14">
-              <p className="text-2xl font-bold py-5">Admission Notice</p>
-              <Link to={'/onlineAdmission'}><div className="py-5 flex justify-center"> <button className="btn bg-primary text-white hover:text-black  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max">Enroll Now</button></div></Link>
+            <div className="flex justify-between items-center lg:pr-14">
+              <p className="lg:text-2xl font-bold py-5">Admission Notice</p>
+              <ResponsiveButton title={"Enroll Now"} link={ "/onlineAdmission" } />
+              
             </div>
             <Marquee className="bg-primary py-1.5 text-white">
               ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে
@@ -469,7 +471,7 @@ const CourseDetails = () => {
           </div> */}
 
           <div className="pt-2">
-            <p className="text-2xl font-bold py-5">Course Details</p>
+            <p className="lg:text-2xl font-bold py-5">Course Details</p>
             <CourseDetailsTab></CourseDetailsTab>
 
           </div>
@@ -478,9 +480,9 @@ const CourseDetails = () => {
 
 
 
-      <div className="px-20">
+      <div className="">
         {/* student gallary section  */}
-        <div className="py-20">
+        <div className="pb-10">
           <TabSection ></TabSection>
         </div>
 
