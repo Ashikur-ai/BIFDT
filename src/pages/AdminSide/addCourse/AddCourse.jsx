@@ -72,13 +72,13 @@ const AddCourse = () => {
     const titleStyle = 'text-black font-medium py-1 max-w-[230px]'
 
 
-    const handleSubmit = async (event) => {g
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target;
         const title = form.courseTitle.value;
         const subtitle = form.subtitle.value;
         const videoUrl = form.videoUrl.value;
-
+        const courseFee = form.courseFee.value
         let isValid = true;
         const newFormDataErr = {
             notice: '',
@@ -117,7 +117,7 @@ const AddCourse = () => {
             return
         }
 
-        
+
         let allImagesArray = [];
         const toastId = toast.loading("Course is adding...");
         for (let i = 0; i < allImages.length; i++) {
@@ -144,23 +144,22 @@ const AddCourse = () => {
         //     const data = { category, image: imageUrl };
         //     return axiosPublic.post('/studentGallery', data);
         // });
-        const data = { title, subtitle, videoUrl, bannerImages: allImagesArray, subVideos: subVideosArray, notice: formData.notice, bangla: formData.bangla, admissionNotice: formData.admissionNotice };
-        console.log(data);
-       
+        const data = { title, subtitle, videoUrl, bannerImages: allImagesArray, subVideos: subVideosArray, notice: formData.notice, bangla: formData.bangla, admissionNotice: formData.admissionNotice, courseFee };
+
         axiosPublic.post(`/course`, data)
-        .then(res=> {
-            if(res.data.insertedId){
-                toast.success("Course has added Successfully!!", { id: toastId });
-                form.reset()
-                setFormData({...formData, objectives:''})
-                setFormData({...formData, notice:''})
-                setFormData({...formData, bangla:''})
-                setFormData({...formData, admissionNotice:''})
-                setAllImages([]);
-                setSubVideos([])
-            }
-            
-        })
+            .then(res => {
+                if (res.data.insertedId) {
+                    toast.success("Course has added Successfully!!", { id: toastId });
+                    form.reset()
+                    setFormData({ ...formData, objectives: '' })
+                    setFormData({ ...formData, notice: '' })
+                    setFormData({ ...formData, bangla: '' })
+                    setFormData({ ...formData, admissionNotice: '' })
+                    setAllImages([]);
+                    setSubVideos([])
+                }
+
+            })
     };
     return (
         <>
@@ -226,6 +225,13 @@ const AddCourse = () => {
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm text-gray-600 font-bold">Upload Course Main Video</label><br />
                                                     <input required type="text" name='videoUrl' className="file-input file-input-bordered file-input-md w-full" />
+                                                </div>
+                                            </div>
+                                            {/* Fee */}
+                                            <div className="p-2 w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Course Fee</label>
+                                                    <input required type="number" name="courseFee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
                                             {/* Sub Video */}
@@ -361,7 +367,7 @@ const AddCourse = () => {
                                             </div>
 
 
-                                           
+
                                         </div>
 
 

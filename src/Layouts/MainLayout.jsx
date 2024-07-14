@@ -6,10 +6,12 @@ import FormButton from "../components/FormButton";
 import AllSocialLinks from "../components/AllSocialLinks";
 import MobileViewButton from "../components/MobileViewButton";
 import { Toaster } from "react-hot-toast";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 const MainLayout = () => {
     return (
         <>
+        <ScrollToTop/>
             <Navbar></Navbar>
             
             <Outlet>
