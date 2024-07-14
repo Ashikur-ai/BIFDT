@@ -15,6 +15,10 @@ const Navbar = () => {
         setOpenMenu(!isOpen)
     }
     const NavLinkStyle = 'text-sm hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] transition-all duration-300'
+    const handleHideDrawer = () => {
+        setOpenMenu(false)
+        document.getElementById("my-drawer").checked = false;
+    }
     const navNavLinks =
         <>
             <NavLink to="/" className={`${NavLinkStyle}`}>Home</NavLink>
@@ -42,35 +46,35 @@ const Navbar = () => {
         </>
     const navNavLinksForDrawer =
         <>
-            <NavLink to="/" className={`${NavLinkStyle}`}>Home</NavLink>
+            <NavLink to="/" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Home</NavLink>
 
 
 
-            <NavLink to="/aboutUs" className={`${NavLinkStyle}`}>About Us</NavLink>
+            <NavLink to="/aboutUs" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>About Us</NavLink>
             <p onClick={handleDropdownToggle} className={`text-base hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] transition-all duration-300 flex justify-between items-center cursor-pointer ${isDropdownOpen && 'bg-[#414040] px-[10px]'}`}>Course
                 <span className={` transition-all duration-300 ${isDropdownOpen ? 'rotate-180' : 'rotate-0'}`}><MdArrowDropDown /></span>
             </p>
 
 
             <div className={` rounded-md bg-black/10 flex flex-col ml-4 transition-all origin-top duration-300 ${isDropdownOpen ? 'block scale-y-100 p-2' : 'scale-y-0 h-0'} gap-2`}>
-                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Merchandising</NavLink>
+                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Merchandising</NavLink>
 
-                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Pattern Design</NavLink>
+                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Pattern Design</NavLink>
 
-                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Graphics & Web Design</NavLink>
+                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Graphics & Web Design</NavLink>
 
 
-                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Interior Design</NavLink>
+                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Interior Design</NavLink>
 
-                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Leather Design</NavLink
+                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Leather Design</NavLink
                 >
-                <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Computer Operator</NavLink>
+                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Computer Operator</NavLink>
             </div>
 
 
-            <NavLink to="/onlineAdmission" className={`${NavLinkStyle}`}>Online Admission</NavLink>
+            <NavLink to="/onlineAdmission" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Online Admission</NavLink>
 
-            <NavLink to="/freeSeminar" className={`${NavLinkStyle}`}>Free Seminar</NavLink>
+            <NavLink to="/freeSeminar" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Free Seminar</NavLink>
 
         </>
     return (

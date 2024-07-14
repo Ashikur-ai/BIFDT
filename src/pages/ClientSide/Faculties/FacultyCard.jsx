@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 const FacultyCard = ({ faculty, slide }) => {
-    console.log(slide);
     return (
 
         <div className={`card max-w-[320px] sm:w-[320px] border border-gray-500 bg-base-100 shadow-xl ${slide ? 'w-[60vw]' : 'w-[80%]'}`}>
