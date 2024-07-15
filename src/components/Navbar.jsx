@@ -1,8 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Fade as Hamburger } from 'hamburger-react'
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MdArrowDropDown } from "react-icons/md";
+import { MdArrowDropDown, MdEmail } from "react-icons/md";
+import { FaPhoneAlt, FaPhoneVolume } from "react-icons/fa";
+import ResponsiveButton from "./ResponsiveButton";
 const Navbar = () => {
     const [isOpen, setOpenMenu] = useState(false)
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -39,9 +41,7 @@ const Navbar = () => {
 
 
 
-            <NavLink to="/onlineAdmission" className={`${NavLinkStyle}`}>Online Admission</NavLink>
-
-            <NavLink to="/freeSeminar" className={`${NavLinkStyle}`}>Free Seminar</NavLink>
+            
 
         </>
     const navNavLinksForDrawer =
@@ -78,14 +78,8 @@ const Navbar = () => {
 
         </>
     return (
-        <div className="sticky top-0 z-30 shadow-lg">
-            <div className=" bg-primary">
-
-                <div className='flex justify-center items-center pt-1'>
-                    <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='w-12 lg:w-16
-                    p-2 bg-white rounded-2xl' alt="" />
-                </div>
-            </div>
+        <div className="sticky top-0 z-20 shadow-lg">
+            
 
             <div className="navbar  bg-primary text-white ">
 
@@ -141,6 +135,8 @@ const Navbar = () => {
             </div>
 
         </div>
+
+
     );
 };
 export default Navbar;

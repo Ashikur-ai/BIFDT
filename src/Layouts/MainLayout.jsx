@@ -7,15 +7,16 @@ import AllSocialLinks from "../components/AllSocialLinks";
 import MobileViewButton from "../components/MobileViewButton";
 import { Toaster } from "react-hot-toast";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
+import SubMenu from "../components/SubMenu";
 
 const MainLayout = () => {
     return (
         <>
         <ScrollToTop/>
+            <SubMenu></SubMenu>
             <Navbar></Navbar>
-            
             <Outlet>
-            
+
             </Outlet>
             <Footer></Footer>
             <WhatsAppButton></WhatsAppButton>
