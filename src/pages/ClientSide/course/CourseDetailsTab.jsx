@@ -83,7 +83,7 @@ const CourseDetailsTab = () => {
     }
     const btnStyle = 'border-primary hover:bg-primary btn text-white border  md:px-5 px-3 rounded-md  py-1 transition-all duration-300 hover:font-bold  md:h-16 md:w-[190px] flex justify-center items-center tabBtn active:border-2 active:border-gray-500 text-xs sm:text-sm md:text-base'
     return (
-        <div className=''>
+        <div className='overflow-x-hidden'>
             <Grommet Grommet theme={customTheme}>
                 <Tabs justify="start">
 
@@ -107,49 +107,59 @@ const CourseDetailsTab = () => {
             {TabName === '1st' && <div className='pl-2  '>
                 <Faq data={data} />
             </div>}
-            {TabName === '2nd' && <div>
-                <div className='pl-2'>
-                    <p className='font-bold text-xl pb-2'>1-year Diploma Course in Fashion Design. (Normal Credits System )</p>
-                    <div className='space-y-3'>
-                        <div className='flex gap-4'>
-                            <div className='w-1/4'>Course Title :</div>
-                            <div className='w-3/4'>1-year Diploma Course in Fashion Design. (Normal Credits System )</div>
-                        </div>
-                        <div className='flex gap-4'>
-                            <div className='w-1/4'>Course Duration :</div>
-                            <div className='w-3/4'>12-Month theoretical & practical classes in this Institute. 30 Credits. <span className='font-bold'>Minimum Total -144/192.</span>
-                                <p>Theoretical class(1.5-2)Hours, Practical class(2-3)Hours. 3/4 days in a week. </p>
-                            </div>
-                        </div>
-                        <div className='flex gap-4'>
-                            <div className='w-1/4'>Course Fee :</div>
-                            <div className='w-3/4'>Total payable TK 54,000/=. At the time of Admission, TK 6,000/= and the rest will
-                                have to be paid Monthly TK 4,000/= × 12 Installments = TK 48,000/=  </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div className='pl-2   pt-5'>
-                    <p className='font-bold text-xl pb-2'>1-year Diploma Course in Fashion Design. ( Open Credits System )</p>
-                    <div className='space-y-3'>
-                        <div className='flex gap-4'>
-                            <div className='w-1/4'>Course Title :</div>
-                            <div className='w-3/4'>1-year Diploma Course in Fashion Design. ( Open Credits System )</div>
-                        </div>
-                        <div className='flex gap-4'>
-                            <div className='w-1/4'>Course Duration :</div>
-                            <div className='w-3/4'>7-Month theoretical & practical classes in this Institute. 30 Credits.<span className='font-bold'>Minimum Total -144/192.</span>
-                                <p>Theoretical class(1.5-2)Hours, Practical class(2-3)Hours. 5/6 days in a week.</p>
-                            </div>
-                        </div>
-                        <div className='flex gap-4'>
-                            <div className='w-1/4'>Course Fee :</div>
-                            <div className='w-3/4'>Total payable TK 54,000/=. At the time of Admission, TK 8,500/= and the rest will
-                                have to be paid Monthly TK 6,500/= × 7 Installments = TK 45,500/=</div>
-                        </div>
-                    </div>
-
+            {TabName === '2nd' && <div className='pb-10'>
+                <div className="overflow-x-auto w-full ">
+                    <table className="table overflow-hidden w-[800px] mx-auto text-base bg-primary/30">
+                        {/* head */}
+                        <thead className='bg-primary/90 text-white text-base '>
+                            <tr>
+                                <th>Course Title</th>
+                                <th>:</th>
+                                <th className="w-[570px] whitespace-normal">1 Year Diploma in Apparel Merchandising & Buying Management (Normal Credits System)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* row 1 */}
+                            <tr className="">
+                                <th>Course Duration</th>
+                                <td>:</td>
+                                <td>12-Month Theoretical & Practical classes for (Woven, Knit & Sweater) Consolidated by Merchandising, Production planning, Textile science , Industrial Engineering, Types of costing in garment industry, Commercial , Internet & Buyer Sourcing,  Pattern Top, Pattern Bottom, Garments Construction, Fully Fashion, CAD Design. Spoken English, Computer training.  followed by Factory Visit.  followed by Factory Visit.</td>
+                            </tr>
+                            {/* row 2 */}
+                            <tr className='bg-gray-300'>
+                                <th> Regular Batch</th>
+                                <td>:</td>
+                                <td>3/4 days in a week for general students, morning, afternoon, evening and various times of the week..</td>
+                            </tr>
+                            {/* row 3 */}
+                            <tr>
+                                <th>Executive Batch </th>
+                                <td>:</td>
+                                <td>3 days in a week including Friday and Saturday, and evening classes  are available for working people.</td>
+                            </tr>
+                            <tr className='bg-gray-300'>
+                                <th></th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>Total Classes</th>
+                                <td>:</td>
+                                <td>Minimum total-144/192 Classes. Theoretical class(1.5-2) Hours, Practical class(2-3) Hours. Total 30 Credits.            ( Normal Credits System )</td>
+                            </tr>
+                            <tr className='bg-gray-300'>
+                                <th>Qualification</th>
+                                <td>:</td>
+                                <td>H.S.C/Bachelor's /Master's  (Any age)</td>
+                            </tr>
+                            <tr>
+                                <th>Course Fee</th>
+                                <td>:</td>
+                                <td>Total payable TK 54,000/=.
+                                    At the time of Admission, TK 6,000/= and the rest will  have to be paid Monthly TK 4,000/= × 12 Installments = TK 48000/=.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>}
             {TabName === '3rd' && <div>
@@ -180,102 +190,88 @@ const CourseDetailsTab = () => {
                 </div>
             </div>}
             {TabName === '4th' && <div>
-                <div className='pl-2  '>
-
-
-                    <table border="0" cellSpacing="5" cellPadding="5" className="table">
-                        <tbody>
-                            <tr><th colSpan="4" align="left">First Semester</th></tr>
-                            <tr>
-                                <td colSpan="2">1.</td>
-                                <td>Fashion Figure Dries Illustration-1</td>
-                                <td>4 Credits</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">2.</td>
-                                <td colSpan="2">Color Composition.</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">3.</td>
-                                <td>Basic Pattern Construction 1-Top Variation. (Men's &amp; Women's Wear)</td>
-                                <td>4 Credits</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">4.</td>
-                                <td>Basic Pattern Construction 2- Bottom Variation. (Men's &amp; Women's Wear)</td>
-                                <td>4 Credits</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">5.</td>
-                                <td>History of Costumes. (Worldwide Fashion)</td>
-                                <td>1 Credit</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">6.</td>
-                                <td>Textile science</td>
-                                <td>2 Credits</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">7.</td>
-                                <td>Elements of Design.</td>
-                                <td>1 Credit</td>
-                            </tr>
-                            <tr><th colSpan="4" align="left">Second Semester</th></tr>
-                            <tr>
-                                <td colSpan="2">8.</td>
-                                <td>Fashion Figure Dress Illustration-2 &amp; Surface Ornamentations</td>
-                                <td>4 Credits</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td colSpan="3">( Block, Batik, Tie-dye, Ambush, Screenprint )</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">9.</td>
-                                <td>Garments Construction.</td>
-                                <td>1 Credit</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td colSpan="3">(Sewing, Seam, machine Identification, Operation Break Down, Line Balancing)</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">10.</td>
-                                <td>Pattern grading system</td>
-                                <td>1 Credit</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">11.</td>
-                                <td>Draping.</td>
-                                <td>2 Credits</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td colSpan="3">(Women Wear:- Skirt, Tops, Grown, Ladies Pant, Lingerie &amp; all the design Variation)</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">12.</td>
-                                <td>Product Development.</td>
-                                <td>2 Credits</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">13.</td>
-                                <td>Fashion C.A.D (Computer-Aided Design ).</td>
-                                <td>2 Credits</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">14.</td>
-                                <td>Fashion Marketing.</td>
-                                <td>1 Credit</td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">15.</td>
-                                <td>Portfolio/ Final Dress Submission</td>
-                                <td>2 Credits</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
+                <div>
+                    <div className="overflow-x-auto max-w-[800px] mx-auto">
+                        <table className="min-w-full border-collapse border border-gray-200 bg-primary/20 ">
+                            <thead>
+                                <tr className="bg-primary/90 text-white">
+                                    <th colSpan="2" className="border border-gray-200 px-4 py-2 text-left">First Semester</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-left">Credits</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className=''>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">1</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Production & Designing Department</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">2 Credits</td>
+                                </tr>
+                                <tr className=" ">
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">2</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Textile Department</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">2 Credits</td>
+                                </tr>
+                                <tr>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">3</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Business Communication (Spoken) Department</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">2 Credits</td>
+                                </tr>
+                                <tr className=" ">
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">4</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Commercial Department</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">1 Credit</td>
+                                </tr>
+                                <tr>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">5</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Industrial Engineering Department</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">2 Credits</td>
+                                </tr>
+                                <tr className=" ">
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">6</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Merchandising Department</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">2 Credits</td>
+                                </tr>
+                                <tr>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">7</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Internet & Buyer Sourcing Department</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">1 Credit</td>
+                                </tr>
+                                <tr className="bg-gray-100">
+                                    <th colSpan="2" className="border border-gray-200 px-4 py-2 text-left">Second Semester</th>
+                                    <th className="border border-gray-200 px-4 py-2 text-left">Credits</th>
+                                </tr>
+                                <tr>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">8</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Computer Fundamental Department</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">3 Credits</td>
+                                </tr>
+                                <tr className=" ">
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">9</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Basic Pattern Department (1) Top Variation</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">4 Credits</td>
+                                </tr>
+                                <tr>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">10</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Basic Pattern Department (2) Bottom Variation</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">4 Credits</td>
+                                </tr>
+                                <tr className=" ">
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">11</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Garments Construction Department</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">2 Credits</td>
+                                </tr>
+                                <tr>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">12</td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Merchandising Department (2)</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">3 Credits</td>
+                                </tr>
+                                <tr>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]"></td>
+                                    <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">Total</td>
+                                    <td className="px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">30 Credits</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>}
             {/* <Tabs>

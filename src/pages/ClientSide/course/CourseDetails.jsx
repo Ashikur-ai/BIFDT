@@ -314,6 +314,7 @@ const CourseDetails = () => {
                           height='100%'
                         />
                       </div>
+                      <hr className="w-full border border-black mt-1" />
                       <p className={`${titleStyle}`}>First Video</p>
                     </div>
                     <div>
@@ -326,6 +327,7 @@ const CourseDetails = () => {
                           height='100%'
                         />
                       </div>
+                      <hr className="w-full border border-black mt-1" />
                       <p className={`${titleStyle}`}>Second Video</p>
                     </div>
                     <div>
@@ -338,6 +340,7 @@ const CourseDetails = () => {
                           height='100%'
                         />
                       </div>
+                      <hr className="w-full border border-black mt-1" />
                       <p className={`${titleStyle}`}>Third Video</p>
                     </div>
                     <div>
@@ -350,6 +353,7 @@ const CourseDetails = () => {
                           height='100%'
                         />
                       </div>
+                      <hr className="w-full border border-black mt-1" />
                       <p className={`${titleStyle}`}>Fourth Video</p>
                     </div>
                   </div>
