@@ -64,13 +64,13 @@ const CourseRow = ({ course, idx, coursesRefetch }) => {
         <tr>
             <td>{idx + 1}</td>
 
-            <td>{title}</td>
+            <td className="min-w-[220px]">{title}</td>
 
             <td>
                 <div className="flex items-center gap-3">
                     <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                            <img src={bannerImages[0] || ''} />
+                        <div className="mask mask-squircle w-28 h-28">
+                            <img className="" src={bannerImages[0] || ''} />
                         </div>
                     </div>
                     <div>
@@ -123,7 +123,7 @@ const CourseRow = ({ course, idx, coursesRefetch }) => {
                     <Marquee pauseOnHover={true}>
                         <div className="flex gap-5 pr-5">
                             {
-                                subVideos?.map((video, idx) => <div className="" key={idx}>
+                                subVideos?.map((video, idx) => <div className="w-[150px]" key={idx}>
                                     <div className={`${videoDivStyle} w-[150px] h-[80px]`}>
                                         <ReactPlayer
                                             controls="true"
