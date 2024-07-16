@@ -60,39 +60,6 @@ const AddFacultyPage = () => {
 
     };
 
-
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     const form = event.target;
-    //     const name = form.name.value;
-    //     const email = form.email.value;
-    //     const contact = form.contact.value;
-    //     const facebook = form.facebook.value;
-    //     const twitter = form.twitter.value;
-    //     const whatsapp = form.whatsapp.value;
-    //     const designation = form.designation.value;
-    //     const image = form.image.value;
-
-
-
-    //     const data = { name, email, contact, facebook, twitter, whatsapp, designation, image };
-    //     console.log(data)
-
-    //     axiosPublic.post('/faculty', data)
-    //         .then(res => {
-    //             console.log(res.data)
-    //             if (res.data.insertedId) {
-    //                 Swal.fire({
-    //                     title: "Success!",
-    //                     text: "Faculty added to database",
-    //                     icon: "success"
-    //                 });
-    //             }
-    //         })
-    //         .catch()
-    //     form.reset();
-    // }
-
     return (
         <>
             <Helmet>
