@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { MdArrowDropDown, MdEmail } from "react-icons/md";
 import { FaPhoneAlt, FaPhoneVolume } from "react-icons/fa";
 import ResponsiveButton from "./ResponsiveButton";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 const Navbar = () => {
     const [isOpen, setOpenMenu] = useState(false)
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -16,7 +18,19 @@ const Navbar = () => {
         console.log(!isOpen);
         setOpenMenu(!isOpen)
     }
-    const NavLinkStyle = 'text-sm hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] lg:px-[10px] transition-all duration-300 font-medium'
+    const axiosPublic = useAxiosPublic();
+    const { data: courses = [], refetch: coursesRefetch, isLoading } = useQuery({
+        queryKey: ['courses'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/course');
+            return res.data;
+        }
+    })
+    if (isLoading) {
+        return ''
+    }
+    console.log(courses);
+    const NavLinkStyle = 'text-sm border-transparent border-b-2 hover:border-white py-[5px] hover:px-[10px] lg:px-[10px] transition-all duration-300 font-medium'
     const handleHideDrawer = () => {
         setOpenMenu(false)
         document.getElementById("my-drawer").checked = false;
@@ -25,23 +39,14 @@ const Navbar = () => {
         <>
             <NavLink to="/" className={`${NavLinkStyle}`}>Home</NavLink>
             <NavLink to="/aboutUs" className={`${NavLinkStyle}`}>About Us</NavLink>
-
-            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Merchandising</NavLink>
-
-            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Pattern Design</NavLink>
-
-            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Graphics & Web Design</NavLink>
-
-
-            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Interior Design</NavLink>
-
-            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Leather Design</NavLink
-            >
-            <NavLink to="/courseDetails" className={`${NavLinkStyle}`}>Computer Operator</NavLink>
+            {
+                courses?.map(course => <NavLink key={course?._id} to={`/courseDetails/${course?._id}`} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
+            }
 
 
 
-            
+
+
 
         </>
     const navNavLinksForDrawer =
@@ -57,18 +62,9 @@ const Navbar = () => {
 
 
             <div className={` rounded-md bg-black/10 flex flex-col ml-4 transition-all origin-top duration-300 ${isDropdownOpen ? 'block scale-y-100 p-2' : 'scale-y-0 h-0'} gap-2`}>
-                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Merchandising</NavLink>
-
-                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Pattern Design</NavLink>
-
-                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Graphics & Web Design</NavLink>
-
-
-                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Interior Design</NavLink>
-
-                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Leather Design</NavLink
-                >
-                <NavLink to="/courseDetails" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Computer Operator</NavLink>
+                {
+                    courses?.map(course => <NavLink key={course?._id} to={`/courseDetails/${course?._id}`} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
+                }
             </div>
 
 
@@ -79,7 +75,7 @@ const Navbar = () => {
         </>
     return (
         <div className="sticky top-0 z-20 shadow-lg">
-            
+
 
             <div className="navbar  bg-primary text-white ">
 

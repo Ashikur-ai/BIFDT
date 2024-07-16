@@ -69,7 +69,7 @@ const CourseDetails = () => {
           </Swiper>
         </div>
         {/*2. Marqueee section  */}
-       <div className="pr-10">
+        <div className="pr-10">
           <Marquee className="bg-primary py-1.5 text-white">
             ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে আকর্ষণীয়,
             সম্মান জনক ও চ্যালেঞ্জিং পেশা হিসাবে বেছে নিতে পারেন মার্চেন্ডাইজিংকে।
@@ -102,20 +102,20 @@ const CourseDetails = () => {
             Course করুন। সৃজনশীল এ পেশায় চাকুরি অথবা ব্যবসায়ের মাধ্যমে আপনিও হয়ে
             উঠুন একজন কর্মময় ও সফল মানুষ। ***
           </Marquee>
-  
+
           <div className="flex flex-col-reverse lg:flex-row">
-  
-  
+
+
             {/* first half */}
             <div className="lg:w-1/4 hidden lg:block border border-black">
-  
+
               <p className="text-primary  text-center font-bold text-2xl  bg-white ">
                 Facebook Page
               </p>
               <div className="border border-t-black">
                 <div className="flex items-center justify-center bg-gray-100">
                   <div className="w-full max-w-md h-96 overflow-y-auto p-4 bg-gray-200 rounded-lg shadow-lg">
-  
+
                     <div className="card  bg-base-100 shadow-xl">
                       <figure>
                         <img
@@ -137,7 +137,7 @@ const CourseDetails = () => {
                         </div>
                       </div>
                     </div>
-  
+
                     <div className="card  bg-base-100 shadow-xl">
                       <figure>
                         <img
@@ -153,12 +153,12 @@ const CourseDetails = () => {
                         </div>
                       </div>
                     </div>
-  
+
                   </div>
                 </div>
               </div>
-  
-  
+
+
               {/* instagram  */}
               <p className="text-primary  text-center font-bold text-2xl pt-2 bg-white ">
                 Instagram Page
@@ -166,7 +166,7 @@ const CourseDetails = () => {
               <div className="border border-t-black">
                 <div className="flex items-center justify-center bg-gray-100">
                   <div className="w-full max-w-md h-96 overflow-y-auto p-4 bg-gray-200 rounded-lg shadow-lg">
-  
+
                     <div className="card  bg-base-100 shadow-xl">
                       <figure>
                         <img
@@ -188,7 +188,7 @@ const CourseDetails = () => {
                         </div>
                       </div>
                     </div>
-  
+
                     <div className="card  bg-base-100 shadow-xl">
                       <figure>
                         <img
@@ -204,19 +204,19 @@ const CourseDetails = () => {
                         </div>
                       </div>
                     </div>
-  
+
                   </div>
                 </div>
               </div>
-  
-  
+
+
               <p className="text-primary  text-center font-bold text-2xl pt-2 bg-white ">
                 Twitter Page
               </p>
               <div className="border border-t-black">
                 <div className="flex items-center justify-center bg-gray-100">
                   <div className="w-full max-w-md h-96 overflow-y-auto p-4 bg-gray-200 rounded-lg shadow-lg">
-  
+
                     <div className="card  bg-base-100 shadow-xl">
                       <figure>
                         <img
@@ -238,7 +238,7 @@ const CourseDetails = () => {
                         </div>
                       </div>
                     </div>
-  
+
                     <div className="card  bg-base-100 shadow-xl">
                       <figure>
                         <img
@@ -254,17 +254,17 @@ const CourseDetails = () => {
                         </div>
                       </div>
                     </div>
-  
+
                   </div>
                 </div>
               </div>
-  
-  
-  
+
+
+
             </div>
-  
-  
-  
+
+
+
             {/* second half */}
             <div className="lg:w-3/4 border pt-2 border-b-black px-3 lg:px-0">
               <div className="flex justify-between gap-3">
@@ -277,7 +277,7 @@ const CourseDetails = () => {
                   <Link to="/onlineAdmission">Enroll Now</Link>
                 </span>
               </div>
-  
+
               <p className="text-black font-bold text-sm lg:text-xl p-1 bg-white ">
                 Fashion Design :: Education for Excellence :: Bangladesh Institute of Fashion & Design Technology (BIFDT)
               </p>
@@ -286,7 +286,7 @@ const CourseDetails = () => {
                 {showMore ? subtext : `${subtext.substring(0, 250)}....`} <br />
                 <button className="text-blue-500" onClick={() => setShowMore(!showMore)}>{showMore ? "Show less" : "Show more"}</button>
               </p>
-  
+
               {/* main video  */}
               <div className="w-[85vw] h-[48.9vw] sm:w-[65vw] sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
               bg-primary">
@@ -298,81 +298,81 @@ const CourseDetails = () => {
                   height="100%"
                 />
               </div>
-  
+
               {/* four related video  */}
-  
-              <div className="hidden  lg:flex py-10">
+
+              <div className="hidden  lg:flex pt-10">
                 <Marquee pauseOnHover={true}>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pr-10">
                     <div className="  ">
                       <div className={`${videoDivStyle}`}>
                         <ReactPlayer
                           controls="true"
-  
+
                           url="https://www.youtube.com/watch?v=CW4zNp-HF2Q&t=1s"
                           width="100%"
                           height='100%'
                         />
                       </div>
-                      <hr className="w-full border border-black mt-1" />
+
                       <p className={`${titleStyle}`}>First Video</p>
                     </div>
                     <div>
                       <div className={`${videoDivStyle}`}>
                         <ReactPlayer
                           controls="true"
-  
+
                           url="https://www.youtube.com/watch?v=VdK0_MzwTsw&t=259s"
                           width="100%"
                           height='100%'
                         />
                       </div>
-                      <hr className="w-full border border-black mt-1" />
+
                       <p className={`${titleStyle}`}>Second Video</p>
                     </div>
                     <div>
                       <div className={`${videoDivStyle}`}>
                         <ReactPlayer
                           controls="true"
-  
+
                           url="https://www.youtube.com/watch?v=si-mdWiQc34&t=20s"
                           width="100%"
                           height='100%'
                         />
                       </div>
-                      <hr className="w-full border border-black mt-1" />
+
                       <p className={`${titleStyle}`}>Third Video</p>
                     </div>
                     <div>
                       <div className={`${videoDivStyle}`}>
                         <ReactPlayer
                           controls="true"
-  
+
                           url="https://www.youtube.com/watch?v=Mm5fcw8kStk"
                           width="100%"
                           height='100%'
                         />
                       </div>
-                      <hr className="w-full border border-black mt-1" />
+
                       <p className={`${titleStyle}`}>Fourth Video</p>
                     </div>
                   </div>
                 </Marquee>
-  
+               
               </div>
-  
-  
+
+              <div className="pb-10 pt-5"><hr className="w-full border-black" /></div>
               {/* Admission and course detail section */}
               <div>
                 <p className="text-primary  text-sm mr-4 lg:ml-3 lg:px-1 bg-white">
                   আপনি কি চাকুরি অথবা ব্যবসায় মাধ্যমে ক্যারিয়ার গড়তে চান ? খুঁজছেন একটি ভালো উপার্জনের সেইফ ক্যারিয়ার? অথবা করতে চান নিজের একটি ফ্যাশন ব্রান্ড ? তবে ফ্যাশন ডিজাইনার হোয়ে নিজেকে মেলে ধরার সময় কিন্তু এখনি .... কারণ ফ্যাশন ডিজাইন এখন লাখ টাকার পেশা! চাকুরি অথবা উদ্যোক্তা ২টি সম্ভাবনার দোয়ারই এক জন ফ্যাশন ডিজাইনারের জন্য খোলা।
                 </p>
-  
-  
+
+
                 <div className="flex justify-between items-center lg:pr-14">
                   <p className="lg:text-2xl font-bold py-5">Admission Notice</p>
                   <ResponsiveButton title={"Enroll Now"} link={"/onlineAdmission"} />
-  
+
                 </div>
                 <Marquee className="bg-primary py-1.5 text-white">
                   ভর্তি চলছে... *** Merchandising : বর্তমানে ক্যারিয়ার নির্বাচনে
@@ -410,98 +410,37 @@ const CourseDetails = () => {
                   চাকুরি অথবা ব্যবসায়ের মাধ্যমে আপনিও হয়ে উঠুন একজন কর্মময় ও সফল
                   মানুষ। ***
                 </Marquee>
-  
+
               </div>
-  
-              {/* table section for course details */}
-              {/* <div>
-                <p className="text-xl text-center py-10">
-                  Fashion Design Course & tuition fees
-                </p>
-    
-    
-    
-                <div className="w-full overflow-x-auto">
-                  <table className="table-auto   border-collapse border border-gray-400">
-                    <thead>
-                      <tr>
-                        <th className="px-4 py-2 bg-gray-200 border border-gray-400">
-                          Career objective in fashion design
-                        </th>
-                        <th className="px-4 py-2 bg-gray-200 border border-gray-400">
-                          6-Month Course
-                        </th>
-                        <th className="px-4 py-2 bg-gray-200 border border-gray-400">
-                          1-year Course 12-Month
-                        </th>
-                        <th className="px-4 py-2 bg-gray-200 border border-gray-400">
-                          1-year Course 7-Month
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="px-4 py-2 border border-gray-400">
-                          Gain foundational skills in fashion design and start a
-                          junior designer role.
-                        </td>
-                        <td className="px-4 py-2 border border-gray-400">
-                          Introduction to Fashion Design, Basic Sewing Techniques
-                        </td>
-                        <td className="px-4 py-2 border border-gray-400">
-                          Advanced Fashion Design, Fashion Illustration, Fabric
-                          Studies
-                        </td>
-                        <td className="px-4 py-2 border border-gray-400">
-                          Fashion Marketing, Portfolio Development, Pattern Making
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="px-4 py-2 border border-gray-400">
-                          Develop comprehensive design skills and secure a
-                          position as an assistant designer.
-                        </td>
-                        <td className="px-4 py-2 border border-gray-400">
-                          Creative Design Process, Textile Science
-                        </td>
-                        <td className="px-4 py-2 border border-gray-400">
-                          Digital Fashion Design, Advanced Sewing Techniques
-                        </td>
-                        <td className="px-4 py-2 border border-gray-400">
-                          Fashion Forecasting, Internship Opportunities
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div> */}
-  
+
+
+
               <div className="pt-2">
                 <p className="lg:text-2xl font-bold py-5">Course Details</p>
                 <CourseDetailsTab></CourseDetailsTab>
-  
+
               </div>
             </div>
           </div>
-  
-  
-  
+
+
+
           <div className="">
             {/* student gallary section  */}
             <div className="pb-10">
               <TabSection ></TabSection>
             </div>
-  
+
             <div>
               <Blogs></Blogs>
             </div>
           </div>
-  
+
           <div className="">
-  
+
             <Maps></Maps>
           </div>
-       </div>
+        </div>
       </div>
     </>
   );

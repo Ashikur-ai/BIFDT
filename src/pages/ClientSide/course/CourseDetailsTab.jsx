@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import 'react-tabs/style/react-tabs.css';
 import { Component } from 'react';
@@ -8,6 +8,7 @@ import { Grommet, Tab, Tabs } from 'grommet';
 
 const CourseDetailsTab = () => {
     const [TabName, setTabName] = useState('2nd')
+    const [rows, setRowsOption] = useState(null)
     const customTheme = {
         tab: {
             active: {
@@ -40,12 +41,16 @@ const CourseDetailsTab = () => {
           `,
         },
     };
+    useEffect(() => {
+        rows && rows[0].expand()
+    }, [ rows])
     const data = {
         title: "",
         rows: [
             {
                 title: <p className='font-bold'>Fashion Designer</p>,
-                content: "Fashion designers are involved from conception to completion in the development and production of clothing lines. While some designers work their way up in the industry through on-the-job experience, nowadays a formal education is often the minimum requirement for this position. Designers must have in-depth knowledge of fashion design concepts, sewing, apparel design, and garment construction, and be familiar with different types of textiles and industry trends. Most designers specialize in areas such as women's clothing, children's wear, or casual wear."
+                content: "Fashion designers are involved from conception to completion in the development and production of clothing lines. While some designers work their way up in the industry through on-the-job experience, nowadays a formal education is often the minimum requirement for this position. Designers must have in-depth knowledge of fashion design concepts, sewing, apparel design, and garment construction, and be familiar with different types of textiles and industry trends. Most designers specialize in areas such as women's clothing, children's wear, or casual wear.",
+                
             },
             {
                 title: <p className='font-bold'>Assistant Designer</p>,
@@ -81,6 +86,13 @@ const CourseDetailsTab = () => {
             }
         ]
     }
+    const config = {
+        animate: true,
+        arrowIcon: "V",
+        openOnload: 0,
+        expandIcon: "+",
+        collapseIcon: "-",
+    };
     const btnStyle = 'border-primary hover:bg-primary btn text-white border  md:px-5 px-3 rounded-md  py-1 transition-all duration-300 hover:font-bold  md:h-16 md:w-[190px] flex justify-center items-center tabBtn active:border-2 active:border-gray-500 text-xs sm:text-sm md:text-base'
     return (
         <div className='overflow-x-hidden'>
@@ -105,7 +117,7 @@ const CourseDetailsTab = () => {
                 </Tabs>
             </Grommet>
             {TabName === '1st' && <div className='pl-2  '>
-                <Faq data={data} />
+                <Faq getRowOptions={setRowsOption} config={config} data={data} />
             </div>}
             {TabName === '2nd' && <div className='pb-10'>
                 <div className="overflow-x-auto w-full ">

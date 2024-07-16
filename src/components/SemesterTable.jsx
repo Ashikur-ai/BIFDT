@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-const SemesterTable = ({ semesterTitle, subjects=[], editable = false, handleDeleteSubject }) => {
+const SemesterTable = ({ semesterTitle, subjects = [], editable = false, handleDeleteSubject }) => {
     console.log(subjects);
     return (
         <div className="overflow-x-auto max-w-[800px] mx-auto">
@@ -11,7 +11,9 @@ const SemesterTable = ({ semesterTitle, subjects=[], editable = false, handleDel
                         <th colSpan="2" className="border border-gray-200 px-4 py-2 text-left">{semesterTitle}</th>
                         <th className="border border-gray-200 px-4 py-2 text-left">Credits</th>
                         {
-                            editable && <th className="border border-gray-200 px-4 py-2 text-left">Delete</th>
+                            editable && <>
+                                <th className="border border-gray-200 px-4 py-2 text-left">Delete</th>
+                            </>
                         }
                     </tr>
                 </thead>
@@ -22,7 +24,7 @@ const SemesterTable = ({ semesterTitle, subjects=[], editable = false, handleDel
                             <td className="border-0 border-r-2 border-black px-4 py-2 border-b-[1.5px] border-b-primary">{subject.name}</td>
                             <td className="border border-gray-200 px-4 py-2 font-medium border-b-[1.5px border-b-primary border-r-[2px] border-r-black">{subject.credit} Credits</td>
                             {
-                                editable && <td className="border border-gray-200 px-4 py-2 font-medium border-b-[1.5px border-b-primary border-r-[2px] border-r-black"><p onClick={()=>handleDeleteSubject(subject.id)} className='w-7 h-7 bg-red-600 active:scale-90 hover:bg-red-700 rounded-md text-white text-center transition-all duration-300 cursor-pointer'>X</p></td>
+                                editable && <td className="border border-gray-200 px-4 py-2 font-medium border-b-[1.5px border-b-primary border-r-[2px] border-r-black"><p onClick={() => handleDeleteSubject(subject.id)} className='w-7 h-7 bg-red-600 active:scale-90 hover:bg-red-700 rounded-md text-white text-center transition-all duration-300 cursor-pointer'>X</p></td>
                             }
                         </tr>)
                     }

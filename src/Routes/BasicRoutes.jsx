@@ -41,6 +41,8 @@ import ManageComments from "../pages/AdminSide/ManageComments/ManageComments";
 import ManageCourseObjective from "../pages/AdminSide/ManageCourseObjective/ManageCourseObjective";
 import ManageCourseSemester from "../pages/AdminSide/ManageCourseSemester/ManageCourseSemester";
 import ManageCourseCategory from "../pages/AdminSide/ManageCourseCategory/ManageCourseCategory";
+import UpdateCourseCategory from "../pages/AdminSide/UpdateCourseCategory/UpdateCourseCategory";
+import UpdateCourseSemester from "../pages/AdminSide/UpdateCourseSemester/UpdateCourseSemester";
 
 
 const BasicRoutes = createBrowserRouter([
@@ -53,7 +55,7 @@ const BasicRoutes = createBrowserRouter([
                 element: <HomePage></HomePage>
             },
             {
-                path: "/courseDetails",
+                path: "/courseDetails/:id",
                 element: <CourseDetails></CourseDetails>
 
             },
@@ -202,8 +204,16 @@ const BasicRoutes = createBrowserRouter([
                 element: <ManageCourseCategory />
             },
             {
+                path: "updateCourseCategory/:courseId/:categoryId",
+                element: <UpdateCourseCategory />
+            },
+            {
                 path: "manageCourseSemester/:id",
                 element: <ManageCourseSemester/>
+            },
+            {
+                path: "updateCourseSemester/:courseId/:semesterId",
+                element: <UpdateCourseSemester />
             },
             {
                 path: "manageCourseObjective/:id",

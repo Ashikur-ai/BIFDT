@@ -6,11 +6,21 @@ import HeaderText from '../../../components/HeaderText';
 
 import toast from 'react-hot-toast';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
 
 const AdmissionPage = () => {
     const axiosPublic = useAxiosPublic();
-
+    const { data: courses = [], refetch: coursesRefetch, isLoading } = useQuery({
+        queryKey: ['courses'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/course');
+            return res.data;
+        }
+    })
+    if (isLoading) {
+        return ''
+    }
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -22,10 +32,8 @@ const AdmissionPage = () => {
         const address = form.address.value;
         const website = form.website.value;
 
-
-
-        const data = { name, email, course, gender, contact, address, website };
-
+        const theCourse = courses.find(item => item._id === course)
+        const data = { name, email, course: theCourse.title, courseId: theCourse._id, gender, contact, address, website };
         axiosPublic.post('/admission', data)
             .then(res => {
                 console.log(res.data)
@@ -44,38 +52,7 @@ const AdmissionPage = () => {
                 <title>BIFDT | Online Admission</title>
             </Helmet>
 
-            {/* Banner section  */}
-            {/* <div className='h-96'>
-                <Swiper
-                    spaceBetween={30}
-                    centeredSlides={true}
-                    autoplay={{
-                        delay: 2500,
-                        disableOnInteraction: false,
-                    }}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    navigation={false}
-                    modules={[Autoplay, Pagination, Navigation]}
-                    onAutoplayTimeLeft={onAutoplayTimeLeft}
-                    className="mySwiper"
-                >
-                    <SwiperSlide><img src={gallary1} alt="" /></SwiperSlide>
-                    <SwiperSlide><img src={gallary2} alt="" /></SwiperSlide>
-                    <SwiperSlide><img src={gallary3} alt="" /></SwiperSlide>
-                    <SwiperSlide><img src={gallary4} alt="" /></SwiperSlide>
-                    <SwiperSlide><img src={gallary5} alt="" /></SwiperSlide>
-                    <SwiperSlide><img src={gallary6} alt="" /></SwiperSlide>
 
-                    <div className="autoplay-progress" slot="container-end">
-                        <svg viewBox="0 0 48 48" ref={progressCircle}>
-                            <circle cx="24" cy="24" r="20"></circle>
-                        </svg>
-                        <span ref={progressContent}></span>
-                    </div>
-                </Swiper>
-            </div> */}
 
             <div>
             </div>
@@ -121,22 +98,17 @@ const AdmissionPage = () => {
                                             <div className='p-2 w-full'>
                                                 <label className="text-[12px] lg:text-sm">Select course</label>
                                                 <select name='course' className="bg-gray-50 border border-gray-300 text-gray-900 text-[12px] lg:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 px-2">
-    
+
                                                     <option value="" defaultChecked>Select Course</option>
-                                                    <option value={"Fashion Design"}>Fashion Design</option>
-                                                    <option value={"Merchandising"}>Merchandising
-                                                    </option>
-                                                    <option value={"Pattern Design"}>Pattern Design
-                                                    </option>
-                                                    <option value={"Interior Design"}>Interior Design</option>
-                                                    <option value={"Leather Design"}>Leather Design</option>
-                                                    <option value={"Computer Operator"}>Computer Operator
-                                                    </option>
-    
+                                                    {
+                                                        courses?.map(course => <option key={course?._id} value={course?._id} defaultChecked>{course.title}</option>)
+                                                    }
+
+
                                                 </select>
                                             </div>
-    
-    
+
+
                                             {/* contact number  */}
                                             <div className="p-2 w-full">
                                                 <div className="relative">
@@ -151,7 +123,7 @@ const AdmissionPage = () => {
                                                     <input type="text" name="address" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
-    
+
                                             {/* Gender  */}
                                             <div className="p-2 w-full">
                                                 <label className="leading-7 text-[12px] lg:text-sm text-gray-600">Gender</label>
@@ -160,7 +132,7 @@ const AdmissionPage = () => {
                                                     <input type="radio" name="gender" value={"male"} className="radio radio-secondary border-primary text-[12px] lg:text-sm" /> Male
                                                     <input type="radio" name="gender" value={"female"} className="radio radio-secondary border-primary text-[12px] lg:text-sm" /> Female
                                                 </div>
-    
+
                                             </div>
                                         </div>
 
