@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-const SemesterTable = ({ semesterTitle, subjects, editable = false, handleDeleteSubject }) => {
+const SemesterTable = ({ semesterTitle, subjects=[], editable = false, handleDeleteSubject }) => {
     console.log(subjects);
     return (
         <div className="overflow-x-auto max-w-[800px] mx-auto">
