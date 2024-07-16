@@ -81,9 +81,9 @@ const CourseDetailsTab = () => {
             }
         ]
     }
-    const btnStyle = 'border-primary hover:bg-primary btn text-white border text-base  px-5 rounded-md  py-1 transition-all duration-300 hover:font-bold  h-16 w-[190px] flex justify-center items-center tabBtn active:border-2 active:border-gray-500'
+    const btnStyle = 'border-primary hover:bg-primary btn text-white border  md:px-5 px-3 rounded-md  py-1 transition-all duration-300 hover:font-bold  md:h-16 md:w-[190px] flex justify-center items-center tabBtn active:border-2 active:border-gray-500 text-xs sm:text-sm md:text-base'
     return (
-        <div className='pr-10'>
+        <div className=''>
             <Grommet Grommet theme={customTheme}>
                 <Tabs justify="start">
 
@@ -104,11 +104,11 @@ const CourseDetailsTab = () => {
 
                 </Tabs>
             </Grommet>
-            {TabName === '1st' && <div className='pl-2 pr-10'>
+            {TabName === '1st' && <div className='pl-2  '>
                 <Faq data={data} />
             </div>}
             {TabName === '2nd' && <div>
-                <div className='pl-2 pr-10'>
+                <div className='pl-2'>
                     <p className='font-bold text-xl pb-2'>1-year Diploma Course in Fashion Design. (Normal Credits System )</p>
                     <div className='space-y-3'>
                         <div className='flex gap-4'>
@@ -130,7 +130,7 @@ const CourseDetailsTab = () => {
 
                 </div>
 
-                <div className='pl-2 pr-10 pt-5'>
+                <div className='pl-2   pt-5'>
                     <p className='font-bold text-xl pb-2'>1-year Diploma Course in Fashion Design. ( Open Credits System )</p>
                     <div className='space-y-3'>
                         <div className='flex gap-4'>
@@ -153,9 +153,9 @@ const CourseDetailsTab = () => {
                 </div>
             </div>}
             {TabName === '3rd' && <div>
-                <div className='pl-2 pr-10'>
+                <div className='pl-2  '>
 
-                    <div className='pl-2 pr-10'>
+                    <div className='pl-2  '>
                         <p className='font-bold text-xl pb-2'>6-Month Certificate Course in Fashion Design.</p>
                         <div className='space-y-3'>
                             <div className='flex gap-4'>
@@ -180,7 +180,7 @@ const CourseDetailsTab = () => {
                 </div>
             </div>}
             {TabName === '4th' && <div>
-                <div className='pl-2 pr-10'>
+                <div className='pl-2  '>
 
 
                     <table border="0" cellSpacing="5" cellPadding="5" className="table">

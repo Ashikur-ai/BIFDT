@@ -191,9 +191,21 @@ const BasicRoutes = createBrowserRouter([
                 element: <ManageCoursePage></ManageCoursePage>
             },
             {
-                path: "updateCourse",
+                path: "updateCourse/:id",
                 element: <UpdateCoursePage></UpdateCoursePage>
-            }
+            },
+            {
+                path: "manageCourseCategory/:id",
+                element: <UpdateCoursePage></UpdateCoursePage>
+            },
+            {
+                path: "manageCourseSemester/:id",
+                element: <UpdateCoursePage></UpdateCoursePage>
+            },
+            {
+                path: "manageCourseObjective/:id",
+                element: <UpdateCoursePage></UpdateCoursePage>
+            },
 
 
         ]

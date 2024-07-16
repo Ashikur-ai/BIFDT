@@ -16,7 +16,7 @@ const Navbar = () => {
         console.log(!isOpen);
         setOpenMenu(!isOpen)
     }
-    const NavLinkStyle = 'text-sm hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] transition-all duration-300'
+    const NavLinkStyle = 'text-sm hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] lg:px-[10px] transition-all duration-300 font-medium'
     const handleHideDrawer = () => {
         setOpenMenu(false)
         document.getElementById("my-drawer").checked = false;
