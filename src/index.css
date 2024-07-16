@@ -14,9 +14,7 @@ ul {
 }
 
 .navbarUl .active {
-  background: #414040;
-  padding: 5px 10px; 
-  border-radius: 5px; 
+  border-bottom: 2px solid white;
   font-weight: bold;
 }
 

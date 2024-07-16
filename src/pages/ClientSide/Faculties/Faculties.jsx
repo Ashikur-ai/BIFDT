@@ -20,8 +20,7 @@ const Faculties = () => {
     })
 
 
-    const extendedFaculties = [...faculties, ...faculties, ...faculties, ...faculties,...faculties, ...faculties, ...faculties, ...faculties];
-    let showingFaculties = extendedFaculties.map((data, idx) => {
+    let showingFaculties = faculties.map((data, idx) => {
         const newData = {
             ...data,
             id: idx + 1

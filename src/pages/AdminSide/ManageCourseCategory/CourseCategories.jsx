@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import CourseCategory from "../../../components/CourseCategory";
@@ -7,17 +8,11 @@ import { Link } from "react-router-dom";
 import { MdDelete, MdEditSquare } from "react-icons/md";
 import Swal from "sweetalert2";
 
-const CourseCategories = ({ id }) => {
+const CourseCategories = ({ id, courseCategories, courseCategoriesIsLoading,courseCategoriesRefetch }) => {
     const axiosPublic = useAxiosPublic()
     const [TabName, setTabName] = useState('')
 
-    const { data: courseCategories = [], refetch: courseCategoriesRefetch, isLoading: courseCategoriesIsLoading } = useQuery({
-        queryKey: ['singleCourseId', id],
-        queryFn: async () => {
-            const res = await axiosPublic.get(`/courseCategory/course/${id}`)
-            return res?.data
-        }
-    })
+
     useEffect(() => {
         if (courseCategories[0]?._id) {
             setTabName(courseCategories[0]?._id)
@@ -108,9 +103,9 @@ const CourseCategories = ({ id }) => {
                     </Tabs>
                 </Grommet>
                 <div className=" p-1 border-2 border-primary w-max ml-auto my-2 mr-5 px-5 flex gap-5 rounded-lg">
-                    {/* <td className='text-2xl text-green-500'>
-                        <Link to={`/dashboard/updateCourseCategory/${showingCategory?._id}`}><MdEditSquare /></Link>
-                    </td> */}
+                    <td className='text-2xl text-green-500'>
+                        <Link to={`/dashboard/updateCourseCategory/${id}/${showingCategory?._id}`}><MdEditSquare /></Link>
+                    </td>
 
                     <td>
                         <button onClick={() => handleDelete(showingCategory?._id)}><MdDelete className="text-2xl text-red-600" /></button>
