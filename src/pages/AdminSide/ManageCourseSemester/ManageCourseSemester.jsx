@@ -86,7 +86,7 @@ const ManageCourseSemester = () => {
     return (
         <>
             <Helmet>
-                <title>Dashboard | Manage Course Category</title>
+                <title>Dashboard | Manage Course Semester</title>
             </Helmet>
             <div className='w-full lg:w-[1000px] lg:max-w-[calc(100vw-400px)] mx-auto'>
                 <div className="shadow-2xl px-10 rounded-2xl lg:w-full mx-auto bg-white mt-2">
