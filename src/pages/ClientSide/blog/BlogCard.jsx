@@ -55,7 +55,14 @@ const BlogCard = ({ blog, slide = false }) => {
                 <div className="px-3 mx-auto mb-5 lg:flex justify-center lg:justify-between items-center">
                     <div className="flex flex-col lg:flex-row lg:gap-5 items-center">
                         <div className="pl-7 lg:pl-0">
-                            <ResponsiveButton title="Read More" link={`/blogDetails/${blog?._id}`} />
+                            {/* <ResponsiveButton title="Read More" link={`/blogDetails/${blog?._id}`} /> */}
+                            <div className="lg:py-5 pb-2 lg:text-xl mt-2 text-[10px] flex  justify-center items-center">
+                                <Link to={`/blogDetails/${blog?._id}`}>
+                                    <button className="lg:p-3 p-1 rounded-lg bg-primary text-white hover:text-black  active:bg-white-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max mr-9 lg:mr-0">Read More
+                                    </button>
+                                </Link>
+
+                            </div>
                         </div>
                         <p className="text-[8px] lg:text-sm -ml-2 lg:ml-0">{makeVisibleTime(blog?.date)}</p>
                     </div>
