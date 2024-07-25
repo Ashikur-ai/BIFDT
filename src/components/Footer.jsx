@@ -17,7 +17,7 @@ const Footer = () => {
                     <div className="grid grid-flow-col gap-4">
                         <div>
 
-                            <img src="https://i.ibb.co/YB1115L/footer-image.png" className="lg:pl-5 lg:w-3/4 w-3/4 mx-auto" alt="" />
+                            <img src="https://i.ibb.co/TKp1WV6/BIFDT-logo.png" className="lg:pl-5 lg:w-3/4 w-3/4 mx-auto" alt="" />
 
                             <nav className="lg:pl-9 pl-6 text-white flex sm:block  items-center">
                                 <div className="flex flex-row px-5 sm:px-20 lg:py-5 lg:gap-5 gap-1 flex-wrap text-[8px] lg:text-3xl">
