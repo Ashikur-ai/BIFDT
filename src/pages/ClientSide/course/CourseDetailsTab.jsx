@@ -164,7 +164,7 @@ const CourseDetailsTab = () => {
                     }
 
                     <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '4th' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>Semester Details</p></div>} onClick={() => setTabName('4th')}></Tab>
-                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '1st' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>Career objective in <br /> fashion design</p></div>} onClick={() => setTabName('1st')}></Tab>
+                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '1st' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>Career objective in</p></div>} onClick={() => setTabName('1st')}></Tab>
 
                 </Tabs>
             </Grommet>
