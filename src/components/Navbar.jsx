@@ -120,7 +120,12 @@ const Navbar = () => {
 
                     </div>
                     {/* laptop view  */}
-                    <div className="text-sm hidden lg:flex px-10">
+                    <div className="text-sm hidden lg:flex ">
+                        <div className='flex justify-center items-center pt-1 mr-8'>
+                            <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='shadow-lg w-14
+                    p-2 bg-white rounded-2xl ' alt="" />
+                        </div>
+
                         <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold navbarUl gap-x-4 gap-y-1">
                             {navNavLinks}
                         </nav>
