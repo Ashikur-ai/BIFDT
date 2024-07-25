@@ -56,15 +56,24 @@ const CourseDetailsTab = () => {
         }
     })
     const { data: courseCategories = [], isLoading: courseCategoriesIsLoading } = useQuery({
-        queryKey: ['singleCourseId', id],
+        queryKey: ['courseCategories', id],
         queryFn: async () => {
             const res = await axiosPublic.get(`/courseCategory/course/${id}`)
             return res?.data
         }
     })
+    const { data: courseObjectives = [], isLoading: courseObjectivesIsLoading } = useQuery({
+        queryKey: ['courseObjective', id],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/objectives/course/${id}`);
+            return res?.data;
+        }
+    });
     useEffect(() => {
-        rows && rows[0].expand()
-    }, [rows])
+        if (courseObjectives.length > 0) {
+            rows && rows[0].expand()
+        }
+    }, [courseObjectives, rows])
     useEffect(() => {
         if (courseCategories?.length > 0) {
             setTabName(courseCategories[0]?._id)
@@ -72,11 +81,33 @@ const CourseDetailsTab = () => {
             setTabName('4th')
         }
     }, [courseCategories])
-    if (courseSemestersIsLoading || courseCategoriesIsLoading) {
+    if (courseSemestersIsLoading || courseCategoriesIsLoading || courseObjectivesIsLoading) {
         return ''
     }
-    console.log(courseCategories);
     const showingCategory = courseCategories?.find(category => category?._id === TabName) || {}
+    const courseObjective = courseObjectives[0] || {};
+    const { objectiveFAQ = [] } = courseObjective;
+    console.log(objectiveFAQ);
+    let convertedArray = objectiveFAQ.map(item => {
+        return {
+            title: <div className='flex gap-5 justify-between'>
+                <p className='font-bold'>{item.question}</p>
+            </div>,
+            content: item.answer,
+
+        };
+    });
+    const showingDataAtFAQ = {
+        title: '',
+        rows: convertedArray
+    }
+    const config = {
+        animate: true,
+        arrowIcon: "V",
+        openOnload: 1,
+        expandIcon: "+",
+        collapseIcon: "-",
+    };
     const data = {
         title: "",
         rows: [
@@ -119,13 +150,7 @@ const CourseDetailsTab = () => {
             }
         ]
     }
-    const config = {
-        animate: true,
-        arrowIcon: "V",
-        openOnload: 0,
-        expandIcon: "+",
-        collapseIcon: "-",
-    };
+
     const btnStyle = 'border-primary hover:bg-primary btn text-white border  md:px-5 px-3 rounded-md  py-1 transition-all duration-300 hover:font-bold  md:h-16 md:w-[190px] flex justify-center items-center tabBtn active:border-2 active:border-gray-500 text-xs sm:text-sm md:text-base'
     return (
         <div className='overflow-x-hidden'>
@@ -144,7 +169,9 @@ const CourseDetailsTab = () => {
                 </Tabs>
             </Grommet>
             {TabName === '1st' && <div className='pl-2  '>
-                <Faq getRowOptions={setRowsOption} config={config} data={data} />
+                {
+                    objectiveFAQ.length < 1 ? <p className="pb-10 pt-5 text-center">No FAQ Found</p> : <Faq config={config} getRowOptions={setRowsOption} data={showingDataAtFAQ} />
+                }
             </div>}
             {
                 showingCategory?.name && <CourseCategory category={showingCategory} />
@@ -156,39 +183,6 @@ const CourseDetailsTab = () => {
                     }
                 </div>
             </div>}
-            {/* <Tabs>
-                <TabList>
-                    <Tab><button className="btn btn-outline btn-secondary">Career objective in fashion design</button></Tab>
-
-                    <Tab><button className="btn btn-outline btn-secondary">1-year Course 12-Month</button></Tab>
-
-                    <Tab><button className="btn btn-outline btn-secondary">6-Month Course</button></Tab>
-
-                    <Tab><button className="btn btn-outline btn-secondary">Semester Details</button></Tab>
-
-
-                </TabList>
-
-
-
-                <TabPanel>
-                    
-                </TabPanel>
-
-                <TabPanel>
-                    
-                </TabPanel>
-
-                <TabPanel>
-                    
-                </TabPanel>
-
-                <TabPanel>
-                    
-                </TabPanel>
-
-
-            </Tabs> */}
         </div>
     );
 };
