@@ -38,6 +38,9 @@ import AboutUs from "../pages/ClientSide/aboutUs/AboutUs";
 
 import Faculties from "../pages/ClientSide/Faculties/Faculties";
 import ManageComments from "../pages/AdminSide/ManageComments/ManageComments";
+import ManageCourseObjective from "../pages/AdminSide/ManageCourseObjective/ManageCourseObjective";
+import ManageCourseSemester from "../pages/AdminSide/ManageCourseSemester/ManageCourseSemester";
+import ManageCourseCategory from "../pages/AdminSide/ManageCourseCategory/ManageCourseCategory";
 
 
 const BasicRoutes = createBrowserRouter([
@@ -196,15 +199,15 @@ const BasicRoutes = createBrowserRouter([
             },
             {
                 path: "manageCourseCategory/:id",
-                element: <UpdateCoursePage></UpdateCoursePage>
+                element: <ManageCourseCategory />
             },
             {
                 path: "manageCourseSemester/:id",
-                element: <UpdateCoursePage></UpdateCoursePage>
+                element: <ManageCourseSemester/>
             },
             {
                 path: "manageCourseObjective/:id",
-                element: <UpdateCoursePage></UpdateCoursePage>
+                element: <ManageCourseObjective />
             },
 
 
