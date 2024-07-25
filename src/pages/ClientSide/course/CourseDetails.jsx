@@ -55,7 +55,7 @@ const CourseDetails = () => {
             }}
             navigation={false}
             modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper md:h-[calc(100vh-150px)] overflow-hidden"
+            className="mySwiper md:h-[calc(100vh-350px)] overflow-hidden"
           >
             <SwiperSlide>
               <img className="h-[250px] sm:h-[350px] md:h-[calc(100vh-150px)] w-full object-cover" src={banner} alt="" />
@@ -67,6 +67,7 @@ const CourseDetails = () => {
               <img className="h-[250px] sm:h-[350px] md:h-[calc(100vh-150px)] w-full object-cover" src={banner3} alt="" />
             </SwiperSlide>
           </Swiper>
+          
         </div>
         {/*2. Marqueee section  */}
         <div className="pr-10">
