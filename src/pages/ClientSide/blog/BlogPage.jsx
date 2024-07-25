@@ -18,8 +18,7 @@ const BlogPage = () => {
         }
     });
 
-    const extendedBlogs = [...blogs, ...blogs, ...blogs, ...blogs,...blogs, ...blogs, ...blogs, ...blogs];
-    let showingBlogs = extendedBlogs.map((data, idx) => {
+    let showingBlogs = blogs.map((data, idx) => {
         const newData = {
             ...data,
             id: idx + 1

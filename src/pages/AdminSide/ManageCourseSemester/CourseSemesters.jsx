@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import SemesterTable from "../../../components/SemesterTable";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdEditSquare } from "react-icons/md";
 import Swal from "sweetalert2";
 
-const CourseSemesters = ({courseSemesters,courseSemestersRefetch}) => {
+const CourseSemesters = ({ courseSemesters, courseSemestersRefetch }) => {
     const axiosPublic = useAxiosPublic()
-    
-    console.log(courseSemesters);
+    const { id } = useParams()
+    console.log(id);
     const handleDelete = (incomingId) => {
         Swal.fire({
             title: "Are you sure?",
@@ -45,9 +45,9 @@ const CourseSemesters = ({courseSemesters,courseSemestersRefetch}) => {
             {
                 courseSemesters.length > 0 ? courseSemesters?.map(semester => <div key={semester?._id}>
                     <div className=" p-1 border-2 border-primary w-max ml-auto my-2 mr-5 px-5 flex gap-5 rounded-lg">
-                        {/* <td className='text-2xl text-green-500'>
-                        <Link to={`/dashboard/updateCourseCategory/${showingCategory?._id}`}><MdEditSquare /></Link>
-                    </td> */}
+                        <td className='text-2xl text-green-500'>
+                            <Link to={`/dashboard/updateCourseSemester/${id}/${semester?._id}`}><MdEditSquare /></Link>
+                        </td>
 
                         <td>
                             <button onClick={() => handleDelete(semester?._id)}><MdDelete className="text-2xl text-red-600" /></button>

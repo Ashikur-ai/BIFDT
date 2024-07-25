@@ -8,8 +8,13 @@ import { FaAngleDown } from 'react-icons/fa';
 import Faq from 'react-faq-component';
 import { MdDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
 const ManageCourseObjective = () => {
     const axiosPublic = useAxiosPublic();
+    const [rows, setRowsOption] = useState(null)
+    
+
+
     const { register, handleSubmit, reset } = useForm();
     const [showAddFAQForm, setShowAddFAQForm] = useState(false)
     const { id } = useParams();
@@ -27,12 +32,17 @@ const ManageCourseObjective = () => {
             return res?.data;
         }
     });
-
+    useEffect(() => {
+        if (courseObjectives.length > 0) {
+            rows && rows[0].expand()
+        }
+    }, [courseObjectives, rows])
 
 
     if (isLoading || courseObjectivesIsLoading) {
         return '';
     }
+
     const courseObjective = courseObjectives[0] || {};
 
     const { _id, courseId, objectiveFAQ = [] } = courseObjective;
@@ -44,6 +54,7 @@ const ManageCourseObjective = () => {
         const allFAQ = [...objectiveFAQ, { ...data, faqId: new Date().getTime() }];
         const postingData = { objectiveFAQ: allFAQ, courseId: id };
         console.log(postingData);
+        const toastId = toast.loading("FAQ is adding...");
         if (!_id) {
             axiosPublic.post('/objectives', postingData)
                 .then(res => {
@@ -52,10 +63,12 @@ const ManageCourseObjective = () => {
                         courseObjectiveRefetch()
                         reset()
                         setShowAddFAQForm(false)
+                        toast.success("Added Successfully!!", { id: toastId });
                     }
                 })
                 .catch(err => {
                     console.log(err);
+                    toast.error(err?.message, { id: toastId });
                 })
         } else {
             axiosPublic.put(`/objectives/${_id}`, postingData)
@@ -65,10 +78,12 @@ const ManageCourseObjective = () => {
                         courseObjectiveRefetch()
                         reset()
                         setShowAddFAQForm(false)
+                        toast.success("Added Successfully!!", { id: toastId });
                     }
                 })
                 .catch(err => {
                     console.log(err);
+                    toast.error(err?.message, { id: toastId });
                 })
         }
     }
@@ -86,16 +101,19 @@ const ManageCourseObjective = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
+                const toastId = toast.loading("FAQ is Deleting...");
                 axiosPublic.put(`/objectives/${_id}`, { objectiveFAQ: newFAQ })
                     .then(res => {
                         console.log(res);
                         if (res.data.modifiedCount > 0) {
                             courseObjectiveRefetch()
                             reset()
+                            toast.success("Deleted Successfully!!", { id: toastId });
                         }
                     })
                     .catch(err => {
                         console.log(err);
+                        toast.error(err?.message, { id: toastId });
                     })
 
             }
@@ -108,13 +126,21 @@ const ManageCourseObjective = () => {
                 <p className='font-bold'>{item.question}</p>
                 <button onClick={() => handleDelete(item.faqId)} className='absolute right-[-30px] top-3 size-7 rounded-md bg-red-500 hover:bg-red-600 flex justify-center items-center text-lg text-white active:scale-90 transition-all duration-300'><MdDelete /></button>
             </div>,
-            content: item.answer
+            content: item.answer,
+
         };
     });
     const showingDataAtFAQ = {
         title: '',
         rows: convertedArray
     }
+    const config = {
+        animate: true,
+        arrowIcon: "V",
+        openOnload: 1,
+        expandIcon: "+",
+        collapseIcon: "-",
+    };
     console.log(convertedArray);
     return (
         <>
@@ -129,7 +155,7 @@ const ManageCourseObjective = () => {
                     <div className='space-y-10'>
                         <p className='text-lg font-bold pt-10'>All FAQ</p>
                         {
-                            objectiveFAQ.length < 1 ? <p className="pb-10 pt-5 text-center">No FAQ Found</p> : <Faq data={showingDataAtFAQ} />
+                            objectiveFAQ.length < 1 ? <p className="pb-10 pt-5 text-center">No FAQ Found</p> : <Faq config={config} getRowOptions={setRowsOption} data={showingDataAtFAQ} />
                         }
                         <button onClick={() => setShowAddFAQForm(!showAddFAQForm)} className='flex flex-col justify-center items-center px-7 py-1 rounded-md bg-primary text-white hover:font-bold transition-all duration-300 hover:bg-[#e55633]  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 active:scale-90 focus:text-white w-max mx-auto'>
                             <span className='text-[12px]'>{showAddFAQForm ? 'Hide Form' : 'Add FAQ'}</span>
