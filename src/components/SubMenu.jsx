@@ -11,11 +11,11 @@ const SubMenu = () => {
                     <div className="flex flex-col lg:flex-row items-center gap-1">
                         <p className="flex items-center gap-1"><FaPhoneAlt />Call Us!:</p>
                         <div className="lg:flex">
-                            <a className="font-bold" href={`tel:016-29-17-17-17`}>
-                                <p>+88016-29-17-17-17</p>
+                            <a className="font-bold" href={`tel:01629-171717`}>
+                                <p>+8801629-171717</p>
                             </a>
-                            <a className="lg:ml-2 font-bold" href={`tel:016-29-18-18-18`}>
-                                <p>+88016-29-18-18-18</p>
+                            <a className="lg:ml-2 font-bold" href={`tel:01629-181818`}>
+                                <p>+8801629-181818</p>
                             </a>
                         </div>
                     </div>
