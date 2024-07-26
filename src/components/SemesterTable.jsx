@@ -2,7 +2,6 @@
 import React from 'react';
 
 const SemesterTable = ({ semesterTitle, subjects = [], editable = false, handleDeleteSubject }) => {
-    console.log(subjects);
     return (
         <div className="overflow-x-auto max-w-[800px] mx-auto">
             <table className="min-w-full border-collapse border border-gray-200 bg-primary/20 text-xs xs:text-sm sm:text-base">

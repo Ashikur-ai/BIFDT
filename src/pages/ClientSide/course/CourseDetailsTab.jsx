@@ -69,6 +69,7 @@ const CourseDetailsTab = () => {
             return res?.data;
         }
     });
+
     useEffect(() => {
         if (courseObjectives.length > 0) {
             rows && rows[0].expand()
@@ -84,10 +85,16 @@ const CourseDetailsTab = () => {
     if (courseSemestersIsLoading || courseCategoriesIsLoading || courseObjectivesIsLoading) {
         return ''
     }
+    const allSubjects = courseSemesters?.reduce((a, b) => {
+        return a.concat(b.subjects)
+    }, []);
+    console.log(allSubjects);
+    const totalCredits = allSubjects.reduce((a, b) => {
+        return a + parseInt(b.credit)
+    }, 0);
     const showingCategory = courseCategories?.find(category => category?._id === TabName) || {}
     const courseObjective = courseObjectives[0] || {};
     const { objectiveFAQ = [] } = courseObjective;
-    console.log(objectiveFAQ);
     let convertedArray = objectiveFAQ.map(item => {
         return {
             title: <div className='flex gap-5 justify-between'>
@@ -108,48 +115,6 @@ const CourseDetailsTab = () => {
         expandIcon: "+",
         collapseIcon: "-",
     };
-    const data = {
-        title: "",
-        rows: [
-            {
-                title: <p className='font-bold'>Fashion Designer</p>,
-                content: "Fashion designers are involved from conception to completion in the development and production of clothing lines. While some designers work their way up in the industry through on-the-job experience, nowadays a formal education is often the minimum requirement for this position. Designers must have in-depth knowledge of fashion design concepts, sewing, apparel design, and garment construction, and be familiar with different types of textiles and industry trends. Most designers specialize in areas such as women's clothing, children's wear, or casual wear.",
-
-            },
-            {
-                title: <p className='font-bold'>Assistant Designer</p>,
-                content: "Assistant designers help fashion designers with every aspect of the development and production of clothing lines. Typical duties include developing sketches for designers to work from, preparing presentation materials for shows and clothing demos, sourcing fabric, etc. Assistant designers are not required to have a formal education, but many do. Assistant designers often work their way up to become designers."
-            },
-            {
-                title: <p className='font-bold'>Pattern Maker</p>,
-                content: "Pattern makers create patterns and specifications for how each part of a garment should be manufactured and assembled. Today, pattern makers often use computer software, CAD, and 3D imaging to create patterns and develop specifications. Pattern making skills can be learned on the job, by earning a specialized degree in fashion design, or through a technical education program."
-            },
-            {
-                title: <p className='font-bold'>Fashion Merchandiser</p>,
-                content: "Many aspiring fashion design students and designers end up migrating to a career in fashion merchandising. Merchandisers are generally upper-management and high-level executives responsible for deciding which clothing lines, fashions, and/or accessories a manufacturer should produce. They plan, research, and determine which fashion trends a company should pursue. A 6-month certificate course or a 1-year diploma course in Fashion Design, Fashion Merchandising, Apparel Production, or Marketing is often the minimum educational requirement for this position."
-            },
-            {
-                title: <p className='font-bold'>Assistant Buyer</p>,
-                content: "To become a buyer, one must first become an assistant buyer. Assistant buyers help fashion buyers select products, write and price orders, negotiate with vendors, and plan and manage a budget. Most assistant buyers have a 1-year diploma in Fashion Design. This position is highly competitive as it is a stepping stone to becoming a full-fledged buyer."
-            },
-            {
-                title: <p className='font-bold'>Design Director</p>,
-                content: "A design director's main duty is to provide color, trend, and fabric direction for all product lines. They also manage design teams, supervise the manufacturing process, and support marketing efforts. Job duties include market research, predicting future demand, production support, and building fabric and material stories."
-            },
-            {
-                title: <p className='font-bold'>Fashion Director</p>,
-                content: "Fashion directors are responsible for having intimate knowledge of various market trends and using this knowledge to develop effective marketing and branding strategies. Fashion directors do a significant amount of traveling and are required to attend industry events. They must be able to forecast fashion trends, have strong communication skills, and be experts in design and color. They also develop fashion communication strategies and manage buying teams."
-            },
-            {
-                title: <p className='font-bold'>Visual Merchandising Director</p>,
-                content: "Visual merchandising directors work in the retail and wholesale sectors of the fashion design industry, promoting products, services, and brand image. They dress mannequins, develop visually appealing fashion displays, and organize special events to promote brand awareness. They supervise style and concept production, plan presentations, and manage budgets. They need to be experts in color and style, have the ability to manage budgets, and be extremely creative."
-            },
-            {
-                title: <p className='font-bold'>Fashion Editor</p>,
-                content: "Fashion editors oversee the creation, development, and presentation of content for fashion-related magazines and publications. They are responsible for fashioning photo shoots, managing teams, staying up-to-date on industry trends, selecting looks to feature, curating photography, and deciding what should be published. They must have exceptional writing skills, be experts in fashion and photography, and have good social communication skills."
-            }
-        ]
-    }
 
     const btnStyle = 'border-primary hover:bg-primary btn text-white border  md:px-5 px-3 rounded-md  py-1 transition-all duration-300 hover:font-bold  md:h-16 md:w-[190px] flex justify-center items-center tabBtn active:border-2 active:border-gray-500 text-xs sm:text-sm md:text-base'
     return (
@@ -164,7 +129,7 @@ const CourseDetailsTab = () => {
                     }
 
                     <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '4th' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>Semester Details</p></div>} onClick={() => setTabName('4th')}></Tab>
-                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '1st' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>Career objective in</p></div>} onClick={() => setTabName('1st')}></Tab>
+                    <Tab className='text-red-500' title={<div className={`${btnStyle} ${TabName === '1st' ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>Career objective</p></div>} onClick={() => setTabName('1st')}></Tab>
 
                 </Tabs>
             </Grommet>
@@ -177,10 +142,29 @@ const CourseDetailsTab = () => {
                 showingCategory?.name && <CourseCategory category={showingCategory} />
             }
             {TabName === '4th' && <div>
-                <div>
+                <div >
                     {
                         courseSemesters.map(semester => <SemesterTable key={semester._id} semesterTitle={semester?.semesterTitle} subjects={semester?.subjects} />)
                     }
+                    <table className=" border-collapse border border-gray-200 bg-primary/20 text-xs xs:text-sm sm:text-base w-full max-w-[800px] mx-auto">
+                        <thead>
+                            <tr className="">
+                                <th colSpan="2" className="border border-gray-200 px-2 sm:px-4 py-2 text-left"></th>
+                                <th className="border border-gray-200 px-2 sm:px-4 py-2 text-left"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className='bg-primary/20 '>
+                                <td className="px-2 sm:px-4 py-2 border-r-2 border-0 border-black border-b-[1.5px] border-b-primary border-l-[2px]">Total</td>
+                                <td className="border-0 border-r-2 border-black px-2 sm:px-4 py-2 border-b-[1.5px] border-b-primary "></td>
+                                <td className="border border-gray-200 px-2 sm:px-4 py-2 font-medium border-b-[1.5px border-b-primary border-r-[2px] border-r-black">{totalCredits} Credits</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
                 </div>
             </div>}
         </div>
