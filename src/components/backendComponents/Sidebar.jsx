@@ -61,13 +61,18 @@ const Sidebar = () => {
         </>
 
     return (
-        <>
-            <div className="lg:w-64 bg-white flex flex-col justify-start py-8 border rounded-lg">
-
-                <div className='mb-5 w-1/2 mx-auto'>
-                    <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='text-center w-20' alt="" />
-                </div>
-                {/* <ul className="space-y-2 pb-20 list-none">
+      <>
+        <div className="lg:w-64 bg-white flex flex-col justify-start py-8 border rounded-lg">
+          <Link to="/">
+            <div className="mb-5 w-1/2 mx-auto">
+              <img
+                src="https://i.ibb.co/9V0WwCN/logo.webp"
+                className="text-center w-20"
+                alt=""
+              />
+            </div>
+          </Link>
+          {/* <ul className="space-y-2 pb-20 list-none">
 
 
                     
@@ -111,54 +116,56 @@ const Sidebar = () => {
 
                 </ul> */}
 
-                <nav className="flex-1 p-4">
-                    <ul className='space-y-2 pb-20 list-none'>
+          <nav className="flex-1 p-4">
+            <ul className="space-y-2 pb-20 list-none">
+              {/* <NavigationItem to="/dashboard" icon={FaHome} label="Dashboard" /> */}
+              <NavigationItem
+                to="/dashboard"
+                icon={FaCircleUser}
+                label="Profile"
+              />
 
-                        <NavigationItem to="/dashboard" icon={FaHome} label="Dashboard" />
-                        <NavigationItem to="/dashboard/profile" icon={FaCircleUser} label="Profile" />
+              <li className="mb-4">
+                <Dropdown buttonText="Courses" urls={courseUrls} />
+              </li>
 
+              <li className="mb-4">
+                <Dropdown buttonText="Seminar" urls={seminarUrls} />
+              </li>
 
-                        <li className="mb-4">
-                            <Dropdown buttonText="Courses" urls={courseUrls} />
-                        </li>
+              <li className="mb-4">
+                <Dropdown buttonText="All Requests" urls={requestUrls} />
+              </li>
 
-                        <li className="mb-4">
-                            <Dropdown buttonText="Seminar" urls={seminarUrls} />
-                        </li>
+              <li className="mb-4">
+                <Dropdown buttonText="Blogs" urls={blogUrls} />
+              </li>
+              <li className="mb-4">
+                <Dropdown buttonText="Comments" urls={comments} />
+              </li>
 
+              <li className="mb-4">
+                <Dropdown buttonText="HomePage content" urls={homepageUrls} />
+              </li>
 
-                        <li className="mb-4">
-                            <Dropdown buttonText="All Requests" urls={requestUrls} />
-                        </li>
+              <li className="mb-4">
+                <Dropdown buttonText="Faculty" urls={facultyUrls} />
+              </li>
 
+              <li className="mb-4">
+                <Dropdown buttonText="Testimonial" urls={testimonialUrls} />
+              </li>
 
-                        <li className="mb-4">
-                            <Dropdown buttonText="Blogs" urls={blogUrls} />
-                        </li>
-                        <li className="mb-4">
-                            <Dropdown buttonText="Comments" urls={comments} />
-                        </li>
-
-                        <li className="mb-4">
-                            <Dropdown buttonText="HomePage content" urls={homepageUrls} />
-                        </li>
-
-                        <li className="mb-4">
-                            <Dropdown buttonText="Faculty" urls={facultyUrls} />
-                        </li>
-
-                        <li className="mb-4">
-                            <Dropdown buttonText="Testimonial" urls={testimonialUrls} />
-                        </li>
-
-                        <li className="mb-4">
-                            <Dropdown buttonText="Student Gallary" urls={studentGallaryUrls} />
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>
-        </>
+              <li className="mb-4">
+                <Dropdown
+                  buttonText="Student Gallary"
+                  urls={studentGallaryUrls}
+                />
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </>
     );
 };
 
