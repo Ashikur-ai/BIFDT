@@ -74,6 +74,7 @@ const HomePage = () => {
         </Marquee>
 
         {/* second section image and bullet point  */}
+        
         <div style={{ backgroundImage: `url(${parallax4})`, backgroundSize: 'cover', backgroundAttachment: 'fixed' }}> <HomePageCoursePlayer courseImages={courseImages} /></div>
 
 

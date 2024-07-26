@@ -22,11 +22,24 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 
+import parallax4 from '../../../assets/images/parallax/parallax4.png';
+import HomePageCoursePlayer from "../Home/components/HomePageCoursePlayer";
+// slider import
+
 
 const CourseDetails = () => {
   const axiosPublic = useAxiosPublic()
   const [showMore, setShowMore] = useState(false);
   const { id } = useParams()
+
+  const { data: homepageContent = [], refetch: homepageContentRefetch, isLoading:isLoadingHomepageContent } = useQuery({
+    queryKey: ['homepageContent'],
+    queryFn: async () => {
+      const res = await axiosPublic.get('/homepageContent')
+      return res?.data
+    }
+  })
+
   const videoDivStyle = 'rounded-md overflow-hidden k w-[230px] h-[130px]'
   const titleStyle = 'text-black font-medium py-1 max-w-[230px]'
   const subtext = "Fashion has become an important a part of 21st-century life. Our Fashion Design Course has been Specifically created to provide you with everything you need to know in order to take those first steps to make your designs a  reality and beyond. It features a unique combination of 17modules(30 Credits) to equip you with all the knowledge, skills & requisites that any budding fashion designer requires.";
@@ -42,6 +55,11 @@ const CourseDetails = () => {
     return ''
   }
   const { title, subtitle, videoUrl, bannerImages, subVideos, notice, bangla, admissionNotice, courseFee } = courseData;
+  
+
+
+
+  const { courseImages } = homepageContent[0] || [];
   return (
     <>
       <Helmet>
@@ -61,7 +79,7 @@ const CourseDetails = () => {
             }}
             navigation={false}
             modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper md:h-[calc(100vh-150px)] overflow-hidden"
+            className="mySwiper md:h-[calc(100vh-350px)] overflow-hidden"
           >
             {
               bannerImages?.map((image, idx) => <SwiperSlide key={idx}>
@@ -69,6 +87,7 @@ const CourseDetails = () => {
               </SwiperSlide>)
             }
           </Swiper>
+
         </div>
         {/*2. Marqueee section  */}
         <div className="pr-10">
@@ -338,6 +357,16 @@ const CourseDetails = () => {
               <Blogs></Blogs>
             </div>
           </div>
+
+          {/* images with bullet  */}
+          {/* second section image and bullet point  */}
+
+          <div className="py-4">
+            <div style={{ backgroundImage: `url(${parallax4})`, backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
+              <HomePageCoursePlayer courseImages={courseImages} />
+            </div>
+          </div>
+
 
           <div className="">
 
