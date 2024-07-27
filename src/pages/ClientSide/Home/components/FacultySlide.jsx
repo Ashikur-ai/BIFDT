@@ -44,7 +44,7 @@ const FacultySlide = () => {
 
     return (
       <div
-        className="px-2 sm:px-10 md:px-20 pb-5 lg:py-10 mx-auto"
+        className="px-2 sm:px-10 md:px-20 pb-5 lg:py-10 mx-auto max-w-full overflow-hidden"
         style={{ position: "relative" }}
       >
         <Sparkles color={"#FF4e00"} overflowPx={8} minSize={10} maxSize={20} />

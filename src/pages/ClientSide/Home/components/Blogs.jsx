@@ -38,7 +38,7 @@ const Blogs = () => {
         <div className="flex gap-5 lg:gap-10" style={{ position: "relative" }}>
           <Sparkles
             color={"#FF4e00"}
-            overflowPx={8}
+            overflowPx={50}
             minSize={10}
             maxSize={20}
           />
