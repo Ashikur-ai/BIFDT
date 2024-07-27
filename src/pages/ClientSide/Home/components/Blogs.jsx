@@ -30,15 +30,17 @@ const Blogs = () => {
   });
   return (
     <div className="px-2 sm:px-10 md:px-20 lg:mt-20">
-      <div className="relative text-black font-bold text-xl lg:text-4xl text-center bg-white ">
+      <div className="relative text-black font-bold text-xl lg:text-4xl text-center bg-white">
         Blogs
+
         <ResponsiveButton title={"See More"} link={"/blogs"} />
       </div>
       <Marquee speed={35} pauseOnHover={true}>
         <div className="flex gap-5 lg:gap-10" style={{ position: "relative" }}>
           <Sparkles
             color={"#FF4e00"}
-            overflowPx={50}
+            overflowPx={1}
+            count={50}
             minSize={10}
             maxSize={20}
           />
