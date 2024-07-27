@@ -31,7 +31,7 @@ const BlogCard = ({ blog, slide = false }) => {
         // </div>
 
         <div className={`card max-w-[160px] sm:max-w-[320px] sm:w-[320px] border border-gray-500 bg-base-100 ml-5 shadow-xl ${slide ? 'w-[60vw]' : 'w-[45%] md:w-[30%] lg:w-[20%]'}`}>
-            <figure className="px-2 sm:px-10 pt-2 sm:pt-10 h-40 lg:h-full w-full overflow-hidden">
+            <figure className="px-2 sm:px-10 pt-2 sm:pt-10 h-40 lg:h-full w-full ">
                 <img
                     src={blog?.blogImageUrl}
                     alt="Blog"
