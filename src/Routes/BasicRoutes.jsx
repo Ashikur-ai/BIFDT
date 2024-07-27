@@ -101,7 +101,7 @@ const BasicRoutes = createBrowserRouter([
         children: [
             {
                 path: "/dashboard",
-                element: <Dashboard></Dashboard>
+                element: <Profile></Profile>
             },
             {
                 path: "addCourse",

@@ -29,11 +29,12 @@ const HomePageCourses = () => {
     if (isLoading) {
         return ''
     }
+    
     return (
         <div className="w-[90%] sm:w-3/5 mx-auto overflow-hidden py-10">
             {
                 courses?.map((course, idx) => <AnimatedDiv key={idx} value={(idx % 2) === 0 ? 300 : -300}>
-                    <div className="flex flex-col lg:flex-row">
+                    <div className={`flex flex-col  ${(idx % 2) === 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
                         <div className="w-full lg:w-1/2 bg-primary">
                             <Link to={`/courseDetails/${course?._id}`}>
                                 <p className={`${textStyle}`}>

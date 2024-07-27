@@ -74,16 +74,12 @@ const Navbar = () => {
 
         </>
     return (
-        <div className="sticky top-0 z-20 shadow-lg">
-
-
-            <div className="navbar  bg-primary text-white ">
-
-
-                <div className="">
-                    {/* Mobile view  */}
-                    <div className=" text-white">
-                        {/* <div  className="btn btn-ghost lg:hidden">
+      <div className="sticky top-0 z-20 shadow-lg">
+        <div className="navbar  bg-primary text-white ">
+          <div className="">
+            {/* Mobile view  */}
+            <div className=" text-white">
+              {/* <div  className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5 text-white"
@@ -99,47 +95,56 @@ const Navbar = () => {
                                 />
                             </svg>
                         </div> */}
-                        <div className="block lg:hidden drawer lg:w-max w-max z-50">
-                            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-                            <div className=" drawer-content cursor-pointer">
-                                {/* Page content here */}
-                                <label htmlFor="my-drawer" className="z-50  cursor-pointer">
-                                    <Hamburger toggled={isOpen} toggle={setOpenMenu} size={23} duration={0.6} />
-                                </label>
-                            </div>
-                            <div className="drawer-side">
-                                <label onClick={() => setOpenMenu(false)} htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                                <motion.ul
-
-                                    className="menu p-4 w-56 md:w-80 min-h-full bg-primary text-white space-y-2 rounded-lg z-40 navbarUl">
-                                    {navNavLinksForDrawer}
-
-                                </motion.ul>
-                            </div>
-                        </div>
-
-                    </div>
-                    {/* laptop view  */}
-                    <div className="text-sm hidden lg:flex ">
-                        <Link to="/">
-                            <div className='flex justify-center items-center pt-1 mr-8'>
-                                <img src="https://i.ibb.co/9V0WwCN/logo.webp" className='shadow-lg w-14
-                                p-2 bg-white rounded-2xl ' alt="" />
-                            </div>
-                        </Link>
-
-                        <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold navbarUl gap-x-4 gap-y-1">
-                            {navNavLinks}
-                        </nav>
-                    </div>
+              <div className="block lg:hidden drawer lg:w-max w-max z-50">
+                <input
+                  id="my-drawer"
+                  type="checkbox"
+                  className="drawer-toggle"
+                />
+                <div className=" drawer-content cursor-pointer">
+                  {/* Page content here */}
+                  <label htmlFor="my-drawer" className="z-50  cursor-pointer">
+                    <Hamburger
+                      toggled={isOpen}
+                      toggle={setOpenMenu}
+                      size={23}
+                      duration={0.6}
+                    />
+                  </label>
                 </div>
-
-
+                <div className="drawer-side">
+                  <label
+                    onClick={() => setOpenMenu(false)}
+                    htmlFor="my-drawer"
+                    aria-label="close sidebar"
+                    className="drawer-overlay"
+                  ></label>
+                  <motion.ul className="menu p-4 w-56 md:w-80 min-h-full bg-primary text-white space-y-2 rounded-lg z-40 navbarUl">
+                    {navNavLinksForDrawer}
+                  </motion.ul>
+                </div>
+              </div>
             </div>
+            {/* laptop view  */}
+            <div className="text-sm hidden lg:flex ">
+              <Link to="/">
+                <div className="flex justify-center items-center pt-1 mr-8">
+                  <img
+                    src="https://i.ibb.co/9V0WwCN/logo.webp"
+                    className="shadow-lg w-14
+                    p-2 bg-white rounded-2xl "
+                    alt=""
+                  />
+                </div>
+              </Link>
 
+              <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold navbarUl gap-x-4 gap-y-1">
+                {navNavLinks}
+              </nav>
+            </div>
+          </div>
         </div>
-
-
+      </div>
     );
 };
 export default Navbar;

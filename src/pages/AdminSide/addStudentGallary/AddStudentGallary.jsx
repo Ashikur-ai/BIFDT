@@ -33,6 +33,7 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
         let allImages = [];
         const toastId = toast.loading("Photo Uploading...");
         for (let i = 0; i < imageFiles.length; i++) {
+            console.log(allImages);
             let galleryImgURL = '';
             if (!imageFiles[1]?.name) {
                 galleryImgURL = '';
