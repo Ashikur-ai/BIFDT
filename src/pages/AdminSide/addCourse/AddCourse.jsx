@@ -79,6 +79,7 @@ const AddCourse = () => {
         const subtitle = form.subtitle.value;
         const videoUrl = form.videoUrl.value;
         const courseFee = form.courseFee.value
+        const description = form.description.value
         let isValid = true;
         const newFormDataErr = {
             notice: '',
@@ -144,7 +145,7 @@ const AddCourse = () => {
         //     const data = { category, image: imageUrl };
         //     return axiosPublic.post('/studentGallery', data);
         // });
-        const data = { title, subtitle, videoUrl, bannerImages: allImagesArray, subVideos: subVideosArray, notice: formData.notice, bangla: formData.bangla, admissionNotice: formData.admissionNotice, courseFee };
+        const data = { title, subtitle, videoUrl, bannerImages: allImagesArray, subVideos: subVideosArray, notice: formData.notice, bangla: formData.bangla, admissionNotice: formData.admissionNotice, courseFee, description };
 
         axiosPublic.post(`/course`, data)
             .then(res => {
@@ -274,7 +275,13 @@ const AddCourse = () => {
                                                 </div>
                                             </div>
                                         </div>
-
+                                        {/* Description */}
+                                        <div className="p-2 w-full md:col-span-2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Course Description</label>
+                                                <textarea required type="text" name="description" placeholder='Description' className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out min-h-[200px]" />
+                                            </div>
+                                        </div>
 
 
                                         <div className='flex pb-20'>

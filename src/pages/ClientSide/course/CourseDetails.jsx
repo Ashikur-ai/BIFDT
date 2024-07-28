@@ -341,7 +341,7 @@ const CourseDetails = () => {
               <div className="pt-2">
                 <div className="flex justify-between flex-col sm:flex-row">
                   <p className="lg:text-2xl font-bold py-5">Course Details</p>
-                  <div className="w-full flex justify-end items-end"><Share/></div>
+                  <div className="w-full md:w-max flex justify-end items-end"><Share/></div>
                 </div>
                 <CourseDetailsTab></CourseDetailsTab>
 
