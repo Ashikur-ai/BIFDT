@@ -21,7 +21,7 @@ import ResponsiveButton from "../../../components/ResponsiveButton";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
-
+import courseParallax from '../../../assets/images/parallax/courseParallax.png';
 import parallax4 from '../../../assets/images/parallax/parallax4.png';
 import HomePageCoursePlayer from "../Home/components/HomePageCoursePlayer";
 import Share from "./Share";
@@ -66,8 +66,13 @@ const CourseDetails = () => {
       </Helmet>
 
       {/* 1. Header slider part  */}
-      <div >
-        <div id="blogDetailsFirstSection" >
+      <div className="relative"
+        >
+        <div className="fixed top-0 left-0  bg-white/70 w-full h-full -z-10"></div>
+        <div className="fixed top-0 left-0 w-full h-full -z-20">
+          <img src={courseParallax} className="w-full h-full object-cover" alt="" />
+        </div>
+        <div className="z-10" id="blogDetailsFirstSection" >
           <Swiper
             spaceBetween={50}
             speed={1000}
@@ -341,7 +346,7 @@ const CourseDetails = () => {
               <div className="pt-2">
                 <div className="flex justify-between flex-col sm:flex-row">
                   <p className="lg:text-2xl font-bold py-5">Course Details</p>
-                  <div className="w-full flex justify-end items-end"><Share/></div>
+                  <div className="w-full md:w-max flex justify-end items-end"><Share /></div>
                 </div>
                 <CourseDetailsTab></CourseDetailsTab>
 
