@@ -63,7 +63,7 @@ const Navbar = () => {
 
       <div className={` rounded-md bg-black/10 flex flex-col ml-4 transition-all origin-top duration-300 ${isDropdownOpen ? 'block scale-y-100 p-2' : 'scale-y-0 h-0'} gap-2`}>
         {
-          courses?.map(course => <NavLink key={course?._id} to={`/courseDetails/${course?._id}`} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
+          courses?.map(course => <NavLink key={course?._id} to={`/courseDetails/${course?._id}`} onClick={handleHideDrawer} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
         }
       </div>
 
@@ -73,28 +73,29 @@ const Navbar = () => {
       <NavLink to="/freeSeminar" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>Free Seminar</NavLink>
 
     </>
+
+  const logo = <Link to="/">
+    <div className="flex justify-center items-center pt-1  gap-1 mr-4">
+      <img
+        src="https://i.ibb.co/9V0WwCN/logo.webp"
+        className="shadow-lg w-14
+          p-2 bg-white rounded-2xl "
+        alt=""
+      />
+      <div className="text-center ">
+        <span className="font-bold text-3xl" >BIFDT</span><br />
+        <p className="text-[12px]">Fashion Institute</p>
+      </div>
+    </div>
+
+  </Link>
   return (
     <div className="sticky top-0 z-20 shadow-lg">
       <div className="navbar  bg-primary text-white ">
-        <div className="">
+        <div className="w-full">
           {/* Mobile view  */}
-          <div className=" text-white">
-            {/* <div  className="btn btn-ghost lg:hidden">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5 text-white"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 6h16M4 12h8m-8 6h16"
-                                />
-                            </svg>
-                        </div> */}
+          <div className=" text-white w-full flex justify-between items-center lg:hidden">
+            {logo}
             <div className="block lg:hidden drawer lg:w-max w-max z-50">
               <input
                 id="my-drawer"
@@ -127,21 +128,7 @@ const Navbar = () => {
           </div>
           {/* laptop view  */}
           <div className="text-sm hidden lg:flex ">
-            <Link to="/">
-              <div className="flex justify-center items-center pt-1  gap-1 mr-4">
-                <img
-                  src="https://i.ibb.co/9V0WwCN/logo.webp"
-                  className="shadow-lg w-14
-                    p-2 bg-white rounded-2xl "
-                  alt=""
-                />
-                <div className="text-center ">
-                  <span className="font-bold text-3xl" >BIFDT</span><br />
-                  <p className="text-[12px]">Fashion Institute</p>
-                </div>
-              </div>
-
-            </Link>
+            {logo}
 
             <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold navbarUl gap-x-4 gap-y-1">
               {navNavLinks}

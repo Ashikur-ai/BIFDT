@@ -123,7 +123,7 @@ const CourseDetailsTab = () => {
                 <Tabs justify="start">
                     {
                         courseCategories?.map(category => <Tab key={category?._id} className='text-red-500' title={<div className={`${btnStyle} ${TabName === category?._id ? 'font-bold bg-primary' : 'bg-primary/80'}`}>
-                            <p className='transition-all duration-300 '>{category.duration}</p>
+                            <p className='transition-all duration-300 '>{category.duration} <br /> <span className="text-xs sm:text-sm">({category?.type || 'Type not available'})</span></p>
                         </div>} onClick={() => setTabName(category?._id)}>
                         </Tab>)
                     }

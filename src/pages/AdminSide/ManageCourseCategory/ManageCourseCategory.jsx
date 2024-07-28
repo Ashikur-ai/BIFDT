@@ -29,9 +29,8 @@ const ManageCourseCategory = () => {
     }
     const onSubmit = (data) => {
         const toastId = toast.loading("Category is adding...");
-        const { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, timeNumber, timePeriod, totalClass } = data;
-        console.log(timePeriod);
-        const newData = { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, totalClass, duration: `${timeNumber} ${timePeriod}`, courseId: id }
+        const { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, timeNumber, timePeriod, totalClass, type } = data;
+        const newData = { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, totalClass, duration: `${timeNumber} ${timePeriod}`, type, courseId: id }
         console.log(newData);
         axiosPublic.post('/courseCategory', newData)
             .then(res => {
@@ -61,7 +60,7 @@ const ManageCourseCategory = () => {
                         {/* Title */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
                             {/* category title  */}
-                            <div className="p-2 w-full">
+                            <div className="p-2 w-full md:col-span-2">
 
                                 <label className="leading-7 text-sm text-gray-600 font-bold">Category title</label>
                                 <input
@@ -92,7 +91,19 @@ const ManageCourseCategory = () => {
                                     </select>
                                 </div>
                             </div>
+                            {/* type  */}
+                            <div className="p-2 w-full">
+                                <label className="leading-7 text-sm text-gray-600 font-bold">Type</label>
+                                <div className="flex gap-5 w-full">
+                                    <input
+                                        type="text"
+                                        placeholder="Type"
+                                        {...register("type", { required: true })}
+                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                    />
 
+                                </div>
+                            </div>
                             {/* durationDetails  */}
                             <div className="p-2 w-full">
 

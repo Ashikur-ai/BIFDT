@@ -29,13 +29,13 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
         const form = event.target;
         const category = form.category.value;
         const imageFiles = form.image.files;
-        console.log(imageFiles);
+        console.log(imageFiles.length, imageFiles);
         let allImages = [];
         const toastId = toast.loading("Photo Uploading...");
         for (let i = 0; i < imageFiles.length; i++) {
             console.log(allImages);
             let galleryImgURL = '';
-            if (!imageFiles[1]?.name) {
+            if (!imageFiles[0]?.name) {
                 galleryImgURL = '';
             } else {
                 const image = new FormData();
@@ -47,7 +47,7 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
                     allImages.push(galleryImgURL);
                 } catch (err) {
                     console.log(err);
-                    allImages.push(galleryImgURL);
+                    // allImages.push(galleryImgURL);
                     toast.error(err?.message, { id: toastId });
                 }
             }
@@ -62,11 +62,16 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
             .then((results) => {
                 if (results.every(res => res.data.insertedId)) {
                     console.log('All images added');
-                    toast.success("Uploaded Successfully!!", { id: toastId });
-                    setCategory('');
-                    refetch();
-                    form.reset();
-                    setSelectedImages([]); // Clear selected images after form reset
+                    if (allImages.length < 1) {
+                        return
+                    } else {
+                        toast.success("Uploaded Successfully!!", { id: toastId });
+                        setCategory('');
+                        refetch();
+                        form.reset();
+                        setSelectedImages([]);
+                    }
+
                 }
             })
             .catch((err) => {
@@ -114,8 +119,8 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
                                 <div className="p-2 w-full">
                                     <div className="relative">
                                         <label className="leading-7 text-sm text-gray-600 font-bold">Upload Image</label><br />
-                                        <input multiple required type="file" name='image' className="file-input file-input-bordered file-input-md w-full" 
-                                        accept="image/*" onChange={handleImageChange} />
+                                        <input multiple required type="file" name='image' className="file-input file-input-bordered file-input-md w-full"
+                                            accept="image/*" onChange={handleImageChange} />
                                     </div>
                                 </div>
                                 <div className="p-2 w-full">

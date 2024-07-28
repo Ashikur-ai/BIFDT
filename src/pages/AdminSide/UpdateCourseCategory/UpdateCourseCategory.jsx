@@ -26,19 +26,19 @@ const UpdateCourseCategory = () => {
     if (isLoading || courseCategoryIsLoading) {
         return ''
     }
-    const { name: incomingName, qualification: incomingQualification, courseFee: incomingCourseFee, durationDetails: incomingDurationDetails, executiveBatch: incomingExecutiveBatch, regularBatch: incomingRegularBatch, duration: incomingDuration, totalClass: incomingTotalClass } = courseCategory;
+    const { name: incomingName, qualification: incomingQualification, courseFee: incomingCourseFee, durationDetails: incomingDurationDetails, executiveBatch: incomingExecutiveBatch, regularBatch: incomingRegularBatch, duration: incomingDuration, totalClass: incomingTotalClass, type: incomingType } = courseCategory;
 
     const onSubmit = (data) => {
-        const { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, timeNumber, timePeriod, totalClass } = data;
+        const { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, timeNumber, timePeriod, totalClass, type } = data;
         console.log(timePeriod);
-        const newData = { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, totalClass, duration: `${timeNumber} ${timePeriod}` }
+        const newData = { name, qualification, courseFee, durationDetails, executiveBatch, type, regularBatch, totalClass, duration: `${timeNumber} ${timePeriod}` }
         console.log(newData);
         const toastId = toast.loading("Category is updating...");
         axiosPublic.put(`/courseCategory/${categoryId}`, newData)
             .then(res => {
 
                 console.log(res.data)
-                if (res.data.modifiedCount>0) {
+                if (res.data.modifiedCount > 0) {
                     console.log('Category added')
                     toast.success("Updated successfully!!", { id: toastId });
                     courseCategoryRefetch()
@@ -61,7 +61,7 @@ const UpdateCourseCategory = () => {
                         {/* Title */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
                             {/* category title  */}
-                            <div className="p-2 w-full">
+                            <div className="p-2 w-full md:col-span-2">
 
                                 <label className="leading-7 text-sm text-gray-600 font-bold">Category title</label>
                                 <input
@@ -94,7 +94,20 @@ const UpdateCourseCategory = () => {
                                     </select>
                                 </div>
                             </div>
+                            {/* type  */}
+                            <div className="p-2 w-full">
+                                <label className="leading-7 text-sm text-gray-600 font-bold">Type</label>
+                                <div className="flex gap-5 w-full">
+                                    <input
+                                        type="text"
+                                        placeholder="Type"
+                                        defaultValue={incomingType}
+                                        {...register("type", { required: true })}
+                                        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                    />
 
+                                </div>
+                            </div>
                             {/* durationDetails  */}
                             <div className="p-2 w-full">
 
