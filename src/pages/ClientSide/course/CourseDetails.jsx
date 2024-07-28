@@ -79,7 +79,7 @@ const CourseDetails = () => {
             }}
             navigation={false}
             modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper md:h-[calc(100vh-350px)] overflow-hidden"
+            className="mySwiper h-[calc(100vh-500px)] md:h-[calc(100vh-350px)] overflow-hidden"
           >
             {
               bannerImages?.map((image, idx) => <SwiperSlide key={idx}>
@@ -89,6 +89,8 @@ const CourseDetails = () => {
           </Swiper>
 
         </div>
+
+        
         {/*2. Marqueee section  */}
         <div className="pr-10">
           <Marquee className="bg-primary py-1.5 text-white">
@@ -280,7 +282,7 @@ const CourseDetails = () => {
               </p>
 
               {/* main video  */}
-              <div className="w-[85vw] h-[48.9vw] sm:w-[65vw] sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
+              <div className="w-[85vw] h-[48.9vw] sm:w-full sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
               bg-primary">
                 <ReactPlayer
                   controls="true"
