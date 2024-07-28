@@ -78,7 +78,7 @@ const CourseDetails = () => {
             }}
             navigation={false}
             modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper h-[calc(100vh-500px)] md:h-[calc(100vh-350px)] overflow-hidden"
+            className="mySwiper h-[calc(100vh-550px)] md:h-[calc(100vh-350px)] overflow-hidden"
           >
             {
               bannerImages?.map((image, idx) => <SwiperSlide key={idx}>
