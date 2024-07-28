@@ -7,6 +7,7 @@ import AddStudentGallary from '../addStudentGallary/AddStudentGallary';
 import AddCategory from './AddCategory';
 import { useState } from 'react';
 import { Grommet, Tab, Tabs } from 'grommet';
+import toast from 'react-hot-toast';
 
 const ManageStudentGallary = () => {
     const axiosPublic = useAxiosPublic();
@@ -40,20 +41,19 @@ const ManageStudentGallary = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
+
             if (result.isConfirmed) {
+                const toastId = toast.loading("Photo is deleting...");
                 axiosPublic.delete(`/studentGallery/${id}`)
                     .then(res => {
                         if (res?.data?.deletedCount) {
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
-                                icon: "success"
-                            });
+                            toast.success("Deleted Successfully!!", { id: toastId });
                             refetch()
                         }
                     })
                     .catch(err => {
                         console.log(err);
+                        toast.error(err?.message, { id: toastId });
                     })
 
             }
@@ -113,7 +113,7 @@ const ManageStudentGallary = () => {
                                 {
                                     allCategory?.map(category => <Tab onClick={() => setCategoryName(category?.category_name)} key={category?._id} title={<div className={`${btnStyle} ${categoryName === category?.category_name ? 'font-bold bg-primary' : 'bg-primary/80'}`}><p className='tabBtnText transition-all duration-300'>{category?.category_name}</p></div>}></Tab>)
                                 }
-    
+
                             </Tabs>
                         </Grommet>
                     </div>

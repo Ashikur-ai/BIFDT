@@ -8,7 +8,7 @@ const DashboardLayout = () => {
     return (
         <>
             <ScrollToTop />
-            <div className="lg:flex h-screen bg-gray-100">
+            <div className="lg:flex min-h-screen bg-gray-100">
                 <Sidebar></Sidebar>
                 <div className='flex-1'>
 

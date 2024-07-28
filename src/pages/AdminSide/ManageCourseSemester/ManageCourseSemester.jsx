@@ -144,7 +144,7 @@ const ManageCourseSemester = () => {
                         </div>
                     </div>
                 </div>
-                <CourseSemesters courseSemesters={courseSemesters} courseSemestersRefetch={courseSemestersRefetch} />
+               <div className=""> <CourseSemesters courseSemesters={courseSemesters} courseSemestersRefetch={courseSemestersRefetch} /></div>
             </div>
         </>
     );
