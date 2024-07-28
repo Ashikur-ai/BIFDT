@@ -24,6 +24,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 import parallax4 from '../../../assets/images/parallax/parallax4.png';
 import HomePageCoursePlayer from "../Home/components/HomePageCoursePlayer";
+import Share from "./Share";
 // slider import
 
 
@@ -32,7 +33,7 @@ const CourseDetails = () => {
   const [showMore, setShowMore] = useState(false);
   const { id } = useParams()
 
-  const { data: homepageContent = [], refetch: homepageContentRefetch, isLoading:isLoadingHomepageContent } = useQuery({
+  const { data: homepageContent = [], refetch: homepageContentRefetch, isLoading: isLoadingHomepageContent } = useQuery({
     queryKey: ['homepageContent'],
     queryFn: async () => {
       const res = await axiosPublic.get('/homepageContent')
@@ -42,8 +43,6 @@ const CourseDetails = () => {
 
   const videoDivStyle = 'rounded-md overflow-hidden k w-[230px] h-[130px]'
   const titleStyle = 'text-black font-medium py-1 max-w-[230px]'
-  const subtext = "Fashion has become an important a part of 21st-century life. Our Fashion Design Course has been Specifically created to provide you with everything you need to know in order to take those first steps to make your designs a  reality and beyond. It features a unique combination of 17modules(30 Credits) to equip you with all the knowledge, skills & requisites that any budding fashion designer requires.";
-
   const { data: courseData = {}, isLoading } = useQuery({
     queryKey: ['course', id],
     queryFn: async () => {
@@ -55,7 +54,7 @@ const CourseDetails = () => {
     return ''
   }
   const { title, subtitle, videoUrl, bannerImages, subVideos, notice, bangla, admissionNotice, courseFee } = courseData;
-  
+
 
 
 
@@ -79,7 +78,7 @@ const CourseDetails = () => {
             }}
             navigation={false}
             modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper md:h-[calc(100vh-350px)] overflow-hidden"
+            className="mySwiper h-[calc(100vh-500px)] md:h-[calc(100vh-350px)] overflow-hidden"
           >
             {
               bannerImages?.map((image, idx) => <SwiperSlide key={idx}>
@@ -89,6 +88,8 @@ const CourseDetails = () => {
           </Swiper>
 
         </div>
+
+
         {/*2. Marqueee section  */}
         <div className="pr-10">
           <Marquee className="bg-primary py-1.5 text-white">
@@ -280,7 +281,7 @@ const CourseDetails = () => {
               </p>
 
               {/* main video  */}
-              <div className="w-[85vw] h-[48.9vw] sm:w-[65vw] sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
+              <div className="w-[85vw] h-[48.9vw] sm:w-full sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
               bg-primary">
                 <ReactPlayer
                   controls="true"
@@ -338,7 +339,10 @@ const CourseDetails = () => {
 
 
               <div className="pt-2">
-                <p className="lg:text-2xl font-bold py-5">Course Details</p>
+                <div className="flex justify-between flex-col sm:flex-row">
+                  <p className="lg:text-2xl font-bold py-5">Course Details</p>
+                  <div className="w-full flex justify-end items-end"><Share/></div>
+                </div>
                 <CourseDetailsTab></CourseDetailsTab>
 
               </div>
