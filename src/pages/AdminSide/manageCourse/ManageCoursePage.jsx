@@ -43,7 +43,7 @@ const ManageCoursePage = () => {
                                 <th>Bangla</th>
                                 <th>Main Video</th>
                                 <th>Sub Videos</th>
-                                <th>Manage Category</th>
+                                <th>Manage Durations</th>
                                 <th>Manage Semester</th>
                                 <th>Manage Objective</th>
                                 <th>Edit</th>
