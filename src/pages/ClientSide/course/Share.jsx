@@ -8,7 +8,8 @@ const Share = () => {
     const shareUrl = window.location.href; // Replace with your actual URL
 
     const shareOnFacebook = () => {
-        const url = `https://www.facebook.com/dialog/share?app_id=87741124305&href=${encodeURIComponent(shareUrl)}&display=popup`;
+        const url = `https://www.facebook.com/dialog/share?app_id=87741124305&href=${encodeURIComponent(`${shareText}
+${shareUrl}`)}&display=popup`;
         window.open(url, '_blank');
     };
 
