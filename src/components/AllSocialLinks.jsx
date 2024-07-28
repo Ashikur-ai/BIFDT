@@ -2,6 +2,7 @@ import React from 'react';
 import { BsMessenger, BsTelegram, BsWechat } from 'react-icons/bs';
 import { FaWhatsapp, FaFacebookF, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaPinterest, FaViber, FaSignal } from 'react-icons/fa';
 import { MdPhone } from 'react-icons/md';
+import { RiChat3Line } from "react-icons/ri";
 
 const AllSocialLinks = () => {
     return (
@@ -10,6 +11,13 @@ const AllSocialLinks = () => {
                 <li className='bg-green-500 p-2 hover:scale-150 transition-all duration-150'>
                     <a href="https://wa.me/+919830497111?" className="text-white text-lg sm:text-2xl" target="_blank" rel="noopener noreferrer">
                         <FaWhatsapp />
+                    </a>
+                </li>
+
+                <li className='bg-blue-600 p-2 hover:scale-150 transition-all duration-150'>
+                    <a href="https://imo.im/" className="text-white text-lg sm:text-2xl" target="_blank" rel="noopener noreferrer">
+                    <RiChat3Line />
+
                     </a>
                 </li>
 
@@ -24,6 +32,8 @@ const AllSocialLinks = () => {
                         <FaFacebookF />
                     </a>
                 </li>
+
+                
 
                 <li className='bg-pink-600 p-2 hover:scale-150 transition-all duration-150'>
                     <a href="https://www.instagram.com/gift_design_academy/" className="text-white text-lg sm:text-2xl" target="_blank" rel="noopener noreferrer">
