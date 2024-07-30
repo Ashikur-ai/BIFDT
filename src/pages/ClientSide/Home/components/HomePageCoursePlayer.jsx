@@ -25,7 +25,7 @@ const HomePageCoursePlayer = ({ courseImages }) => {
     }
     return (
         <div className="grid md:grid-cols-2 grid-cols-1 py-5 overflow-hidden gap-10">
-            <div className="mx-auto rotation w-64 h-64">
+            <div className="mx-auto rotation w-64 h-64 flex justify-center items-center">
                 <Swiper
                     spaceBetween={30}
                     centeredSlides={true}

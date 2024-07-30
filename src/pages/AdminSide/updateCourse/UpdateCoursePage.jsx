@@ -198,7 +198,7 @@ const UpdateCoursePage = () => {
                                 <div className="shadow-2xl  px-10 rounded-2xl">
 
 
-                                    <p className='text-center text-2xl font-bold pb-5'>Update Course</p>
+                                    <p className='text-center text-2xl font-bold pb-5'>Update {`"${courseData?.title}"`} Course</p>
                                     <form action="" onSubmit={handleSubmit} className=''>
 
                                         <div className='grid grid-cols-1 md:grid-cols-2'>
