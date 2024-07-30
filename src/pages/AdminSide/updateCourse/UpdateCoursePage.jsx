@@ -7,6 +7,7 @@ import ReactPlayer from "react-player";
 import { Editor } from "@tinymce/tinymce-react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import SubVideos from "../../../components/SubVideos";
 
 
 const UpdateCoursePage = () => {
@@ -278,23 +279,7 @@ const UpdateCoursePage = () => {
                                                 <p className='text-red-600'>{subVideoErr}</p>
                                                 <p onClick={handleAddSubVideo} className='btn flex flex-col justify-center items-center px-7 py-1 rounded-md bg-primary text-white hover:font-bold transition-all duration-300 hover:bg-orange-700  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 active:scale-90 focus:text-white w-max'>Add</p>
 
-                                                <div className='p-2 flex gap-5 flex-wrap'>
-
-                                                    {
-                                                        subVideosArray.map(item => <div key={item.id} className=" ">
-                                                            <div className={`${videoDivStyle}`}>
-                                                                <ReactPlayer
-                                                                    controls="true"
-
-                                                                    url={item.url}
-                                                                    width="100%"
-                                                                    height='100%'
-                                                                />
-                                                            </div>
-                                                            <p className={`${titleStyle}`}>{item.title}</p>
-                                                        </div>)
-                                                    }
-                                                </div>
+                                                <SubVideos subVideosArray={subVideosArray} setSubVideos={setSubVideos} />
                                             </div>
                                         </div>
                                         {/* Description */}

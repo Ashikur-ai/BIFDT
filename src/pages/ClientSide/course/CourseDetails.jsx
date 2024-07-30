@@ -53,7 +53,7 @@ const CourseDetails = () => {
   const { title, subtitle, videoUrl, bannerImages, subVideos, notice, bangla, admissionNotice, courseFee } = courseData;
 
 
-
+  console.log(bannerImages);
 
   const { courseImages } = homepageContent[0] || [];
   return (
