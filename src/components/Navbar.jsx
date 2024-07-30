@@ -7,6 +7,7 @@ import { FaPhoneAlt, FaPhoneVolume } from "react-icons/fa";
 import ResponsiveButton from "./ResponsiveButton";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import logoImg from '../assets/images/logo.png'
 const Navbar = () => {
   const [isOpen, setOpenMenu] = useState(false)
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -76,18 +77,8 @@ const Navbar = () => {
 
   const logo = <Link to="/">
     <div className="flex justify-center items-center pt-1  gap-1 mr-4">
-      <img
-        src="https://i.ibb.co/9V0WwCN/logo.webp"
-        className="shadow-lg w-14
-          p-2 bg-white rounded-2xl "
-        alt=""
-      />
-      <div className="text-center ">
-        <span className="font-bold text-3xl" >BIFDT</span><br />
-        <p className="text-[12px]">Fashion Institute</p>
-      </div>
+      <img className="w-48 h-[72px]" src="https://i.ibb.co/TKp1WV6/BIFDT-logo.png" alt="" />
     </div>
-
   </Link>
   return (
     <div className="sticky top-0 z-20 shadow-lg">
