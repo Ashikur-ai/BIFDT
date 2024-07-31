@@ -76,11 +76,11 @@ const CourseDetails = () => {
             }}
             navigation={false}
             modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper  h-[28vh] sm:h-[40vh] md:h-[calc(100vh-350px)] overflow-hidden"
+            className="mySwiper max-h-[33vh] sm:max-h-[67vh] overflow-hidden"
           >
             {
               bannerImages?.map((image, idx) => <SwiperSlide key={idx}>
-                <img className="h-[250px] sm:h-[350px] md:h-[calc(100vh-150px)] w-full object-cover" src={image} alt="" />
+                <img className="object-cover w-full" src={image} alt="" />
               </SwiperSlide>)
             }
           </Swiper>
@@ -257,102 +257,114 @@ const CourseDetails = () => {
 
 
             {/* second half */}
-            <div style={{
-              backgroundImage: `url(${courseParallax})`,
-              backgroundSize: "cover",
-              backgroundAttachment: "fixed",
-            }} className="lg:w-3/4 border pt-2 border-b-black px-3 lg:px-0 relative">
+            <div className="lg:w-3/4 border border-b-black px-3 lg:px-0 relative ">
+              <div className="absolute top-0 left-0  bg-white/60 w-full h-full "></div>
+              <div
+                style={{
+                  backgroundImage: `url(${bannerImages[0] || courseParallax})`,
+                  backgroundSize: "contain",
+                  backgroundAttachment: "fixed",
+                  backgroundPosition:'center'
+                }} className="pt-2 sm:py-5">
 
-              <div className="absolute top-0 left-0  bg-white/50 w-full h-full"></div>
-              <div className="flex z-20  justify-between gap-3 relative">
-                <span
-                  className="text-white   text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary z-20">
-                  Free Seminar/Counseling
-                </span>
-                <span
-                  className="text-white  text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary">
-                  <Link to="/onlineAdmission">Enroll Now</Link>
-                </span>
-              </div>
-
-              <p className="text-black z-10 font-bold text-sm lg:text-xl p-1 bg-white relative">
-                {title}
-              </p>
-              <hr />
-              <p className="pr-10 pl-1 text-sm lg:text-xl z-10 relative w-full overflow-hidden hidden sm:block">
-                {showMore ? subtitle : `${subtitle.substring(0, 250)}....`} <br />
-                <button className="text-blue-500" onClick={() => setShowMore(!showMore)}>{showMore ? "Show less" : "Show more"}</button>
-              </p>
-              <p className="pr-10 pl-1 text-sm lg:text-xl z-10 relative w-full overflow-hidden block sm:hidden">
-                {showMore ? subtitle : `${subtitle.substring(0, 35)}....`} <br />
-                <button className="text-blue-500" onClick={() => setShowMore(!showMore)}>{showMore ? "Show less" : "Show more"}</button>
-              </p>
-
-              {/* main video  */}
-              <div className="relative w-[85vw] h-[48.9vw] z-10 sm:w-full sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
-              bg-primary">
-                <ReactPlayer
-                  controls="true"
-                  playing={true}
-                  url={videoUrl}
-                  width="100%"
-                  height="100%"
-                />
-              </div>
-
-              {/* four related video  */}
-
-              <div className="relative hidden  lg:flex pt-10 z-10">
-                <Marquee pauseOnHover={true}>
-                  <div className="flex gap-10 pr-10">
-                    {
-                      subVideos?.map((video, idx) => <div key={idx}>
-                        <div className={`${videoDivStyle}`}>
-                          <ReactPlayer
-                            controls="true"
-
-                            url={video?.url}
-                            width="100%"
-                            height='100%'
-                          />
-                        </div>
-
-                        <p className={`${titleStyle}`}>{video?.title}</p>
-                      </div>)
-                    }
+                <div className="flex z-20  justify-between gap-3 relative">
+                  <div className="flex gap-2 flex-wrap">
+                    <span
+                      className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary z-20">
+                      {title}
+                    </span>
+                    <span
+                      className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary z-20">
+                      Free Seminar/Counseling
+                    </span>
                   </div>
-                </Marquee>
-
-              </div>
-
-              <div className="pb-10 pt-5 relative"><hr className="w-full border-black relative" /></div>
-              {/* Admission and course detail section */}
-              <div className="z-10 relative">
-                <p className="text-primary  text-sm mr-4 lg:ml-3 lg:px-1 bg-white leading-snug">
-                  <p dangerouslySetInnerHTML={{ __html: bangla }}></p>
+                  <span
+                    className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary">
+                    <Link to="/onlineAdmission">Enroll Now</Link>
+                  </span>
+                </div>
+                
+                <p className="pr-10 pl-1 text-xs sm:text-sm lg:text-xl z-10 relative overflow-hidden text-center font-medium text-black py-2 max-w-[700px] mx-auto">
+                  {subtitle}
                 </p>
 
+                <hr className="border-black my-2" />
 
-                <div className="flex justify-between items-center lg:pr-14">
-                  <p className="lg:text-2xl font-bold py-5">Admission Notice</p>
-                  <ResponsiveButton title={"Enroll Now"} link={"/onlineAdmission"} />
+
+                {/* main video  */}
+                <div className="relative w-[80vw] h-[45.9vw] z-10 sm:w-full sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
+                bg-primary">
+                  <ReactPlayer
+                    controls="true"
+                    playing={true}
+                    url={videoUrl}
+                    width="100%"
+                    height="100%"
+                  />
+                </div>
+
+                {/* four related video  */}
+
+                <div className="relative hidden  lg:flex pt-10 z-10">
+                  <Marquee pauseOnHover={true}>
+                    <div className="flex gap-10 pr-10">
+                      {
+                        subVideos?.map((video, idx) => <div key={idx}>
+                          <div className={`${videoDivStyle}`}>
+                            <ReactPlayer
+                              controls="true"
+
+                              url={video?.url}
+                              width="100%"
+                              height='100%'
+                            />
+                          </div>
+
+                          <p className={`${titleStyle}`}>{video?.title}</p>
+                        </div>)
+                      }
+                    </div>
+                  </Marquee>
 
                 </div>
-                <Marquee className="bg-primary py-1.5 text-white">
-                  <p dangerouslySetInnerHTML={{ __html: admissionNotice }}></p>
-                </Marquee>
+
+                <div className="pb-10 pt-5 relative"><hr className="w-full border-black relative" /></div>
 
               </div>
 
 
 
-              <div className="pt-20 z-10 relative">
-                <div className="flex justify-between flex-col sm:flex-row">
-                  <p className="lg:text-2xl font-bold py-5">Course Details</p>
-                  <div className="w-full md:w-max flex justify-end items-end"><Share /></div>
-                </div>
-                <CourseDetailsTab></CourseDetailsTab>
+              <div style={{
+                backgroundImage: `url(${bannerImages[1] || courseParallax})`,
+                backgroundSize:'contain',
+                backgroundAttachment: "fixed",
+                backgroundPosition:'center'
+              }} className="pt-2 sm:py-5">
+                {/* Admission and course detail section */}
+                <div className="z-10 relative">
+                  <p className="text-black  text-sm mr-4 lg:ml-3 lg:px-1 leading-snug">
+                    <p dangerouslySetInnerHTML={{ __html: bangla }}></p>
+                  </p>
 
+
+                  <div className="flex justify-between items-center lg:pr-14">
+                    <p className="lg:text-2xl font-bold py-5">Admission Notice</p>
+                    <ResponsiveButton title={"Enroll Now"} link={"/onlineAdmission"} />
+
+                  </div>
+                  <Marquee className="bg-primary py-1.5 text-white">
+                    <p dangerouslySetInnerHTML={{ __html: admissionNotice }}></p>
+                  </Marquee>
+
+                </div>
+                <div className="pt-20 z-10 relative">
+                  <div className="flex justify-between flex-col sm:flex-row">
+                    <p className="lg:text-2xl font-bold py-5">Course Details</p>
+                    <div className="w-full md:w-max flex justify-end items-end"><Share /></div>
+                  </div>
+                  <CourseDetailsTab></CourseDetailsTab>
+
+                </div>
               </div>
 
             </div>
