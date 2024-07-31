@@ -17,7 +17,8 @@ import ResponsiveButton from "../../../components/ResponsiveButton";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
-import courseParallax from '../../../assets/images/parallax/courseParallax.png';
+import courseParallax1 from '../../../assets/images/parallax/courseParallax1.jpg';
+import courseParallax2 from '../../../assets/images/parallax/courseParallax2.jpg';
 import parallax4 from '../../../assets/images/parallax/parallax4.png';
 import HomePageCoursePlayer from "../Home/components/HomePageCoursePlayer";
 import Share from "./Share";
@@ -261,30 +262,30 @@ const CourseDetails = () => {
               <div className="absolute top-0 left-0  bg-white/60 w-full h-full "></div>
               <div
                 style={{
-                  backgroundImage: `url(${bannerImages[0] || courseParallax})`,
-                  backgroundSize: "contain",
+                  backgroundImage: `url(${courseParallax1})`,
+                  backgroundSize: "cover",
                   backgroundAttachment: "fixed",
                   backgroundPosition:'center'
                 }} className="pt-2 sm:py-5">
 
-                <div className="flex z-20  justify-between gap-3 relative">
-                  <div className="flex gap-2 flex-wrap">
+                <div className="flex  justify-between relative">
+                  <div className="flex gap-2 flex-col sm:flex-row px-2">
                     <span
-                      className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary z-20">
+                      className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary">
                       {title}
                     </span>
                     <span
-                      className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary z-20">
-                      Free Seminar/Counseling
+                      className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary ">
+                      Free Seminar <br className="block sm:hidden" /> / Counseling
                     </span>
                   </div>
                   <span
-                    className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary">
+                    className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary h-max">
                     <Link to="/onlineAdmission">Enroll Now</Link>
                   </span>
                 </div>
                 
-                <p className="pr-10 pl-1 text-xs sm:text-sm lg:text-xl z-10 relative overflow-hidden text-center font-medium text-black py-2 max-w-[700px] mx-auto">
+                <p className="pr-10 pl-1 text-xs sm:text-sm lg:text-2xl z-10 relative overflow-hidden text-center font-bold text-black py-2 max-w-[700px] mx-auto">
                   {subtitle}
                 </p>
 
@@ -292,8 +293,8 @@ const CourseDetails = () => {
 
 
                 {/* main video  */}
-                <div className="relative w-[80vw] h-[45.9vw] z-10 sm:w-full sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
-                bg-primary">
+                <div className="relative w-[75vw] h-[43.9vw] z-10 sm:w-full sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
+                bg-primary mx-auto">
                   <ReactPlayer
                     controls="true"
                     playing={true}
@@ -335,8 +336,8 @@ const CourseDetails = () => {
 
 
               <div style={{
-                backgroundImage: `url(${bannerImages[1] || courseParallax})`,
-                backgroundSize:'contain',
+                backgroundImage: `url(${courseParallax2})`,
+                backgroundSize:'cover',
                 backgroundAttachment: "fixed",
                 backgroundPosition:'center'
               }} className="pt-2 sm:py-5">
