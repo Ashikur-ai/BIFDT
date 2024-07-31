@@ -262,8 +262,9 @@ const CourseDetails = () => {
               <div
                 style={{
                   backgroundImage: `url(${bannerImages[0] || courseParallax})`,
-                  backgroundSize: "cover",
+                  backgroundSize: "contain",
                   backgroundAttachment: "fixed",
+                  backgroundPosition:'center'
                 }} className="pt-2 sm:py-5">
 
                 <div className="flex z-20  justify-between gap-3 relative">
@@ -335,8 +336,9 @@ const CourseDetails = () => {
 
               <div style={{
                 backgroundImage: `url(${bannerImages[1] || courseParallax})`,
-                backgroundSize: "cover",
+                backgroundSize:'contain',
                 backgroundAttachment: "fixed",
+                backgroundPosition:'center'
               }} className="pt-2 sm:py-5">
                 {/* Admission and course detail section */}
                 <div className="z-10 relative">
