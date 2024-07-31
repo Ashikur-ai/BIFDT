@@ -33,8 +33,8 @@ const ManageCoursePage = () => {
                         <thead>
                            
                             <tr>
-                                <th>#</th>
-                                <th>Course Name</th>
+                                <th className='sticky left-0 bg-white z-10'>#</th>
+                                <th className='sticky left-7 bg-white z-10'>Course Name</th>
                                 <th>Course Image</th>
                                 <th>Course Fee</th>
                                 <th>subtitle</th>

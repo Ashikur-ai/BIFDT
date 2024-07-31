@@ -62,9 +62,9 @@ const CourseRow = ({ course, idx, coursesRefetch }) => {
     }
     return (
         <tr>
-            <td>{idx + 1}</td>
+            <td className={`sticky left-0 z-10 ${idx%2===0 ? 'bg-gray-50' : 'bg-base-300'}`}>{idx + 1}</td>
 
-            <td className="min-w-[220px]">{title}</td>
+            <td className={` sm:min-w-[190px] sticky left-6  z-10 ${idx%2===0 ? 'bg-gray-50' : 'bg-base-300'}`}>{title}</td>
 
             <td>
                 <div className="flex items-center gap-3">

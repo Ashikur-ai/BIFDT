@@ -1,6 +1,4 @@
 import Marquee from "react-fast-marquee";
-import banner from "../../../assets/images/coursePage/banner.jpg";
-import banner2 from '../../../assets/images/admission.webp'
 import banner3 from '../../../assets/images/gallary1.jpg'
 import { Helmet } from "react-helmet-async";
 import 'swiper/css/effect-fade';
@@ -11,20 +9,19 @@ import TabSection from "../Home/components/TabSection";
 
 import Maps from "../Home/components/Maps";
 import Blogs from "../Home/components/Blogs";
-import VideoGrid from "./VideoGrid";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import CourseDetailsTab from "./CourseDetailsTab";
-import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react";
 import ResponsiveButton from "../../../components/ResponsiveButton";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
-
+import courseParallax from '../../../assets/images/parallax/courseParallax.png';
 import parallax4 from '../../../assets/images/parallax/parallax4.png';
 import HomePageCoursePlayer from "../Home/components/HomePageCoursePlayer";
 import Share from "./Share";
+import { useState } from "react";
 // slider import
 
 
@@ -33,7 +30,7 @@ const CourseDetails = () => {
   const [showMore, setShowMore] = useState(false);
   const { id } = useParams()
 
-  const { data: homepageContent = [], refetch: homepageContentRefetch, isLoading: isLoadingHomepageContent } = useQuery({
+  const { data: homepageContent = [] } = useQuery({
     queryKey: ['homepageContent'],
     queryFn: async () => {
       const res = await axiosPublic.get('/homepageContent')
@@ -56,7 +53,7 @@ const CourseDetails = () => {
   const { title, subtitle, videoUrl, bannerImages, subVideos, notice, bangla, admissionNotice, courseFee } = courseData;
 
 
-
+  console.log(bannerImages);
 
   const { courseImages } = homepageContent[0] || [];
   return (
@@ -66,8 +63,9 @@ const CourseDetails = () => {
       </Helmet>
 
       {/* 1. Header slider part  */}
-      <div >
-        <div id="blogDetailsFirstSection" >
+      <div className="relative">
+
+        <div className="z-10" id="blogDetailsFirstSection" >
           <Swiper
             spaceBetween={50}
             speed={1000}
@@ -78,7 +76,7 @@ const CourseDetails = () => {
             }}
             navigation={false}
             modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper h-[calc(100vh-550px)] md:h-[calc(100vh-350px)] overflow-hidden"
+            className="mySwiper  h-[28vh] sm:h-[40vh] md:h-[calc(100vh-350px)] overflow-hidden"
           >
             {
               bannerImages?.map((image, idx) => <SwiperSlide key={idx}>
@@ -92,7 +90,7 @@ const CourseDetails = () => {
 
         {/*2. Marqueee section  */}
         <div className="pr-10">
-          <Marquee className="bg-primary py-1.5 text-white">
+          <Marquee className="bg-primary py-1 xs:py-1.5 text-white">
             <p dangerouslySetInnerHTML={{ __html: notice }}></p>
           </Marquee>
 
@@ -259,10 +257,16 @@ const CourseDetails = () => {
 
 
             {/* second half */}
-            <div className="lg:w-3/4 border pt-2 border-b-black px-3 lg:px-0">
-              <div className="flex justify-between gap-3">
+            <div style={{
+              backgroundImage: `url(${courseParallax})`,
+              backgroundSize: "cover",
+              backgroundAttachment: "fixed",
+            }} className="lg:w-3/4 border pt-2 border-b-black px-3 lg:px-0 relative">
+
+              <div className="absolute top-0 left-0  bg-white/50 w-full h-full"></div>
+              <div className="flex z-20  justify-between gap-3 relative">
                 <span
-                  className="text-white   text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary">
+                  className="text-white   text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary z-20">
                   Free Seminar/Counseling
                 </span>
                 <span
@@ -271,17 +275,21 @@ const CourseDetails = () => {
                 </span>
               </div>
 
-              <p className="text-black font-bold text-sm lg:text-xl p-1 bg-white ">
+              <p className="text-black z-10 font-bold text-sm lg:text-xl p-1 bg-white relative">
                 {title}
               </p>
               <hr />
-              <p className="pr-10 pl-1 text-sm lg:text-xl">
+              <p className="pr-10 pl-1 text-sm lg:text-xl z-10 relative w-full overflow-hidden hidden sm:block">
                 {showMore ? subtitle : `${subtitle.substring(0, 250)}....`} <br />
+                <button className="text-blue-500" onClick={() => setShowMore(!showMore)}>{showMore ? "Show less" : "Show more"}</button>
+              </p>
+              <p className="pr-10 pl-1 text-sm lg:text-xl z-10 relative w-full overflow-hidden block sm:hidden">
+                {showMore ? subtitle : `${subtitle.substring(0, 35)}....`} <br />
                 <button className="text-blue-500" onClick={() => setShowMore(!showMore)}>{showMore ? "Show less" : "Show more"}</button>
               </p>
 
               {/* main video  */}
-              <div className="w-[85vw] h-[48.9vw] sm:w-full sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
+              <div className="relative w-[85vw] h-[48.9vw] z-10 sm:w-full sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
               bg-primary">
                 <ReactPlayer
                   controls="true"
@@ -294,9 +302,9 @@ const CourseDetails = () => {
 
               {/* four related video  */}
 
-              <div className="hidden  lg:flex pt-10">
+              <div className="relative hidden  lg:flex pt-10 z-10">
                 <Marquee pauseOnHover={true}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pr-10">
+                  <div className="flex gap-10 pr-10">
                     {
                       subVideos?.map((video, idx) => <div key={idx}>
                         <div className={`${videoDivStyle}`}>
@@ -317,10 +325,10 @@ const CourseDetails = () => {
 
               </div>
 
-              <div className="pb-10 pt-5"><hr className="w-full border-black" /></div>
+              <div className="pb-10 pt-5 relative"><hr className="w-full border-black relative" /></div>
               {/* Admission and course detail section */}
-              <div>
-                <p className="text-primary  text-sm mr-4 lg:ml-3 lg:px-1 bg-white">
+              <div className="z-10 relative">
+                <p className="text-primary  text-sm mr-4 lg:ml-3 lg:px-1 bg-white leading-snug">
                   <p dangerouslySetInnerHTML={{ __html: bangla }}></p>
                 </p>
 
@@ -338,15 +346,18 @@ const CourseDetails = () => {
 
 
 
-              <div className="pt-2">
+              <div className="pt-20 z-10 relative">
                 <div className="flex justify-between flex-col sm:flex-row">
                   <p className="lg:text-2xl font-bold py-5">Course Details</p>
-                  <div className="w-full flex justify-end items-end"><Share/></div>
+                  <div className="w-full md:w-max flex justify-end items-end"><Share /></div>
                 </div>
                 <CourseDetailsTab></CourseDetailsTab>
 
               </div>
+
             </div>
+
+
           </div>
 
 
