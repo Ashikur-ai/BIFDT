@@ -18,10 +18,10 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient} >
       <HelmetProvider>
         <RouterProvider router={BasicRoutes} />
-        <Toaster/>
+        <Toaster />
       </HelmetProvider>
     </QueryClientProvider>
 
