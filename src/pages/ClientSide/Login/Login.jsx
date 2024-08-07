@@ -4,25 +4,30 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import toast from "react-hot-toast";
+import useAuth from "../../../hooks/useAuth";
 
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false)
     const navigate = useNavigate()
-
+    const { loginUser } = useAuth()
 
 
     const { register, handleSubmit, formState: { errors }, } = useForm()
 
 
     const onSubmit = async ({ email, password }) => {
-        const userData = {
-            name,
-            email: email.toLowerCase(),
-            profilePhoto: '',
-            addedTime: new Date().getTime(),
-        }
-        console.log(userData);
+        const toastId = toast.loading("Logging in...");
+        loginUser(email, password)
+            .then(res => {
+                toast.success("Logged in Successfully!!", { id: toastId });
+
+                navigate('/', { replace: true })
+            })
+            .catch(err => {
+                toast.error(err?.message, { id: toastId });
+            })
 
     }
     const inputStyle = 'w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
@@ -38,7 +43,7 @@ const Login = () => {
             <div className="p-2">
                 <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-[600px] mx-auto space-y-5">
                     <p className='text-center text-2xl font-bold pb-5'>Login</p>
-                    
+
                     {/* your Email  */}
                     <div className="flex flex-col gap-2">
                         <InputLabel text={`Your Email`} />

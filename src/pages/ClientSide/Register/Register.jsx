@@ -4,25 +4,59 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
-
+import useAuth from "../../../hooks/useAuth";
+import { updateProfile } from "firebase/auth";
+import auth from "../../../firebase/firebase.init";
+import toast from "react-hot-toast";
 
 const Register = () => {
     const [showPass, setShowPass] = useState(false)
     const navigate = useNavigate()
 
-
+    const { createUser } = useAuth()
 
     const { register, handleSubmit, formState: { errors }, } = useForm()
 
 
     const onSubmit = async ({ name, email, password }) => {
-        const userData = {
-            name,
-            email: email.toLowerCase(),
-            profilePhoto: '',
-            addedTime: new Date().getTime(),
-        }
-        console.log(userData);
+        const toastId = toast.loading("Registering...");
+        createUser(email, password)
+            .then(res => {
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+
+                })
+                    .then(() => {
+                        toast.success("Registered Successfully!!", { id: toastId });
+                        // const userInfo = {
+                        //     name: data.name,
+                        //     email: data.email,
+                        //     image: imgUrl
+
+
+                        // }
+                        // axiosPublic.post('/addUser', userInfo)
+                        //     .then(res => {
+                        //         if (res.status == 200) {
+                        //             toast.success("Registered Successfully!!", { id: toastId });
+
+                        //             reset();
+                        //             navigate('/')
+                        //         }
+                        //     })
+                        //     .catch(err => {
+                        //         toast.error(err?.message, { id: toastId });
+                        //     })
+
+                    })
+                    .catch(err => {
+                        toast.error(err?.message, { id: toastId });
+                    })
+            })
+            .catch(err => {
+                toast.error(err?.message, { id: toastId });
+                // setErr(err?.message)
+            })
 
     }
     const inputStyle = 'w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'

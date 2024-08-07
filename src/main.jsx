@@ -14,16 +14,18 @@ import {
   useQuery,
 } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast'
+import AuthProviders from './AuthProviders/AuthProviders.jsx'
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProviders>
     <QueryClientProvider client={queryClient} >
       <HelmetProvider>
         <RouterProvider router={BasicRoutes} />
         <Toaster />
       </HelmetProvider>
     </QueryClientProvider>
-
-  </React.StrictMode>,
+  </AuthProviders>
+  </React.StrictMode >,
 )
