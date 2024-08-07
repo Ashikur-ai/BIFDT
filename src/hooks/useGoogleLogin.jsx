@@ -21,6 +21,7 @@ const useGoogleLogin = () => {
                     image: res?.user?.photoURL
                 }
                 toast.success("Logged In Successfully!", { id: toastId });
+                navigate('/dashboard')
                 // axiosPublic.post('/addUser', userInfo)
                 //     .then(res => {
                 //         toast.success("Logged In Successfully!", { id: toastId });

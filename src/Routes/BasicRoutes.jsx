@@ -45,6 +45,7 @@ import UpdateCourseCategory from "../pages/AdminSide/UpdateCourseCategory/Update
 import UpdateCourseSemester from "../pages/AdminSide/UpdateCourseSemester/UpdateCourseSemester";
 import Login from "../pages/ClientSide/Login/Login";
 import Register from "../pages/ClientSide/Register/Register";
+import PrivateRouts from "../PrivateRouts/PrivateRouts";
 
 
 const BasicRoutes = createBrowserRouter([
@@ -107,7 +108,7 @@ const BasicRoutes = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRouts><DashboardLayout></DashboardLayout></PrivateRouts>,
         children: [
             {
                 path: "/dashboard",
