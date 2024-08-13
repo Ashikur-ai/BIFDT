@@ -55,7 +55,7 @@ const UpdateCourseCategory = () => {
             </Helmet>
             <div className='w-full lg:w-[1000px] lg:max-w-[calc(100vw-400px)] mx-auto'>
                 <div className="shadow-2xl px-10 rounded-2xl lg:w-full mx-auto bg-white mt-2">
-                    <p className='text-center text-2xl font-bold py-2'>Update Course  Category of {`"${course?.title}"`}</p>
+                    <p className='text-center text-2xl font-bold py-2'>Update Course  Duration of {`"${course?.title}"`}</p>
                     <p className='text-lg font-bold pt-10'>Add Category</p>
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-wrap -m-2'>
                         {/* Title */}

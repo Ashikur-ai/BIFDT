@@ -77,7 +77,7 @@ const Navbar = () => {
 
   const logo = <Link to="/">
     <div className="flex justify-center items-center pt-1  gap-1 mr-4">
-      <img className="w-48 h-[72px]" src="https://i.ibb.co/TKp1WV6/BIFDT-logo.png" alt="" />
+      <img className="w-56" src="https://i.ibb.co/TKp1WV6/BIFDT-logo.png" alt="" />
     </div>
   </Link>
   return (
