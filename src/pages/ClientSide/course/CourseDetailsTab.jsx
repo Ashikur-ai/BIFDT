@@ -85,7 +85,7 @@ const CourseDetailsTab = () => {
     };
 
     return (
-        <div className='overflow-x-hidden max-w-[800px] bg-white rounded-lg mx-auto'>
+        <div className='overflow-x-hidden w-full lg:w-[70vw] bg-white rounded-lg space-y-2 p-2 sm:p-5'>
             <Tabs tabName={TabName} setTabName={setTabName} courseCategories={courseCategories} />
             {TabName === 'Career Objective' && <div className='pl-2  '>
                 {
