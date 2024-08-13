@@ -9,7 +9,11 @@ const DashboardLayout = () => {
         <>
             <ScrollToTop />
             <div className="lg:flex min-h-screen bg-gray-100">
-                <Sidebar></Sidebar>
+                <div className='lg:w-64'>
+                    <div className=' hidden lg:block lg:fixed left-0 top-0'>
+                        <Sidebar></Sidebar>
+                    </div>
+                </div>
                 <div className='flex-1'>
 
                     <BackendNavbar></BackendNavbar>

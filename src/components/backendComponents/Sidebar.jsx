@@ -63,7 +63,7 @@ const Sidebar = () => {
 
     return (
       <>
-        <div className="lg:w-64 bg-white flex flex-col justify-start py-8 border rounded-lg">
+        <div className="w-64 lg:w-64 bg-white flex flex-col justify-start py-8 border rounded-lg lg:max-h-screen lg:overflow-x-auto">
           <Link to="/">
             <div className="mb-5 w-1/2 mx-auto">
               <img
@@ -124,7 +124,7 @@ const Sidebar = () => {
             <div className='ml-4'>   <LogOut/></div>
             </ul>
           </nav>
-        </div>
+        </div> 
       </>
     );
 };
