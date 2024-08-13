@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdDelete, MdEditSquare } from "react-icons/md";
 import Swal from "sweetalert2";
+import ManageCourseCategoryTabs from "./ManageCourseCategoryTabs";
 
 const CourseCategories = ({ id, courseCategories, courseCategoriesIsLoading, courseCategoriesRefetch }) => {
     const axiosPublic = useAxiosPublic()
@@ -89,19 +90,7 @@ const CourseCategories = ({ id, courseCategories, courseCategoriesIsLoading, cou
     return (
         <div className="pb-10">
             {courseCategories?.length > 0 ? <>
-                <Grommet Grommet theme={customTheme}>
-                    <Tabs justify="start">
-
-                        {
-                            courseCategories?.map(category => <Tab key={category?._id} className='text-red-500' title={<div className={`${btnStyle} ${TabName === category?._id ? 'font-bold bg-primary' : 'bg-primary/80'}`}>
-                                <p className='transition-all duration-300 '>{category.duration} <br /> <span className="text-xs sm:text-sm">({category?.type || 'Type not available'})</span></p>
-                            </div>} onClick={() => setTabName(category?._id)}>
-                            </Tab>)
-                        }
-
-
-                    </Tabs>
-                </Grommet>
+                <ManageCourseCategoryTabs tabName={TabName} setTabName={setTabName} courseCategories={courseCategories} />
                 <div className=" p-1 border-2 border-primary w-max ml-auto my-2 mr-5 px-5 flex gap-5 rounded-lg">
                     <td className='text-2xl text-green-500'>
                         <Link to={`/dashboard/updateCourseCategory/${id}/${showingCategory?._id}`}><MdEditSquare /></Link>
