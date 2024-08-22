@@ -3,6 +3,7 @@ import { Fade as Hamburger } from 'hamburger-react'
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MdArrowDropDown, MdEmail } from "react-icons/md";
+import BIFDTLogo from '../assets/images/BIFDT-logo.png'
 import { FaPhoneAlt, FaPhoneVolume } from "react-icons/fa";
 import ResponsiveButton from "./ResponsiveButton";
 import useAxiosPublic from "../hooks/useAxiosPublic";
@@ -77,12 +78,12 @@ const Navbar = () => {
 
   const logo = <Link to="/">
     <div className="flex justify-center items-center pt-1  gap-1 mr-4">
-      <img className="w-56" src="https://i.ibb.co/TKp1WV6/BIFDT-logo.png" alt="" />
+      <img className="w-56" src={BIFDTLogo} alt="" />
     </div>
   </Link>
   return (
     <div className="sticky top-0 z-20 shadow-lg">
-      <div className="navbar  bg-primary text-white ">
+      <div className="navbar  bg-primary text-white py-1">
         <div className="w-full">
           {/* Mobile view  */}
           <div className=" text-white w-full flex justify-between items-center lg:hidden">
@@ -95,7 +96,7 @@ const Navbar = () => {
               />
               <div className=" drawer-content cursor-pointer">
                 {/* Page content here */}
-                <label htmlFor="my-drawer" className="z-50  cursor-pointer">
+                <label htmlFor="my-drawer" className="z-50 cursor-pointer">
                   <Hamburger
                     toggled={isOpen}
                     toggle={setOpenMenu}

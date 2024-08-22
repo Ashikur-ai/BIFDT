@@ -43,6 +43,9 @@ import ManageCourseSemester from "../pages/AdminSide/ManageCourseSemester/Manage
 import ManageCourseCategory from "../pages/AdminSide/ManageCourseCategory/ManageCourseCategory";
 import UpdateCourseCategory from "../pages/AdminSide/UpdateCourseCategory/UpdateCourseCategory";
 import UpdateCourseSemester from "../pages/AdminSide/UpdateCourseSemester/UpdateCourseSemester";
+import Login from "../pages/ClientSide/Login/Login";
+import Register from "../pages/ClientSide/Register/Register";
+import PrivateRouts from "../PrivateRouts/PrivateRouts";
 
 
 const BasicRoutes = createBrowserRouter([
@@ -91,13 +94,21 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "aboutUs",
                 element: <AboutUs></AboutUs>
-            }
+            },
+            {
+                path: "login",
+                element: <Login/>
+            },
+            {
+                path: "register",
+                element: <Register/>
+            },
 
         ]
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRouts><DashboardLayout></DashboardLayout></PrivateRouts>,
         children: [
             {
                 path: "/dashboard",
