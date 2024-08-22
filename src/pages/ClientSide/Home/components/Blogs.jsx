@@ -18,6 +18,7 @@ import { makeVisibleTime } from "../../../../makeVisibleTime";
 import Marquee from "react-fast-marquee";
 import BlogCard from "../../blog/BlogCard";
 import ResponsiveButton from "../../../../components/ResponsiveButton";
+import Sun from "../../../../components/Sun";
 
 const Blogs = () => {
   const axiosPublic = useAxiosPublic();
@@ -32,18 +33,15 @@ const Blogs = () => {
     <div className="px-2 sm:px-10 md:px-20 lg:mt-20">
       <div className="relative text-black font-bold text-xl lg:text-4xl text-center bg-white">
         Blogs
-
+        <div className="" style={{ position: "relative" }}>
+          <div className="w-max absolute top-[500px] right-0 z-10"><Sun /></div>
+          <div className="w-max absolute bottom-[-130px] left-0 z-10"><Sun /></div>
+        </div>
         <ResponsiveButton title={"See More"} link={"/blogs"} />
       </div>
       <Marquee speed={35} pauseOnHover={true}>
         <div className="flex gap-5 lg:gap-10" style={{ position: "relative" }}>
-          <Sparkles
-            color={"#FF4e00"}
-            overflowPx={1}
-            count={50}
-            minSize={10}
-            maxSize={20}
-          />
+        
           {blogs.map((blog) => (
             <BlogCard key={blog._id} blog={blog} slide={true} />
           ))}
