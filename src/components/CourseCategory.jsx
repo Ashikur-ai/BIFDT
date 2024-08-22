@@ -4,7 +4,7 @@ const CourseCategory = ({ category }) => {
     const { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, totalClass, duration, courseId } = category
     return (
         <div className="overflow-x-auto w-full ">
-            <table className="table overflow-hidden lg:w-[800px] mx-auto text-base bg-primary/30">
+            <table className="table overflow-hidden w-full mx-auto text-base bg-primary/30">
             <div className="absolute top-0 left-0  bg-white w-full h-full  -z-10"></div>
                 {/* head */}
                 <thead className='bg-primary/90 text-white  '>

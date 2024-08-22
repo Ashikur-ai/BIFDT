@@ -10,7 +10,7 @@ const StudentGalleryTabs = ({ tabName, setTabName, studentCategory }) => {
     }
 
     return (
-        <div className={` max-w-[1200px] mx-auto relative px-12`}>
+        <div className={` max-w-[800px] lg:max-w-[70vw] mx-auto relative px-12`}>
             <Swiper
                 spaceBetween={10}
 
