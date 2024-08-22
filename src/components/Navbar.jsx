@@ -40,9 +40,9 @@ const Navbar = () => {
   const navNavLinks =
     <>
       <NavLink to="/" className={`${NavLinkStyle}`}>Home</NavLink>
-      <NavLink to="/aboutUs" className={`${NavLinkStyle}`}>About Us</NavLink>
+      <NavLink to="aboutUs/bangladeshInstituteoffashion&designtechnology/bifdt" className={`${NavLinkStyle}`}>About Us</NavLink>
       {
-        courses?.map(course => <NavLink key={course?._id} to={`/courseDetails/${course?._id}`} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
+        courses?.map((course, idx) => <NavLink key={course?._id} to={`/courseDetails/${idx+1}/education/course&career/bifdt/${course?._id}`} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
       }
 
 

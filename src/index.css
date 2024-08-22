@@ -22,4 +22,24 @@ ul {
   scale: 1.1;
 }
 
+.sun-line {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: extendOutwards 1.5s ease-in-out infinite;
+  stroke-linecap: round;
+}
 
+@keyframes extendOutwards {
+  0% {
+      stroke-dashoffset: 0;
+      /* opacity: 1; */
+  }
+  70% {
+      stroke-dashoffset: 20;
+      opacity: 0;
+  }
+  100% {
+      stroke-dashoffset: 20;
+      opacity: 0;
+  }
+}
