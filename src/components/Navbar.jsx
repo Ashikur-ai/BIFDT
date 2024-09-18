@@ -57,7 +57,7 @@ const Navbar = () => {
 
 
 
-      <NavLink to="/aboutUs" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>About Us</NavLink>
+      <NavLink to="/aboutUs/bangladeshInstituteoffashion&designtechnology/bifdt" onClick={handleHideDrawer} className={`${NavLinkStyle}`}>About Us</NavLink>
       <p onClick={handleDropdownToggle} className={`text-base hover:bg-[#414040] rounded-md py-[5px] hover:px-[10px] transition-all duration-300 flex justify-between items-center cursor-pointer ${isDropdownOpen && 'bg-[#414040] px-[10px]'}`}>Course
         <span className={` transition-all duration-300 ${isDropdownOpen ? 'rotate-180' : 'rotate-0'}`}><MdArrowDropDown /></span>
       </p>
@@ -65,7 +65,7 @@ const Navbar = () => {
 
       <div className={` rounded-md bg-black/10 flex flex-col ml-4 transition-all origin-top duration-300 ${isDropdownOpen ? 'block scale-y-100 p-2' : 'scale-y-0 h-0'} gap-2`}>
         {
-          courses?.map(course => <NavLink key={course?._id} to={`/courseDetails/${course?._id}`} onClick={handleHideDrawer} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
+          courses?.map((course, idx) => <NavLink key={course?._id} to={`/courseDetails/${idx+1}/education/course&career/bifdt/${course?._id}`} onClick={handleHideDrawer} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
         }
       </div>
 
