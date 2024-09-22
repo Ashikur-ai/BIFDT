@@ -49,7 +49,7 @@ const HomePageCoursePlayer = ({ courseImages }) => {
                 <ul className="font-bold text-xl flex flex-col gap-3 justify-center items-center lg:items-start">
                     {
                         courses?.map((course, idx) =>
-                            <Link key={idx} to={`/courseDetails/${course?._id}`}>
+                            <Link key={idx} to={`/courseDetails/${idx+1}/education/course&career/bifdt/${course?._id}`}>
                                 <div className="text-[12px] lg:text-xl font-medium border-white bg-primary hover:bg-primary /15 rounded-md hover:rounded-sm w-[230px] p-0.5 px-2 transition-all duration-300 text-white text-center">
                                     <p className="hover:scale-110 transition-all duration-300">{course?.title}</p>
                                 </div>

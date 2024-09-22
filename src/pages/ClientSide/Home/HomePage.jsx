@@ -147,7 +147,7 @@ const HomePage = () => {
 
         {/*fifth section countdown part  */}
         <div>
-          
+
           <HomePageCountDown
             allData={{ since, student, rating, instructor, guarantee, ratio }}
           />
