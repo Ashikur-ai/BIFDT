@@ -23,6 +23,7 @@ import { FaTwitter } from 'react-icons/fa6';
 import Marquee from 'react-fast-marquee';
 import FacultyCard from '../../Faculties/FacultyCard';
 import ResponsiveButton from '../../../../components/ResponsiveButton';
+import Sun from '../../../../components/Sun';
 
 const FacultySlide = () => {
     const axiosPublic = useAxiosPublic();
@@ -44,10 +45,14 @@ const FacultySlide = () => {
 
     return (
       <div
+        
         className="px-2 sm:px-10 md:px-20 pb-5 lg:py-10 mx-auto max-w-full overflow-hidden"
         style={{ position: "relative" }}
       >
-        <Sparkles color={"#FF4e00"} overflowPx={8} minSize={10} maxSize={20} />
+         <div className="w-max absolute top-[500px] right-0 z-10"><Sun /></div>
+         <div className="w-max absolute bottom-[300px] left-0 z-10"><Sun /></div>
+         {/* <div className="w-max absolute bottom-[370px] left-20 z-10"><Sun /></div> */}
+        
         <div className="relative pt-5 text-black font-bold text-xl lg:text-4xl text-center  ">
           Our Faculties
           <ResponsiveButton title={"See More"} link={"/faculties"} />

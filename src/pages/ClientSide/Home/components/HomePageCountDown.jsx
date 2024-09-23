@@ -12,8 +12,8 @@ const HomePageCountDown = ({ allData }) => {
         className="mx-2 sm:mx-10 md:mx-20 py-10 my-4 bg-primary grid grid-cols-1 lg:grid-cols-6 justify-items-center"
         style={{ position: "relative" }}
       >
-        <div className="w-max absolute top-[-75px] right-0 z-10"><Sun color="#FFD700"/></div>
-        <div className="w-max absolute bottom-[-75px] left-0 z-10"><Sun color="#FFD700"/></div>
+        <div className="w-max absolute top-[-75px] right-0 z-10"><Sun /></div>
+        <div className="w-max absolute bottom-[-75px] left-0 z-10"><Sun /></div>
         {/* <Sparkles color="white" overflowPx={8} minSize={10} maxSize={20} /> */}
         {/* since, student, rating, instructor, guarantee, ratio */}
         <div className="m-auto text-white   lg:py-5 text-center">

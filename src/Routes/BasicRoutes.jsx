@@ -58,7 +58,7 @@ const BasicRoutes = createBrowserRouter([
                 element: <HomePage></HomePage>
             },
             {
-                path: "/courseDetails/:id",
+                path: "/courseDetails/:index/education/course&career/bifdt/:id",
                 element: <CourseDetails></CourseDetails>
 
             },
@@ -92,7 +92,7 @@ const BasicRoutes = createBrowserRouter([
                 element: <AdminLogin></AdminLogin>
             },
             {
-                path: "aboutUs",
+                path: "aboutUs/bangladeshInstituteoffashion&designtechnology/bifdt",
                 element: <AboutUs></AboutUs>
             },
             {
@@ -108,7 +108,7 @@ const BasicRoutes = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <PrivateRouts><DashboardLayout></DashboardLayout></PrivateRouts>,
+        element: <DashboardLayout></DashboardLayout>,
         children: [
             {
                 path: "/dashboard",
