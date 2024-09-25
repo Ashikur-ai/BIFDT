@@ -8,8 +8,7 @@ import Swal from "sweetalert2";
 
 const CourseSemesters = ({ courseSemesters, courseSemestersRefetch }) => {
     const axiosPublic = useAxiosPublic()
-    const { id } = useParams()
-    console.log(id);
+    const { categoryId,courseId } = useParams()
     const handleDelete = (incomingId) => {
         Swal.fire({
             title: "Are you sure?",
@@ -33,7 +32,6 @@ const CourseSemesters = ({ courseSemesters, courseSemestersRefetch }) => {
                         }
                     })
                     .catch(err => {
-                        console.log(err);
                     })
 
             }
@@ -46,7 +44,7 @@ const CourseSemesters = ({ courseSemesters, courseSemestersRefetch }) => {
                 courseSemesters.length > 0 ? courseSemesters?.map(semester => <div key={semester?._id}>
                     <div className=" p-1 border-2 border-primary w-max ml-auto my-2 mr-5 px-5 flex gap-5 rounded-lg">
                         <td className='text-2xl text-green-500'>
-                            <Link to={`/dashboard/updateCourseSemester/${id}/${semester?._id}`}><MdEditSquare /></Link>
+                            <Link to={`/dashboard/updateCourseSemester/${courseId}/${categoryId}/${semester?._id}`}><MdEditSquare /></Link>
                         </td>
 
                         <td>

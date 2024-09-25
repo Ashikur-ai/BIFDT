@@ -47,7 +47,6 @@ const AddCourse = () => {
 
 
     const handleImageInputField = (e) => {
-        console.log(e.target.files[0]);
         setImageInput(e.target.files[0] || '')
 
     }
@@ -55,7 +54,6 @@ const AddCourse = () => {
         if (imageInput === '') {
             return
         }
-        console.log([...allImages, imageInput]);
         setAllImages([...allImages, { image: imageInput, id: new Date().getTime() }]);
         setImageInput('');
         document.getElementById('courseImageInputField').value = '';
@@ -135,7 +133,6 @@ const AddCourse = () => {
                     galleryImgURL = res?.data?.data?.display_url;
                     allImagesArray.push(galleryImgURL);
                 } catch (err) {
-                    console.log(err);
                     allImagesArray.push(galleryImgURL);
                     toast.error(err?.message, { id: toastId });
                 }

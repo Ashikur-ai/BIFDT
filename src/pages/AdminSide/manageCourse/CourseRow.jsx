@@ -24,7 +24,6 @@ const CourseRow = ({ course, idx, coursesRefetch }) => {
         videoUrl,
         _id
     } = course;
-    console.log(subVideos);
     //                             <th>subtitle</th>
     //                             <th>Notice</th>
     //                             <th>admissionNotice</th>
@@ -54,7 +53,6 @@ const CourseRow = ({ course, idx, coursesRefetch }) => {
                         }
                     })
                     .catch(err => {
-                        console.log(err);
                     })
 
             }
@@ -106,50 +104,13 @@ const CourseRow = ({ course, idx, coursesRefetch }) => {
                 </p>
             </td>
 
-            <td>
-                <div id="homePageFirstSection" className="w-[230px] h-[130px]">
+           
 
-                    <ReactPlayer
-                        controls="true"
-                        height="100%"
-                        url={videoUrl}
-                        width="100%"
-                    />
-                </div>
-            </td>
-
-            <td>
-                <div className="hidden  lg:flex w-[250px]">
-                    <Marquee pauseOnHover={true}>
-                        <div className="flex gap-5 pr-5">
-                            {
-                                subVideos?.map((video, idx) => <div className="w-[150px]" key={idx}>
-                                    <div className={`${videoDivStyle} w-[150px] h-[80px]`}>
-                                        <ReactPlayer
-                                            controls="true"
-
-                                            url={video.url}
-                                            width="100%"
-                                            height='100%'
-                                        />
-                                    </div>
-                                    <p className={`${titleStyle}`}>{video.title}</p>
-                                </div>)
-                            }
-                        </div>
-                    </Marquee>
-
-                </div>
-            </td>
+           
             <td className='text-2xl text-yellow-600'>
                 <Link to={`/dashboard/manageCourseCategory/${_id}`}><TbCategoryPlus /></Link>
             </td>
            
-            <td className='text-2xl text-yellow-600'>
-                <Link to={`/dashboard/manageCourseSemester/${_id}`}>
-                    <img className="w-6 h-6" src={semesterImg} alt="" />
-                </Link>
-            </td>
             <td className='text-2xl text-blue-600'>
                 <Link to={`/dashboard/manageCourseObjective/${_id}`}><PiTargetBold /></Link>
             </td>

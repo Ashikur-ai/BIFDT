@@ -30,16 +30,12 @@ const UpdateCourseCategory = () => {
 
     const onSubmit = (data) => {
         const { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, timeNumber, timePeriod, totalClass, type } = data;
-        console.log(timePeriod);
         const newData = { name, qualification, courseFee, durationDetails, executiveBatch, type, regularBatch, totalClass, duration: `${timeNumber} ${timePeriod}` }
-        console.log(newData);
         const toastId = toast.loading("Category is updating...");
         axiosPublic.put(`/courseCategory/${categoryId}`, newData)
             .then(res => {
 
-                console.log(res.data)
                 if (res.data.modifiedCount > 0) {
-                    console.log('Category added')
                     toast.success("Updated successfully!!", { id: toastId });
                     courseCategoryRefetch()
                 }

@@ -5,8 +5,6 @@ import Swal from "sweetalert2";
 const AddCategory = ({ allCategory, allCategoryRefetch }) => {
     const axiosPublic = useAxiosPublic();
 
-    console.log(allCategory);
-    const categories = ['Marchandising', 'Computer Operation', 'Pattern Design', 'Fashion Design', 'Interior Design'];
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +28,6 @@ const AddCategory = ({ allCategory, allCategoryRefetch }) => {
 
             })
             .catch(err => {
-                console.log(err);
             })
     }
     const handleDelete = (id) => {
@@ -56,7 +53,6 @@ const AddCategory = ({ allCategory, allCategoryRefetch }) => {
                         }
                     })
                     .catch(err => {
-                        console.log(err);
                     })
 
             }

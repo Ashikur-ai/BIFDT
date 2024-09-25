@@ -17,7 +17,6 @@ const CommentRow = ({ comment, index, handleDelete, blogs, refetch }) => {
             .then(res => {
 
                 if (res.data?.modifiedCount) {
-                    console.log(res.data);
                     toast.success("Comment is now Showable!!", { id: toastId });
                     refetch()
                 }
@@ -32,7 +31,6 @@ const CommentRow = ({ comment, index, handleDelete, blogs, refetch }) => {
             .then(res => {
 
                 if (res.data?.modifiedCount) {
-                    console.log(res.data);
                     toast.success("Comment is now hidden!!", { id: toastId });
                     refetch()
                 }

@@ -38,7 +38,6 @@ const AddTestimonialPage = () => {
                 testimonialsImage = res?.data?.data?.display_url
             }
             catch (err) {
-                console.log(err);
                 testimonialsImage = ''
             }
         }
@@ -58,7 +57,6 @@ const AddTestimonialPage = () => {
                 }
             })
             .catch(err => {
-                console.log(err);
             })
     }
 

@@ -24,7 +24,6 @@ const UpdateFacultyPage = () => {
     if (isLoading) {
         return ''
     }
-    console.log(facultyData);
     const { _id, name: incomingName, email: incomingEmail, contact: incomingContact, designation: incomingDesignation, facebook: incomingFacebook, twitter: incomingTwitter, whatsapp: incomingWhatsapp, image: incomingImage, background_of_study: incomingBackground_of_study, job_experience: incomingJob_experience } = facultyData;
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -54,7 +53,6 @@ const UpdateFacultyPage = () => {
                 facultyImageUrl = res?.data?.data?.display_url
             }
             catch (err) {
-                console.log(err);
                 facultyImageUrl = incomingImage
             }
         }
@@ -64,7 +62,6 @@ const UpdateFacultyPage = () => {
         axiosPublic.put(`/updateFaculty/${_id}`, data)
             .then(res => {
                 if (res.data.modifiedCount) {
-                    console.log('data updated')
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -76,7 +73,6 @@ const UpdateFacultyPage = () => {
 
                 }
             })
-        console.log(data)
     }
 
 

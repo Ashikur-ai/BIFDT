@@ -22,13 +22,10 @@ const CreateSeminar = () => {
 
 
         const data = { topic, date, time };
-        console.log(data)
 
         axiosPublic.post('/seminar', data)
             .then(res => {
-                console.log(res.data)
                 if (res.data.insertedId) {
-                    console.log('data added')                   
                     Swal.fire({
                         position: "top-end",
                         icon: "success",

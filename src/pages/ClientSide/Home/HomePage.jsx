@@ -42,7 +42,6 @@ const HomePage = () => {
   useEffect(() => {
     if (!isLoading && homepageContent.length > 0) {
       const firstSection = document.getElementById("homePageFirstSection");
-      console.log(firstSection);
       if (firstSection) {
         firstSection.scrollIntoView();
       }

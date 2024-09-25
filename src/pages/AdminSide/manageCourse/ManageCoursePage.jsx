@@ -17,8 +17,6 @@ const ManageCoursePage = () => {
             return res.data;
         }
     })
-    console.log(courses);
-    const objectives = "6000tk";
 
     return (
         <>
@@ -41,10 +39,7 @@ const ManageCoursePage = () => {
                                 <th>Notice</th>
                                 <th>Admission Notice</th>
                                 <th>Bangla</th>
-                                <th>Main Video</th>
-                                <th>Sub Videos</th>
                                 <th>Manage Durations</th>
-                                <th>Manage Semester</th>
                                 <th>Manage Objective</th>
                                 <th>Edit</th>
                                 <th>Delete</th>

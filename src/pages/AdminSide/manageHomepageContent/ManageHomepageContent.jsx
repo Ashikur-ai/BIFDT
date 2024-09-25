@@ -41,7 +41,6 @@ const ManageHomepageContent = () => {
         setDescription(value)
     };
 
-    console.log(incomingCourseImages);
 
 
 
@@ -71,7 +70,6 @@ const ManageHomepageContent = () => {
                     });
                     return res?.data?.data?.display_url;
                 } catch (err) {
-                    console.log(`Attempt ${i + 1} failed:`, err);
                     if (i === retries - 1) throw err; // Throw error if all retries fail
                 }
             }
@@ -85,7 +83,6 @@ const ManageHomepageContent = () => {
             try {
                 imageUrl = await uploadImage(image);
             } catch (err) {
-                console.log(err);
                 imageUrl = incomingImageUrl;
                 toast.error(err?.message, { id: toastId });
             }
@@ -98,38 +95,32 @@ const ManageHomepageContent = () => {
             try {
                 secondImageUrl = await uploadImage(image);
             } catch (err) {
-                console.log(err);
                 secondImageUrl = '';
                 toast.error(err?.message, { id: toastId });
             }
         }
 
-        console.log(secondImageUrl);
         let courseImagesArray = [...incomingCourseImages];
         if (secondImageUrl) {
             courseImagesArray = [...incomingCourseImages, { image: secondImageUrl, id: new Date().getTime() }];
         }
 
         const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description, video_section_video, courseImages: courseImagesArray };
-        console.log(data);
 
         axiosPublic.post(`/updateHomepageContent/${homepageContent[0]?._id || 'notAvailable'}`, data)
             .then(res => {
                 toast.success("Home page Content Updated Successfully!!", { id: toastId });
                 if (res.data?.modifiedCount || res.data?.insertedId) {
-                    console.log(res.data);
                     homepageContentRefetch();
                 }
             })
             .catch(err => {
-                console.log(err);
                 toast.error(err?.message, { id: toastId });
             });
     };
 
     const handleDelete = (image) => {
 
-        console.log(image);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -147,12 +138,10 @@ const ManageHomepageContent = () => {
                     .then(res => {
                         toast.success("Deleted Successfully!!", { id: toastId });
                         if (res.data?.modifiedCount || res.data?.insertedId) {
-                            console.log(res.data);
                             homepageContentRefetch();
                         }
                     })
                     .catch(err => {
-                        console.log(err);
                         toast.error(err?.message, { id: toastId });
                     });
 

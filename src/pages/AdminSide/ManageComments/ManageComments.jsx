@@ -25,7 +25,6 @@ const ManageComments = () => {
     if (commentIsLoading || blogIsLoading) {
         return ''
     }
-    console.log(selectFieldValue);
 
     const showingComment = selectFieldValue === '' ? comments : comments?.filter(comment => comment?.blogId === selectFieldValue)
     const handleDelete = (id) => {
@@ -52,14 +51,12 @@ const ManageComments = () => {
                         }
                     })
                     .catch(err => {
-                        console.log(err);
                     })
 
             }
         });
 
     }
-    console.log(comments);
     return (
         <div>
             <>

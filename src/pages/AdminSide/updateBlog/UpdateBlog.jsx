@@ -28,17 +28,13 @@ const UpdateBlog = () => {
         if (!isLoading) {
             setTinyDescription(blogData.description);
         }
-        console.log(isLoading);
     }, [blogData, isLoading]);
     if (isLoading) {
         return ''
     }
     const { title: incomingTitle, blogImageUrl: incomingBlogImageUrl, date: incomingDate, meta_word: incomingMeta_word, author: incomingAuthor, description: incomingDescription, } = blogData;
-    const showingData = new Date(incomingDate || 0);
 
     // Format the date as YYYY-MM-DD
-    const formattedDate = showingData?.toISOString()?.split('T')[0];
-    console.log(formattedDate);
     const handleDescriptionChange = (value) => {
         setTinyDescription(value)
     };
@@ -78,21 +74,17 @@ const UpdateBlog = () => {
             }
             catch (err) {
                 setTinyDescription(tinyDescription)
-                console.log(err);
                 blogImageUrl = incomingBlogImageUrl
             }
         }
 
 
         const data = { title, blogImageUrl, meta_word, author, description, date };
-        console.log(data)
 
         axiosPublic.put(`/updateBlog/${id}`, data)
             .then(res => {
-                console.log(res.data)
                 setTinyDescription(tinyDescription)
                 if (res.data.modifiedCount) {
-                    console.log('data updated')
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
