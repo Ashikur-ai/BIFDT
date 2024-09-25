@@ -31,12 +31,9 @@ const ManageCourseCategory = () => {
         const toastId = toast.loading("Category is adding...");
         const { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, timeNumber, timePeriod, totalClass, type } = data;
         const newData = { name, qualification, courseFee, durationDetails, executiveBatch, regularBatch, totalClass, duration: `${timeNumber} ${timePeriod}`, type, courseId: id }
-        console.log(newData);
         axiosPublic.post('/courseCategory', newData)
             .then(res => {
-                console.log(res.data)
                 if (res.data.insertedId) {
-                    console.log('Category added')
                     toast.success("Added successfully!!", { id: toastId });
                     reset()
                     courseCategoriesRefetch()

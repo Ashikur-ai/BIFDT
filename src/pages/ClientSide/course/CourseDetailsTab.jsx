@@ -16,13 +16,7 @@ const CourseDetailsTab = () => {
     const [TabName, setTabName] = useState('Career Objective')
     const [rows, setRowsOption] = useState(null)
 
-    const { data: courseSemesters = [], isLoading: courseSemestersIsLoading } = useQuery({
-        queryKey: ['singleCourseIdForSemester', id],
-        queryFn: async () => {
-            const res = await axiosPublic.get(`/semesterByCourse/course/${id}`)
-            return res?.data
-        }
-    })
+   
     const { data: courseCategories = [], isLoading: courseCategoriesIsLoading } = useQuery({
         queryKey: ['courseCategories', id],
         queryFn: async () => {
@@ -43,23 +37,9 @@ const CourseDetailsTab = () => {
             rows && rows[0].expand()
         }
     }, [courseObjectives, rows])
-    useEffect(() => {
-        if (courseCategories?.length > 0) {
-            setTabName(courseCategories[0]?._id)
-        } else {
-            setTabName('4th')
-        }
-    }, [courseCategories])
-    if (courseSemestersIsLoading || courseCategoriesIsLoading || courseObjectivesIsLoading) {
+    if ( courseCategoriesIsLoading || courseObjectivesIsLoading) {
         return ''
     }
-    const allSubjects = courseSemesters?.reduce((a, b) => {
-        return a.concat(b.subjects)
-    }, []);
-    console.log(allSubjects);
-    const totalCredits = allSubjects.reduce((a, b) => {
-        return a + parseInt(b.credit)
-    }, 0);
     const showingCategory = courseCategories?.find(category => category?._id === TabName) || {}
     const courseObjective = courseObjectives[0] || {};
     const { objectiveFAQ = [] } = courseObjective;
@@ -95,7 +75,7 @@ const CourseDetailsTab = () => {
             {
                 showingCategory?.name && <CourseCategory category={showingCategory} />
             }
-            {TabName === 'Semester Details' && <div>
+            {/* {TabName === 'Semester Details' && <div>
                 <div >
                     {
                         courseSemesters.map(semester => <SemesterTable key={semester._id} semesterTitle={semester?.semesterTitle} subjects={semester?.subjects} />)
@@ -120,7 +100,7 @@ const CourseDetailsTab = () => {
                     </table>
 
                 </div>
-            </div>}
+            </div>} */}
         </div>
     );
 };

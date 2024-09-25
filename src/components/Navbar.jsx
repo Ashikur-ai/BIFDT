@@ -2,13 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 import { Fade as Hamburger } from 'hamburger-react'
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MdArrowDropDown, MdEmail } from "react-icons/md";
+import { MdArrowDropDown } from "react-icons/md";
 import BIFDTLogo from '../assets/images/BIFDT-logo.png'
-import { FaPhoneAlt, FaPhoneVolume } from "react-icons/fa";
-import ResponsiveButton from "./ResponsiveButton";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import logoImg from '../assets/images/logo.png'
 const Navbar = () => {
   const [isOpen, setOpenMenu] = useState(false)
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -16,12 +13,8 @@ const Navbar = () => {
   const handleDropdownToggle = () => {
     setDropdownOpen(!isDropdownOpen);
   };
-  const handleOpen = () => {
-    console.log(!isOpen);
-    setOpenMenu(!isOpen)
-  }
   const axiosPublic = useAxiosPublic();
-  const { data: courses = [], refetch: coursesRefetch, isLoading } = useQuery({
+  const { data: courses = [], isLoading } = useQuery({
     queryKey: ['courses'],
     queryFn: async () => {
       const res = await axiosPublic.get('/course');
@@ -31,7 +24,6 @@ const Navbar = () => {
   if (isLoading) {
     return ''
   }
-  console.log(courses);
   const NavLinkStyle = 'text-sm border-transparent border-b-2 hover:border-white py-[5px] hover:px-[10px] lg:px-[10px] transition-all duration-300 font-medium'
   const handleHideDrawer = () => {
     setOpenMenu(false)

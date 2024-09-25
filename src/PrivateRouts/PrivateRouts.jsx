@@ -10,7 +10,6 @@ const PrivateRouts = ({ children }) => {
     if (loading) {
         return 
     }
-    console.log(user);
     
     if (user) {
         return <div>

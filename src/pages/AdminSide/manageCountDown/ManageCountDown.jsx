@@ -20,7 +20,6 @@ const ManageCountDown = () => {
     if (isLoading) {
         return ''
     }
-    console.log(homepageContent);
     const { since: incomingSince, student: incomingStudent, rating: incomingRating, instructor: incomingInstructor, guarantee: incomingGuarantee, ratio: incomingRatio } = homepageContent[0];
     const handleSubmit = (event) => {
 
@@ -40,12 +39,10 @@ const ManageCountDown = () => {
             .then(res => {
                 toast.success("Home page Countdown Updated Successfully!!", { id: toastId });
                 if (res.data?.modifiedCount || res.data?.insertedId) {
-                    console.log(res.data);
                     homepageContentRefetch()
                 }
             })
             .catch(err => {
-                console.log(err);
                 toast.error(err?.message, { id: toastId });
             })
     }

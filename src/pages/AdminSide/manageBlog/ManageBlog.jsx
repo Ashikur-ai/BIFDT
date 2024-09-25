@@ -44,14 +44,12 @@ const ManageBlog = () => {
                         }
                     })
                     .catch(err => {
-                        console.log(err);
                     })
 
             }
         });
 
     }
-    console.log(blogs);
 
 
 

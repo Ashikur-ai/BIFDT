@@ -54,7 +54,6 @@ const UpdateCoursePage = () => {
     if (isLoading) {
         return ''
     }
-    console.log(courseData);
     const handleNoticeChange = (value) => {
         setFormData({ ...formData, notice: value });
     };
@@ -71,7 +70,6 @@ const UpdateCoursePage = () => {
 
 
     const handleImageInputField = (e) => {
-        console.log(e.target.files[0]);
         setImageInput(e.target.files[0] || '')
 
     }
@@ -80,7 +78,6 @@ const UpdateCoursePage = () => {
             return
         }
 
-        console.log([...allImages, imageInput]);
         setAllImages([...allImages, { image: imageInput, id: new Date().getTime() }]);
         setImageInput('');
         document.getElementById('courseImageInputField').value = '';
@@ -94,8 +91,6 @@ const UpdateCoursePage = () => {
         setSubVideoTitle('')
         setSubVideoUrl('')
     }
-    const videoDivStyle = 'rounded-md overflow-hidden k w-[230px] h-[130px]'
-    const titleStyle = 'text-black font-medium py-1 max-w-[230px]'
 
 
     const handleSubmit = async (event) => {
@@ -156,7 +151,6 @@ const UpdateCoursePage = () => {
                         galleryImgURL = res?.data?.data?.display_url;
                         allImagesArray.push(galleryImgURL);
                     } catch (err) {
-                        console.log(err);
                         allImagesArray.push(galleryImgURL);
                         toast.error(err?.message, { id: toastId });
                     }

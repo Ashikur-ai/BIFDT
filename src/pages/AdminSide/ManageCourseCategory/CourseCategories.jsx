@@ -5,10 +5,10 @@ import CourseCategory from "../../../components/CourseCategory";
 import { Grommet, Tab, Tabs } from "grommet";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { MdDelete, MdEditSquare } from "react-icons/md";
+import { MdCastForEducation, MdDelete, MdEditSquare } from "react-icons/md";
 import Swal from "sweetalert2";
 import ManageCourseCategoryTabs from "./ManageCourseCategoryTabs";
-
+import semesterIcons from '../../../assets/images/icons/semester.jpg'
 const CourseCategories = ({ id, courseCategories, courseCategoriesIsLoading, courseCategoriesRefetch }) => {
     const axiosPublic = useAxiosPublic()
     const [TabName, setTabName] = useState('')
@@ -22,41 +22,8 @@ const CourseCategories = ({ id, courseCategories, courseCategoriesIsLoading, cou
     if (courseCategoriesIsLoading) {
         return ''
     }
-    console.log(TabName);
     const showingCategory = courseCategories?.find(category => category?._id === TabName) || {}
-    const customTheme = {
-        tab: {
-            active: {
-                color: 'black',
-            },
-            border: {
-                side: 'bottom',
-                size: 'small',
-                color: 'border',
-                active: {
-                    color: '#FF4e00',
-                },
-                hover: {
-                    color: '#FF4e00',
-                },
-            },
-            color: 'text',
-            margin: {
-                vertical: 'xsmall',
-                horizontal: 'small',
-            },
-            pad: {
-                bottom: 'xsmall',
-            },
-            extend: ({ theme }) => `
-            color: ${theme.global.colors['accent-1']};
-            &:hover {
-              background-color: ${theme.global.colors['']};
-            }
-          `,
-        },
-    };
-    const btnStyle = 'border-primary hover:bg-primary btn text-white border  md:px-5 px-3 rounded-md  py-1 transition-all duration-300 hover:font-bold  md:h-16 md:w-[190px] flex justify-center items-center tabBtn active:border-2 active:border-gray-500 text-xs sm:text-sm md:text-base'
+   
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -80,7 +47,6 @@ const CourseCategories = ({ id, courseCategories, courseCategoriesIsLoading, cou
                         }
                     })
                     .catch(err => {
-                        console.log(err);
                     })
 
             }
@@ -94,6 +60,9 @@ const CourseCategories = ({ id, courseCategories, courseCategoriesIsLoading, cou
                 <div className=" p-1 border-2 border-primary w-max ml-auto my-2 mr-5 px-5 flex gap-5 rounded-lg">
                     <td className='text-2xl text-green-500'>
                         <Link to={`/dashboard/updateCourseCategory/${id}/${showingCategory?._id}`}><MdEditSquare /></Link>
+                    </td>
+                    <td className='text-2xl text-blue-500'>
+                        <Link to={`/dashboard/manageCourseDurationSemester/${id}/${showingCategory?._id}`}><MdCastForEducation /></Link>
                     </td>
 
                     <td>

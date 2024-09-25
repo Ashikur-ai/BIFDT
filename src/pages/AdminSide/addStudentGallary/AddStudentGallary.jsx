@@ -29,11 +29,9 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
         const form = event.target;
         const category = form.category.value;
         const imageFiles = form.image.files;
-        console.log(imageFiles.length, imageFiles);
         let allImages = [];
         const toastId = toast.loading("Photo Uploading...");
         for (let i = 0; i < imageFiles.length; i++) {
-            console.log(allImages);
             let galleryImgURL = '';
             if (!imageFiles[0]?.name) {
                 galleryImgURL = '';
@@ -46,7 +44,6 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
                     galleryImgURL = res?.data?.data?.display_url;
                     allImages.push(galleryImgURL);
                 } catch (err) {
-                    console.log(err);
                     // allImages.push(galleryImgURL);
                     toast.error(err?.message, { id: toastId });
                 }
@@ -57,11 +54,9 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
             const data = { category, image: imageUrl };
             return axiosPublic.post('/studentGallery', data);
         });
-        console.log(allImages);
         Promise.all(uploadPromises)
             .then((results) => {
                 if (results.every(res => res.data.insertedId)) {
-                    console.log('All images added');
                     if (allImages.length < 1) {
                         return
                     } else {
@@ -75,7 +70,6 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
                 }
             })
             .catch((err) => {
-                console.log(err);
                 toast.error(err?.message, { id: toastId });
             });
     };
@@ -95,7 +89,6 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
         handleDelete(id);
     };
 
-    console.log(showingImage);
     return (
         <>
             <section className="text-gray-600 body-font relative w-full">

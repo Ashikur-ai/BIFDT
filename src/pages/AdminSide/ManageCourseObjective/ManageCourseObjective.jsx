@@ -46,19 +46,15 @@ const ManageCourseObjective = () => {
     const courseObjective = courseObjectives[0] || {};
 
     const { _id, courseId, objectiveFAQ = [] } = courseObjective;
-    console.log(objectiveFAQ);
 
 
     const onSubmit = async (data) => {
-        console.log(data);
         const allFAQ = [...objectiveFAQ, { ...data, faqId: new Date().getTime() }];
         const postingData = { objectiveFAQ: allFAQ, courseId: id };
-        console.log(postingData);
         const toastId = toast.loading("FAQ is adding...");
         if (!_id) {
             axiosPublic.post('/objectives', postingData)
                 .then(res => {
-                    console.log(res);
                     if (res.data.insertedId) {
                         courseObjectiveRefetch()
                         reset()
@@ -67,13 +63,11 @@ const ManageCourseObjective = () => {
                     }
                 })
                 .catch(err => {
-                    console.log(err);
                     toast.error(err?.message, { id: toastId });
                 })
         } else {
             axiosPublic.put(`/objectives/${_id}`, postingData)
                 .then(res => {
-                    console.log(res);
                     if (res.data.modifiedCount > 0) {
                         courseObjectiveRefetch()
                         reset()
@@ -82,15 +76,12 @@ const ManageCourseObjective = () => {
                     }
                 })
                 .catch(err => {
-                    console.log(err);
                     toast.error(err?.message, { id: toastId });
                 })
         }
     }
     const handleDelete = (faqId) => {
-        console.log(faqId, objectiveFAQ);
         const newFAQ = objectiveFAQ.filter(faq => faq.faqId !== faqId);
-        console.log(newFAQ);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -104,7 +95,6 @@ const ManageCourseObjective = () => {
                 const toastId = toast.loading("FAQ is Deleting...");
                 axiosPublic.put(`/objectives/${_id}`, { objectiveFAQ: newFAQ })
                     .then(res => {
-                        console.log(res);
                         if (res.data.modifiedCount > 0) {
                             courseObjectiveRefetch()
                             reset()
@@ -112,7 +102,6 @@ const ManageCourseObjective = () => {
                         }
                     })
                     .catch(err => {
-                        console.log(err);
                         toast.error(err?.message, { id: toastId });
                     })
 
@@ -141,7 +130,6 @@ const ManageCourseObjective = () => {
         expandIcon: "+",
         collapseIcon: "-",
     };
-    console.log(convertedArray);
     return (
         <>
             <Helmet>

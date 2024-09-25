@@ -31,7 +31,6 @@ const Testimonial = () => {
   if (isLoading) {
     return ''
   }
-  console.log(testimonials);
   return (
     <>
 

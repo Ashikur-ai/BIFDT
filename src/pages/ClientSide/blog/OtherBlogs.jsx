@@ -16,7 +16,6 @@ const OtherBlogs = ({ detailsBlogId }) => {
         return ''
     }
     const showingBlogs = blogs?.filter(blog => blog?._id !== detailsBlogId);
-    console.log(showingBlogs?.length);
     return (
         <>
             {

@@ -42,7 +42,6 @@ const AddFacultyPage = () => {
 
             const infoRes = await axiosPublic.post('/faculty', information);
 
-            console.log(infoRes.data);
             if (infoRes.data.insertedId) {
                 // show success popup 
                 reset();
@@ -56,7 +55,6 @@ const AddFacultyPage = () => {
             }
         }
 
-        console.log(res.data);
 
     };
 

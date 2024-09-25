@@ -33,7 +33,6 @@ const TabSection = () => {
     if (isLoading || allCategoryIsLoading) {
         return ''
     }
-    console.log(studentGallery);
     const showingGallery = categoryName === 'All' ? studentGallery : studentGallery.filter(gallery => gallery?.category === categoryName)
     return (
         <div className='  mx-auto lg:py-20 '>

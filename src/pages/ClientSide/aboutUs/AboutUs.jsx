@@ -21,7 +21,6 @@ const AboutUs = () => {
     useEffect(() => {
         if (!isLoading && homepageContent.length > 0) {
             const firstSection = document.getElementById('aboutUsFirstSection');
-            console.log(firstSection);
             if (firstSection) {
                 firstSection.scrollIntoView();
             }

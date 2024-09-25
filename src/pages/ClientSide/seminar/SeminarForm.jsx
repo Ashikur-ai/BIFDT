@@ -9,7 +9,6 @@ const SeminarForm = () => {
 
     const axiosPublic = useAxiosPublic();
     const seminar = useLoaderData();
-    console.log(seminar);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -24,12 +23,10 @@ const SeminarForm = () => {
 
 
         const data = { name, email, course, whatsapp, segment };
-        console.log(data)
 
 
         axiosPublic.post('/seminarRequest', data)
             .then(res => {
-                console.log(res.data)
                 if (res.data.insertedId) {
                     toast.success('Seminar request added successfully')
                 }

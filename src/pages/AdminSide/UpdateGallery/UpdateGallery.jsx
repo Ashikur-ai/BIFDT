@@ -23,9 +23,7 @@ const UpdateGallery = () => {
     if (isLoading) {
         return ''
     }
-    console.log(galleryData);
     const { _id, category: incomingCategory, image: incomingImage } = galleryData;
-    console.log(incomingCategory);
     const handleSubmit = async (event) => {
 
         event.preventDefault();
@@ -48,17 +46,13 @@ const UpdateGallery = () => {
                 galleryImgURL = res?.data?.data?.display_url
             }
             catch (err) {
-                console.log(err);
                 galleryImgURL = incomingImage
             }
         }
         const data = { category, image: galleryImgURL };
-        console.log(data);
         axiosPublic.put(`/updateStudentGallery/${id}`, data)
             .then(res => {
-                console.log(res.data)
                 if (res.data.modifiedCount) {
-                    console.log('data updated')
                     galleryDataRefetch()
                     Swal.fire({
                         position: "top-end",

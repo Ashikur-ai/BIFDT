@@ -18,7 +18,6 @@ const Comments = ({ blogId }) => {
     if (isLoading) {
         return ''
     }
-    console.log(blogComments);
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -26,7 +25,6 @@ const Comments = ({ blogId }) => {
         const contactNumber = form.number.value;
         const comment = form.comment.value;
         const data = { name, contactNumber, comment, blogId: blogId, time: new Date().toISOString().split('T')[0] };
-        console.log(data);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",

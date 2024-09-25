@@ -19,9 +19,7 @@ const BlogDetails = () => {
     if (isLoading) {
         return ''
     }
-    console.log(blogData);
     const { author, blogImageUrl, date, description, meta_word, title, _id } = blogData;
-    console.log(author);
     return (
         <div className='lg:px-20'>
             <p className="text-4xl m-10"><span className='text-primary '>Blog</span> Details</p>

@@ -219,11 +219,11 @@ const BasicRoutes = createBrowserRouter([
                 element: <UpdateCourseCategory />
             },
             {
-                path: "manageCourseSemester/:id",
+                path: "manageCourseDurationSemester/:courseId/:categoryId",
                 element: <ManageCourseSemester/>
             },
             {
-                path: "updateCourseSemester/:courseId/:semesterId",
+                path: "updateCourseSemester/:courseId/:categoryId/:semesterId",
                 element: <UpdateCourseSemester />
             },
             {

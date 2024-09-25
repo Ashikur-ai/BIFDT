@@ -52,7 +52,6 @@ const AddBlogPage = () => {
 
 
 
-    console.log(new Date().getTime());
     const handleSubmit = async (event) => {
         setDescriptionErr(false)
         event.preventDefault();
@@ -63,7 +62,6 @@ const AddBlogPage = () => {
         const meta_word = form.meta_word.value;
         const author = form.author.value;
         const description = formData.description;
-        console.log(date);
         if (!description) {
             return setDescriptionErr(true)
         }
@@ -82,20 +80,16 @@ const AddBlogPage = () => {
                 blogImageUrl = res?.data?.data?.display_url
             }
             catch (err) {
-                console.log(err);
                 blogImageUrl = ''
             }
         }
 
 
         const data = { title, blogImageUrl, date, meta_word, author, description };
-        console.log(data)
 
         axiosPublic.post('/blog', data)
             .then(res => {
-                console.log(res.data)
                 if (res.data.insertedId) {
-                    console.log('data added')
                     Swal.fire({
                         position: "top-end",
                         icon: "success",

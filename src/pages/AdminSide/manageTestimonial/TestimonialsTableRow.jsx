@@ -33,7 +33,6 @@ const TestimonialsTableRow = ({ idx, testimonial, refetch }) => {
                         }
                     })
                     .catch(err => {
-                        console.log(err);
                     })
 
             }

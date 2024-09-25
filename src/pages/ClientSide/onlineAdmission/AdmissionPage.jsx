@@ -36,7 +36,6 @@ const AdmissionPage = () => {
         const data = { name, email, course: theCourse.title, courseId: theCourse._id, gender, contact, address, website };
         axiosPublic.post('/admission', data)
             .then(res => {
-                console.log(res.data)
                 if (res.data.insertedId) {
                     toast.success('Admission request added successfully')
                 }

@@ -15,33 +15,37 @@ const ManageCourseSemester = () => {
     const [semesterTitle, setSemesterTitle] = useState('');
     const [semesterTitleErr, setSemesterTitleErr] = useState('');
     const { register, handleSubmit, reset } = useForm();
-    const { id } = useParams();
+    const { courseId, categoryId } = useParams();
     const { data: course = {}, refetch: courseRefetch, isLoading } = useQuery({
-        queryKey: ['course', id],
+        queryKey: ['course', courseId],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/course/${id}`)
+            const res = await axiosPublic.get(`/course/${courseId}`)
+            return res?.data
+        }
+    })
+    const { data: courseCategory = {}, refetch: courseCategoryRefetch, isDurationLoading } = useQuery({
+        queryKey: ['courseCategory', categoryId],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/courseCategory/${categoryId}`)
             return res?.data
         }
     })
     const { data: courseSemesters = [], refetch: courseSemestersRefetch, isLoading: courseSemestersIsLoading } = useQuery({
-        queryKey: ['singleCourseId', id],
+        queryKey: ['singleCourseId', categoryId],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/semesterByCourse/course/${id}`)
+            const res = await axiosPublic.get(`/semesterByCourse/course/${categoryId}`)
             return res?.data
         }
     })
-    if (courseSemestersIsLoading) {
+    if (isLoading || isDurationLoading || courseSemestersIsLoading) {
         return ''
     }
-    if (isLoading) {
-        return ''
-    }
+
     const handleSemester = (e) => {
         setSemesterTitleErr('')
         setSemesterTitle(e.target.value)
     }
     const onSubmit = (data) => {
-        console.log(data);
         setSubjectsErr('')
         setSubjects([...subjects, { id: new Date().getTime(), ...data }])
         reset()
@@ -66,11 +70,11 @@ const ManageCourseSemester = () => {
             return
         }
 
-        const data = { courseId: id, semesterTitle: semesterTitle, subjects: subjects };
+        const data = { courseId: categoryId, mainCourseId: courseId, semesterTitle: semesterTitle, subjects: subjects };
+
         const toastId = toast.loading("Semester is adding...");
         axiosPublic.post('/semesterByCourse', data)
             .then(res => {
-                console.log(res.data)
                 if (res.data.insertedId) {
                     toast.success("Added successfully!!", { id: toastId });
                     reset()
@@ -90,7 +94,7 @@ const ManageCourseSemester = () => {
             </Helmet>
             <div className='w-full lg:w-[1000px] lg:max-w-[calc(100vw-400px)] mx-auto'>
                 <div className="shadow-2xl px-10 rounded-2xl lg:w-full mx-auto bg-white mt-2">
-                    <p className='text-center text-2xl font-bold py-2'>Manage Course Semester of {`"${course?.title}"`}</p>
+                    <p className='text-center text-2xl font-bold py-2'>Manage Course Semester of {`"${course?.title}" for ${courseCategory?.duration}(${courseCategory?.type})`}</p>
                     <p className='text-lg font-bold pt-10'>Add Semester</p>
                     <div className='flex flex-wrap -m-2'>
                         {/* Title */}
@@ -144,7 +148,7 @@ const ManageCourseSemester = () => {
                         </div>
                     </div>
                 </div>
-               <div className=""> <CourseSemesters courseSemesters={courseSemesters} courseSemestersRefetch={courseSemestersRefetch} /></div>
+                <div className=""> <CourseSemesters courseSemesters={courseSemesters} courseSemestersRefetch={courseSemestersRefetch} /></div>
             </div>
         </>
     );

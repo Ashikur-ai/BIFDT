@@ -46,7 +46,6 @@ const UpdateTestimonials = () => {
                 testimonialsImage = res?.data?.data?.display_url
             }
             catch (err) {
-                console.log(err);
                 testimonialsImage = upcomingImage
             }
         }
@@ -66,7 +65,6 @@ const UpdateTestimonials = () => {
                 }
             })
             .catch(err => {
-                console.log(err);
             })
     }
     return (

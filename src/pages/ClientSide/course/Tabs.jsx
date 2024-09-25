@@ -3,8 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination, Navigation } from 'swiper/modules';
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 const Tabs = ({ tabName, setTabName, courseCategories }) => {
- 
-    const categories = ['Semester Details', 'Career Objective']
+
+    const categories = ['Career Objective']
     const tabStyle = (incomingTabName) => {
         return `text-sm  bg-primary/95 font-medium  rounded-t-lg active:scale-90 transition-all duration-300 hover:bg-primary ${incomingTabName === tabName ? 'bg-primary text-white' : 'bg-white hover:bg-primary/30'} w-full h-[50px]`
     }
@@ -41,6 +41,14 @@ const Tabs = ({ tabName, setTabName, courseCategories }) => {
                 className=" bg-white rounded-t-lg"
             >
                 {
+                    categories?.map((item, idx) => <SwiperSlide key={idx}>
+                        <button
+                            className={`${tabStyle(item)}`}
+                            onClick={() => setTabName(item)}
+                        >{item}</button>
+                    </SwiperSlide>)
+                }
+                {
                     courseCategories?.map((course) => <SwiperSlide key={course?._id}>
                         <button
                             className={`${tabStyle(course?._id)}`}
@@ -50,14 +58,7 @@ const Tabs = ({ tabName, setTabName, courseCategories }) => {
                         </button>
                     </SwiperSlide>)
                 }
-                {
-                    categories?.map((item, idx) => <SwiperSlide key={idx}>
-                        <button
-                            className={`${tabStyle(item)}`}
-                            onClick={() => setTabName(item)}
-                        >{item}</button>
-                    </SwiperSlide>)
-                }
+
             </Swiper>
 
             <div className="block tabs-prev-btn text-xl p-2 sm:p-3 rounded-full  cursor-pointer  shadow-2xl  transition-all duration-100 active:scale-90  w-max absolute left-0 top-0.5 z-10"><GrFormPrevious /></div>
