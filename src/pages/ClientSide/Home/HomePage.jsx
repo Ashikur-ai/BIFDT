@@ -60,11 +60,12 @@ const HomePage = () => {
     ratio,
     video_section_video,
     courseImages,
+    parallaxImg,
+    visitor
   } = homepageContent[0] || [];
   if (isLoading) {
     return "";
   }
-
   return (
     <>
       <div className="">
@@ -90,13 +91,13 @@ const HomePage = () => {
 
         <div
           style={{
-            backgroundImage: `url(${parallax4})`,
+            backgroundImage: `url(${parallaxImg})`,
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
           }}
         >
           {" "}
-          <HomePageCoursePlayer courseImages={courseImages} />
+          <HomePageCoursePlayer courseImages={courseImages} parallaxImg={parallaxImg} />
         </div>
 
         {/* third section Homepage */}
@@ -136,7 +137,7 @@ const HomePage = () => {
         <div
           className=""
           style={{
-            backgroundImage: `url(${parallax4})`,
+            backgroundImage: `url(${parallaxImg})`,
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
           }}
@@ -148,7 +149,7 @@ const HomePage = () => {
         <div>
 
           <HomePageCountDown
-            allData={{ since, student, rating, instructor, guarantee, ratio }}
+            allData={{ since, student, rating, instructor, guarantee, ratio, visitor }}
           />
         </div>
 
