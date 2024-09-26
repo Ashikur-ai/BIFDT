@@ -8,16 +8,17 @@ import { Editor } from "@tinymce/tinymce-react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import SubVideos from "../../../components/SubVideos";
+import { uploadImg } from "../../../UploadFile/uploadImg";
+import AddedImage from "../../../components/backendComponents/AddedImage";
 
 
 const UpdateCoursePage = () => {
     const axiosPublic = useAxiosPublic()
     const { id } = useParams()
-    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
-    const [imageInput, setImageInput] = useState('')
-    const [imageInputErr, setImageInputErr] = useState('')
     const [allImages, setAllImages] = useState([])
+    const [imageInputErr, setImageInputErr] = useState('')
+    const [allParallaxImages, setParallaxAllImages] = useState([])
+    const [parallaxImageInputErr, setParallaxImageInputErr] = useState('')
     const [subVideosArray, setSubVideos] = useState([]);
     const [subVideoTitle, setSubVideoTitle] = useState('');
     const [subVideoUrl, setSubVideoUrl] = useState('')
@@ -66,26 +67,6 @@ const UpdateCoursePage = () => {
         setFormData({ ...formData, admissionNotice: value });
     };
 
-
-
-
-    const handleImageInputField = (e) => {
-        setImageInput(e.target.files[0] || '')
-
-    }
-    const handleStoreImages = () => {
-        if (imageInput === '') {
-            return
-        }
-
-        setAllImages([...allImages, { image: imageInput, id: new Date().getTime() }]);
-        setImageInput('');
-        document.getElementById('courseImageInputField').value = '';
-    }
-    const handleDeleteImage = (comingImage) => {
-        const newImageArray = allImages.filter(image => image.id !== comingImage.id)
-        setAllImages(newImageArray)
-    }
     const handleAddSubVideo = () => {
         setSubVideos([...subVideosArray, { id: new Date().getTime(), title: subVideoTitle, url: subVideoUrl }])
         setSubVideoTitle('')
@@ -98,8 +79,8 @@ const UpdateCoursePage = () => {
         const form = event.target;
         const title = form.courseTitle.value;
         const subtitle = form.subtitle.value;
+        const homePageCourseImage = form.homePageCourseImage.files[0] || {};
         const videoUrl = form.videoUrl.value;
-        const courseFee = form.courseFee.value
         const description = form.description.value
         let isValid = true;
         const newFormDataErr = {
@@ -136,28 +117,34 @@ const UpdateCoursePage = () => {
 
 
         let allImagesArray = [];
+        let allParallaxImagesArray = [];
         const toastId = toast.loading("Course is updating...");
+        const homePageCourseImageUrl = homePageCourseImage.name ? await uploadImg(homePageCourseImage) : courseData.homePageCourseImageUrl
         if (allImages.length > 0) {
             for (let i = 0; i < allImages.length; i++) {
                 let galleryImgURL = '';
                 if (!allImages[i].image.name) {
                     galleryImgURL = '';
                 } else {
-                    const image = new FormData();
-                    image.append('image', allImages[i].image);
-
-                    try {
-                        const res = await axios.post(imgHostingApi, image);
-                        galleryImgURL = res?.data?.data?.display_url;
-                        allImagesArray.push(galleryImgURL);
-                    } catch (err) {
-                        allImagesArray.push(galleryImgURL);
-                        toast.error(err?.message, { id: toastId });
-                    }
+                    galleryImgURL = await uploadImg(allImages[i].image)
+                    allImagesArray.push(galleryImgURL);
                 }
             }
         } else {
             allImagesArray = courseData?.bannerImages
+        }
+        if (allParallaxImages.length > 0) {
+            for (let i = 0; i < allParallaxImages.length; i++) {
+                let galleryImgURL = '';
+                if (!allParallaxImages[i].image.name) {
+                    galleryImgURL = '';
+                } else {
+                    galleryImgURL = await uploadImg(allParallaxImages[i].image)
+                    allParallaxImagesArray.push(galleryImgURL);
+                }
+            }
+        } else {
+            allParallaxImagesArray = courseData?.parallaxImages
         }
 
 
@@ -166,7 +153,7 @@ const UpdateCoursePage = () => {
         //     const data = { category, image: imageUrl };
         //     return axiosPublic.post('/studentGallery', data);
         // });
-        const data = { title, subtitle, videoUrl, bannerImages: allImagesArray, subVideos: subVideosArray, notice: formData.notice, bangla: formData.bangla, admissionNotice: formData.admissionNotice, courseFee, description };
+        const data = { title, subtitle, videoUrl, bannerImages: allImagesArray, parallaxImages: allParallaxImagesArray, subVideos: subVideosArray, notice: formData.notice, bangla: formData.bangla, admissionNotice: formData.admissionNotice, description, homePageCourseImageUrl };
 
         axiosPublic.put(`/course/${id}`, data)
             .then(res => {
@@ -199,7 +186,7 @@ const UpdateCoursePage = () => {
                                             {/* title */}
                                             <div className="p-2 w-full">
                                                 <div className="relative">
-                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Course Category</label>
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Course Menu name</label>
                                                     <input defaultValue={courseData.title} required type="text" name="courseTitle" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                 </div>
                                             </div>
@@ -211,31 +198,42 @@ const UpdateCoursePage = () => {
                                                 </div>
                                             </div>
                                             {/* Banner images */}
-                                            <div className='w-full md:col-span-2'>
+                                            <div className='w-full'>
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Upload Course Banner images</label>
                                                 <div className='w-full'>
                                                     <div className="p-2 w-full">
                                                         <div className="relative space-y-2">
                                                             <label className="leading-7 text-sm text-gray-600 font-medium">Select Image</label><br />
-                                                            <input id='courseImageInputField' onChange={handleImageInputField} type="file" name='image1' className="file-input file-input-bordered file-input-md w-full" />
-                                                            <p className='text-red-600'>{imageInputErr}</p>
-                                                            <p onClick={handleStoreImages} className='btn flex flex-col justify-center items-center px-7 py-1 rounded-md bg-primary text-white hover:font-bold transition-all duration-300 hover:bg-orange-700  active:bg-primary focus:outline-none focus:ring focus:ring-red-300 active:scale-90 focus:text-white w-max'>Add</p>
-                                                            <p>Added Image</p>
-                                                            {allImages?.length < 1 && <p>No Image Added!!</p>}
 
-                                                            <div className="flex flex-wrap gap-4 pb-5">
-                                                                {allImages.map((image, index) => (
-                                                                    <div key={index} className="w-28 h-24 relative border border-gray-500 rounded-lg p-1">
-                                                                        <p onClick={() => handleDeleteImage(image)} className='text-center bg-gray-200 w-6  h-6 rounded-md ml-auto mb-2 cursor-pointer'>X</p>
-                                                                        <img src={URL.createObjectURL(image.image)} alt="preview" className=" h-16 object-cover rounded-md mx-auto pb-2" />
-                                                                    </div>
-                                                                ))}
-                                                            </div>
+                                                            <AddedImage allImages={allImages} imageInputErr={imageInputErr} setAllImages={setAllImages} id={'courseImageInputField'} />
                                                         </div>
                                                     </div>
 
                                                 </div>
 
+                                            </div>
+                                            {/* Parallax images */}
+                                            <div className='w-full'>
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Upload Course Parallax images</label>
+                                                <div className='w-full'>
+                                                    <div className="p-2 w-full">
+                                                        <div className="relative space-y-2">
+                                                            <label className="leading-7 text-sm text-gray-600 font-medium">Select Parallax Image</label><br />
+
+
+                                                            <AddedImage allImages={allParallaxImages} imageInputErr={parallaxImageInputErr} setAllImages={setParallaxAllImages} id={'courseImageInputField'} />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            {/* Main course animated image */}
+                                            <div className="p-2 w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Home page course image</label><br />
+                                                    <input type="file" name='homePageCourseImage' className="file-input file-input-bordered file-input-md w-full" />
+                                                </div>
                                             </div>
 
                                             {/* Main course video */}
@@ -245,13 +243,7 @@ const UpdateCoursePage = () => {
                                                     <input defaultValue={courseData.videoUrl} required type="text" name='videoUrl' className="file-input file-input-bordered file-input-md w-full" />
                                                 </div>
                                             </div>
-                                            {/* Fee */}
-                                            <div className="p-2 w-full">
-                                                <div className="relative">
-                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Course Fee</label>
-                                                    <input defaultValue={courseData.courseFee} required type="number" name="courseFee" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                                                </div>
-                                            </div>
+
                                             {/* Sub Video */}
                                             <div className='w-full md:col-span-2 p-2  space-y-2'>
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Sub Videos</label>

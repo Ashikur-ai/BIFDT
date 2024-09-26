@@ -22,12 +22,13 @@ import courseParallax2 from '../../../assets/images/parallax/courseParallax2.jpg
 import parallax4 from '../../../assets/images/parallax/parallax4.png';
 import HomePageCoursePlayer from "../Home/components/HomePageCoursePlayer";
 import Share from "./Share";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // slider import
 
 
 const CourseDetails = () => {
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
+  const [playableVideo, setPlayableVideo] = useState('')
   const [showMore, setShowMore] = useState(false);
   const { id } = useParams()
 
@@ -48,11 +49,17 @@ const CourseDetails = () => {
       return res?.data
     }
   })
+  useEffect(() => {
+    if (courseData?.videoUrl) {
+      setPlayableVideo(courseData?.videoUrl)
+    }
+  }, [courseData, isLoading])
   if (isLoading) {
     return ''
   }
-  const { title, subtitle, videoUrl, bannerImages, subVideos, notice, bangla, admissionNotice, courseFee } = courseData;
+  const { title, subtitle, videoUrl, bannerImages, subVideos, notice, bangla, admissionNotice, courseFee, parallaxImages = [], description } = courseData;
 
+  console.log(subVideos);
 
 
   const { courseImages } = homepageContent[0] || [];
@@ -261,18 +268,14 @@ const CourseDetails = () => {
               <div className="absolute top-0 left-0  bg-white/60 w-full h-full "></div>
               <div
                 style={{
-                  backgroundImage: `url(${courseParallax1})`,
+                  backgroundImage: `url(${parallaxImages[0] || ''})`,
                   backgroundSize: "cover",
                   backgroundAttachment: "fixed",
-                  backgroundPosition:'center'
+                  backgroundPosition: 'center'
                 }} className="pt-2 sm:py-5">
 
                 <div className="flex  justify-between relative">
                   <div className="flex gap-2 flex-col sm:flex-row px-2">
-                    <span
-                      className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary">
-                      {title}
-                    </span>
                     <span
                       className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary ">
                       Free Seminar <br className="block sm:hidden" /> / Counseling
@@ -283,21 +286,22 @@ const CourseDetails = () => {
                     <Link to="/onlineAdmission">Enroll Now</Link>
                   </span>
                 </div>
-                
-                <p className="pr-10 pl-1 text-xs sm:text-sm lg:text-2xl z-10 relative overflow-hidden text-center font-bold text-black py-2 max-w-[700px] mx-auto">
+
+                <p className="pr-10 pl-1 text-sm sm:text-base lg:text-2xl z-10 relative overflow-hidden font-bold text-black py-2">
                   {subtitle}
                 </p>
 
+                <p className="text-gray-800 relative text-justify text-sm">{showMore ? description : `${description?.slice(0, 200)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
                 <hr className="border-black my-2" />
 
 
                 {/* main video  */}
                 <div className="relative w-[75vw] h-[43.9vw] z-10 sm:w-full sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
-                bg-primary mx-auto">
+                bg-gray-500 mx-auto">
                   <ReactPlayer
                     controls="true"
                     playing={true}
-                    url={videoUrl}
+                    url={playableVideo}
                     width="100%"
                     height="100%"
                   />
@@ -308,9 +312,26 @@ const CourseDetails = () => {
                 <div className="relative hidden  lg:flex pt-10 z-10">
                   <Marquee pauseOnHover={true}>
                     <div className="flex gap-10 pr-10">
+                      <div className="">
+
+                        <div className={`${videoDivStyle} relative`}>
+                          <div onClick={() => setPlayableVideo(videoUrl)} className="absolute top-0 left-0 w-full h-full bg-transparent cursor-pointer z-20"></div>
+                          <ReactPlayer
+                            controls="true"
+
+                            url={videoUrl}
+                            width="100%"
+                            height='100%'
+                          />
+                        </div>
+
+                        <p className={`${titleStyle}`}>Main Video</p>
+                      </div>
                       {
-                        subVideos?.map((video, idx) => <div key={idx}>
-                          <div className={`${videoDivStyle}`}>
+                        subVideos?.map((video, idx) => <div key={idx} className="">
+
+                          <div className={`${videoDivStyle} relative`}>
+                            <div onClick={() => setPlayableVideo(video?.url)} className="absolute top-0 left-0 w-full h-full bg-transparent cursor-pointer z-20"></div>
                             <ReactPlayer
                               controls="true"
 
@@ -335,10 +356,10 @@ const CourseDetails = () => {
 
 
               <div style={{
-                backgroundImage: `url(${courseParallax2})`,
-                backgroundSize:'cover',
+                backgroundImage: `url(${parallaxImages[1] || ''})`,
+                backgroundSize: 'cover',
                 backgroundAttachment: "fixed",
-                backgroundPosition:'center'
+                backgroundPosition: 'center'
               }} className="pt-2 sm:py-5">
                 {/* Admission and course detail section */}
                 <div className="z-10 relative">

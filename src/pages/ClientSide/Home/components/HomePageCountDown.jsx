@@ -4,12 +4,14 @@ import Sparkles from "react-sparkle";
 import Sun from "../../../../components/Sun";
 
 const HomePageCountDown = ({ allData }) => {
-  const { since, student, rating, instructor, guarantee, ratio } = allData
+  const { since, student, rating, instructor, guarantee, ratio,visitor } = allData;
+  console.log(allData);
+  
   return (
     <div className="lg:pt-20">
        
       <div
-        className="mx-2 sm:mx-10 md:mx-20 py-10 my-4 bg-primary grid grid-cols-1 lg:grid-cols-6 justify-items-center"
+        className="mx-2 sm:mx-10 md:mx-20 py-10 my-4 bg-primary grid grid-cols-1 lg:grid-cols-7 justify-items-center"
         style={{ position: "relative" }}
       >
         <div className="w-max absolute top-[-75px] right-0 z-10"><Sun /></div>
@@ -30,6 +32,12 @@ const HomePageCountDown = ({ allData }) => {
             <CountUp className="" end={student} duration={9} /> +
           </span>
           <p className="text-[12px] lg:text-xl font-bold">Students</p>
+        </div>
+        <div className="m-auto text-white  lg:py-5 text-center">
+          <span className="text-xl lg:text-4xl  font-bold">
+            <CountUp className="" end={visitor} duration={9} /> +
+          </span>
+          <p className="text-[12px] lg:text-xl font-bold">Total Visitor</p>
         </div>
 
         <div className="m-auto text-white  lg:py-5 text-center">

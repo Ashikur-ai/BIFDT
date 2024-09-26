@@ -12,6 +12,8 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import { Editor } from '@tinymce/tinymce-react';
 import Swal from 'sweetalert2';
+import { uploadVideo } from '../../../UploadFile/uploadVideo';
+import { uploadImg } from '../../../UploadFile/uploadImg';
 
 const ManageHomepageContent = () => {
     const [usableDescription, setDescription] = useState('');
@@ -30,7 +32,7 @@ const ManageHomepageContent = () => {
         setNotice(homepageContent[0]?.notice || '');
 
     }, [homepageContent, isLoading])
-    const { description: incomingDescription, imageUrl: incomingImageUrl, notice: incomingNotice, video_url: incomingVideo_url, video_section_video: incomingVideo_section_video, courseImages: incomingCourseImages } = homepageContent[0] || []
+    const { description: incomingDescription, imageUrl: incomingImageUrl, notice: incomingNotice, video_url: incomingVideo_url, video_section_video: incomingVideo_section_video, courseImages: incomingCourseImages, parallaxImg: incomingParallaxImg } = homepageContent[0] || []
     const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const handleNoticeChange = (value) => {
@@ -50,17 +52,20 @@ const ManageHomepageContent = () => {
         const toastId = toast.loading("Home page content is updating...");
         event.preventDefault();
         const form = event.target;
-        const video_url = form.video_url.value || '';
-        const video_section_video = form.video_section_video.value || '';
+        const video = form.video_url.files[0] || {};
+        const video2 = form.video_section_video.files[0] || {};
         const selectedImage = form.image.files[0] || {};
+        const parallax_image = form.parallaxImg.files[0] || {};
         const selectedCourseImage = form.courseImage.files[0] || {};
         const notice = usableNotice || '';
         const description = usableDescription || '';
         let imageUrl = '';
         let secondImageUrl = '';
         let retries = 3; // Number of retries
-
-        const uploadImage = async (image) => {
+        const video_url = video.name ? await uploadVideo(video) : incomingVideo_url;
+        const video_section_video = video2.name ? await uploadVideo(video2) : incomingVideo_section_video;
+        const parallaxImg = parallax_image.name ? await uploadImg(parallax_image) : incomingParallaxImg;
+        const uploadImage2 = async (image) => {
             for (let i = 0; i < retries; i++) {
                 try {
                     const res = await axios.post(imgHostingApi, image, {
@@ -81,7 +86,7 @@ const ManageHomepageContent = () => {
         } else {
             const image = { image: selectedImage };
             try {
-                imageUrl = await uploadImage(image);
+                imageUrl = await uploadImg(image)
             } catch (err) {
                 imageUrl = incomingImageUrl;
                 toast.error(err?.message, { id: toastId });
@@ -93,7 +98,7 @@ const ManageHomepageContent = () => {
         } else {
             const image = { image: selectedCourseImage };
             try {
-                secondImageUrl = await uploadImage(image);
+                secondImageUrl = await uploadImage2(image);
             } catch (err) {
                 secondImageUrl = '';
                 toast.error(err?.message, { id: toastId });
@@ -105,7 +110,7 @@ const ManageHomepageContent = () => {
             courseImagesArray = [...incomingCourseImages, { image: secondImageUrl, id: new Date().getTime() }];
         }
 
-        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description, video_section_video, courseImages: courseImagesArray };
+        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description, video_section_video, courseImages: courseImagesArray, parallaxImg };
 
         axiosPublic.post(`/updateHomepageContent/${homepageContent[0]?._id || 'notAvailable'}`, data)
             .then(res => {
@@ -176,7 +181,8 @@ const ManageHomepageContent = () => {
                                             <div className="p-2 w-full">
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section video</label><br />
-                                                    <input defaultValue={incomingVideo_url} name='video_url' type="text" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
+                                                    <input name='video_url'
+                                                        accept="video/*" type="file" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                                 </div>
                                             </div>
 
@@ -192,7 +198,9 @@ const ManageHomepageContent = () => {
                                             <div className="p-2 w-full">
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm text-gray-600 font-bold">Video section's video</label><br />
-                                                    <input defaultValue={incomingVideo_section_video || ''} name='video_section_video' type="text" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
+                                                    <input name='video_section_video'
+                                                        accept="video/*"
+                                                        type="file" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                                 </div>
                                             </div>
                                             {/* course Images  */}
@@ -217,6 +225,13 @@ const ManageHomepageContent = () => {
                                                     }
                                                 </div>
 
+                                            </div>
+                                            {/* image upload  */}
+                                            <div className="p- w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Parallax Image</label><br />
+                                                    <input name='parallaxImg' type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                </div>
                                             </div>
                                             <div className="p-2 w-full  mb-10 h-full">
                                                 <div className="relative">

@@ -20,7 +20,7 @@ const ManageCountDown = () => {
     if (isLoading) {
         return ''
     }
-    const { since: incomingSince, student: incomingStudent, rating: incomingRating, instructor: incomingInstructor, guarantee: incomingGuarantee, ratio: incomingRatio } = homepageContent[0];
+    const { since: incomingSince, student: incomingStudent, rating: incomingRating, instructor: incomingInstructor, guarantee: incomingGuarantee, ratio: incomingRatio, visitor:incomingVisitor } = homepageContent[0];
     const handleSubmit = (event) => {
 
         event.preventDefault();
@@ -30,11 +30,12 @@ const ManageCountDown = () => {
         const rating = form.rating.value;
         const instructor = form.instructor.value;
         const guarantee = form.guarantee.value;
+        const visitor = form.visitor.value;
         const ratio = form.ratio.value;
 
 
         const toastId = toast.loading("Home page content is updating...");
-        const data = { since, student, rating, instructor, guarantee, ratio };
+        const data = { since, student, rating, instructor, guarantee, ratio,visitor };
         axiosPublic.post(`/updateHomepageContent/${homepageContent[0]?._id || 'notAvailable'}`, data)
             .then(res => {
                 toast.success("Home page Countdown Updated Successfully!!", { id: toastId });
@@ -112,6 +113,13 @@ const ManageCountDown = () => {
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Job success ratio</label>
                                                 <input defaultValue={incomingRatio} type="number" name="ratio" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
+                                        {/*visitor*/}
+                                        <div className="p-2 w-1/3">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Total Visitor</label>
+                                                <input defaultValue={incomingVisitor} type="number" name="visitor" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
