@@ -59,7 +59,6 @@ const CourseDetails = () => {
   }
   const { title, subtitle, videoUrl, bannerImages, subVideos, notice, bangla, admissionNotice, courseFee, parallaxImages = [], description } = courseData;
 
-  console.log(subVideos);
 
 
   const { courseImages } = homepageContent[0] || [];
@@ -272,7 +271,7 @@ const CourseDetails = () => {
                   backgroundSize: "cover",
                   backgroundAttachment: "fixed",
                   backgroundPosition: 'center'
-                }} className="pt-2 sm:py-5">
+                }} className="pt-2 sm:pt-5">
 
                 <div className="flex  justify-between relative">
                   <div className="flex gap-2 flex-col sm:flex-row px-2">
@@ -296,7 +295,7 @@ const CourseDetails = () => {
 
 
                 {/* main video  */}
-                <div className="relative w-[75vw] h-[43.9vw] z-10 sm:w-full sm:h-[37vw] lg:h-[370px] lg:w-[650px] lg:mx-auto rounded-lg p-2
+                <div className="relative w-[75vw] h-[43.9vw] z-10 sm:w-full sm:h-[37vw] lg:h-[450px] lg:w-[90%] max-w-[870px] lg:mx-auto rounded-lg p-2
                 bg-gray-500 mx-auto">
                   <ReactPlayer
                     controls="true"
@@ -348,8 +347,9 @@ const CourseDetails = () => {
                   </Marquee>
 
                 </div>
-
-                <div className="pb-10 pt-5 relative"><hr className="w-full border-black relative" /></div>
+<div className="relative">
+<hr className="w-full border-black" />
+</div>
 
               </div>
 

@@ -39,14 +39,7 @@ const HomePage = () => {
       return res?.data;
     },
   });
-  useEffect(() => {
-    if (!isLoading && homepageContent.length > 0) {
-      const firstSection = document.getElementById("homePageFirstSection");
-      if (firstSection) {
-        firstSection.scrollIntoView();
-      }
-    }
-  }, [isLoading, homepageContent]);
+ 
   const {
     description,
     imageUrl,
@@ -61,11 +54,14 @@ const HomePage = () => {
     video_section_video,
     courseImages,
     parallaxImg,
+    video_url_text,
+    videoSection_url_text,
     visitor
   } = homepageContent[0] || [];
   if (isLoading) {
     return "";
   }
+  console.log(video_url_text, videoSection_url_text)
   return (
     <>
       <div className="">
@@ -74,11 +70,11 @@ const HomePage = () => {
         </Helmet>
 
         {/* Video and Marquee First section  */}
-        <div id="homePageFirstSection" className="video-container">
+        <div  className="video-container">
           <ReactPlayer
             controls="true"
             height="100%"
-            url={video_url}
+            url={video_url_text || video_url}
             width="100%"
           />
         </div>
@@ -170,7 +166,7 @@ const HomePage = () => {
         <Blogs></Blogs>
 
         {/* videos section  */}
-        <Videos video_url={video_section_video} />
+        <Videos video_url={videoSection_url_text||video_section_video} />
 
         {/* tenth section Google Map  */}
         <div className="">
