@@ -12,7 +12,7 @@ import SubMenu from "../components/SubMenu";
 const MainLayout = () => {
     return (
         <>
-        <ScrollToTop/>
+            <ScrollToTop />
             <SubMenu></SubMenu>
             <Navbar></Navbar>
             <Outlet>
@@ -23,7 +23,7 @@ const MainLayout = () => {
             <div className="flex w-full lg:hidden">
                 <MobileViewButton></MobileViewButton>
             </div>
-            <FormButton></FormButton>
+            {/* <FormButton></FormButton> */}
             <AllSocialLinks></AllSocialLinks>
         </>
     )
