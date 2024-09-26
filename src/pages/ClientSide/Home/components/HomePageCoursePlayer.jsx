@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
-const HomePageCoursePlayer = ({ courseImages }) => {
+const HomePageCoursePlayer = ({ courseImages,parallaxImg }) => {
     const coursesName = ['Fashion Design', 'Apparel Merchandising', 'Pattern Design & CAD', 'CLO & Browzwear', 'Digital Marketing & Branding', 'Graphics Design', 'Web Design', 'Interior Design', 'Lather Design', 'Career blogs']
     const axiosPublic = useAxiosPublic();
     const { data: courses = [], refetch: coursesRefetch, isLoading } = useQuery({
@@ -39,7 +39,7 @@ const HomePageCoursePlayer = ({ courseImages }) => {
                 >
                     {
                         courseImages?.map(image => <SwiperSlide key={image.id}>
-                            <img src={image.image} alt="" />
+                            <img src={image.image} className="rounded-full object-cover size-60" alt="" />
                         </SwiperSlide>)
                     }
 
