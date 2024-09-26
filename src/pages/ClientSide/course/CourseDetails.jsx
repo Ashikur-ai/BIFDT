@@ -357,7 +357,7 @@ const CourseDetails = () => {
                   </Marquee>
 
                 </div>
-                <div className="pt-20 z-10 relative">
+                <div className="pt-20 z-10 relative ">
                   <div className="flex justify-between flex-col sm:flex-row">
                     <p className="lg:text-2xl font-bold py-5">Course Details</p>
                     <div className="w-full md:w-max flex justify-end items-end"><Share /></div>
