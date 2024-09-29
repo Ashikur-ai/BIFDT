@@ -43,3 +43,63 @@ ul {
       opacity: 0;
   }
 }
+
+@keyframes bounceTwice {
+  0%, 100% {
+      transform: translateY(0);
+      background: #ffffff;
+      color: #22c55e;
+  }
+  2% {
+      transform: translateY(-25px);
+      background: #22c55e;
+      color: white;
+  }
+  4% {
+      transform: translateY(0);
+      background: #22c55e;
+      color: white;
+      
+  }
+  6% {
+      transform: translateY(-20px);
+      background: #22c55e;
+      color: white;
+  }
+  8% {
+      transform: translateY(0);
+      background: #22c55e;
+      color: white;
+  }
+  10% {
+      transform: translateY(-15px);
+      background: #22c55e;
+      color: white;
+  }
+  12% {
+      transform: translateY(0);
+      background: #22c55e;
+      color: white;
+      
+  }
+  14% {
+      transform: translateY(-10px);
+      background: #22c55e;
+      color: white;
+  }
+  16% {
+      transform: translateY(0);
+      background: #22c55e;
+      color: white;
+  }
+  18% {
+      transform: translateY(0);
+      background: #ffffff;
+      color: #22c55e;
+  }
+}
+
+.bounce-animation {
+  animation: bounceTwice 15s ease-in-out  infinite;
+  /* animation-iteration-count: 2; */
+}

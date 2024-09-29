@@ -18,15 +18,6 @@ const AboutUs = () => {
         }
     });
 
-    useEffect(() => {
-        if (!isLoading && homepageContent.length > 0) {
-            const firstSection = document.getElementById('aboutUsFirstSection');
-            if (firstSection) {
-                firstSection.scrollIntoView();
-            }
-        }
-    }, [isLoading, homepageContent]);
-
     if (isLoading || homepageContent.length === 0) {
         return null; // You can return a loading indicator or handle the loading state accordingly
     }
@@ -39,7 +30,7 @@ const AboutUs = () => {
                 <title>BIFDT | About Us</title>
             </Helmet>
             {/* First Video and Marquee Section */}
-            <div id="homePageFirstSection" className="video-container">
+            <div className="video-container">
 
                 <ReactPlayer
                     controls="true"

@@ -32,7 +32,7 @@ const ManageHomepageContent = () => {
         setNotice(homepageContent[0]?.notice || '');
 
     }, [homepageContent, isLoading])
-    const { description: incomingDescription, imageUrl: incomingImageUrl, notice: incomingNotice, video_url: incomingVideo_url, video_section_video: incomingVideo_section_video, courseImages: incomingCourseImages, parallaxImg: incomingParallaxImg } = homepageContent[0] || []
+    const { description: incomingDescription, imageUrl: incomingImageUrl, notice: incomingNotice, video_url: incomingVideo_url, video_section_video: incomingVideo_section_video, courseImages: incomingCourseImages, parallaxImg: incomingParallaxImg, video_url_text: incomingVideo_url_text, videoSection_url_text: incomingVideoSection_url_text } = homepageContent[0] || []
     const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const handleNoticeChange = (value) => {
@@ -53,6 +53,8 @@ const ManageHomepageContent = () => {
         event.preventDefault();
         const form = event.target;
         const video = form.video_url.files[0] || {};
+        const video_url_text = form.video_url_text.value;
+        const videoSection_url_text = form.videoSection_url_text.value;
         const video2 = form.video_section_video.files[0] || {};
         const selectedImage = form.image.files[0] || {};
         const parallax_image = form.parallaxImg.files[0] || {};
@@ -110,7 +112,7 @@ const ManageHomepageContent = () => {
             courseImagesArray = [...incomingCourseImages, { image: secondImageUrl, id: new Date().getTime() }];
         }
 
-        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description, video_section_video, courseImages: courseImagesArray, parallaxImg };
+        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description, video_section_video, courseImages: courseImagesArray, parallaxImg, video_url_text, videoSection_url_text };
 
         axiosPublic.post(`/updateHomepageContent/${homepageContent[0]?._id || 'notAvailable'}`, data)
             .then(res => {
@@ -180,17 +182,28 @@ const ManageHomepageContent = () => {
                                             {/* video upload  */}
                                             <div className="p-2 w-full">
                                                 <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section video Url (Optional)</label><br />
+                                                    <input name='video_url_text'
+                                                        type="text" placeholder='Video Url'
+                                                        defaultValue={incomingVideo_url_text || ''}
+                                                        className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
+                                                </div>
+                                            </div>
+                                            <div className="p-2 w-full">
+                                                <div className="relative">
                                                     <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section video</label><br />
                                                     <input name='video_url'
                                                         accept="video/*" type="file" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                                 </div>
                                             </div>
-
-                                            {/* image upload  */}
-                                            <div className="p- w-full">
+                                            {/* video upload  */}
+                                            <div className="p-2 w-full">
                                                 <div className="relative">
-                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section Image</label><br />
-                                                    <input name='image' type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Video section video Url (Optional)</label><br />
+                                                    <input name='videoSection_url_text'
+                                                        type="text" placeholder='Video Url'
+                                                        defaultValue={incomingVideoSection_url_text || ''}
+                                                        className="file-input file-input-bordered file-input-md w-full max-w-xs px-2" />
                                                 </div>
                                             </div>
 
@@ -203,6 +216,14 @@ const ManageHomepageContent = () => {
                                                         type="file" placeholder='Video Url' className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                                 </div>
                                             </div>
+                                            {/* image upload  */}
+                                            <div className="p- w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Homepage section Image</label><br />
+                                                    <input name='image' type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                </div>
+                                            </div>
+
                                             {/* course Images  */}
                                             <div className="p-2 w-full">
                                                 <div className="relative">

@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import SubVideos from "../../../components/SubVideos";
 import { uploadImg } from "../../../UploadFile/uploadImg";
 import AddedImage from "../../../components/backendComponents/AddedImage";
+import { uploadVideo } from "../../../UploadFile/uploadVideo";
 
 
 const UpdateCoursePage = () => {
@@ -80,7 +81,7 @@ const UpdateCoursePage = () => {
         const title = form.courseTitle.value;
         const subtitle = form.subtitle.value;
         const homePageCourseImage = form.homePageCourseImage.files[0] || {};
-        const videoUrl = form.videoUrl.value;
+        const mainVideo = form.videoUrl.files[0] || {};
         const description = form.description.value
         let isValid = true;
         const newFormDataErr = {
@@ -119,6 +120,7 @@ const UpdateCoursePage = () => {
         let allImagesArray = [];
         let allParallaxImagesArray = [];
         const toastId = toast.loading("Course is updating...");
+         const videoUrl = mainVideo.name ? await uploadVideo(mainVideo) : courseData?.videoUrl
         const homePageCourseImageUrl = homePageCourseImage.name ? await uploadImg(homePageCourseImage) : courseData.homePageCourseImageUrl
         if (allImages.length > 0) {
             for (let i = 0; i < allImages.length; i++) {
@@ -240,7 +242,8 @@ const UpdateCoursePage = () => {
                                             <div className="p-2 w-full">
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm text-gray-600 font-bold">Upload Course Main Video</label><br />
-                                                    <input defaultValue={courseData.videoUrl} required type="text" name='videoUrl' className="file-input file-input-bordered file-input-md w-full" />
+                                                    <input type="file" 
+                                                    accept="video/*" name='videoUrl' className="file-input file-input-bordered file-input-md w-full" />
                                                 </div>
                                             </div>
 
