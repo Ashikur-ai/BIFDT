@@ -223,7 +223,13 @@ const ManageHomepageContent = () => {
                                                     <input name='image' type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
                                                 </div>
                                             </div>
-
+                                            {/* image upload  */}
+                                            <div className="p- w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Parallax Image</label><br />
+                                                    <input name='parallaxImg' type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                </div>
+                                            </div>
                                             {/* course Images  */}
                                             <div className="p-2 w-full">
                                                 <div className="relative">
@@ -247,13 +253,7 @@ const ManageHomepageContent = () => {
                                                 </div>
 
                                             </div>
-                                            {/* image upload  */}
-                                            <div className="p- w-full">
-                                                <div className="relative">
-                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Parallax Image</label><br />
-                                                    <input name='parallaxImg' type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs" />
-                                                </div>
-                                            </div>
+
                                             <div className="p-2 w-full  mb-10 h-full">
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm font-bold text-gray-600">Add Notice</label>

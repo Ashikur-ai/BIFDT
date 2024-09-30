@@ -3,7 +3,7 @@ import { MdWhatsapp } from 'react-icons/md';
 
 
 const WhatsAppButton = () => {
-    const phoneNumber = '+8801755450127'; // Replace this with your actual phone number
+    const phoneNumber = '+8801629171717'; // Replace this with your actual phone number
     const message = 'Hello, BIFDT. I need help.'; // Customize the default message
     return (
         <div className="fixed bottom-20 lg:bottom-3 right-7 p-3 z-50"> {/* Adjust Tailwind classes as needed */}
