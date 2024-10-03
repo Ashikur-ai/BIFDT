@@ -64,7 +64,7 @@ const Share = () => {
 
     return (
         <>
-            <div className="space-y-3 pr-5 pb-3 text-end">
+            <div className="">
                 <button onClick={openModal} className="lg:p-3 p-1 rounded-lg bg-primary text-white hover:text-black  active:bg-white-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max text-xs sm:text-sm lg:text-xl">Share now</button>
 
 

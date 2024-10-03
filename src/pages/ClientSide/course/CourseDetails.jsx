@@ -274,14 +274,14 @@ const CourseDetails = () => {
                   backgroundPosition: 'center'
                 }} className="pt-2 sm:pt-5">
 
-                <div className="flex  justify-between relative">
-                  <div className="flex gap-2 flex-col sm:flex-row px-2">
+                <div className="flex flex-col sm:flex-row  justify-between relative gap-2">
+                  <div className="flex gap-2 flex-col sm:flex-row px-2 w-max">
                     <span
-                      className="text-white   text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary ">
-                      Free Seminar <br className="block sm:hidden" /> / Counseling
+                      className="text-white text-[10px]   xs:text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary ">
+                      Free Seminar / Counseling
                     </span>
                   </div>
-                  <div className="flex gap-2 justify-center items-center">
+                  <div className="flex gap-2 justify-end items-center">
                     <Share />
                     <div
                       className="text-white   text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary h-max w-max text-nowrap">
@@ -290,12 +290,12 @@ const CourseDetails = () => {
                   </div>
                 </div>
 
-                <p className="pr-10 pl-1 text-sm sm:text-base lg:text-2xl z-10 relative overflow-hidden font-bold text-blue-700 py-2">
+                <p className="pr-10 pl-1 text-xs xs:text-sm sm:text-base lg:text-2xl z-10 relative overflow-hidden font-bold text-blue-700 py-2">
                   {subtitle}
                 </p>
 
-                <p className="text-gray-800 relative text-justify text-sm hidden sm:block">{showMore ? description : `${description?.slice(0, 200)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
-                <p className="text-gray-800 relative text-justify text-sm sm:hidden block">{showMore ? description : `${description?.slice(0, 50)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
+                <p className="text-gray-800 relative text-justify text-xs xs:text-sm hidden sm:block">{showMore ? description : `${description?.slice(0, 200)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
+                <p className="text-gray-800 relative text-justify text-xs sm:text-sm sm:hidden block">{showMore ? description : `${description?.slice(0, 50)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
                 <hr className="border-black my-2" />
 
 

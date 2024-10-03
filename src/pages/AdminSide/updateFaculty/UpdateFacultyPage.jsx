@@ -8,12 +8,11 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { uploadImg } from '../../../UploadFile/uploadImg';
 
 const UpdateFacultyPage = () => {
     const { id } = useParams();
     const axiosPublic = useAxiosPublic();
-    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const { data: facultyData = {}, refetch: facultyDataRefetch, isLoading } = useQuery({
         queryKey: ['facultyData', id],
         queryFn: async () => {
@@ -32,7 +31,7 @@ const UpdateFacultyPage = () => {
         const email = form.email.value;
         const facebook = form.facebook.value;
         const twitter = form.twitter.value;
-        const whatsapp = form.whatsapp.value; 
+        const whatsapp = form.whatsapp.value;
         const contact = form.contact.value;
         const designation = form.designation.value;
         const selectedImage = form.image.files[0];
@@ -42,19 +41,8 @@ const UpdateFacultyPage = () => {
         if (!selectedImage?.name) {
             facultyImageUrl = incomingImage
         } else {
-            const image = { image: selectedImage }
 
-            const res = await axios.post(imgHostingApi, image, {
-                headers: {
-                    'content-type': 'multipart/form-data'
-                }
-            })
-            try {
-                facultyImageUrl = res?.data?.data?.display_url
-            }
-            catch (err) {
-                facultyImageUrl = incomingImage
-            }
+            facultyImageUrl = await uploadImg(selectedImage)
         }
 
         const data = { name, email, facebook, twitter, whatsapp, contact, designation, image: facultyImageUrl, background_of_study, job_experience };
@@ -178,7 +166,7 @@ const UpdateFacultyPage = () => {
 
 
                                     <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                                        <a className="text-indigo-500">info@bifdt.com</a>
+                                        <a className="text-indigo-500">info@bifdt.info</a>
                                         <p className="leading-normal my-5">House # 3/GA,
                                             <br />Shyamoli, Road # 1. Dhaka-1207.
                                         </p>

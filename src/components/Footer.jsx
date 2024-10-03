@@ -40,7 +40,7 @@ const Footer = () => {
                             <div className=" lg:pl-20  sm:text-start" >
                                 <div className="lg:px-10">
                                     <p className="text-[8px] lg:text-xl lg:font-bold  text-white sm:px-10 lg:px-0"> House # 3/GA,Shyamoli, Road # 1. Dhaka-1207.</p>
-                                    <p className="text-[8px] lg:text-xl lg:font-bold text-white sm:px-10 lg:px-0">Email: info@bifdt.com</p>
+                                    <p className="text-[8px] lg:text-xl lg:font-bold text-white sm:px-10 lg:px-0">Email: info@bifdt.info</p>
                                 </div>
                             </div>
 
@@ -52,7 +52,7 @@ const Footer = () => {
                     <div className="mx-auto lg:px-9">
                         <p className="text-sm lg:text-3xl font-bold lg:mt-5  sm:text-start">Contact Number</p>
                         
-                        <div className="flex flex-wrap sm:grid grid-cols-2 sm:w-max gap-2 text-[10px] sm:text-sm">
+                        <div className="flex flex-wrap sm:grid grid-cols-2 sm:w-max gap-2 text-[10px] sm:text-sm md:text-lg">
                             {phoneNumbers.map((phone, index) => (
                                 <a key={index} href={`tel:${phone.tel}`}>
                                     <span className="flex gap-x-2 items-center hover:underline">

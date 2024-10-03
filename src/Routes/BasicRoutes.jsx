@@ -32,7 +32,6 @@ import CreateSeminar from "../pages/AdminSide/seminar/CreateSeminar";
 import ManageSeminar from "../pages/AdminSide/seminar/ManageSeminar";
 import UpdateTestimonials from "../pages/updateTestimonials/UpdateTestimonials";
 import { backendURL } from "../backendURL";
-import UpdateGallery from "../pages/AdminSide/UpdateGallery/UpdateGallery";
 
 import AboutUs from "../pages/ClientSide/aboutUs/AboutUs";
 
@@ -58,7 +57,7 @@ const BasicRoutes = createBrowserRouter([
                 element: <HomePage></HomePage>
             },
             {
-                path: "/courseDetails/:index/education/course&career/bifdt/:id",
+                path: "/bifdt/courseDetails/:title/:id",
                 element: <CourseDetails></CourseDetails>
 
             },
@@ -198,10 +197,7 @@ const BasicRoutes = createBrowserRouter([
                 path: "manageStudentGallary",
                 element: <ManageStudentGallary></ManageStudentGallary>
             },
-            {
-                path: "/dashboard/updateGallery/:id",
-                element: <UpdateGallery />
-            },
+            
             {
                 path: "manageCourses",
                 element: <ManageCoursePage></ManageCoursePage>
