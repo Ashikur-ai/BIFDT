@@ -57,7 +57,7 @@ const BasicRoutes = createBrowserRouter([
                 element: <HomePage></HomePage>
             },
             {
-                path: "/bifdt/courseDetails/:title/:id",
+                path: "/:title/courseDetails/:key/education/course&career/bifdt/:id",
                 element: <CourseDetails></CourseDetails>
 
             },

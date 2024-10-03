@@ -274,14 +274,14 @@ const CourseDetails = () => {
                   backgroundPosition: 'center'
                 }} className="pt-2 sm:pt-5">
 
-                <div className="flex flex-col sm:flex-row  justify-between relative gap-2">
-                  <div className="flex gap-2 flex-col sm:flex-row px-2 w-max">
+                <div className="flex  justify-between relative gap-1 flex-col sm:flex-row pl-2">
+                  <div className="flex gap-2  w-max h-max">
                     <span
                       className="text-white text-[10px]   xs:text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary ">
                       Free Seminar / Counseling
                     </span>
                   </div>
-                  <div className="flex gap-2 justify-end items-center">
+                  <div className="flex gap-1 items-center">
                     <Share />
                     <div
                       className="text-white   text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary h-max w-max text-nowrap">
@@ -368,9 +368,9 @@ const CourseDetails = () => {
               }} className="pt-2 sm:py-5">
                 {/* Admission and course detail section */}
                 <div className="z-10 relative">
-                  <p className="text-black  text-sm mr-4 lg:ml-3 lg:px-1 leading-snug">
-                    <p dangerouslySetInnerHTML={{ __html: bangla }}></p>
-                  </p>
+                  <div className="text-black  text-sm mr-4 lg:ml-3 lg:px-1 leading-snug">
+                    <div dangerouslySetInnerHTML={{ __html: bangla }}></div>
+                  </div>
 
 
                   <div className="flex justify-between items-center lg:pr-14">
