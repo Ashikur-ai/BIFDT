@@ -5,7 +5,7 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 const StudentGalleryTabs = ({ tabName, setTabName, studentCategory }) => {
 
     const tabStyle = (incomingTabName) => {
-        return `text-sm sm:text-base bg-primary/95 font-medium  rounded-t-lg active:scale-90 transition-all duration-300 hover:bg-primary ${incomingTabName === tabName ? 'bg-primary text-white' : 'bg-white hover:bg-primary/30'} w-full h-[50px] px-2`
+        return `text-xs sm:text-base bg-primary/95 font-medium  rounded-t-lg active:scale-90 transition-all duration-300 hover:bg-primary ${incomingTabName === tabName ? 'bg-primary text-white' : 'bg-white hover:bg-primary/30'} w-full h-[50px] px-2`
     }
 
     return (

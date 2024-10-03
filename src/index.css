@@ -100,6 +100,6 @@ ul {
 }
 
 .bounce-animation {
-  animation: bounceTwice 15s ease-in-out  infinite;
+  animation: bounceTwice 10s ease-in-out  infinite;
   /* animation-iteration-count: 2; */
 }
