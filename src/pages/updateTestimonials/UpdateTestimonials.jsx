@@ -8,12 +8,11 @@ import { TbBrandYoutubeFilled } from "react-icons/tb";
 import { FaFacebook } from "react-icons/fa";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { uploadImg } from "../../UploadFile/uploadImg";
 
 const UpdateTestimonials = () => {
     const { id } = useParams();
     const axiosPublic = useAxiosPublic();
-    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const { register, handleSubmit, reset } = useForm();
 
     const { data: testimonialData = {}, refetch: testimonialDataRefetch, isLoading } = useQuery({
@@ -35,19 +34,7 @@ const UpdateTestimonials = () => {
         if (!imageFile?.name) {
             testimonialsImage = upcomingImage
         } else {
-            const image = { image: imageFile }
-
-            const res = await axios.post(imgHostingApi, image, {
-                headers: {
-                    'content-type': 'multipart/form-data'
-                }
-            })
-            try {
-                testimonialsImage = res?.data?.data?.display_url
-            }
-            catch (err) {
-                testimonialsImage = upcomingImage
-            }
+            testimonialsImage = await uploadImg(imageFile)
         }
 
         const allData = { name, designation, opinion, image: testimonialsImage };
@@ -130,9 +117,9 @@ const UpdateTestimonials = () => {
 
 
                                     <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                                        <a className="text-indigo-500">info@bifdt.com</a>
-                                        <p className="leading-normal my-5">House # 3/GA,
-                                            <br />Shyamoli, Road # 1. Dhaka-1207.
+                                        <a className="text-indigo-500">info@bifdt.info</a>
+                                        <p className="leading-normal my-5">House # 3/GA, Shyamoli
+                                            <br /> Road # 1. Dhaka-1207.
                                         </p>
                                         <span className="inline-flex">
                                             <a className="text-gray-500">

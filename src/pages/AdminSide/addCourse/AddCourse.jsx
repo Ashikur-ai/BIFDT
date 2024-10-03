@@ -51,6 +51,7 @@ const AddCourse = () => {
         event.preventDefault();
         const form = event.target;
         const title = form.courseTitle.value;
+        const metaTag = form.metaTag.value;
         const subtitle = form.subtitle.value;
         const mainVideo = form.videoUrl.files[0] || {};
         const homePageCourseImage = form.homePageCourseImage.files[0] || {};
@@ -127,7 +128,7 @@ const AddCourse = () => {
         //     const data = { category, image: imageUrl };
         //     return axiosPublic.post('/studentGallery', data);
         // });
-        const data = { title, subtitle, videoUrl, bannerImages: allImagesArray, parallaxImages: allParallaxImagesArray, subVideos: subVideosArray, notice: formData.notice, bangla: formData.bangla, admissionNotice: formData.admissionNotice, description, homePageCourseImageUrl };
+        const data = { title, subtitle, videoUrl, bannerImages: allImagesArray, parallaxImages: allParallaxImagesArray, subVideos: subVideosArray, notice: formData.notice, bangla: formData.bangla, admissionNotice: formData.admissionNotice, description, homePageCourseImageUrl, metaTag };
 
         axiosPublic.post(`/course`, data)
             .then(res => {
@@ -249,11 +250,21 @@ const AddCourse = () => {
                                                 <SubVideos subVideosArray={subVideosArray} setSubVideos={setSubVideos} />
                                             </div>
                                         </div>
-                                        {/* Description */}
-                                        <div className="p-2 w-full md:col-span-2">
-                                            <div className="relative">
-                                                <label className="leading-7 text-sm text-gray-600 font-bold">Course Description</label>
-                                                <textarea required type="text" name="description" placeholder='Description' className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out min-h-[200px]" />
+                                        <div className='col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2'>
+                                            {/* meta tag */}
+                                            <div className="p-2 w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Course meta tag</label>
+                                                    <textarea required type="text" name="metaTag" placeholder='#Meta tag' className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out min-h-[150px]" />
+                                                </div>
+                                            </div>
+                                            {/* Description */}
+
+                                            <div className="p-2 w-full">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Course Description</label>
+                                                    <textarea required type="text" name="description" placeholder='Description' className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out min-h-[150px]" />
+                                                </div>
                                             </div>
                                         </div>
 

@@ -10,14 +10,13 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { uploadImg } from '../../../UploadFile/uploadImg';
 
 const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory }) => {
     const [category, setCategory] = useState('');
     const [showingImage, setShowingImage] = useState([]);
     const [selectedImages, setSelectedImages] = useState([]);
     const axiosPublic = useAxiosPublic();
-    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
 
     useEffect(() => {
         const images = category === '' ? [] : studentGallery?.filter(gallery => gallery?.category === category);
@@ -36,17 +35,8 @@ const AddStudentGallery = ({ studentGallery, refetch, handleDelete, allCategory 
             if (!imageFiles[0]?.name) {
                 galleryImgURL = '';
             } else {
-                const image = new FormData();
-                image.append('image', imageFiles[i]);
-
-                try {
-                    const res = await axios.post(imgHostingApi, image);
-                    galleryImgURL = res?.data?.data?.display_url;
-                    allImages.push(galleryImgURL);
-                } catch (err) {
-                    // allImages.push(galleryImgURL);
-                    toast.error(err?.message, { id: toastId });
-                }
+                galleryImgURL = await uploadImg(imageFiles[i]);
+                allImages.push(galleryImgURL);
             }
         }
 

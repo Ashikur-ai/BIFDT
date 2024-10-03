@@ -32,9 +32,7 @@ const ManageHomepageContent = () => {
         setNotice(homepageContent[0]?.notice || '');
 
     }, [homepageContent, isLoading])
-    const { description: incomingDescription, imageUrl: incomingImageUrl, notice: incomingNotice, video_url: incomingVideo_url, video_section_video: incomingVideo_section_video, courseImages: incomingCourseImages, parallaxImg: incomingParallaxImg, video_url_text: incomingVideo_url_text, videoSection_url_text: incomingVideoSection_url_text } = homepageContent[0] || []
-    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
+    const { description: incomingDescription, imageUrl: incomingImageUrl, notice: incomingNotice, video_url: incomingVideo_url, video_section_video: incomingVideo_section_video, courseImages: incomingCourseImages, parallaxImg: incomingParallaxImg, video_url_text: incomingVideo_url_text, videoSection_url_text: incomingVideoSection_url_text, metaTag: incomingMetaTag = '' } = homepageContent[0] || []
     const handleNoticeChange = (value) => {
         setNotice(value)
     };
@@ -54,6 +52,7 @@ const ManageHomepageContent = () => {
         const form = event.target;
         const video = form.video_url.files[0] || {};
         const video_url_text = form.video_url_text.value;
+        const metaTag = form.metaTag.value;
         const videoSection_url_text = form.videoSection_url_text.value;
         const video2 = form.video_section_video.files[0] || {};
         const selectedImage = form.image.files[0] || {};
@@ -63,25 +62,9 @@ const ManageHomepageContent = () => {
         const description = usableDescription || '';
         let imageUrl = '';
         let secondImageUrl = '';
-        let retries = 3; // Number of retries
         const video_url = video.name ? await uploadVideo(video) : incomingVideo_url;
         const video_section_video = video2.name ? await uploadVideo(video2) : incomingVideo_section_video;
         const parallaxImg = parallax_image.name ? await uploadImg(parallax_image) : incomingParallaxImg;
-        const uploadImage2 = async (image) => {
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const res = await axios.post(imgHostingApi, image, {
-                        headers: {
-                            'content-type': 'multipart/form-data'
-                        }
-                    });
-                    return res?.data?.data?.display_url;
-                } catch (err) {
-                    if (i === retries - 1) throw err; // Throw error if all retries fail
-                }
-            }
-            return null;
-        };
 
         if (!selectedImage?.name) {
             imageUrl = incomingImageUrl;
@@ -98,13 +81,7 @@ const ManageHomepageContent = () => {
         if (!selectedCourseImage?.name) {
             secondImageUrl = '';
         } else {
-            const image = { image: selectedCourseImage };
-            try {
-                secondImageUrl = await uploadImage2(image);
-            } catch (err) {
-                secondImageUrl = '';
-                toast.error(err?.message, { id: toastId });
-            }
+            secondImageUrl = await uploadImg(selectedCourseImage);
         }
 
         let courseImagesArray = [...incomingCourseImages];
@@ -112,7 +89,7 @@ const ManageHomepageContent = () => {
             courseImagesArray = [...incomingCourseImages, { image: secondImageUrl, id: new Date().getTime() }];
         }
 
-        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description, video_section_video, courseImages: courseImagesArray, parallaxImg, video_url_text, videoSection_url_text };
+        const data = { video_url, notice, imageUrl: imageUrl ? imageUrl : '', description, video_section_video, courseImages: courseImagesArray, parallaxImg, video_url_text, videoSection_url_text, metaTag };
 
         axiosPublic.post(`/updateHomepageContent/${homepageContent[0]?._id || 'notAvailable'}`, data)
             .then(res => {
@@ -309,6 +286,13 @@ const ManageHomepageContent = () => {
                                                 </div>
 
                                             </div>
+                                            {/* Meta keyword  */}
+                                            <div className="p-2">
+                                                <div className="relative">
+                                                    <label className="leading-7 text-sm text-gray-600 font-bold">Meta Keyword</label>
+                                                    <textarea type="text" defaultValue={incomingMetaTag} name="metaTag" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out h-[400px]" />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {/* Notice */}
@@ -333,9 +317,9 @@ const ManageHomepageContent = () => {
 
 
                                     <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                                        <a className="text-indigo-500">info@bifdt.com</a>
-                                        <p className="leading-normal my-5">House # 3/GA,
-                                            <br />Shyamoli, Road # 1. Dhaka-1207.
+                                        <a className="text-indigo-500">info@bifdt.info</a>
+                                        <p className="leading-normal my-5">House # 3/GA, Shyamoli
+                                            <br /> Road # 1. Dhaka-1207.
                                         </p>
                                         <span className="inline-flex">
                                             <a className="text-gray-500">

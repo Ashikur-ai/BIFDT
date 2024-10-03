@@ -9,9 +9,9 @@ const MobileViewButton = () => {
     };
     return (
         <>
-            <div className="fixed bottom-0 w-full right-1 bg-black p-3 ml-5 flex justify-center items-centerbg-black shadow-lg rounded-md z-50" id="mobiledevice">
+            <div className="fixed bottom-0 w-full right-1 bg-black p-3 ml-5 flex justify-center items-center shadow-lg rounded-md z-50" id="mobiledevice">
                 <div className="backtop">
-                    <Link to="/freeSeminar" className="flex items-center text-white hover:text-blue-800">
+                    <Link to="/freeSeminar" className="flex items-center text-white hover:text-blue-800 text-xs sm:text-base flex-col">
                         <FaAngleUp className="pr-1" />
                         Enquire Now
                     </Link>
@@ -25,7 +25,7 @@ const MobileViewButton = () => {
                             callFxn(e.currentTarget);
                         }}
                         data-ps-track-call="1800-212-2714"
-                        className="flex items-center text-white hover:text-blue-800"
+                        className="flex items-center text-white hover:text-blue-800 text-xs sm:text-base flex-col"
                     >
                         <MdGetApp className="" />
                         Get App
@@ -40,7 +40,7 @@ const MobileViewButton = () => {
                             callFxn(e.currentTarget);
                         }}
                         data-ps-track-call="1800-212-2714"
-                        className="flex items-center text-white hover:text-blue-800"
+                        className="flex items-center text-white hover:text-blue-800 text-xs sm:text-base flex-col"
                     >
                         <FaPhone className="" />
                         Call Now
