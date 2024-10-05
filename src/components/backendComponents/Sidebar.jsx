@@ -8,6 +8,7 @@ import { SiNginxproxymanager } from 'react-icons/si';
 import Dropdown from './Dropdown';
 import { FaRegComments } from "react-icons/fa";
 import LogOut from '../LogOut/LogOut';
+import { GrUserSettings } from "react-icons/gr";
 const Sidebar = () => {
 
     const courseUrls =
@@ -59,6 +60,10 @@ const Sidebar = () => {
         <>
             <NavigationItem to="/dashboard/createSeminar" icon={MdAddCircle} label="Create Seminar" />
             <NavigationItem to="/dashboard/manageSeminar" icon={SiNginxproxymanager} label="Manage Seminar" />
+        </>
+    const userUrls =
+        <>
+            <NavigationItem to="/dashboard/manageUsers" icon={GrUserSettings} label="Manage Users" />
         </>
 
     return (
@@ -119,6 +124,12 @@ const Sidebar = () => {
                 <Dropdown
                   buttonText="Student Gallary"
                   urls={studentGallaryUrls}
+                />
+              </li>
+              <li className="mb-4">
+                <Dropdown
+                  buttonText="Users"
+                  urls={userUrls}
                 />
               </li>
             <div className='ml-4'>   <LogOut/></div>

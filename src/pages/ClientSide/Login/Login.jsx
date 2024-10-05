@@ -79,8 +79,7 @@ const Login = () => {
                         <button className={`${btnStyle}`}>
                             Login
                         </button>
-                        Or
-                        <GoogleLogin />
+                        
                     </div>
                 </form>
             </div>

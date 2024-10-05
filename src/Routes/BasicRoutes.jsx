@@ -45,6 +45,7 @@ import UpdateCourseSemester from "../pages/AdminSide/UpdateCourseSemester/Update
 import Login from "../pages/ClientSide/Login/Login";
 import Register from "../pages/ClientSide/Register/Register";
 import PrivateRouts from "../PrivateRouts/PrivateRouts";
+import ManageUsers from "../pages/AdminSide/ManageUsers/ManageUsers";
 
 
 const BasicRoutes = createBrowserRouter([
@@ -225,6 +226,10 @@ const BasicRoutes = createBrowserRouter([
             {
                 path: "manageCourseObjective/:id",
                 element: <ManageCourseObjective />
+            },
+            {
+                path: "manageUsers",
+                element: <ManageUsers />
             },
 
 
