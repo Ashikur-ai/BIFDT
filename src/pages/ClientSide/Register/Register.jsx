@@ -8,14 +8,16 @@ import useAuth from "../../../hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import auth from "../../../firebase/firebase.init";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Register = () => {
     const [showPass, setShowPass] = useState(false)
+    const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
 
     const { createUser } = useAuth()
 
-    const { register, handleSubmit, formState: { errors }, } = useForm()
+    const { register, handleSubmit, formState: { errors }, reset } = useForm()
 
 
     const onSubmit = async ({ name, email, password }) => {
@@ -27,26 +29,22 @@ const Register = () => {
 
                 })
                     .then(() => {
-                        toast.success("Registered Successfully!!", { id: toastId });
-                        // const userInfo = {
-                        //     name: data.name,
-                        //     email: data.email,
-                        //     image: imgUrl
+                        const userInfo = {
+                            name: name,
+                            email: email,
+                        }
+                        axiosPublic.post('/register', userInfo)
+                            .then(res => {
+                                if (res.status == 200) {
+                                    toast.success("Registered Successfully!!", { id: toastId });
 
-
-                        // }
-                        // axiosPublic.post('/addUser', userInfo)
-                        //     .then(res => {
-                        //         if (res.status == 200) {
-                        //             toast.success("Registered Successfully!!", { id: toastId });
-
-                        //             reset();
-                        //             navigate('/')
-                        //         }
-                        //     })
-                        //     .catch(err => {
-                        //         toast.error(err?.message, { id: toastId });
-                        //     })
+                                    reset();
+                                    navigate('/')
+                                }
+                            })
+                            .catch(err => {
+                                toast.error(err?.message, { id: toastId });
+                            })
 
                     })
                     .catch(err => {
@@ -113,8 +111,7 @@ const Register = () => {
                         <button className={`${btnStyle}`}>
                             Register
                         </button>
-                        Or
-                        <GoogleLogin />
+
                     </div>
                 </form>
             </div>

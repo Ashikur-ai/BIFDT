@@ -11,20 +11,27 @@ import {
     Typography,
     Button,
 } from "@material-tailwind/react";
+import ReactPlayer from "react-player";
 const BlogCard = ({ blog, slide = false }) => {
-    const description = blog?.description || 'No description available.';
-    const truncatedDescription = description.slice(0, 20).split(' ').slice(0, -1).join(' ') + (description.length > 200 ? '...' : '');
-    console.log(blog);
-    
+    const { author, blogImageUrl, date, description, meta_word, title, _id, videoUrl = '' } = blog;
     return (
 
         <>
             <Card className={`mt-6 ${slide ? 'w-[60vw] md:max-w-80' : 'w-full md:max-w-80'}`}>
-                <CardHeader color="blue-gray" className="relative max-h-32 sm:max-h-56  sm:h-56 border-black">
-                    <img
-                        src={blog?.blogImageUrl}
-                        className="w-full h-full object-cover"
-                    />
+                <CardHeader color="blue-gray" className="relative max-h-32  sm:max-h-56  sm:h-56 border-black">
+                {
+                        videoUrl ? <ReactPlayer
+                            controls="true"
+                            url={videoUrl}
+                            width="100%"
+                            height="100%"
+                        /> : <img
+                            className='w-full h-full object-cover'
+                            src={blogImageUrl}
+                            alt="Shoes"
+
+                        />
+                    }
                 </CardHeader>
                 <CardBody className="">
                     <Typography variant="h5" color="blue-gray" className="mb-2 text-sm sm:text-lg">

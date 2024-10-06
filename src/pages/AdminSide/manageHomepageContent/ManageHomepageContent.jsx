@@ -69,13 +69,7 @@ const ManageHomepageContent = () => {
         if (!selectedImage?.name) {
             imageUrl = incomingImageUrl;
         } else {
-            const image = { image: selectedImage };
-            try {
-                imageUrl = await uploadImg(image)
-            } catch (err) {
-                imageUrl = incomingImageUrl;
-                toast.error(err?.message, { id: toastId });
-            }
+            imageUrl = await uploadImg(selectedImage)
         }
 
         if (!selectedCourseImage?.name) {

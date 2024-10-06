@@ -10,6 +10,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadImg } from '../../../UploadFile/uploadImg';
+import { uploadVideo } from '../../../UploadFile/uploadVideo';
+import toast from 'react-hot-toast';
 const UpdateBlog = () => {
     const [tinyDescription, setTinyDescription] = useState('')
     const { id } = useParams();
@@ -31,7 +33,7 @@ const UpdateBlog = () => {
     if (isLoading) {
         return ''
     }
-    const { title: incomingTitle, blogImageUrl: incomingBlogImageUrl, date: incomingDate, meta_word: incomingMeta_word, author: incomingAuthor, description: incomingDescription, } = blogData;
+    const { title: incomingTitle, blogImageUrl: incomingBlogImageUrl, date: incomingDate, meta_word: incomingMeta_word, author: incomingAuthor, description: incomingDescription, videoUrl: incomingVideoUrl } = blogData;
 
     // Format the date as YYYY-MM-DD
     const handleDescriptionChange = (value) => {
@@ -47,6 +49,8 @@ const UpdateBlog = () => {
         const form = event.target;
         const title = form.title.value;
         const blogImage = form.blogImg.files[0];
+        let videoUrl = form.videoUrl.value;
+        const video = form.video.files[0];
         const date = form.date.value
         const meta_word = form.meta_word.value;
         const author = form.author.value;
@@ -55,6 +59,7 @@ const UpdateBlog = () => {
             setTinyDescription(tinyDescription)
             return setDescriptionErr(true)
         }
+        const toastId = toast.loading("Blog is updating...");
         let blogImageUrl = incomingBlogImageUrl
         if (!blogImage?.name) {
 
@@ -63,27 +68,26 @@ const UpdateBlog = () => {
             blogImageUrl = await uploadImg(blogImage) || incomingBlogImageUrl
         }
 
-
-        const data = { title, blogImageUrl, meta_word, author, description, date };
+        if (!videoUrl) {
+            if (video?.name) {
+                videoUrl = await uploadVideo(video)
+            } else {
+                videoUrl = ''
+            }
+        }
+        const data = { title, blogImageUrl, meta_word, author, description, date, videoUrl };
 
         axiosPublic.put(`/updateBlog/${id}`, data)
             .then(res => {
                 setTinyDescription(tinyDescription)
                 if (res.data.modifiedCount) {
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Blog has been Updated",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+                    toast.success("Blog added Successfully!!", { id: toastId });
 
                 }
             })
-            .catch(() => {
-                setTinyDescription(tinyDescription)
+            .catch((err) => {
+                toast.error(err?.message, { id: toastId });
             })
-        form.reset();
     }
 
     return (
@@ -120,7 +124,30 @@ const UpdateBlog = () => {
                                                 <input type="text" defaultValue={incomingAuthor} name="author" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
+                                        {/*videoUrl  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Video Url</label>
+                                                <input defaultValue={incomingVideoUrl} type="text" name="videoUrl" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
 
+
+                                        {/* video upload  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Upload Video</label><br />
+                                                <input type="file" name='video'
+                                                    accept="video/*" className="file-input file-input-bordered file-input-md w-full  " />
+                                            </div>
+                                        </div>
+                                        {/* image url  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative w-full">
+                                                <label className="leading-7 text-sm text-gray-600">Blog Banner Image</label><br />
+                                                <input type="file" name='blogImg' className="file-input file-input-bordered file-input-md w-full" />
+                                            </div>
+                                        </div>
 
 
                                         {/* Meta keyword  */}
@@ -137,13 +164,7 @@ const UpdateBlog = () => {
                                                 <input defaultValue={incomingDate} type="date" name="date" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
-                                        {/* image url  */}
-                                        <div className="p-2 w-1/2">
-                                            <div className="relative w-full">
-                                                <label className="leading-7 text-sm text-gray-600">Blog Banner Image</label><br />
-                                                <input type="file" name='blogImg' className="file-input file-input-bordered file-input-md w-full" />
-                                            </div>
-                                        </div>
+
 
 
                                         {/* Description */}
@@ -177,7 +198,7 @@ const UpdateBlog = () => {
 
                                     <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
                                         <a className="text-indigo-500">info@bifdt.info</a>
-                                        <p className="leading-normal my-5">House # 3/GA, Shyamoli 
+                                        <p className="leading-normal my-5">House # 3/GA, Shyamoli
                                             <br /> Road # 1. Dhaka-1207.
                                         </p>
                                         <span className="inline-flex">
