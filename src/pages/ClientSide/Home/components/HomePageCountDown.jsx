@@ -5,7 +5,6 @@ import Sun from "../../../../components/Sun";
 
 const HomePageCountDown = ({ allData }) => {
   const { since, student, rating, instructor, guarantee, ratio,visitor } = allData;
-  console.log(allData);
   
   return (
     <div className="lg:pt-20">

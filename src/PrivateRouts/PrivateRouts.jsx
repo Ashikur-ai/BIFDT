@@ -10,7 +10,6 @@ import { signOut } from "firebase/auth";
 const PrivateRouts = ({ children }) => {
     const { user, loading } = useAuth();
     const [isAdmin, isAdminLoading] = useAdmin();
-    console.log(isAdmin);
     
     if (loading || isAdminLoading) {
         return 
