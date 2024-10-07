@@ -54,7 +54,7 @@ const Share = () => {
     const handleCopy = () => {
         navigator.clipboard.writeText(shareUrl)
             .then(() => {
-               toast.success('Copied!!')
+                toast.success('Copied!!')
             })
             .catch(err => {
                 toast.error(err.message)
@@ -64,11 +64,7 @@ const Share = () => {
 
     return (
         <>
-            <div className="">
-                <button onClick={openModal} className="lg:p-3 p-1 rounded-lg bg-primary text-white hover:text-black  active:bg-white-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max text-xs sm:text-sm lg:text-xl">Share now</button>
-
-
-            </div>
+            <button onClick={openModal} className="lg:p-3 p-1 rounded-lg bg-primary text-white hover:text-black  active:bg-white-700 focus:outline-none focus:ring focus:ring-red-300 focus:text-white w-max text-[8px] sm:text-sm lg:text-xl">Share now</button>
             <dialog id="shareNowModal" className="modal">
                 <div className="modal-box">
                     <form method="dialog">
