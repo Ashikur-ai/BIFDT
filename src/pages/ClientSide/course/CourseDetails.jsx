@@ -274,17 +274,17 @@ const CourseDetails = () => {
                   backgroundPosition: 'center'
                 }} className="pt-2 sm:pt-5">
 
-                <div className="flex  justify-between relative gap-1 flex-col sm:flex-row pl-2">
+                <div className="flex  justify-between relative gap-1 px-2">
                   <div className="flex gap-2  w-max h-max">
                     <span
-                      className="text-white text-[10px]   xs:text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary ">
+                      className="text-white text-[8px]   xs:text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary ">
                       Free Seminar / Counseling
                     </span>
                   </div>
                   <div className="flex gap-1 items-center">
                     <Share />
                     <div
-                      className="text-white   text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary h-max w-max text-nowrap">
+                      className="text-white text-[8px] sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary h-max w-max text-nowrap">
                       <Link to="/onlineAdmission">Enroll Now</Link>
                     </div>
                   </div>

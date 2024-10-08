@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaHome, FaUsers, FaWpforms } from 'react-icons/fa';
 import { FaCircleUser, FaFileWaveform } from 'react-icons/fa6';
-import { MdAdd, MdAddCircle, MdLogout } from 'react-icons/md';
+import { MdAdd, MdAddCircle, MdLogout, MdOutlineSmartphone } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import NavigationItem from './NavigationItem';
 import { SiNginxproxymanager } from 'react-icons/si';
@@ -64,8 +64,8 @@ const Sidebar = () => {
     const userUrls =
         <>
             <NavigationItem to="/dashboard/manageUsers" icon={GrUserSettings} label="Manage Users" />
+            <NavigationItem to="/dashboard/manageAppUsers" icon={MdOutlineSmartphone} label="App Users" />
         </>
-
     return (
       <>
         <div className="w-64 lg:w-64 bg-white flex flex-col justify-start py-8 border rounded-lg lg:max-h-screen lg:overflow-x-auto">
