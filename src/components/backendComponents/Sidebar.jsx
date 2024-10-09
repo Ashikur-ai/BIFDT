@@ -63,7 +63,7 @@ const Sidebar = () => {
         </>
     const userUrls =
         <>
-            <NavigationItem to="/dashboard/manageUsers" icon={GrUserSettings} label="Manage Users" />
+            <NavigationItem to="/dashboard/manageUsers" icon={GrUserSettings} label="Website Users" />
             <NavigationItem to="/dashboard/manageAppUsers" icon={MdOutlineSmartphone} label="App Users" />
         </>
     return (
@@ -128,7 +128,7 @@ const Sidebar = () => {
               </li>
               <li className="mb-4">
                 <Dropdown
-                  buttonText="Users"
+                  buttonText="Manage Users"
                   urls={userUrls}
                 />
               </li>
