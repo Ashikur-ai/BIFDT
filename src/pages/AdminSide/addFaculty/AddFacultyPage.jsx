@@ -8,9 +8,8 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
+import { uploadImg } from '../../../UploadFile/uploadImg';
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddFacultyPage = () => {
     const axiosPublic = useAxiosPublic();
@@ -18,41 +17,34 @@ const AddFacultyPage = () => {
 
     const onSubmit = async (data) => {
         // image upload to imgbb and then get an url 
-        const imageFile = { image: data.image[0] }
-        const res = await axiosPublic.post(image_hosting_api, imageFile, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        });
+        const res = await uploadImg(data.image[0])
 
-        if (res.data.success) {
-            // now send all into to server 
-            const information = {
-                name: data.name,
-                email: data.email,
-                background_of_study: data.background_of_study,
-                job_experience: data.job_experience,
-                contact: data.contact,
-                facebook: data.facebook,
-                twitter: data.twitter,
-                whatsapp: data.whatsapp,
-                designation: data.designation,
-                image: res.data.data.display_url
-            }
+        // now send all into to server 
+        const information = {
+            name: data.name,
+            email: data.email,
+            background_of_study: data.background_of_study,
+            job_experience: data.job_experience,
+            contact: data.contact,
+            facebook: data.facebook,
+            twitter: data.twitter,
+            whatsapp: data.whatsapp,
+            designation: data.designation,
+            image: res
+        }
 
-            const infoRes = await axiosPublic.post('/faculty', information);
+        const infoRes = await axiosPublic.post('/faculty', information);
 
-            if (infoRes.data.insertedId) {
-                // show success popup 
-                reset();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${data.name} is added to Faculty Database.`,
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            }
+        if (infoRes.data.insertedId) {
+            // show success popup 
+            reset();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `${data.name} is added to Faculty Database.`,
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
 
 
@@ -104,14 +96,14 @@ const AddFacultyPage = () => {
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Background Of Study</label>
-                                                <input type="text" {...register('background_of_study')}  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="text" {...register('background_of_study')} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
                                         {/* job experience  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Job Experience</label>
-                                                <input type="text" {...register('job_experience')}  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                <input type="text" {...register('job_experience')} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
 
@@ -152,9 +144,9 @@ const AddFacultyPage = () => {
 
 
                                     <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                                        <a className="text-indigo-500">info@bifdt.com</a>
-                                        <p className="leading-normal my-5">House # 3/GA,
-                                            <br />Shyamoli, Road # 1. Dhaka-1207.
+                                        <a className="text-indigo-500">info@bifdt.info</a>
+                                        <p className="leading-normal my-5">House # 3/GA,Shyamoli
+                                            <br />Road # 1. Dhaka-1207.
                                         </p>
                                         <span className="inline-flex">
                                             <a className="text-gray-500">

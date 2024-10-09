@@ -25,7 +25,7 @@ const CourseCategory = ({ category }) => {
     }, 0);
     return (
         <div className="overflow-x-auto w-full max-w-[800px] mx-auto">
-            <table className="table overflow-hidden w-full mx-auto text-base bg-primary/30 !rounded-b-none">
+            <table className="table overflow-hidden w-full mx-auto text-base bg-primary/30 !rounded-none">
                 <div className="absolute top-0 left-0  bg-white w-full h-full  -z-10"></div>
                 {/* head */}
                 <thead className='bg-primary/90 text-white  '>

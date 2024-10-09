@@ -23,6 +23,7 @@ import parallax4 from '../../../assets/images/parallax/parallax4.png';
 import HomePageCoursePlayer from "../Home/components/HomePageCoursePlayer";
 import Share from "./Share";
 import { useEffect, useState } from "react";
+import Videos from "../Home/components/Videos";
 // slider import
 
 
@@ -61,7 +62,7 @@ const CourseDetails = () => {
 
 
 
-  const { courseImages } = homepageContent[0] || [];
+  const { courseImages, videoSection_url_text, video_section_video } = homepageContent[0] || [];
   return (
     <>
       <Helmet>
@@ -273,24 +274,28 @@ const CourseDetails = () => {
                   backgroundPosition: 'center'
                 }} className="pt-2 sm:pt-5">
 
-                <div className="flex  justify-between relative">
-                  <div className="flex gap-2 flex-col sm:flex-row px-2">
+                <div className="flex  justify-between relative gap-1 flex-col sm:flex-row pl-2">
+                  <div className="flex gap-2  w-max h-max">
                     <span
-                      className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary ">
-                      Free Seminar <br className="block sm:hidden" /> / Counseling
+                      className="text-white text-[10px]   xs:text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary ">
+                      Free Seminar / Counseling
                     </span>
                   </div>
-                  <span
-                    className="text-white   text-xs sm:text-sm lg:text-xl px-1  lg:px-5 rounded-lg bg-primary h-max">
-                    <Link to="/onlineAdmission">Enroll Now</Link>
-                  </span>
+                  <div className="flex gap-1 items-center">
+                    <Share />
+                    <div
+                      className="text-white   text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary h-max w-max text-nowrap">
+                      <Link to="/onlineAdmission">Enroll Now</Link>
+                    </div>
+                  </div>
                 </div>
 
-                <p className="pr-10 pl-1 text-sm sm:text-base lg:text-2xl z-10 relative overflow-hidden font-bold text-black py-2">
+                <p className="pr-10 pl-1 text-xs xs:text-sm sm:text-base lg:text-2xl z-10 relative overflow-hidden font-bold text-blue-700 py-2">
                   {subtitle}
                 </p>
 
-                <p className="text-gray-800 relative text-justify text-sm">{showMore ? description : `${description?.slice(0, 200)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
+                <p className="text-gray-800 relative text-justify text-xs xs:text-sm hidden sm:block">{showMore ? description : `${description?.slice(0, 200)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
+                <p className="text-gray-800 relative text-justify text-xs sm:text-sm sm:hidden block">{showMore ? description : `${description?.slice(0, 50)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
                 <hr className="border-black my-2" />
 
 
@@ -347,9 +352,9 @@ const CourseDetails = () => {
                   </Marquee>
 
                 </div>
-<div className="relative">
-<hr className="w-full border-black" />
-</div>
+                <div className="relative">
+                  <hr className="w-full border-black" />
+                </div>
 
               </div>
 
@@ -363,9 +368,9 @@ const CourseDetails = () => {
               }} className="pt-2 sm:py-5">
                 {/* Admission and course detail section */}
                 <div className="z-10 relative">
-                  <p className="text-black  text-sm mr-4 lg:ml-3 lg:px-1 leading-snug">
-                    <p dangerouslySetInnerHTML={{ __html: bangla }}></p>
-                  </p>
+                  <div className="text-black  text-sm mr-4 lg:ml-3 lg:px-1 leading-snug">
+                    <div dangerouslySetInnerHTML={{ __html: bangla }}></div>
+                  </div>
 
 
                   <div className="flex justify-between items-center lg:pr-14">
@@ -381,7 +386,7 @@ const CourseDetails = () => {
                 <div className="pt-20 z-10 relative ">
                   <div className="flex justify-between flex-col sm:flex-row">
                     <p className="lg:text-2xl font-bold py-5">Course Details</p>
-                    <div className="w-full md:w-max flex justify-end items-end"><Share /></div>
+
                   </div>
                   <CourseDetailsTab></CourseDetailsTab>
 
@@ -414,7 +419,10 @@ const CourseDetails = () => {
               <HomePageCoursePlayer courseImages={courseImages} />
             </div>
           </div>
+          <div id="homePageFirstSection" className="video-container mb-52">
 
+            <Videos video_url={videoSection_url_text || video_section_video} />
+          </div>
 
           <div className="">
 

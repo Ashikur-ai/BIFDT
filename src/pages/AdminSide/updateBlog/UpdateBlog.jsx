@@ -9,13 +9,12 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Editor } from '@tinymce/tinymce-react';
+import { uploadImg } from '../../../UploadFile/uploadImg';
 const UpdateBlog = () => {
     const [tinyDescription, setTinyDescription] = useState('')
     const { id } = useParams();
     const [descriptionErr, setDescriptionErr] = useState(false)
     const axiosPublic = useAxiosPublic();
-    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
 
     const { data: blogData = {}, refetch: blogDataRefetch, isLoading } = useQuery({
         queryKey: ['blogData', id],
@@ -58,24 +57,10 @@ const UpdateBlog = () => {
         }
         let blogImageUrl = incomingBlogImageUrl
         if (!blogImage?.name) {
-            
+
             blogImageUrl = incomingBlogImageUrl
         } else {
-            const image = { image: blogImage }
-
-            const res = await axios.post(imgHostingApi, image, {
-                headers: {
-                    'content-type': 'multipart/form-data'
-                }
-            })
-            try {
-                setTinyDescription(tinyDescription)
-                blogImageUrl = res?.data?.data?.display_url
-            }
-            catch (err) {
-                setTinyDescription(tinyDescription)
-                blogImageUrl = incomingBlogImageUrl
-            }
+            blogImageUrl = await uploadImg(blogImage) || incomingBlogImageUrl
         }
 
 
@@ -191,9 +176,9 @@ const UpdateBlog = () => {
 
 
                                     <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                                        <a className="text-indigo-500">info@bifdt.com</a>
-                                        <p className="leading-normal my-5">House # 3/GA,
-                                            <br />Shyamoli, Road # 1. Dhaka-1207.
+                                        <a className="text-indigo-500">info@bifdt.info</a>
+                                        <p className="leading-normal my-5">House # 3/GA, Shyamoli 
+                                            <br /> Road # 1. Dhaka-1207.
                                         </p>
                                         <span className="inline-flex">
                                             <a className="text-gray-500">

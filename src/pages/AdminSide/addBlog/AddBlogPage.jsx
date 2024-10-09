@@ -12,6 +12,7 @@ import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
+import { uploadImg } from '../../../UploadFile/uploadImg';
 
 // Font registration (Move this outside the component)
 const Font = Quill.import('formats/font');
@@ -20,8 +21,6 @@ Quill.register(Font, true);
 const AddBlogPage = () => {
     const [descriptionErr, setDescriptionErr] = useState(false)
     const axiosPublic = useAxiosPublic();
-    const imgHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const imgHostingApi = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
     const [formData, setFormData] = useState({
         description: '',
 
@@ -31,24 +30,6 @@ const AddBlogPage = () => {
     const handleDescriptionChange = (value) => {
         setFormData({ ...formData, description: value });
     };
-
-    const modules = {
-        toolbar: [
-            [{ 'header': '1' }, { 'header': '2' }, { 'font': Font.whitelist }],
-            [{ 'size': [] }],
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-            ['link', 'image', 'video'],
-            ['clean']
-        ],
-    };
-
-    const formats = [
-        'header', 'font', 'size',
-        'bold', 'italic', 'underline', 'strike', 'blockquote',
-        'list', 'bullet', 'indent',
-        'link', 'image', 'video'
-    ];
 
 
 
@@ -69,19 +50,7 @@ const AddBlogPage = () => {
         if (!blogImage?.name) {
             blogImageUrl = ''
         } else {
-            const image = { image: blogImage }
-
-            const res = await axios.post(imgHostingApi, image, {
-                headers: {
-                    'content-type': 'multipart/form-data'
-                }
-            })
-            try {
-                blogImageUrl = res?.data?.data?.display_url
-            }
-            catch (err) {
-                blogImageUrl = ''
-            }
+            blogImageUrl = await uploadImg(blogImage)
         }
 
 
@@ -173,7 +142,7 @@ const AddBlogPage = () => {
                                         <div className="p-2 w-full mb-10 h-full">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm font-bold text-gray-600">Blog Description</label>
-                                                
+
                                                 <Editor
                                                     apiKey='rcgwgkgfl2fboctr4kanu1wyo0q2768tzdj3sxx94rb4s4es'
                                                     init={{
@@ -206,9 +175,9 @@ const AddBlogPage = () => {
 
 
                                     <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                                        <a className="text-indigo-500">info@bifdt.com</a>
-                                        <p className="leading-normal my-5">House # 3/GA,
-                                            <br />Shyamoli, Road # 1. Dhaka-1207.
+                                        <a className="text-indigo-500">info@bifdt.info</a>
+                                        <p className="leading-normal my-5">House # 3/GA,Shyamoli
+                                            <br />Road # 1. Dhaka-1207.
                                         </p>
                                         <span className="inline-flex">
                                             <a className="text-gray-500">

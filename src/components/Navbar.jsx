@@ -34,7 +34,7 @@ const Navbar = () => {
       <NavLink to="/" className={`${NavLinkStyle}`}>Home</NavLink>
       <NavLink to="aboutUs/bangladeshInstituteoffashion&designtechnology/bifdt" className={`${NavLinkStyle}`}>About Us</NavLink>
       {
-        courses?.map((course, idx) => <NavLink key={course?._id} to={`/courseDetails/${idx+1}/education/course&career/bifdt/${course?._id}`} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
+        courses?.map((course, idx) => <NavLink key={course?._id} to={`/${course?.title}/courseDetails/${idx+1}/education/course&career/bifdt/${course?._id}`} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
       }
 
 
@@ -57,7 +57,7 @@ const Navbar = () => {
 
       <div className={` rounded-md bg-black/10 flex flex-col ml-4 transition-all origin-top duration-300 ${isDropdownOpen ? 'block scale-y-100 p-2' : 'scale-y-0 h-0'} gap-2`}>
         {
-          courses?.map((course, idx) => <NavLink key={course?._id} to={`/courseDetails/${idx+1}/education/course&career/bifdt/${course?._id}`} onClick={handleHideDrawer} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
+          courses?.map((course, idx) => <NavLink key={course?._id} to={`/${course?.title}/courseDetails/${idx+1}/education/course&career/bifdt/${course?._id}`} onClick={handleHideDrawer} className={`${NavLinkStyle}`}>{course?.title}</NavLink>)
         }
       </div>
 

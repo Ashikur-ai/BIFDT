@@ -22,7 +22,7 @@ const HomePageCourses = () => {
                 courses?.map((course, idx) => <AnimatedDiv key={idx} value={(idx % 2) === 0 ? 300 : -300}>
                     <div className={`flex flex-col  ${(idx % 2) === 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
                         <div className="w-full lg:w-1/2 bg-primary">
-                            <Link to={`/courseDetails/${idx + 1}/education/course&career/bifdt/${course?._id}`}>
+                            <Link  to={`/${course?.title}/courseDetails/${idx}/education/course&career/bifdt/${course?._id}`}>
                                 <p className={`${textStyle}`}>
                                     {course.title}
                                 </p>
