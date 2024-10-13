@@ -39,7 +39,7 @@ const HomePage = () => {
       return res?.data;
     },
   });
- 
+
   const {
     description,
     imageUrl,
@@ -69,12 +69,13 @@ const HomePage = () => {
         </Helmet>
 
         {/* Video and Marquee First section  */}
-        <div  className="video-container">
+        <div className="">
           <ReactPlayer
+            width="100%"
             controls="true"
             height="100%"
+            playing={true}
             url={video_url_text || video_url}
-            width="100%"
           />
         </div>
         <button></button>
@@ -165,7 +166,7 @@ const HomePage = () => {
         <Blogs></Blogs>
 
         {/* videos section  */}
-        <Videos video_url={videoSection_url_text||video_section_video} />
+        <Videos video_url={videoSection_url_text || video_section_video} />
 
         {/* tenth section Google Map  */}
         <div className="">
