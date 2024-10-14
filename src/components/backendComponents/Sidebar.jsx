@@ -1,13 +1,14 @@
 import React from 'react';
 import { FaHome, FaUsers, FaWpforms } from 'react-icons/fa';
 import { FaCircleUser, FaFileWaveform } from 'react-icons/fa6';
-import { MdAdd, MdAddCircle, MdLogout } from 'react-icons/md';
+import { MdAdd, MdAddCircle, MdLogout, MdOutlineSmartphone } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import NavigationItem from './NavigationItem';
 import { SiNginxproxymanager } from 'react-icons/si';
 import Dropdown from './Dropdown';
 import { FaRegComments } from "react-icons/fa";
 import LogOut from '../LogOut/LogOut';
+import { GrUserSettings } from "react-icons/gr";
 const Sidebar = () => {
 
     const courseUrls =
@@ -60,7 +61,11 @@ const Sidebar = () => {
             <NavigationItem to="/dashboard/createSeminar" icon={MdAddCircle} label="Create Seminar" />
             <NavigationItem to="/dashboard/manageSeminar" icon={SiNginxproxymanager} label="Manage Seminar" />
         </>
-
+    const userUrls =
+        <>
+            <NavigationItem to="/dashboard/manageUsers" icon={GrUserSettings} label="Website Users" />
+            <NavigationItem to="/dashboard/manageAppUsers" icon={MdOutlineSmartphone} label="App Users" />
+        </>
     return (
       <>
         <div className="w-64 lg:w-64 bg-white flex flex-col justify-start py-8 border rounded-lg lg:max-h-screen lg:overflow-x-auto">
@@ -119,6 +124,12 @@ const Sidebar = () => {
                 <Dropdown
                   buttonText="Student Gallary"
                   urls={studentGallaryUrls}
+                />
+              </li>
+              <li className="mb-4">
+                <Dropdown
+                  buttonText="Manage Users"
+                  urls={userUrls}
                 />
               </li>
             <div className='ml-4'>   <LogOut/></div>

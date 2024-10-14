@@ -5,6 +5,7 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { makeVisibleTime } from '../../../makeVisibleTime';
 import OtherBlogs from './OtherBlogs';
 import Comments from './Comments';
+import ReactPlayer from 'react-player';
 
 const BlogDetails = () => {
     const { id } = useParams();
@@ -19,18 +20,27 @@ const BlogDetails = () => {
     if (isLoading) {
         return ''
     }
-    const { author, blogImageUrl, date, description, meta_word, title, _id } = blogData;
+    const { author, blogImageUrl, date, description, meta_word, title, _id, videoUrl = '' } = blogData;
+
     return (
         <div className='lg:px-20'>
             <p className="text-4xl m-10"><span className='text-primary '>Blog</span> Details</p>
             <div className='lg:flex gap-5 sm:m-4 pb-20'>
                 <div className='lg:w-3/4 mx-auto bg-gray-200'>
-                    <img
-                        className='w-full'
-                        src={blogImageUrl}
-                        alt="Shoes"
+                    {
+                        videoUrl ? <ReactPlayer
+                            controls="true"
+                            playing={true}
+                            url={videoUrl}
+                            width="100%"
+                        /> : <img
+                            className='w-full'
+                            src={blogImageUrl}
+                            alt="Shoes"
 
-                    />
+                        />
+                    }
+
                     <div className='flex items-center gap-10 pt-10'>
                         <p className='pt-2 text-white px-10 bg-primary'>{makeVisibleTime(date)}</p>
                         <p className='text-2xl font-bold'>{title}</p>

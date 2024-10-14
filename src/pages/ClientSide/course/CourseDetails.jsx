@@ -24,6 +24,9 @@ import HomePageCoursePlayer from "../Home/components/HomePageCoursePlayer";
 import Share from "./Share";
 import { useEffect, useState } from "react";
 import Videos from "../Home/components/Videos";
+import Facebook from "./Facebook";
+import Instagram from "./Instagram";
+import Twitter from "./Twitter";
 // slider import
 
 
@@ -110,152 +113,19 @@ const CourseDetails = () => {
               <p className="text-primary  text-center font-bold text-2xl  bg-white ">
                 Facebook Page
               </p>
-              <div className="border border-t-black">
-                <div className="flex items-center justify-center bg-gray-100">
-                  <div className="w-full max-w-md h-96 overflow-y-auto p-4 bg-gray-200 rounded-lg shadow-lg">
-
-                    <div className="card  bg-base-100 shadow-xl">
-                      <figure>
-                        <img
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJwbTixnmLkOmISG9YsIvC0w_VjjvWYvEnvg&s"
-                          alt="Shoes"
-                        />
-                      </figure>
-                      <div className="card-body">
-                        <h2 className="card-title">Facebook</h2>
-                        <p>
-                          This a facebook Lorem ipsum dolor sit amet consectetur
-                          adipisicing elit. Ea placeat sequi magnam reprehenderit
-                          explicabo voluptatum tenetur quam, error nesciunt
-                          expedita facere magni facilis illum omnis nulla, optio
-                          debitis hic veritatis. he choose?
-                        </p>
-                        <div className="card-actions justify-end">
-                          <button className="btn btn-primary">Buy Now</button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="card  bg-base-100 shadow-xl">
-                      <figure>
-                        <img
-                          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                          alt="Shoes"
-                        />
-                      </figure>
-                      <div className="card-body">
-                        <h2 className="card-title">Shoes!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="card-actions justify-end">
-                          <button className="btn btn-primary">Buy Now</button>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
+              <Facebook />
 
               {/* instagram  */}
               <p className="text-primary  text-center font-bold text-2xl pt-2 bg-white ">
                 Instagram Page
               </p>
-              <div className="border border-t-black">
-                <div className="flex items-center justify-center bg-gray-100">
-                  <div className="w-full max-w-md h-96 overflow-y-auto p-4 bg-gray-200 rounded-lg shadow-lg">
-
-                    <div className="card  bg-base-100 shadow-xl">
-                      <figure>
-                        <img
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJwbTixnmLkOmISG9YsIvC0w_VjjvWYvEnvg&s"
-                          alt="Shoes"
-                        />
-                      </figure>
-                      <div className="card-body">
-                        <h2 className="card-title">Facebook</h2>
-                        <p>
-                          This a facebook Lorem ipsum dolor sit amet consectetur
-                          adipisicing elit. Ea placeat sequi magnam reprehenderit
-                          explicabo voluptatum tenetur quam, error nesciunt
-                          expedita facere magni facilis illum omnis nulla, optio
-                          debitis hic veritatis. he choose?
-                        </p>
-                        <div className="card-actions justify-end">
-                          <button className="btn btn-primary">Buy Now</button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="card  bg-base-100 shadow-xl">
-                      <figure>
-                        <img
-                          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                          alt="Shoes"
-                        />
-                      </figure>
-                      <div className="card-body">
-                        <h2 className="card-title">Shoes!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="card-actions justify-end">
-                          <button className="btn btn-primary">Buy Now</button>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
+              <Instagram />
 
 
               <p className="text-primary  text-center font-bold text-2xl pt-2 bg-white ">
                 Twitter Page
               </p>
-              <div className="border border-t-black">
-                <div className="flex items-center justify-center bg-gray-100">
-                  <div className="w-full max-w-md h-96 overflow-y-auto p-4 bg-gray-200 rounded-lg shadow-lg">
-
-                    <div className="card  bg-base-100 shadow-xl">
-                      <figure>
-                        <img
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJwbTixnmLkOmISG9YsIvC0w_VjjvWYvEnvg&s"
-                          alt="Shoes"
-                        />
-                      </figure>
-                      <div className="card-body">
-                        <h2 className="card-title">Facebook</h2>
-                        <p>
-                          This a facebook Lorem ipsum dolor sit amet consectetur
-                          adipisicing elit. Ea placeat sequi magnam reprehenderit
-                          explicabo voluptatum tenetur quam, error nesciunt
-                          expedita facere magni facilis illum omnis nulla, optio
-                          debitis hic veritatis. he choose?
-                        </p>
-                        <div className="card-actions justify-end">
-                          <button className="btn btn-primary">Buy Now</button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="card  bg-base-100 shadow-xl">
-                      <figure>
-                        <img
-                          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                          alt="Shoes"
-                        />
-                      </figure>
-                      <div className="card-body">
-                        <h2 className="card-title">Shoes!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="card-actions justify-end">
-                          <button className="btn btn-primary">Buy Now</button>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
+              <Twitter />
 
 
 
@@ -274,17 +144,17 @@ const CourseDetails = () => {
                   backgroundPosition: 'center'
                 }} className="pt-2 sm:pt-5">
 
-                <div className="flex  justify-between relative gap-1 flex-col sm:flex-row pl-2">
+                <div className="flex  justify-between relative gap-1 px-2">
                   <div className="flex gap-2  w-max h-max">
                     <span
-                      className="text-white text-[10px]   xs:text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary ">
+                      className="text-white text-[8px]   xs:text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary ">
                       Free Seminar / Counseling
                     </span>
                   </div>
                   <div className="flex gap-1 items-center">
                     <Share />
                     <div
-                      className="text-white   text-xs sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary h-max w-max text-nowrap">
+                      className="text-white text-[8px] sm:text-sm lg:text-xl lg:p-3 p-1  lg:px-5 rounded-lg bg-primary h-max w-max text-nowrap">
                       <Link to="/onlineAdmission">Enroll Now</Link>
                     </div>
                   </div>

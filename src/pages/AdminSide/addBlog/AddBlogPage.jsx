@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadImg } from '../../../UploadFile/uploadImg';
+import { uploadVideo } from '../../../UploadFile/uploadVideo';
 
 // Font registration (Move this outside the component)
 const Font = Quill.import('formats/font');
@@ -38,6 +39,8 @@ const AddBlogPage = () => {
         event.preventDefault();
         const form = event.target;
         const title = form.title.value;
+        let videoUrl = form.videoUrl.value;
+        const video = form.video.files[0];
         const blogImage = form.blogImg.files[0];
         const date = form.date.value
         const meta_word = form.meta_word.value;
@@ -46,6 +49,7 @@ const AddBlogPage = () => {
         if (!description) {
             return setDescriptionErr(true)
         }
+        const toastId = toast.loading("Blog is Adding...");
         let blogImageUrl = ''
         if (!blogImage?.name) {
             blogImageUrl = ''
@@ -53,24 +57,27 @@ const AddBlogPage = () => {
             blogImageUrl = await uploadImg(blogImage)
         }
 
+        if (!videoUrl) {
+            if (video?.name) {
+                videoUrl = await uploadVideo(video)
+            } else {
+                videoUrl = ''
+            }
+        }
 
-        const data = { title, blogImageUrl, date, meta_word, author, description };
+        const data = { title, blogImageUrl, date, meta_word, author, description, videoUrl };
 
         axiosPublic.post('/blog', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Your work has been saved",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-
+                    toast.success("Blog added Successfully!!", { id: toastId });
+                    form.reset();
                 }
             })
-            .catch()
-        form.reset();
+            .catch(err => {
+                toast.error(err?.message, { id: toastId });
+            });
+
     }
 
 
@@ -110,13 +117,28 @@ const AddBlogPage = () => {
                                                 <input type="text" name="author" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                             </div>
                                         </div>
+                                        {/*videoUrl  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Video Url</label>
+                                                <input type="text" name="videoUrl" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                            </div>
+                                        </div>
 
 
+                                        {/* video upload  */}
+                                        <div className="p-2 w-1/2">
+                                            <div className="relative">
+                                                <label className="leading-7 text-sm text-gray-600 font-bold">Upload Video</label><br />
+                                                <input type="file" name='video'
+                                                    accept="video/*" className="file-input file-input-bordered file-input-md w-full  " />
+                                            </div>
+                                        </div>
                                         {/* image url  */}
                                         <div className="p-2 w-1/2">
                                             <div className="relative">
                                                 <label className="leading-7 text-sm text-gray-600 font-bold">Blog Banner Image</label><br />
-                                                <input type="file" name='blogImg' className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                                                <input type="file" name='blogImg' className="file-input file-input-bordered file-input-md w-full  " />
                                             </div>
                                         </div>
 

@@ -61,7 +61,6 @@ const HomePage = () => {
   if (isLoading) {
     return "";
   }
-  console.log(video_url_text, videoSection_url_text)
   return (
     <>
       <div className="">

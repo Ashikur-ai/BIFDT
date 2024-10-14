@@ -6,9 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
 import toast from "react-hot-toast";
 import useAuth from "../../../hooks/useAuth";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 
 const Login = () => {
+    const axiosPublic = useAxiosPublic()
     const [showPass, setShowPass] = useState(false)
     const navigate = useNavigate()
     const { loginUser } = useAuth()
@@ -21,9 +23,18 @@ const Login = () => {
         const toastId = toast.loading("Logging in...");
         loginUser(email, password)
             .then(res => {
-                toast.success("Logged in Successfully!!", { id: toastId });
+                
+                axiosPublic.get(`/usersByEmail/${email}`)
+                    .then(res => {
+                        
+                        if (res.data.admin) {
+                            toast.success("Logged in Successfully!!", { id: toastId });
+                            navigate('/dashboard', { replace: true })
+                        } else {
+                            toast.error("You are not authorized!! Contact admin..", { id: toastId });
+                        }
 
-                navigate('/', { replace: true })
+                    })
             })
             .catch(err => {
                 toast.error(err?.message, { id: toastId });
@@ -79,8 +90,7 @@ const Login = () => {
                         <button className={`${btnStyle}`}>
                             Login
                         </button>
-                        Or
-                        <GoogleLogin />
+
                     </div>
                 </form>
             </div>

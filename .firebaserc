@@ -1,5 +1,9 @@
 {
   "projects": {
+<<<<<<< HEAD
     "default": "bifdt-c4d8d"
+=======
+    "default": "bifdt-bd6a0"
+>>>>>>> 013b41ad967c182a392a5641056558b42c7958b7
   }
 }
