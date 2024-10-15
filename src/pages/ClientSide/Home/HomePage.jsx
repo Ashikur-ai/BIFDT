@@ -69,14 +69,22 @@ const HomePage = () => {
         </Helmet>
 
         {/* Video and Marquee First section  */}
+
         <div className="">
-          <ReactPlayer
-            width="100%"
-            controls="true"
-            height="100%"
-            playing={true}
-            url={video_url_text || video_url}
-          />
+          {
+            video_url_text ? <ReactPlayer
+              width="100%"
+              controls="true"
+              playing={true}
+              url={video_url_text}
+            /> : <ReactPlayer
+              width="100%"
+              height="100%"
+              controls="true"
+              playing={true}
+              url={video_url}
+            />
+          }
         </div>
         <button></button>
         <Marquee className="bg-primary py-3 -mt-7 text-white">
