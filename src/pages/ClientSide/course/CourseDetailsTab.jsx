@@ -75,6 +75,8 @@ const CourseDetailsTab = () => {
             {
                 showingCategory?.name && <CourseCategory category={showingCategory} />
             }
+
+            
             {/* {TabName === 'Semester Details' && <div>
                 <div >
                     {
