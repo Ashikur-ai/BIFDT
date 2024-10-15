@@ -122,10 +122,8 @@ const CourseDetails = () => {
               <Instagram />
 
 
-              <p className="text-primary  text-center font-bold text-2xl pt-2 bg-white ">
-                Twitter Page
-              </p>
-              <Twitter />
+              
+              {/* <Twitter /> */}
 
 
 
