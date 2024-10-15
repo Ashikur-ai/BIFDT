@@ -32,11 +32,12 @@ const AboutUs = () => {
                 <title>BIFDT | About Us</title>
             </Helmet>
             {/* First Video and Marquee Section */}
-            <div className="video-container">
+            <div className="">
 
                 <ReactPlayer
                     controls="true"
                     height="100%"
+                    playing={true}
                     url={video_url}
                     width="100%"
                 />
