@@ -1,5 +1,4 @@
 import Marquee from "react-fast-marquee";
-import banner3 from '../../../assets/images/gallary1.jpg'
 import { Helmet } from "react-helmet-async";
 import 'swiper/css/effect-fade';
 
@@ -17,16 +16,13 @@ import ResponsiveButton from "../../../components/ResponsiveButton";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
-import courseParallax1 from '../../../assets/images/parallax/courseParallax1.jpg';
-import courseParallax2 from '../../../assets/images/parallax/courseParallax2.jpg';
-import parallax4 from '../../../assets/images/parallax/parallax4.png';
 import HomePageCoursePlayer from "../Home/components/HomePageCoursePlayer";
 import Share from "./Share";
 import { useEffect, useState } from "react";
 import Videos from "../Home/components/Videos";
 import Facebook from "./Facebook";
 import Instagram from "./Instagram";
-import Twitter from "./Twitter";
+import Sun from "../../../components/Sun";
 // slider import
 
 
@@ -44,8 +40,8 @@ const CourseDetails = () => {
     }
   })
 
-  const videoDivStyle = 'rounded-md overflow-hidden k w-[230px] h-[130px]'
-  const titleStyle = 'text-black font-medium py-1 max-w-[230px]'
+  const videoDivStyle = 'rounded-md overflow-hidde w-[150px] h-[80px] sm:w-[230px] sm:h-[130px]'
+  const titleStyle = 'text-xs sm:text-base text-black font-medium py-1 max-w-[150px]  sm:max-w-[230px]'
   const { data: courseData = {}, isLoading } = useQuery({
     queryKey: ['course', id],
     queryFn: async () => {
@@ -65,7 +61,7 @@ const CourseDetails = () => {
 
 
 
-  const { courseImages, videoSection_url_text, video_section_video } = homepageContent[0] || [];
+  const { courseImages, videoSection_url_text, video_section_video, parallaxImg } = homepageContent[0] || [];
   return (
     <>
       <Helmet>
@@ -122,7 +118,7 @@ const CourseDetails = () => {
               <Instagram />
 
 
-              
+
               {/* <Twitter /> */}
 
 
@@ -133,7 +129,8 @@ const CourseDetails = () => {
 
             {/* second half */}
             <div className="lg:w-3/4 border border-b-black px-3 lg:px-0 relative ">
-              <div className="absolute top-0 left-0  bg-white/60 w-full h-full "></div>
+            <div className="w-max absolute top-0 left-0 z-10 "><Sun /></div>
+              {/* <div className="absolute top-0 left-0  bg-white/60 w-full h-full "></div> */}
               <div
                 style={{
                   backgroundImage: `url(${parallaxImages[0] || ''})`,
@@ -158,12 +155,12 @@ const CourseDetails = () => {
                   </div>
                 </div>
 
-                <p className="pr-10 pl-1 text-xs xs:text-sm sm:text-base lg:text-2xl z-10 relative overflow-hidden font-bold text-blue-700 py-2">
+                <p className="pr-10 pl-5 text-xs xs:text-sm sm:text-base lg:text-2xl z-10 relative overflow-hidden font-bold text-blue-700 py-2">
                   {subtitle}
                 </p>
 
-                <p className="text-gray-800 relative text-justify text-xs xs:text-sm hidden sm:block">{showMore ? description : `${description?.slice(0, 200)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
-                <p className="text-gray-800 relative text-justify text-xs sm:text-sm sm:hidden block">{showMore ? description : `${description?.slice(0, 50)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
+                <p className="text-black font-bold relative text-justify text-lg hidden sm:block px-5">{showMore ? description : `${description?.slice(0, 200)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primar">{showMore ? 'See less' : 'See more'}</span></p>
+                <p className="text-gray-800 relative text-justify text-xs sm:text-sm sm:hidden block px-2">{showMore ? description : `${description?.slice(0, 50)}...`} <span onClick={() => setShowMore(!showMore)} className="text-black font-medium cursor-pointer hover:text-primary">{showMore ? 'See less' : 'See more'}</span></p>
                 <hr className="border-black my-2" />
 
 
@@ -181,7 +178,7 @@ const CourseDetails = () => {
 
                 {/* four related video  */}
 
-                <div className="relative hidden  lg:flex pt-10 z-10">
+                <div className="relative flex pt-5 sm:pt-10 z-10">
                   <Marquee pauseOnHover={true}>
                     <div className="flex gap-10 pr-10">
                       <div className="">
@@ -251,7 +248,7 @@ const CourseDetails = () => {
                   </Marquee>
 
                 </div>
-                <div className="pt-20 z-10 relative ">
+                <div className="sm:pt-20 z-10 relative ">
                   <div className="flex justify-between flex-col sm:flex-row">
                     <p className="lg:text-2xl font-bold py-5">Course Details</p>
 
@@ -283,11 +280,11 @@ const CourseDetails = () => {
           {/* second section image and bullet point  */}
 
           <div className="py-4">
-            <div style={{ backgroundImage: `url(${parallax4})`, backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
+            <div style={{ backgroundImage: `url(${parallaxImg})`, backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
               <HomePageCoursePlayer courseImages={courseImages} />
             </div>
           </div>
-          <div id="homePageFirstSection" className="video-container mb-52">
+          <div id="homePageFirstSection" className="video-container mb-16 sm:mb-[17vw]">
 
             <Videos video_url={videoSection_url_text || video_section_video} />
           </div>

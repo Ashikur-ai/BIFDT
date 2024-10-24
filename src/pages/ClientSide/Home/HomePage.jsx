@@ -1,13 +1,11 @@
 import Marquee from "react-fast-marquee";
 import { Helmet } from "react-helmet-async";
 import ReactPlayer from "react-player";
-import banner from "../../../assets/images/banner.webp";
 import CountUp from "react-countup";
 import TabSection from "./components/TabSection";
 import FacultySlide from "./components/FacultySlide";
 import Testimonial from "./components/Testimonial";
 import Maps from "./components/Maps";
-import { Link } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Blogs from "./components/Blogs";
@@ -16,15 +14,9 @@ import HomePageCoursePlayer from "./components/HomePageCoursePlayer";
 import HomePageCountDown from "./components/HomePageCountDown";
 import Videos from "./components/Videos";
 import faceIllutionImg from "../../../assets/images/faceIllution.jpg";
-import parallax1 from "../../../assets/images/parallax/parallax1.jpeg";
-import parallax2 from "../../../assets/images/parallax/parallax2.jpg";
-import parallax3 from "../../../assets/images/parallax/parallax3.jpg";
-import parallax4 from "../../../assets/images/parallax/parallax4.png";
-import { Parallax } from "react-parallax";
 
 import "../../../App.css";
 
-import { useEffect } from "react";
 
 const HomePage = () => {
   const axiosPublic = useAxiosPublic();
@@ -129,7 +121,7 @@ const HomePage = () => {
             <div className="flex justify-center items-center">
               <img
                 className="w-2/3 lg:w-full"
-                src={imageUrl || banner}
+                src={imageUrl}
                 alt=""
               />
             </div>

@@ -297,7 +297,7 @@ const UpdateCoursePage = () => {
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm font-bold text-gray-600">Course Notice</label>
                                                     <Editor
-                                                        apiKey='rcgwgkgfl2fboctr4kanu1wyo0q2768tzdj3sxx94rb4s4es'
+                                                        apiKey='nosgmebondtn4sbcsmbpwuhzfw3rue7b8tjggdzflgk9o5mw'
                                                         init={{
                                                             height: 400,
                                                             max_height: "500",
@@ -326,7 +326,7 @@ const UpdateCoursePage = () => {
                                                     <label className="leading-7 text-sm font-bold text-gray-600">Admission Notice</label>
 
                                                     <Editor
-                                                        apiKey='rcgwgkgfl2fboctr4kanu1wyo0q2768tzdj3sxx94rb4s4es'
+                                                        apiKey='nosgmebondtn4sbcsmbpwuhzfw3rue7b8tjggdzflgk9o5mw'
                                                         init={{
                                                             height: 400,
                                                             max_height: "300",
@@ -356,7 +356,7 @@ const UpdateCoursePage = () => {
                                                 <div className="relative">
                                                     <label className="leading-7 text-sm font-bold text-gray-600">Bangla Text</label>
                                                     <Editor
-                                                        apiKey='rcgwgkgfl2fboctr4kanu1wyo0q2768tzdj3sxx94rb4s4es'
+                                                        apiKey='nosgmebondtn4sbcsmbpwuhzfw3rue7b8tjggdzflgk9o5mw'
                                                         init={{
                                                             height: 400,
                                                             max_height: "500",

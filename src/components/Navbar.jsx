@@ -114,7 +114,7 @@ const Navbar = () => {
           <div className="text-sm hidden lg:flex ">
             {logo}
 
-            <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold navbarUl gap-x-4 gap-y-1">
+            <nav className="md:ml-auto flex flex-wrap items-center text-sm justify-center font-bold navbarUl gap-y-1">
               {navNavLinks}
             </nav>
           </div>

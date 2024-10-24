@@ -2,6 +2,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination, Navigation } from 'swiper/modules';
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import Sun from '../../../components/Sun';
 const Tabs = ({ tabName, setTabName, courseCategories }) => {
 
     const categories = ['Career Objective']
@@ -11,6 +12,7 @@ const Tabs = ({ tabName, setTabName, courseCategories }) => {
 
     return (
         <div className={` relative flex pr-12 gap-2 py-2 bg-primary text-white rounded-t-lg w-full max-w-[800px] mx-auto`}>
+             
             <button 
                 className={`${tabStyle('Career Objective')}`}
                 onClick={() => setTabName('Career Objective')}

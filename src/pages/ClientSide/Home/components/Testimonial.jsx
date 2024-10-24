@@ -5,12 +5,6 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
-import teacher1 from "../../../../assets/images/teacher1.jpg";
-import teacher2 from "../../../../assets/images/teacher2.jpg";
-import teacher3 from "../../../../assets/images/teacher3.jpg";
-import teacher4 from "../../../../assets/images/teacher4.jpg";
-
-import Sparkles from "react-sparkle";
 
 // import required modules
 import { FreeMode, Pagination } from 'swiper/modules';

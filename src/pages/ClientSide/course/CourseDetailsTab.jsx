@@ -8,6 +8,7 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import SemesterTable from '../../../components/SemesterTable';
 import CourseCategory from '../../../components/CourseCategory';
 import Tabs from './Tabs';
+import Sun from '../../../components/Sun';
 
 
 const CourseDetailsTab = () => {
@@ -16,7 +17,7 @@ const CourseDetailsTab = () => {
     const [TabName, setTabName] = useState('Career Objective')
     const [rows, setRowsOption] = useState(null)
 
-   
+
     const { data: courseCategories = [], isLoading: courseCategoriesIsLoading } = useQuery({
         queryKey: ['courseCategories', id],
         queryFn: async () => {
@@ -37,7 +38,7 @@ const CourseDetailsTab = () => {
             rows && rows[0].expand()
         }
     }, [courseObjectives, rows])
-    if ( courseCategoriesIsLoading || courseObjectivesIsLoading) {
+    if (courseCategoriesIsLoading || courseObjectivesIsLoading) {
         return ''
     }
     const showingCategory = courseCategories?.find(category => category?._id === TabName) || {}
@@ -65,18 +66,24 @@ const CourseDetailsTab = () => {
     };
 
     return (
-        <div className='overflow-x-hidden w-full lg:w-[70vw] bg-white rounded-lg space-y-2 p-2 sm:p-5'>
+        <div className='overflow-x-hidden w-full lg:w-[70vw] rounded-lg space-y-2 p-2 sm:p-5 relative'>
+             <div className="w-max absolute top-0 left-0 z-10 hidden lg:block"><Sun /></div>
+             <div className="w-max absolute top-0 right-0 z-10 hidden lg:block"><Sun /></div>
             <Tabs tabName={TabName} setTabName={setTabName} courseCategories={courseCategories} />
-            {TabName === 'Career Objective' && <div className='pl-2  '>
-                {
-                    objectiveFAQ.length < 1 ? <p className="pb-10 pt-5 text-center">No FAQ Found</p> : <Faq config={config} getRowOptions={setRowsOption} data={showingDataAtFAQ} />
-                }
+            {TabName === 'Career Objective' && <div className=''>
+                <div className="max-w-[800px] w-full bg-white mx-auto text-primary">
+                   <div className='px-5'>
+                        {
+                            objectiveFAQ.length < 1 ? <p className="pb-10 pt-5 text-center">No FAQ Found</p> : <Faq config={config} getRowOptions={setRowsOption} data={showingDataAtFAQ} />
+                        }
+                   </div>
+                </div>
             </div>}
-            {
-                showingCategory?.name && <CourseCategory category={showingCategory} />
-            }
+                {
+                    showingCategory?.name && <CourseCategory category={showingCategory} />
+                }
 
-            
+
             {/* {TabName === 'Semester Details' && <div>
                 <div >
                     {
