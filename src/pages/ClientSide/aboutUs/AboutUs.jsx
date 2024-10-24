@@ -24,7 +24,7 @@ const AboutUs = () => {
         return null; // You can return a loading indicator or handle the loading state accordingly
     }
 
-    const { description, imageUrl, notice, video_url, since, student, rating, instructor, guarantee, ratio, videoSection_url_text, video_section_video } = homepageContent[0];
+    const { description, imageUrl, notice, video_url, since, student, rating, instructor, guarantee, ratio, videoSection_url_text, video_section_video, video_url_text } = homepageContent[0];
 
     return (
         <>
@@ -33,14 +33,20 @@ const AboutUs = () => {
             </Helmet>
             {/* First Video and Marquee Section */}
             <div className="">
-
-                <ReactPlayer
-                    controls="true"
-                    height="100%"
-                    playing={true}
-                    url={video_url}
-                    width="100%"
-                />
+                {
+                    video_url_text ? <ReactPlayer
+                        width="100%"
+                        controls="true"
+                        playing={true}
+                        url={video_url_text}
+                    /> : <ReactPlayer
+                        width="100%"
+                        height="100%"
+                        controls="true"
+                        playing={true}
+                        url={video_url}
+                    />
+                }
             </div>
             <AboutUsText />
             {/* Second section Photo Gallery */}
