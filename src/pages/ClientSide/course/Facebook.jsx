@@ -9,18 +9,18 @@ const Facebook = () => {
     }, []);
     //   
     return (
-        <div>
-            <div className="fb-page"
-                data-href="https://www.facebook.com/bifdt"
+        <div className=''>
+            <div className="fb-page w-full flex justify-center items-center mx-auto"
+                data-href="https://www.facebook.com/bifdt.info/"
                 data-tabs="timeline"
-                data-width=""
+                data-width="100%"
                 data-height=""
                 data-small-header="false"
                 data-adapt-container-width="true"
                 data-hide-cover="false"
                 data-show-facepile="true">
-                <blockquote cite="https://www.facebook.com/bifdt" className="fb-xfbml-parse-ignore">
-                    <a href="https://www.facebook.com/bifdt">bifdt</a>
+                <blockquote cite="https://www.facebook.com/bifdt.info/" className="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/bifdt.info/">bifdt</a>
                 </blockquote>
             </div>
         </div>

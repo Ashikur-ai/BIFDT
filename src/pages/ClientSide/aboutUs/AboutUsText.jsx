@@ -1,13 +1,18 @@
 import img1 from '../../../assets/images/aboutus/img1.jpg'
 import img2 from '../../../assets/images/aboutus/img2.jpg'
+import faceIllutionImg from '../../../assets/images/faceIllution.jpg'
 const AboutUsText = () => {
     return (
         <div className='max-w-7xl mx-auto'>
             <h2 className='text-3xl font-bold text-blue-700 px-5 text-center pt-10'>About Us | Bangladesh Institute of Fashion & Design Technology | BIFDT
             </h2>
             <div className='py-10  grid grid-cols-1 lg:grid-cols-2 gap-5 items-center'>
-                <div className='space-y-5 px-5'>
-
+                <div className='space-y-5 px-5 relative bg-white/80'>
+                    <img
+                        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+                        src={faceIllutionImg}
+                        alt=""
+                    />
                     <p className='text-sm font-medium text-justify'>
                         Are you thinking about a diploma course or a short course to boost up your career?   This might be it !
                         <br /> <br />

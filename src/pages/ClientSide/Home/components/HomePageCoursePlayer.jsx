@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
 import { SwiperSlide, Swiper } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import app from "../../../../assets/images/apps.webp";
-import python from "../../../../assets/images/python.webp";
-import graphic from "../../../../assets/images/graphic.webp";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
